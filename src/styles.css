@@ -142,3 +142,87 @@
     color: var(--color-foreground);
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* Landing zone — cloud titles, drifting mist, blinking windows, contrail.    */
+/* -------------------------------------------------------------------------- */
+
+@keyframes cloud-breathe {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+  50%      { transform: translateY(-6px) scale(1.015); opacity: 0.94; }
+}
+.cloud-title {
+  animation: cloud-breathe 9s ease-in-out infinite;
+  transition: transform 400ms ease;
+}
+.cloud-title:hover { transform: translate(-50%, -52%) scale(1.03); }
+
+@keyframes mist-drift {
+  0%   { transform: translate3d(-30%, 0, 0); }
+  100% { transform: translate3d(30%, 0, 0); }
+}
+.mist {
+  position: absolute;
+  inset: 20% -20% auto -20%;
+  height: 40%;
+  background:
+    radial-gradient(50% 60% at 30% 50%, rgba(255,250,235,0.35), transparent 70%),
+    radial-gradient(40% 55% at 70% 60%, rgba(255,245,220,0.28), transparent 70%);
+  filter: blur(6px);
+  pointer-events: none;
+  animation: mist-drift 42s ease-in-out infinite alternate;
+}
+.mist-b {
+  inset: auto -20% 15% -20%;
+  height: 35%;
+  opacity: 0.7;
+  animation-duration: 58s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes birds-fly {
+  0%   { transform: translate(-8vw, 12vh) scale(0.9); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.7; }
+  100% { transform: translate(60vw, 46vh) scale(1.05); opacity: 0; }
+}
+.birds {
+  top: 0; left: 0;
+  animation: birds-fly 26s linear infinite;
+  animation-delay: 4s;
+}
+
+@keyframes window-blink {
+  0%, 92%, 100% { opacity: 0.15; }
+  94%           { opacity: 0.95; }
+  96%           { opacity: 0.25; }
+}
+.window-light {
+  position: absolute;
+  width: 4px; height: 4px;
+  border-radius: 9999px;
+  background: #ffd88a;
+  box-shadow: 0 0 8px 2px rgba(255, 216, 138, 0.7);
+  animation: window-blink 6s ease-in-out infinite;
+}
+.window-light--slow { animation-duration: 11s; animation-delay: 2s; }
+.window-light--fast { animation-duration: 4s;  animation-delay: 1s; }
+
+@keyframes contrail-cross {
+  0%   { transform: translate(-10vw, 0) rotate(6deg); opacity: 0; }
+  15%  { opacity: 0.55; }
+  85%  { opacity: 0.55; }
+  100% { transform: translate(110vw, -6vh) rotate(6deg); opacity: 0; }
+}
+.contrail {
+  position: absolute;
+  top: 14%;
+  left: 0;
+  width: 32vw;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.85), transparent);
+  filter: blur(1px);
+  animation: contrail-cross 48s linear infinite;
+  animation-delay: 6s;
+}
+
