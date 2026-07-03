@@ -1,0 +1,320 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import { useIsMobile } from "@/hooks/use-mobile";
+
+import beHorizontal from "@/assets/manhattan-18-horizontal.jpg";
+import doHorizontal from "@/assets/manhattan-21-horizontal.jpg";
+import beVertical from "@/assets/manhattan-18-vertical.jpg";
+import doVertical from "@/assets/manhattan-21-vertical.jpg";
+
+/**
+ * Landing zone.
+ *
+ * Desktop (horizontal): left half = 18th-century Manhattan ("Portfolio" → /be),
+ * right half = 21st-century Manhattan ("Privat" → /do). A vertical handle in
+ * the middle drags left/right to reveal more of either side.
+ *
+ * Mobile (vertical): top half = 18th century (Portfolio), bottom half = 21st
+ * century (Privat). A horizontal handle drags up/down.
+ *
+ * Left/top click → /be. Right/bottom click → /do.
+ */
+export function LandingSlider() {
+  const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const draggingRef = useRef(false);
+  const [pct, setPct] = useState(50); // % of the "be" side visible (from left/top)
+
+  const updateFromEvent = useCallback(
+    (clientX: number, clientY: number) => {
+      const el = containerRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const raw = isMobile
+        ? ((clientY - rect.top) / rect.height) * 100
+        : ((clientX - rect.left) / rect.width) * 100;
+      setPct(Math.max(4, Math.min(96, raw)));
+    },
+    [isMobile],
+  );
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      if (!draggingRef.current) return;
+      updateFromEvent(e.clientX, e.clientY);
+    };
+    const onUp = () => {
+      draggingRef.current = false;
+      document.body.style.cursor = "";
+      document.body.style.userSelect = "";
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+    };
+  }, [updateFromEvent]);
+
+  const startDrag = (e: React.PointerEvent) => {
+    draggingRef.current = true;
+    document.body.style.cursor = isMobile ? "ns-resize" : "ew-resize";
+    document.body.style.userSelect = "none";
+    updateFromEvent(e.clientX, e.clientY);
+  };
+
+  const onKey = (e: React.KeyboardEvent) => {
+    const step = e.shiftKey ? 10 : 2;
+    if (
+      (isMobile && (e.key === "ArrowUp" || e.key === "ArrowDown")) ||
+      (!isMobile && (e.key === "ArrowLeft" || e.key === "ArrowRight"))
+    ) {
+      e.preventDefault();
+      const dir =
+        e.key === "ArrowRight" || e.key === "ArrowDown" ? +1 : -1;
+      setPct((p) => Math.max(4, Math.min(96, p + dir * step)));
+    }
+  };
+
+  // Click on a side (not on the handle) → navigate.
+  const goSide = (side: "be" | "do") => {
+    if (draggingRef.current) return;
+    void navigate({ to: side === "be" ? "/be" : "/do" });
+  };
+
+  const beImg = isMobile ? beVertical : beHorizontal;
+  const doImg = isMobile ? doVertical : doHorizontal;
+
+  // "do" layer is clipped by inset from the opposite side.
+  const doClip = isMobile
+    ? `inset(${pct}% 0 0 0)`
+    : `inset(0 0 0 ${pct}%)`;
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative h-[100svh] w-full overflow-hidden bg-black select-none"
+      aria-label="Landing — slide between 18th- and 21st-century Manhattan"
+    >
+      {/* BE side — 18th century, full bleed */}
+      <button
+        type="button"
+        onClick={() => goSide("be")}
+        aria-label="Enter Portfolio (be)"
+        className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
+      >
+        <img
+          src={beImg}
+          alt="Manhattan in the 18th century, seen from north to south — forests, orchard meadows, a small Dutch village."
+          className="h-full w-full object-cover"
+          draggable={false}
+        />
+        {/* Warm painterly wash + soft vignette */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(120% 80% at 50% 30%, transparent 40%, rgba(30,25,10,0.35) 100%)",
+          }}
+        />
+        {/* Drifting mist — light animation */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="mist mist-a" />
+          <div className="mist mist-b" />
+        </div>
+        {/* A pair of birds gliding N→S */}
+        <svg
+          aria-hidden
+          className="birds pointer-events-none absolute"
+          viewBox="0 0 40 20"
+          width="80"
+          height="40"
+        >
+          <path d="M2 12 Q 8 4 14 12 Q 20 4 26 12" stroke="#3b3323" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
+          <path d="M20 16 Q 26 8 32 16" stroke="#3b3323" strokeWidth="1" fill="none" strokeLinecap="round"/>
+        </svg>
+      </button>
+
+      {/* DO side — 21st century, clipped */}
+      <button
+        type="button"
+        onClick={() => goSide("do")}
+        aria-label="Enter Privat (do)"
+        className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
+        style={{ clipPath: doClip, WebkitClipPath: doClip }}
+      >
+        <img
+          src={doImg}
+          alt="Manhattan in the 21st century, seen from north to south — Central Park, Midtown, Lower Manhattan, the harbor."
+          className="h-full w-full object-cover"
+          draggable={false}
+        />
+        {/* Cool cinematic wash */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(120% 80% at 50% 30%, transparent 40%, rgba(6,10,20,0.5) 100%)",
+          }}
+        />
+        {/* Blinking window lights — light animation */}
+        <span aria-hidden className="window-light" style={{ left: "42%", top: "58%" }} />
+        <span aria-hidden className="window-light window-light--slow" style={{ left: "56%", top: "63%" }} />
+        <span aria-hidden className="window-light window-light--fast" style={{ left: "49%", top: "71%" }} />
+        {/* A silent airliner contrail crossing the sky */}
+        <span aria-hidden className="contrail" />
+      </button>
+
+      {/* Divider line + handle */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bg-white/70 mix-blend-overlay"
+        style={
+          isMobile
+            ? { left: 0, right: 0, top: `${pct}%`, height: 1, transform: "translateY(-0.5px)" }
+            : { top: 0, bottom: 0, left: `${pct}%`, width: 1, transform: "translateX(-0.5px)" }
+        }
+      />
+
+      {/* Handle */}
+      <div
+        role="slider"
+        tabIndex={0}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(pct)}
+        aria-orientation={isMobile ? "horizontal" : "vertical"}
+        aria-label="Reveal 18th- vs 21st-century Manhattan"
+        onPointerDown={startDrag}
+        onKeyDown={onKey}
+        onClick={(e) => e.stopPropagation()}
+        className={`group absolute z-20 grid place-items-center rounded-full bg-white/85 shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur focus:outline-none focus:ring-2 focus:ring-white/80 ${
+          isMobile ? "cursor-ns-resize" : "cursor-ew-resize"
+        }`}
+        style={
+          isMobile
+            ? {
+                left: "50%",
+                top: `${pct}%`,
+                width: 68,
+                height: 28,
+                transform: "translate(-50%, -50%)",
+              }
+            : {
+                top: "50%",
+                left: `${pct}%`,
+                width: 28,
+                height: 68,
+                transform: "translate(-50%, -50%)",
+              }
+        }
+      >
+        {isMobile ? (
+          <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-[#1a1a1a]">
+            <span aria-hidden>▲</span>
+            <span aria-hidden>▼</span>
+          </span>
+        ) : (
+          <span className="flex flex-col items-center gap-1 text-[10px] tracking-[0.3em] text-[#1a1a1a]">
+            <span aria-hidden>◀</span>
+            <span aria-hidden>▶</span>
+          </span>
+        )}
+      </div>
+
+      {/* Cloud title — Portfolio (over BE side) */}
+      <CloudTitle
+        label="Portfolio"
+        sub="be"
+        side="be"
+        isMobile={isMobile}
+        onClick={() => goSide("be")}
+      />
+
+      {/* Cloud title — Privat (over DO side) */}
+      <CloudTitle
+        label="Privat"
+        sub="do"
+        side="do"
+        isMobile={isMobile}
+        onClick={() => goSide("do")}
+      />
+
+      {/* Foot hint */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
+        <p className="rounded-full bg-black/25 px-4 py-1.5 text-[10px] uppercase tracking-[0.4em] text-white/80 backdrop-blur-sm">
+          {isMobile ? "drag ↕ · tap a side to enter" : "drag ↔ · click a side to enter"}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function CloudTitle({
+  label,
+  sub,
+  side,
+  isMobile,
+  onClick,
+}: {
+  label: string;
+  sub: string;
+  side: "be" | "do";
+  isMobile: boolean;
+  onClick: () => void;
+}) {
+  // Position: on desktop, Portfolio floats in the left quarter, Privat in the right.
+  // On mobile, Portfolio floats in the upper third, Privat in the lower third.
+  const pos = isMobile
+    ? side === "be"
+      ? { top: "18%", left: "50%", transform: "translate(-50%, -50%)" }
+      : { top: "82%", left: "50%", transform: "translate(-50%, -50%)" }
+    : side === "be"
+      ? { top: "50%", left: "25%", transform: "translate(-50%, -50%)" }
+      : { top: "50%", left: "75%", transform: "translate(-50%, -50%)" };
+
+  const tone =
+    side === "be"
+      ? { color: "rgba(250,244,225,0.92)", shadow: "0 0 60px rgba(255,236,180,0.35)" }
+      : { color: "rgba(232,238,250,0.92)", shadow: "0 0 60px rgba(160,190,240,0.35)" };
+
+  return (
+    <button
+      type="button"
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
+      className="cloud-title group absolute z-30 focus:outline-none"
+      style={{ ...pos }}
+      aria-label={`Enter ${label}`}
+    >
+      <span
+        className="block text-center leading-none"
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontStyle: "italic",
+          fontWeight: 300,
+          color: tone.color,
+          textShadow: tone.shadow,
+          letterSpacing: "0.02em",
+          filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.35))",
+          fontSize: "clamp(3rem, 10vw, 8.5rem)",
+        }}
+      >
+        {label}
+      </span>
+      <span
+        className="mt-2 block text-center text-[10px] uppercase tracking-[0.6em]"
+        style={{ color: tone.color, opacity: 0.75 }}
+      >
+        · {sub} ·
+      </span>
+    </button>
+  );
+}
