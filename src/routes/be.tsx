@@ -206,7 +206,14 @@ function BePage() {
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between border-t border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
+              <div
+                className="flex cursor-pointer items-center justify-between border-t border-[#2d2a22]/10 px-4 py-2.5 transition-colors hover:bg-[#2d2a22]/[0.04] md:px-5 md:py-3"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setOpenSlug(it.slug);
+                }}
+              >
                 <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
                   öffnen
                 </span>
