@@ -292,7 +292,7 @@ function CloudTitle({
           textShadow: tone.shadow,
           letterSpacing: "0.02em",
           filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.35))",
-          fontSize: "clamp(2rem, 6.7vw, 5.7rem)",
+          fontSize: "clamp(1.33rem, 4.47vw, 3.8rem)",
         }}
       >
         {label}
