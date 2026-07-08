@@ -117,14 +117,6 @@ function BePage() {
               aria-label="Menü öffnen"
               className="group flex items-center gap-2.5 border border-[#2d2a22]/25 bg-[#2d2a22]/[0.03] px-3.5 py-2.5 transition-colors hover:bg-[#2d2a22]/[0.06]"
             >
-              <span
-                aria-hidden
-                className="flex items-end gap-[3px]"
-              >
-                <span className="block h-3 w-[2px] bg-[#2d2a22]" />
-                <span className="block h-4 w-[2px] bg-[#2d2a22]" />
-                <span className="block h-2.5 w-[2px] bg-[#2d2a22]" />
-              </span>
               <span className="text-[11px] uppercase tracking-[0.35em] opacity-80">
                 Menü
               </span>
