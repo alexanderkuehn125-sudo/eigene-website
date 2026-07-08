@@ -12,6 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as DoRouteImport } from './routes/do'
 import { Route as BeRouteImport } from './routes/be'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BeUeberMichRouteImport } from './routes/be.ueber-mich'
+import { Route as BeSkillsRouteImport } from './routes/be.skills'
+import { Route as BeReferenzenRouteImport } from './routes/be.referenzen'
+import { Route as BeKontaktRouteImport } from './routes/be.kontakt'
+import { Route as BeImpressumRouteImport } from './routes/be.impressum'
 
 const DoRoute = DoRouteImport.update({
   id: '/do',
@@ -28,34 +33,99 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BeUeberMichRoute = BeUeberMichRouteImport.update({
+  id: '/ueber-mich',
+  path: '/ueber-mich',
+  getParentRoute: () => BeRoute,
+} as any)
+const BeSkillsRoute = BeSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => BeRoute,
+} as any)
+const BeReferenzenRoute = BeReferenzenRouteImport.update({
+  id: '/referenzen',
+  path: '/referenzen',
+  getParentRoute: () => BeRoute,
+} as any)
+const BeKontaktRoute = BeKontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => BeRoute,
+} as any)
+const BeImpressumRoute = BeImpressumRouteImport.update({
+  id: '/impressum',
+  path: '/impressum',
+  getParentRoute: () => BeRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/be': typeof BeRoute
+  '/be': typeof BeRouteWithChildren
   '/do': typeof DoRoute
+  '/be/impressum': typeof BeImpressumRoute
+  '/be/kontakt': typeof BeKontaktRoute
+  '/be/referenzen': typeof BeReferenzenRoute
+  '/be/skills': typeof BeSkillsRoute
+  '/be/ueber-mich': typeof BeUeberMichRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/be': typeof BeRoute
+  '/be': typeof BeRouteWithChildren
   '/do': typeof DoRoute
+  '/be/impressum': typeof BeImpressumRoute
+  '/be/kontakt': typeof BeKontaktRoute
+  '/be/referenzen': typeof BeReferenzenRoute
+  '/be/skills': typeof BeSkillsRoute
+  '/be/ueber-mich': typeof BeUeberMichRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/be': typeof BeRoute
+  '/be': typeof BeRouteWithChildren
   '/do': typeof DoRoute
+  '/be/impressum': typeof BeImpressumRoute
+  '/be/kontakt': typeof BeKontaktRoute
+  '/be/referenzen': typeof BeReferenzenRoute
+  '/be/skills': typeof BeSkillsRoute
+  '/be/ueber-mich': typeof BeUeberMichRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/be' | '/do'
+  fullPaths:
+    | '/'
+    | '/be'
+    | '/do'
+    | '/be/impressum'
+    | '/be/kontakt'
+    | '/be/referenzen'
+    | '/be/skills'
+    | '/be/ueber-mich'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/be' | '/do'
-  id: '__root__' | '/' | '/be' | '/do'
+  to:
+    | '/'
+    | '/be'
+    | '/do'
+    | '/be/impressum'
+    | '/be/kontakt'
+    | '/be/referenzen'
+    | '/be/skills'
+    | '/be/ueber-mich'
+  id:
+    | '__root__'
+    | '/'
+    | '/be'
+    | '/do'
+    | '/be/impressum'
+    | '/be/kontakt'
+    | '/be/referenzen'
+    | '/be/skills'
+    | '/be/ueber-mich'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BeRoute: typeof BeRoute
+  BeRoute: typeof BeRouteWithChildren
   DoRoute: typeof DoRoute
 }
 
@@ -82,12 +152,65 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/be/ueber-mich': {
+      id: '/be/ueber-mich'
+      path: '/ueber-mich'
+      fullPath: '/be/ueber-mich'
+      preLoaderRoute: typeof BeUeberMichRouteImport
+      parentRoute: typeof BeRoute
+    }
+    '/be/skills': {
+      id: '/be/skills'
+      path: '/skills'
+      fullPath: '/be/skills'
+      preLoaderRoute: typeof BeSkillsRouteImport
+      parentRoute: typeof BeRoute
+    }
+    '/be/referenzen': {
+      id: '/be/referenzen'
+      path: '/referenzen'
+      fullPath: '/be/referenzen'
+      preLoaderRoute: typeof BeReferenzenRouteImport
+      parentRoute: typeof BeRoute
+    }
+    '/be/kontakt': {
+      id: '/be/kontakt'
+      path: '/kontakt'
+      fullPath: '/be/kontakt'
+      preLoaderRoute: typeof BeKontaktRouteImport
+      parentRoute: typeof BeRoute
+    }
+    '/be/impressum': {
+      id: '/be/impressum'
+      path: '/impressum'
+      fullPath: '/be/impressum'
+      preLoaderRoute: typeof BeImpressumRouteImport
+      parentRoute: typeof BeRoute
+    }
   }
 }
 
+interface BeRouteChildren {
+  BeImpressumRoute: typeof BeImpressumRoute
+  BeKontaktRoute: typeof BeKontaktRoute
+  BeReferenzenRoute: typeof BeReferenzenRoute
+  BeSkillsRoute: typeof BeSkillsRoute
+  BeUeberMichRoute: typeof BeUeberMichRoute
+}
+
+const BeRouteChildren: BeRouteChildren = {
+  BeImpressumRoute: BeImpressumRoute,
+  BeKontaktRoute: BeKontaktRoute,
+  BeReferenzenRoute: BeReferenzenRoute,
+  BeSkillsRoute: BeSkillsRoute,
+  BeUeberMichRoute: BeUeberMichRoute,
+}
+
+const BeRouteWithChildren = BeRoute._addFileChildren(BeRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BeRoute: BeRoute,
+  BeRoute: BeRouteWithChildren,
   DoRoute: DoRoute,
 }
 export const routeTree = rootRouteImport
