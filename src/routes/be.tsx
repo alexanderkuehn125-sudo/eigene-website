@@ -71,8 +71,7 @@ function BePage() {
           <h1
             className="text-5xl leading-[0.95] tracking-tight md:text-7xl"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontStyle: "italic",
+              fontFamily: "'Roboto', sans-serif",
               fontWeight: 300,
             }}
           >
@@ -95,8 +94,7 @@ function BePage() {
             <span
               className="text-2xl leading-none md:text-3xl"
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontStyle: "italic",
+                fontFamily: "'Roboto', sans-serif",
                 fontWeight: 300,
               }}
             >
@@ -131,8 +129,7 @@ function BePage() {
                     <span
                       className="text-2xl leading-none tracking-tight md:text-3xl"
                       style={{
-                        fontFamily: "'Cormorant Garamond', serif",
-                        fontStyle: "italic",
+                        fontFamily: "'Roboto', sans-serif",
                         fontWeight: 300,
                       }}
                     >
@@ -144,10 +141,6 @@ function BePage() {
             </ul>
           )}
         </div>
-
-        <footer className="mt-auto pt-16 text-[11px] uppercase tracking-[0.35em] opacity-50">
-          Manhattan · 18. Jahrhundert
-        </footer>
       </div>
     </main>
   );

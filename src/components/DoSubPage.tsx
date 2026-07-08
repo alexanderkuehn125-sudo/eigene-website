@@ -37,8 +37,7 @@ export function SubPage({ section }: { section: Section }) {
           <h1
             className="text-5xl leading-[0.95] tracking-tight md:text-7xl"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontStyle: "italic",
+              fontFamily: "'Roboto', sans-serif",
               fontWeight: 300,
             }}
           >

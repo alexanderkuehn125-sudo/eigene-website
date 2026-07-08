@@ -286,8 +286,7 @@ function CloudTitle({
       <span
         className="block text-center leading-none"
         style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontStyle: "italic",
+          fontFamily: "'Roboto', sans-serif",
           fontWeight: 300,
           color: tone.color,
           textShadow: tone.shadow,
