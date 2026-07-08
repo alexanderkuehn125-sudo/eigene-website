@@ -18,6 +18,7 @@ export const Route = createFileRoute("/be")({
 type Item = {
   n: string;
   label: string;
+  slug: string;
   to: string;
   kicker: string;
   body: string;
@@ -27,6 +28,7 @@ const items: readonly Item[] = [
   {
     n: "01",
     label: "Skills",
+    slug: "skills",
     to: "/be/skills",
     kicker: "Werkzeuge & Handschrift",
     body: "Konzeption, Gestaltung, Umsetzung. Von der ersten Skizze bis zum ausgelieferten Produkt — mit Blick für Typografie, Struktur und Detail. Interfaces, Editorial, Motion, Prototyping.",
@@ -34,6 +36,7 @@ const items: readonly Item[] = [
   {
     n: "02",
     label: "Über mich",
+    slug: "ueber-mich",
     to: "/be/ueber-mich",
     kicker: "Wer hier arbeitet",
     body: "Ein kurzer Blick auf Werdegang, Haltung und Arbeitsweise. Zwischen konzeptioneller Tiefe und pragmatischem Handwerk — an Projekten interessiert, die Substanz haben.",
@@ -41,6 +44,7 @@ const items: readonly Item[] = [
   {
     n: "03",
     label: "Referenzen",
+    slug: "referenzen",
     to: "/be/referenzen",
     kicker: "Ausgewählte Arbeiten",
     body: "Eine Auswahl realisierter Projekte aus Kultur, Wirtschaft und öffentlichem Raum. Fallstudien mit Kontext, Prozess und Ergebnis — statt bloßer Bilderreihen.",
@@ -48,6 +52,7 @@ const items: readonly Item[] = [
   {
     n: "04",
     label: "Impressum",
+    slug: "impressum",
     to: "/be/impressum",
     kicker: "Rechtliches",
     body: "Anbieterkennzeichnung, verantwortliche Personen, Kontaktdaten und Hinweise nach TMG und DSGVO. Alles Formale — klar und vollständig.",
@@ -55,6 +60,7 @@ const items: readonly Item[] = [
   {
     n: "05",
     label: "Kontakt",
+    slug: "kontakt",
     to: "/be/kontakt",
     kicker: "Sprich mich an",
     body: "Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch. Per Mail oder Telefon — Antwort in der Regel innerhalb von 24 Stunden.",
@@ -137,10 +143,16 @@ function BePage() {
               >
                 {items.map((it) => (
                   <li key={it.label} role="none">
-                    <Link
-                      to={it.to}
+                    <a
+                      href={`#${it.slug}`}
                       role="menuitem"
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setOpen(false);
+                        document
+                          .getElementById(it.slug)
+                          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }}
                       className="grid grid-cols-[2rem_1fr] items-baseline gap-3 px-3.5 py-2.5 transition-colors hover:bg-[#2d2a22]/[0.06]"
                     >
                       <span className="text-[10px] uppercase tracking-[0.35em] opacity-50">
@@ -152,7 +164,7 @@ function BePage() {
                       >
                         {it.label}
                       </span>
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -165,6 +177,7 @@ function BePage() {
           {items.map((it) => (
             <Link
               key={it.label}
+              id={it.slug}
               to={it.to}
               className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed]/95 shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] backdrop-blur-[2px] transition-all hover:-translate-y-1 hover:bg-[#fffdf8] hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)]"
             >
