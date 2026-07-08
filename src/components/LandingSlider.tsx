@@ -233,6 +233,7 @@ export function LandingSlider() {
         sub="be"
         side="be"
         isMobile={isMobile}
+        pct={pct}
         onClick={() => goSide("be")}
       />
 
@@ -242,8 +243,10 @@ export function LandingSlider() {
         sub="do"
         side="do"
         isMobile={isMobile}
+        pct={pct}
         onClick={() => goSide("do")}
       />
+
 
       {/* Foot hint */}
       <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
@@ -260,23 +263,24 @@ function CloudTitle({
   sub,
   side,
   isMobile,
+  pct,
   onClick,
 }: {
   label: string;
   sub: string;
   side: "be" | "do";
   isMobile: boolean;
+  pct: number;
   onClick: () => void;
 }) {
-  // Position: on desktop, Portfolio floats in the left quarter, Privat in the right.
-  // On mobile, Portfolio floats in the upper third, Privat in the lower third.
+  // Always centered inside the currently visible half.
+  const beCenter = pct / 2;
+  const doCenter = (pct + 100) / 2;
+  const center = side === "be" ? beCenter : doCenter;
   const pos = isMobile
-    ? side === "be"
-      ? { top: "18%", left: "50%", transform: "translate(-50%, -50%)" }
-      : { top: "82%", left: "50%", transform: "translate(-50%, -50%)" }
-    : side === "be"
-      ? { top: "50%", left: "25%", transform: "translate(-50%, -50%)" }
-      : { top: "50%", left: "75%", transform: "translate(-50%, -50%)" };
+    ? { top: `${center}%`, left: "50%", transform: "translate(-50%, -50%)" }
+    : { top: "50%", left: `${center}%`, transform: "translate(-50%, -50%)" };
+
 
   const tone =
     side === "be"
