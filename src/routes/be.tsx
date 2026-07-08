@@ -241,6 +241,41 @@ function BePage() {
             nach oben ↑
           </button>
         </div>
+
+        {/* Expanded panel modal */}
+        {activeItem && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-6"
+            style={{
+              background: "rgba(45, 42, 34, 0.35)",
+              backdropFilter: "blur(2px)",
+            }}
+            onClick={() => setOpenSlug(null)}
+          >
+            <div
+              className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed] p-8 shadow-[0_20px_60px_-20px_rgba(45,42,34,0.35)]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setOpenSlug(null)}
+                aria-label="Schließen"
+                className="absolute right-5 top-5 text-[13px] uppercase tracking-[0.35em] opacity-60 transition-opacity hover:opacity-100"
+              >
+                ×
+              </button>
+              <h2
+                className="mb-4 pr-8 text-3xl leading-tight tracking-tight md:text-4xl"
+                style={{ fontWeight: 300 }}
+              >
+                {activeItem.label}
+              </h2>
+              <p className="text-base leading-relaxed opacity-80 md:text-lg">
+                {activeItem.body}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );
