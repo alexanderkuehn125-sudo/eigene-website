@@ -168,93 +168,51 @@ function BePage() {
           </div>
         </header>
 
-        {/* Section grid: five panels — one per menu item */}
-        <section className="mt-14 grid grid-cols-1 gap-5 md:mt-20 md:grid-cols-6 md:gap-6">
-          {items.map((it, i) => {
-            // Layout rhythm: first row 3+3, second row 2+2+2
-            const span = i < 2 ? "md:col-span-3" : "md:col-span-2";
-            return (
-              <Link
-                key={it.label}
-                to={it.to}
-                className={`group relative flex h-72 flex-col border border-[#2d2a22]/25 bg-[#f5efe1]/60 backdrop-blur-[1px] transition-colors hover:bg-[#f5efe1] md:h-80 ${span}`}
-              >
-                {/* Corner ticks */}
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute left-0 top-0 h-3 w-3 border-l border-t border-[#2d2a22]/60"
-                />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute right-0 top-0 h-3 w-3 border-r border-t border-[#2d2a22]/60"
-                />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute bottom-0 left-0 h-3 w-3 border-b border-l border-[#2d2a22]/60"
-                />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute bottom-0 right-0 h-3 w-3 border-b border-r border-[#2d2a22]/60"
-                />
+        {/* Five panels — vertical stack, each adapting to the page height */}
+        <section className="mt-10 flex-1 grid grid-cols-1 grid-rows-5 gap-4 md:mt-12 md:gap-5">
+          {items.map((it) => (
+            <Link
+              key={it.label}
+              to={it.to}
+              className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed]/95 shadow-[0_4px_24px_-8px_rgba(45,42,34,0.18)] backdrop-blur-[2px] transition-all hover:bg-[#fffdf8] hover:shadow-[0_8px_32px_-10px_rgba(45,42,34,0.25)]"
+            >
+              {/* Header row */}
+              <div className="flex items-baseline justify-between border-b border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
+                <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
+                  {it.n}
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
+                  {it.kicker}
+                </span>
+              </div>
 
-                {/* Header row */}
-                <div className="flex items-baseline justify-between border-b border-[#2d2a22]/20 px-5 py-3">
-                  <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
-                    {it.n}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
-                    {it.kicker}
-                  </span>
-                </div>
+              {/* Body */}
+              <div className="flex-1 px-4 py-3 md:px-5 md:py-4">
+                <h2
+                  className="mb-2 text-xl leading-tight tracking-tight md:text-2xl"
+                  style={{ fontWeight: 300 }}
+                >
+                  {it.label}
+                </h2>
+                <p className="text-sm leading-relaxed opacity-80">
+                  {it.body}
+                </p>
+              </div>
 
-                {/* Scrollable body */}
-                <div className="relative flex-1 overflow-hidden">
-                  <div
-                    className="h-full overflow-y-auto px-5 py-4 pr-4"
-                    style={{
-                      scrollbarWidth: "thin",
-                      scrollbarColor: "#2d2a22 transparent",
-                    }}
-                  >
-                    <h2
-                      className="mb-3 text-2xl leading-tight tracking-tight md:text-3xl"
-                      style={{ fontWeight: 300 }}
-                    >
-                      {it.label}
-                    </h2>
-                    <p className="text-sm leading-relaxed opacity-80">
-                      {it.body}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed opacity-70">
-                      {it.body}
-                    </p>
-                  </div>
-                  {/* fade edge */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-10"
-                    style={{
-                      background:
-                        "linear-gradient(to top, #f5efe1 0%, rgba(245,239,225,0) 100%)",
-                    }}
-                  />
-                </div>
-
-                {/* Footer */}
-                <div className="flex items-center justify-between border-t border-[#2d2a22]/20 px-5 py-3">
-                  <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
-                    öffnen
-                  </span>
-                  <span
-                    aria-hidden
-                    className="transition-transform group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
+              {/* Footer */}
+              <div className="flex items-center justify-between border-t border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
+                <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
+                  öffnen
+                </span>
+                <span
+                  aria-hidden
+                  className="transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </div>
+            </Link>
+          ))}
         </section>
       </div>
     </main>
