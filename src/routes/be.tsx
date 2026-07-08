@@ -52,16 +52,76 @@ function BePage() {
       }}
     >
       <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 py-10 md:px-12 md:py-16">
-        <header className="flex items-center justify-between">
+        <header className="flex items-start justify-between">
           <Link
             to="/"
             className="text-[11px] uppercase tracking-[0.35em] opacity-70 underline-offset-8 hover:underline"
           >
             ← zurück
           </Link>
-          <span className="text-[11px] uppercase tracking-[0.4em] opacity-60">
-            Portfolio
-          </span>
+
+          {/* Dropdown */}
+          <div ref={ref} className="relative">
+            <button
+              type="button"
+              onClick={() => setOpen((o) => !o)}
+              aria-expanded={open}
+              aria-haspopup="menu"
+              className="flex items-center justify-between gap-3 border border-[#2d2a22]/25 bg-[#2d2a22]/[0.03] px-3.5 py-2.5 text-left transition-colors hover:bg-[#2d2a22]/[0.06]"
+            >
+              <span className="text-[11px] uppercase tracking-[0.35em] opacity-70">
+                Menü
+              </span>
+              <span
+                className="text-lg leading-none md:text-xl"
+                style={{
+                  fontFamily: "'Roboto', sans-serif",
+                  fontWeight: 300,
+                }}
+              >
+                wählen
+              </span>
+              <span
+                aria-hidden
+                className={`inline-block text-xs transition-transform ${
+                  open ? "rotate-180" : ""
+                }`}
+              >
+                ▼
+              </span>
+            </button>
+
+            {open && (
+              <ul
+                role="menu"
+                className="absolute right-0 top-full z-20 mt-2 w-48 divide-y divide-[#2d2a22]/15 border border-[#2d2a22]/25 bg-[#f5efe1] shadow-[0_20px_60px_-20px_rgba(45,42,34,0.35)]"
+              >
+                {items.map((it) => (
+                  <li key={it.label} role="none">
+                    <Link
+                      to={it.to}
+                      role="menuitem"
+                      onClick={() => setOpen(false)}
+                      className="grid grid-cols-[2rem_1fr] items-baseline gap-3 px-3.5 py-2.5 transition-colors hover:bg-[#2d2a22]/[0.06]"
+                    >
+                      <span className="text-[10px] uppercase tracking-[0.35em] opacity-50">
+                        {it.n}
+                      </span>
+                      <span
+                        className="text-lg leading-none tracking-tight md:text-xl"
+                        style={{
+                          fontFamily: "'Roboto', sans-serif",
+                          fontWeight: 300,
+                        }}
+                      >
+                        {it.label}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </header>
 
         <section className="mt-16 md:mt-24">
