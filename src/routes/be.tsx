@@ -97,6 +97,8 @@ function BePage() {
     }
   }, [openSlug]);
 
+  const activeItem = items.find((i) => i.slug === openSlug);
+
   return (
     <main
       className="min-h-screen w-full"
