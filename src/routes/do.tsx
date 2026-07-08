@@ -22,7 +22,7 @@ function DoPage() {
         </p>
         <h1
           className="mb-8 text-6xl leading-[0.95] tracking-tight md:text-8xl"
-          style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontWeight: 300 }}
+          style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
         >
           do.
         </h1>

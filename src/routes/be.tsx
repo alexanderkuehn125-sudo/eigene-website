@@ -71,7 +71,7 @@ function BePage() {
           <h1
             className="text-5xl leading-[0.95] tracking-tight md:text-7xl"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Roboto', sans-serif",
               fontStyle: "italic",
               fontWeight: 300,
             }}
@@ -95,7 +95,7 @@ function BePage() {
             <span
               className="text-2xl leading-none md:text-3xl"
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontStyle: "italic",
                 fontWeight: 300,
               }}
@@ -131,7 +131,7 @@ function BePage() {
                     <span
                       className="text-2xl leading-none tracking-tight md:text-3xl"
                       style={{
-                        fontFamily: "'Cormorant Garamond', serif",
+                        fontFamily: "'Roboto', sans-serif",
                         fontStyle: "italic",
                         fontWeight: 300,
                       }}
