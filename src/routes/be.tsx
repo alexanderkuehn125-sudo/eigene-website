@@ -144,10 +144,6 @@ function BePage() {
             </ul>
           )}
         </div>
-
-        <footer className="mt-auto pt-16 text-[11px] uppercase tracking-[0.35em] opacity-50">
-          Manhattan · 18. Jahrhundert
-        </footer>
       </div>
     </main>
   );
