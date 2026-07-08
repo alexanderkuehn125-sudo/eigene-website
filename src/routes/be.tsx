@@ -27,19 +27,19 @@ type Item = {
 const items: readonly Item[] = [
   {
     n: "01",
-    label: "Skills",
-    slug: "skills",
-    to: "/be/skills",
-    kicker: "Werkzeuge & Handschrift",
-    body: "Konzeption, Gestaltung, Umsetzung. Von der ersten Skizze bis zum ausgelieferten Produkt — mit Blick für Typografie, Struktur und Detail. Interfaces, Editorial, Motion, Prototyping.",
-  },
-  {
-    n: "02",
     label: "Über mich",
     slug: "ueber-mich",
     to: "/be/ueber-mich",
     kicker: "Wer hier arbeitet",
     body: "Ein kurzer Blick auf Werdegang, Haltung und Arbeitsweise. Zwischen konzeptioneller Tiefe und pragmatischem Handwerk — an Projekten interessiert, die Substanz haben.",
+  },
+  {
+    n: "02",
+    label: "Skills",
+    slug: "skills",
+    to: "/be/skills",
+    kicker: "Werkzeuge & Handschrift",
+    body: "Konzeption, Gestaltung, Umsetzung. Von der ersten Skizze bis zum ausgelieferten Produkt — mit Blick für Typografie, Struktur und Detail. Interfaces, Editorial, Motion, Prototyping.",
   },
   {
     n: "03",
@@ -69,6 +69,7 @@ const items: readonly Item[] = [
 
 function BePage() {
   const [open, setOpen] = useState(false);
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -85,6 +86,18 @@ function BePage() {
       document.removeEventListener("keydown", onKey);
     };
   }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenSlug(null);
+    };
+    if (openSlug) {
+      document.addEventListener("keydown", onKey);
+      return () => document.removeEventListener("keydown", onKey);
+    }
+  }, [openSlug]);
+
+  const activeItem = items.find((i) => i.slug === openSlug);
 
   return (
     <main
@@ -195,7 +208,14 @@ function BePage() {
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between border-t border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
+              <div
+                className="flex cursor-pointer items-center justify-between border-t border-[#2d2a22]/10 px-4 py-2.5 transition-colors hover:bg-[#2d2a22]/[0.04] md:px-5 md:py-3"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setOpenSlug(it.slug);
+                }}
+              >
                 <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
                   öffnen
                 </span>
@@ -221,6 +241,41 @@ function BePage() {
             nach oben ↑
           </button>
         </div>
+
+        {/* Expanded panel modal */}
+        {activeItem && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-6"
+            style={{
+              background: "rgba(45, 42, 34, 0.35)",
+              backdropFilter: "blur(2px)",
+            }}
+            onClick={() => setOpenSlug(null)}
+          >
+            <div
+              className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed] p-8 shadow-[0_20px_60px_-20px_rgba(45,42,34,0.35)]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setOpenSlug(null)}
+                aria-label="Schließen"
+                className="absolute right-5 top-5 text-[13px] uppercase tracking-[0.35em] opacity-60 transition-opacity hover:opacity-100"
+              >
+                ×
+              </button>
+              <h2
+                className="mb-4 pr-8 text-3xl leading-tight tracking-tight md:text-4xl"
+                style={{ fontWeight: 300 }}
+              >
+                {activeItem.label}
+              </h2>
+              <p className="text-base leading-relaxed opacity-80 md:text-lg">
+                {activeItem.body}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );
