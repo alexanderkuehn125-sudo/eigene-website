@@ -18,6 +18,7 @@ export const Route = createFileRoute("/be")({
 type Item = {
   n: string;
   label: string;
+  slug: string;
   to: string;
   kicker: string;
   body: string;
@@ -27,6 +28,7 @@ const items: readonly Item[] = [
   {
     n: "01",
     label: "Skills",
+    slug: "skills",
     to: "/be/skills",
     kicker: "Werkzeuge & Handschrift",
     body: "Konzeption, Gestaltung, Umsetzung. Von der ersten Skizze bis zum ausgelieferten Produkt — mit Blick für Typografie, Struktur und Detail. Interfaces, Editorial, Motion, Prototyping.",
@@ -34,6 +36,7 @@ const items: readonly Item[] = [
   {
     n: "02",
     label: "Über mich",
+    slug: "ueber-mich",
     to: "/be/ueber-mich",
     kicker: "Wer hier arbeitet",
     body: "Ein kurzer Blick auf Werdegang, Haltung und Arbeitsweise. Zwischen konzeptioneller Tiefe und pragmatischem Handwerk — an Projekten interessiert, die Substanz haben.",
@@ -41,6 +44,7 @@ const items: readonly Item[] = [
   {
     n: "03",
     label: "Referenzen",
+    slug: "referenzen",
     to: "/be/referenzen",
     kicker: "Ausgewählte Arbeiten",
     body: "Eine Auswahl realisierter Projekte aus Kultur, Wirtschaft und öffentlichem Raum. Fallstudien mit Kontext, Prozess und Ergebnis — statt bloßer Bilderreihen.",
@@ -48,6 +52,7 @@ const items: readonly Item[] = [
   {
     n: "04",
     label: "Impressum",
+    slug: "impressum",
     to: "/be/impressum",
     kicker: "Rechtliches",
     body: "Anbieterkennzeichnung, verantwortliche Personen, Kontaktdaten und Hinweise nach TMG und DSGVO. Alles Formale — klar und vollständig.",
@@ -55,6 +60,7 @@ const items: readonly Item[] = [
   {
     n: "05",
     label: "Kontakt",
+    slug: "kontakt",
     to: "/be/kontakt",
     kicker: "Sprich mich an",
     body: "Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch. Per Mail oder Telefon — Antwort in der Regel innerhalb von 24 Stunden.",
