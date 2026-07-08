@@ -107,8 +107,8 @@ function BePage() {
           </Link>
 
           <h1
-            className="text-base uppercase tracking-[0.4em] md:text-lg"
-            style={{ fontWeight: 400 }}
+            className="text-lg uppercase tracking-[0.35em] md:text-2xl"
+            style={{ fontWeight: 300 }}
           >
             Portfolio
           </h1>
