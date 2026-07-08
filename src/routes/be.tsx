@@ -73,7 +73,7 @@ function BePage() {
                 Menü
               </span>
               <span
-                className="text-lg leading-none md:text-xl"
+                className="text-base leading-none md:text-xl"
                 style={{
                   fontFamily: "'Roboto', sans-serif",
                   fontWeight: 300,
