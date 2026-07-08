@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 
 type Section = {
   slug: "skills" | "ueber-mich" | "referenzen" | "impressum" | "kontakt";
@@ -13,20 +13,20 @@ export function SubPage({ section }: { section: Section }) {
       className="min-h-screen w-full"
       style={{
         background:
-          "radial-gradient(120% 80% at 50% 0%, #efe9de 0%, #e6ddc9 45%, #d9cdb2 100%)",
-        color: "#2a2620",
+          "radial-gradient(120% 80% at 50% 0%, #f2ede0 0%, #e6ddc9 45%, #cfc0a3 100%)",
+        color: "#2d2a22",
       }}
     >
       <div className="mx-auto flex min-h-screen max-w-3xl flex-col px-6 py-10 md:px-12 md:py-16">
         <header className="flex items-center justify-between">
           <Link
-            to="/do"
+            to="/be"
             className="text-[11px] uppercase tracking-[0.35em] opacity-70 underline-offset-8 hover:underline"
           >
             ← Übersicht
           </Link>
           <span className="text-[11px] uppercase tracking-[0.4em] opacity-60">
-            Privat
+            Portfolio
           </span>
         </header>
 
