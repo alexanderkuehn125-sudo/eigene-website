@@ -69,6 +69,7 @@ const items: readonly Item[] = [
 
 function BePage() {
   const [open, setOpen] = useState(false);
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
