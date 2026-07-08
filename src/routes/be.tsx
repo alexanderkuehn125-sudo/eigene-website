@@ -87,6 +87,16 @@ function BePage() {
     };
   }, []);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenSlug(null);
+    };
+    if (openSlug) {
+      document.addEventListener("keydown", onKey);
+      return () => document.removeEventListener("keydown", onKey);
+    }
+  }, [openSlug]);
+
   return (
     <main
       className="min-h-screen w-full"
