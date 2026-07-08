@@ -147,15 +147,11 @@
 /* Landing zone — cloud titles, drifting mist, blinking windows, contrail.    */
 /* -------------------------------------------------------------------------- */
 
-@keyframes cloud-breathe {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-  50%      { transform: translateY(-6px) scale(1.015); opacity: 0.94; }
-}
 .cloud-title {
-  animation: cloud-breathe 9s ease-in-out infinite;
   transition: transform 400ms ease;
 }
 .cloud-title:hover { transform: translate(-50%, -52%) scale(1.03); }
+
 
 @keyframes mist-drift {
   0%   { transform: translate3d(-30%, 0, 0); }
