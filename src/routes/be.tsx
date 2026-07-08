@@ -247,30 +247,31 @@ function BePage() {
           <div
             className="fixed inset-0 z-50 flex items-center justify-center p-6"
             style={{
-              background: "rgba(45, 42, 34, 0.35)",
-              backdropFilter: "blur(2px)",
+              background: "rgba(45, 42, 34, 0.45)",
+              backdropFilter: "blur(3px)",
             }}
             onClick={() => setOpenSlug(null)}
           >
             <div
-              className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed] p-8 shadow-[0_20px_60px_-20px_rgba(45,42,34,0.35)]"
+              className="relative flex w-full max-w-[90vw] max-h-[90vh] min-h-[70vh] flex-col overflow-y-auto rounded-2xl border border-[#f2ede0]/20 bg-[#3A4A3A] p-8 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)] md:p-12"
+              style={{ color: "#f2ede0" }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 type="button"
                 onClick={() => setOpenSlug(null)}
                 aria-label="Schließen"
-                className="absolute right-5 top-5 text-[13px] uppercase tracking-[0.35em] opacity-60 transition-opacity hover:opacity-100"
+                className="absolute right-5 top-5 text-[13px] uppercase tracking-[0.35em] opacity-80 transition-opacity hover:opacity-100"
               >
                 ×
               </button>
               <h2
-                className="mb-4 pr-8 text-3xl leading-tight tracking-tight md:text-4xl"
+                className="mb-6 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
                 style={{ fontWeight: 300 }}
               >
                 {activeItem.label}
               </h2>
-              <p className="text-base leading-relaxed opacity-80 md:text-lg">
+              <p className="max-w-3xl text-xl leading-relaxed opacity-90 md:text-2xl">
                 {activeItem.body}
               </p>
             </div>
