@@ -72,7 +72,6 @@ function BePage() {
             className="text-5xl leading-[0.95] tracking-tight md:text-7xl"
             style={{
               fontFamily: "'Roboto', sans-serif",
-              fontStyle: "italic",
               fontWeight: 300,
             }}
           >
@@ -96,7 +95,6 @@ function BePage() {
               className="text-2xl leading-none md:text-3xl"
               style={{
                 fontFamily: "'Roboto', sans-serif",
-                fontStyle: "italic",
                 fontWeight: 300,
               }}
             >
@@ -132,7 +130,6 @@ function BePage() {
                       className="text-2xl leading-none tracking-tight md:text-3xl"
                       style={{
                         fontFamily: "'Roboto', sans-serif",
-                        fontStyle: "italic",
                         fontWeight: 300,
                       }}
                     >

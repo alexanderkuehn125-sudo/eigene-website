@@ -287,7 +287,6 @@ function CloudTitle({
         className="block text-center leading-none"
         style={{
           fontFamily: "'Roboto', sans-serif",
-          fontStyle: "italic",
           fontWeight: 300,
           color: tone.color,
           textShadow: tone.shadow,

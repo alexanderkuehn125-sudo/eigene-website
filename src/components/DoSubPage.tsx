@@ -38,7 +38,6 @@ export function SubPage({ section }: { section: Section }) {
             className="text-5xl leading-[0.95] tracking-tight md:text-7xl"
             style={{
               fontFamily: "'Roboto', sans-serif",
-              fontStyle: "italic",
               fontWeight: 300,
             }}
           >
