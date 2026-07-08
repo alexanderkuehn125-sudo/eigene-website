@@ -138,69 +138,6 @@ function BePage() {
             Was dich hier erwartet.
           </h1>
         </section>
-
-        {/* Dropdown */}
-        <div ref={ref} className="relative mt-14 md:mt-20 max-w-md">
-          <button
-            type="button"
-            onClick={() => setOpen((o) => !o)}
-            aria-expanded={open}
-            aria-haspopup="menu"
-            className="flex w-full items-center justify-between border border-[#2d2a22]/25 bg-[#2d2a22]/[0.03] px-5 py-4 text-left transition-colors hover:bg-[#2d2a22]/[0.06]"
-          >
-            <span className="text-[11px] uppercase tracking-[0.35em] opacity-70">
-              Menü
-            </span>
-            <span
-              className="text-2xl leading-none md:text-3xl"
-              style={{
-                fontFamily: "'Roboto', sans-serif",
-                fontWeight: 300,
-              }}
-            >
-              wählen
-            </span>
-            <span
-              aria-hidden
-              className={`ml-4 inline-block text-xs transition-transform ${
-                open ? "rotate-180" : ""
-              }`}
-            >
-              ▼
-            </span>
-          </button>
-
-          {open && (
-            <ul
-              role="menu"
-              className="absolute left-0 right-0 z-20 mt-2 divide-y divide-[#2d2a22]/15 border border-[#2d2a22]/25 bg-[#f5efe1] shadow-[0_20px_60px_-20px_rgba(45,42,34,0.35)]"
-            >
-              {items.map((it) => (
-                <li key={it.label} role="none">
-                  <Link
-                    to={it.to}
-                    role="menuitem"
-                    onClick={() => setOpen(false)}
-                    className="grid grid-cols-[3rem_1fr] items-baseline gap-4 px-5 py-4 transition-colors hover:bg-[#2d2a22]/[0.06]"
-                  >
-                    <span className="text-[11px] uppercase tracking-[0.35em] opacity-50">
-                      {it.n}
-                    </span>
-                    <span
-                      className="text-2xl leading-none tracking-tight md:text-3xl"
-                      style={{
-                        fontFamily: "'Roboto', sans-serif",
-                        fontWeight: 300,
-                      }}
-                    >
-                      {it.label}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
       </div>
     </main>
   );
