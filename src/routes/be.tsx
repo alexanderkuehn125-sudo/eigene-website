@@ -27,19 +27,19 @@ type Item = {
 const items: readonly Item[] = [
   {
     n: "01",
-    label: "Skills",
-    slug: "skills",
-    to: "/be/skills",
-    kicker: "Werkzeuge & Handschrift",
-    body: "Konzeption, Gestaltung, Umsetzung. Von der ersten Skizze bis zum ausgelieferten Produkt — mit Blick für Typografie, Struktur und Detail. Interfaces, Editorial, Motion, Prototyping.",
-  },
-  {
-    n: "02",
     label: "Über mich",
     slug: "ueber-mich",
     to: "/be/ueber-mich",
     kicker: "Wer hier arbeitet",
     body: "Ein kurzer Blick auf Werdegang, Haltung und Arbeitsweise. Zwischen konzeptioneller Tiefe und pragmatischem Handwerk — an Projekten interessiert, die Substanz haben.",
+  },
+  {
+    n: "02",
+    label: "Skills",
+    slug: "skills",
+    to: "/be/skills",
+    kicker: "Werkzeuge & Handschrift",
+    body: "Konzeption, Gestaltung, Umsetzung. Von der ersten Skizze bis zum ausgelieferten Produkt — mit Blick für Typografie, Struktur und Detail. Interfaces, Editorial, Motion, Prototyping.",
   },
   {
     n: "03",
