@@ -108,7 +108,7 @@ function BePage() {
                         {it.n}
                       </span>
                       <span
-                        className="text-lg leading-none tracking-tight md:text-xl"
+                        className="text-base leading-none tracking-tight md:text-xl"
                         style={{
                           fontFamily: "'Roboto', sans-serif",
                           fontWeight: 300,
