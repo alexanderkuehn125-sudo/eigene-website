@@ -161,12 +161,12 @@ function BePage() {
         </header>
 
         {/* Five panels — vertical stack, each adapting to the page height */}
-        <section className="mt-10 flex-1 grid grid-cols-1 grid-rows-5 gap-4 md:mt-12 md:gap-5">
+        <section className="mt-20 min-h-[160vh] flex-1 grid grid-cols-1 grid-rows-5 gap-4 md:mt-24 md:gap-5">
           {items.map((it) => (
             <Link
               key={it.label}
               to={it.to}
-              className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed]/95 shadow-[0_4px_24px_-8px_rgba(45,42,34,0.18)] backdrop-blur-[2px] transition-all hover:bg-[#fffdf8] hover:shadow-[0_8px_32px_-10px_rgba(45,42,34,0.25)]"
+              className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed]/95 shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] backdrop-blur-[2px] transition-all hover:-translate-y-1 hover:bg-[#fffdf8] hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)]"
             >
               {/* Header row */}
               <div className="flex items-baseline justify-between border-b border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
