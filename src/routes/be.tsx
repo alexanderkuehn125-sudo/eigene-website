@@ -216,6 +216,18 @@ function BePage() {
             </Link>
           ))}
         </section>
+
+        {/* Back-to-top */}
+        <div className="mt-12 flex justify-center md:mt-16">
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Nach oben scrollen"
+            className="text-[11px] uppercase tracking-[0.35em] opacity-60 transition-opacity hover:opacity-100"
+          >
+            nach oben ↑
+          </button>
+        </div>
       </div>
     </main>
   );
