@@ -264,10 +264,8 @@ function CloudTitle({
   pct: number;
   onClick: () => void;
 }) {
-  // Always centered inside the currently visible half.
-  const beCenter = pct / 2;
-  const doCenter = (pct + 100) / 2;
-  const center = side === "be" ? beCenter : doCenter;
+  // Fixed at the center of each half — independent of slider position.
+  const center = side === "be" ? 25 : 75;
   const pos = isMobile
     ? { top: `${center}%`, left: "50%", transform: "translate(-50%, -50%)" }
     : { top: "50%", left: `${center}%`, transform: "translate(-50%, -50%)" };
