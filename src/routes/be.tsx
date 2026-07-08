@@ -143,10 +143,16 @@ function BePage() {
               >
                 {items.map((it) => (
                   <li key={it.label} role="none">
-                    <Link
-                      to={it.to}
+                    <a
+                      href={`#${it.slug}`}
                       role="menuitem"
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setOpen(false);
+                        document
+                          .getElementById(it.slug)
+                          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }}
                       className="grid grid-cols-[2rem_1fr] items-baseline gap-3 px-3.5 py-2.5 transition-colors hover:bg-[#2d2a22]/[0.06]"
                     >
                       <span className="text-[10px] uppercase tracking-[0.35em] opacity-50">
@@ -158,7 +164,7 @@ function BePage() {
                       >
                         {it.label}
                       </span>
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
