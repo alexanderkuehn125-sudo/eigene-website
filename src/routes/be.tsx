@@ -107,8 +107,8 @@ function BePage() {
           </Link>
 
           <h1
-            className="text-base uppercase tracking-[0.4em] md:text-lg"
-            style={{ fontWeight: 400 }}
+            className="text-lg uppercase tracking-[0.35em] md:text-2xl"
+            style={{ fontWeight: 300 }}
           >
             Portfolio
           </h1>
@@ -186,9 +186,6 @@ function BePage() {
                 <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
                   {it.n}
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
-                  {it.kicker}
-                </span>
               </div>
 
               {/* Body */}
@@ -219,6 +216,18 @@ function BePage() {
             </Link>
           ))}
         </section>
+
+        {/* Back-to-top */}
+        <div className="mt-12 flex justify-center md:mt-16">
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Nach oben scrollen"
+            className="text-[11px] uppercase tracking-[0.35em] opacity-60 transition-opacity hover:opacity-100"
+          >
+            nach oben ↑
+          </button>
+        </div>
       </div>
     </main>
   );
