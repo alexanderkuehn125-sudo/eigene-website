@@ -181,13 +181,6 @@ function BePage() {
               to={it.to}
               className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed]/95 shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] backdrop-blur-[2px] transition-all hover:-translate-y-1 hover:bg-[#fffdf8] hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)]"
             >
-              {/* Header row */}
-              <div className="flex items-baseline justify-between border-b border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
-                <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
-                  {it.n}
-                </span>
-              </div>
-
               {/* Body */}
               <div className="flex-1 px-4 py-3 md:px-5 md:py-4">
                 <h2
