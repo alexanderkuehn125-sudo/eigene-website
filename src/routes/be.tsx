@@ -186,9 +186,6 @@ function BePage() {
                 <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
                   {it.n}
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.35em] opacity-60">
-                  {it.kicker}
-                </span>
               </div>
 
               {/* Body */}
