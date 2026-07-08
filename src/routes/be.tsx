@@ -161,7 +161,7 @@ function BePage() {
         </header>
 
         {/* Five panels — vertical stack, each adapting to the page height */}
-        <section className="mt-20 min-h-[160vh] flex-1 grid grid-cols-1 grid-rows-5 gap-4 md:mt-24 md:gap-5">
+        <section className="mt-20 min-h-[170vh] flex-1 grid grid-cols-1 grid-rows-5 gap-4 md:mt-24 md:gap-5">
           {items.map((it) => (
             <Link
               key={it.label}
