@@ -103,7 +103,7 @@ export function LandingSlider() {
       <button
         type="button"
         onClick={() => goSide("be")}
-        aria-label="Enter Portfolio (be)"
+        aria-label="Enter Portfolio"
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
       >
         <img
@@ -134,7 +134,7 @@ export function LandingSlider() {
       <button
         type="button"
         onClick={() => goSide("do")}
-        aria-label="Enter Privat (do)"
+        aria-label="Enter Privat"
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
         style={{ clipPath: doClip, WebkitClipPath: doClip }}
       >
