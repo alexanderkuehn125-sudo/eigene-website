@@ -69,7 +69,7 @@ function BePage() {
             Übersicht
           </p>
           <h1
-            className="text-5xl leading-[0.95] tracking-tight md:text-7xl"
+            className="text-[2rem] leading-[0.95] tracking-tight md:text-[3rem]"
             style={{
               fontFamily: "'Roboto', sans-serif",
               fontWeight: 300,
