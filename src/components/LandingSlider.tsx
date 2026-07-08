@@ -126,17 +126,8 @@ export function LandingSlider() {
           <div className="mist mist-a" />
           <div className="mist mist-b" />
         </div>
-        {/* A pair of birds gliding N→S */}
-        <svg
-          aria-hidden
-          className="birds pointer-events-none absolute"
-          viewBox="0 0 40 20"
-          width="80"
-          height="40"
-        >
-          <path d="M2 12 Q 8 4 14 12 Q 20 4 26 12" stroke="#3b3323" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
-          <path d="M20 16 Q 26 8 32 16" stroke="#3b3323" strokeWidth="1" fill="none" strokeLinecap="round"/>
-        </svg>
+
+
       </button>
 
       {/* DO side — 21st century, clipped */}
