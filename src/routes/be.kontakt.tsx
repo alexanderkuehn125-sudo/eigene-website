@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SubPage } from "@/components/DoSubPage";
 
-export const Route = createFileRoute("/do/kontakt")({
-  head: () => ({ meta: [{ title: "Kontakt — Privat" }, { name: "description", content: "Mail, Telefon, Post." }] }),
+export const Route = createFileRoute("/be/kontakt")({
+  head: () => ({ meta: [{ title: "Kontakt — Portfolio" }, { name: "description", content: "Mail, Telefon, Post." }] }),
   component: () => (
     <SubPage
       section={{

@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SubPage } from "@/components/DoSubPage";
 
-export const Route = createFileRoute("/do/impressum")({
-  head: () => ({ meta: [{ title: "Impressum — Privat" }, { name: "description", content: "Rechtliche Angaben." }] }),
+export const Route = createFileRoute("/be/impressum")({
+  head: () => ({ meta: [{ title: "Impressum — Portfolio" }, { name: "description", content: "Rechtliche Angaben." }] }),
   component: () => (
     <SubPage
       section={{

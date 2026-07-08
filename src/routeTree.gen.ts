@@ -12,11 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as DoRouteImport } from './routes/do'
 import { Route as BeRouteImport } from './routes/be'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DoUeberMichRouteImport } from './routes/do.ueber-mich'
-import { Route as DoSkillsRouteImport } from './routes/do.skills'
-import { Route as DoReferenzenRouteImport } from './routes/do.referenzen'
-import { Route as DoKontaktRouteImport } from './routes/do.kontakt'
-import { Route as DoImpressumRouteImport } from './routes/do.impressum'
+import { Route as BeUeberMichRouteImport } from './routes/be.ueber-mich'
+import { Route as BeSkillsRouteImport } from './routes/be.skills'
+import { Route as BeReferenzenRouteImport } from './routes/be.referenzen'
+import { Route as BeKontaktRouteImport } from './routes/be.kontakt'
+import { Route as BeImpressumRouteImport } from './routes/be.impressum'
 
 const DoRoute = DoRouteImport.update({
   id: '/do',
@@ -33,62 +33,62 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DoUeberMichRoute = DoUeberMichRouteImport.update({
+const BeUeberMichRoute = BeUeberMichRouteImport.update({
   id: '/ueber-mich',
   path: '/ueber-mich',
-  getParentRoute: () => DoRoute,
+  getParentRoute: () => BeRoute,
 } as any)
-const DoSkillsRoute = DoSkillsRouteImport.update({
+const BeSkillsRoute = BeSkillsRouteImport.update({
   id: '/skills',
   path: '/skills',
-  getParentRoute: () => DoRoute,
+  getParentRoute: () => BeRoute,
 } as any)
-const DoReferenzenRoute = DoReferenzenRouteImport.update({
+const BeReferenzenRoute = BeReferenzenRouteImport.update({
   id: '/referenzen',
   path: '/referenzen',
-  getParentRoute: () => DoRoute,
+  getParentRoute: () => BeRoute,
 } as any)
-const DoKontaktRoute = DoKontaktRouteImport.update({
+const BeKontaktRoute = BeKontaktRouteImport.update({
   id: '/kontakt',
   path: '/kontakt',
-  getParentRoute: () => DoRoute,
+  getParentRoute: () => BeRoute,
 } as any)
-const DoImpressumRoute = DoImpressumRouteImport.update({
+const BeImpressumRoute = BeImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
-  getParentRoute: () => DoRoute,
+  getParentRoute: () => BeRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/be': typeof BeRoute
-  '/do': typeof DoRouteWithChildren
-  '/do/impressum': typeof DoImpressumRoute
-  '/do/kontakt': typeof DoKontaktRoute
-  '/do/referenzen': typeof DoReferenzenRoute
-  '/do/skills': typeof DoSkillsRoute
-  '/do/ueber-mich': typeof DoUeberMichRoute
+  '/be': typeof BeRouteWithChildren
+  '/do': typeof DoRoute
+  '/be/impressum': typeof BeImpressumRoute
+  '/be/kontakt': typeof BeKontaktRoute
+  '/be/referenzen': typeof BeReferenzenRoute
+  '/be/skills': typeof BeSkillsRoute
+  '/be/ueber-mich': typeof BeUeberMichRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/be': typeof BeRoute
-  '/do': typeof DoRouteWithChildren
-  '/do/impressum': typeof DoImpressumRoute
-  '/do/kontakt': typeof DoKontaktRoute
-  '/do/referenzen': typeof DoReferenzenRoute
-  '/do/skills': typeof DoSkillsRoute
-  '/do/ueber-mich': typeof DoUeberMichRoute
+  '/be': typeof BeRouteWithChildren
+  '/do': typeof DoRoute
+  '/be/impressum': typeof BeImpressumRoute
+  '/be/kontakt': typeof BeKontaktRoute
+  '/be/referenzen': typeof BeReferenzenRoute
+  '/be/skills': typeof BeSkillsRoute
+  '/be/ueber-mich': typeof BeUeberMichRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/be': typeof BeRoute
-  '/do': typeof DoRouteWithChildren
-  '/do/impressum': typeof DoImpressumRoute
-  '/do/kontakt': typeof DoKontaktRoute
-  '/do/referenzen': typeof DoReferenzenRoute
-  '/do/skills': typeof DoSkillsRoute
-  '/do/ueber-mich': typeof DoUeberMichRoute
+  '/be': typeof BeRouteWithChildren
+  '/do': typeof DoRoute
+  '/be/impressum': typeof BeImpressumRoute
+  '/be/kontakt': typeof BeKontaktRoute
+  '/be/referenzen': typeof BeReferenzenRoute
+  '/be/skills': typeof BeSkillsRoute
+  '/be/ueber-mich': typeof BeUeberMichRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -96,37 +96,37 @@ export interface FileRouteTypes {
     | '/'
     | '/be'
     | '/do'
-    | '/do/impressum'
-    | '/do/kontakt'
-    | '/do/referenzen'
-    | '/do/skills'
-    | '/do/ueber-mich'
+    | '/be/impressum'
+    | '/be/kontakt'
+    | '/be/referenzen'
+    | '/be/skills'
+    | '/be/ueber-mich'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/be'
     | '/do'
-    | '/do/impressum'
-    | '/do/kontakt'
-    | '/do/referenzen'
-    | '/do/skills'
-    | '/do/ueber-mich'
+    | '/be/impressum'
+    | '/be/kontakt'
+    | '/be/referenzen'
+    | '/be/skills'
+    | '/be/ueber-mich'
   id:
     | '__root__'
     | '/'
     | '/be'
     | '/do'
-    | '/do/impressum'
-    | '/do/kontakt'
-    | '/do/referenzen'
-    | '/do/skills'
-    | '/do/ueber-mich'
+    | '/be/impressum'
+    | '/be/kontakt'
+    | '/be/referenzen'
+    | '/be/skills'
+    | '/be/ueber-mich'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BeRoute: typeof BeRoute
-  DoRoute: typeof DoRouteWithChildren
+  BeRoute: typeof BeRouteWithChildren
+  DoRoute: typeof DoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -152,66 +152,66 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/do/ueber-mich': {
-      id: '/do/ueber-mich'
+    '/be/ueber-mich': {
+      id: '/be/ueber-mich'
       path: '/ueber-mich'
-      fullPath: '/do/ueber-mich'
-      preLoaderRoute: typeof DoUeberMichRouteImport
-      parentRoute: typeof DoRoute
+      fullPath: '/be/ueber-mich'
+      preLoaderRoute: typeof BeUeberMichRouteImport
+      parentRoute: typeof BeRoute
     }
-    '/do/skills': {
-      id: '/do/skills'
+    '/be/skills': {
+      id: '/be/skills'
       path: '/skills'
-      fullPath: '/do/skills'
-      preLoaderRoute: typeof DoSkillsRouteImport
-      parentRoute: typeof DoRoute
+      fullPath: '/be/skills'
+      preLoaderRoute: typeof BeSkillsRouteImport
+      parentRoute: typeof BeRoute
     }
-    '/do/referenzen': {
-      id: '/do/referenzen'
+    '/be/referenzen': {
+      id: '/be/referenzen'
       path: '/referenzen'
-      fullPath: '/do/referenzen'
-      preLoaderRoute: typeof DoReferenzenRouteImport
-      parentRoute: typeof DoRoute
+      fullPath: '/be/referenzen'
+      preLoaderRoute: typeof BeReferenzenRouteImport
+      parentRoute: typeof BeRoute
     }
-    '/do/kontakt': {
-      id: '/do/kontakt'
+    '/be/kontakt': {
+      id: '/be/kontakt'
       path: '/kontakt'
-      fullPath: '/do/kontakt'
-      preLoaderRoute: typeof DoKontaktRouteImport
-      parentRoute: typeof DoRoute
+      fullPath: '/be/kontakt'
+      preLoaderRoute: typeof BeKontaktRouteImport
+      parentRoute: typeof BeRoute
     }
-    '/do/impressum': {
-      id: '/do/impressum'
+    '/be/impressum': {
+      id: '/be/impressum'
       path: '/impressum'
-      fullPath: '/do/impressum'
-      preLoaderRoute: typeof DoImpressumRouteImport
-      parentRoute: typeof DoRoute
+      fullPath: '/be/impressum'
+      preLoaderRoute: typeof BeImpressumRouteImport
+      parentRoute: typeof BeRoute
     }
   }
 }
 
-interface DoRouteChildren {
-  DoImpressumRoute: typeof DoImpressumRoute
-  DoKontaktRoute: typeof DoKontaktRoute
-  DoReferenzenRoute: typeof DoReferenzenRoute
-  DoSkillsRoute: typeof DoSkillsRoute
-  DoUeberMichRoute: typeof DoUeberMichRoute
+interface BeRouteChildren {
+  BeImpressumRoute: typeof BeImpressumRoute
+  BeKontaktRoute: typeof BeKontaktRoute
+  BeReferenzenRoute: typeof BeReferenzenRoute
+  BeSkillsRoute: typeof BeSkillsRoute
+  BeUeberMichRoute: typeof BeUeberMichRoute
 }
 
-const DoRouteChildren: DoRouteChildren = {
-  DoImpressumRoute: DoImpressumRoute,
-  DoKontaktRoute: DoKontaktRoute,
-  DoReferenzenRoute: DoReferenzenRoute,
-  DoSkillsRoute: DoSkillsRoute,
-  DoUeberMichRoute: DoUeberMichRoute,
+const BeRouteChildren: BeRouteChildren = {
+  BeImpressumRoute: BeImpressumRoute,
+  BeKontaktRoute: BeKontaktRoute,
+  BeReferenzenRoute: BeReferenzenRoute,
+  BeSkillsRoute: BeSkillsRoute,
+  BeUeberMichRoute: BeUeberMichRoute,
 }
 
-const DoRouteWithChildren = DoRoute._addFileChildren(DoRouteChildren)
+const BeRouteWithChildren = BeRoute._addFileChildren(BeRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BeRoute: BeRoute,
-  DoRoute: DoRouteWithChildren,
+  BeRoute: BeRouteWithChildren,
+  DoRoute: DoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
