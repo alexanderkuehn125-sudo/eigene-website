@@ -103,7 +103,7 @@ export function LandingSlider() {
       <button
         type="button"
         onClick={() => goSide("be")}
-        aria-label="Enter Portfolio (be)"
+        aria-label="Enter Portfolio"
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
       >
         <img
@@ -134,7 +134,7 @@ export function LandingSlider() {
       <button
         type="button"
         onClick={() => goSide("do")}
-        aria-label="Enter Privat (do)"
+        aria-label="Enter Privat"
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
         style={{ clipPath: doClip, WebkitClipPath: doClip }}
       >
@@ -221,7 +221,6 @@ export function LandingSlider() {
       {/* Cloud title — Portfolio (over BE side) */}
       <CloudTitle
         label="Portfolio"
-        sub="be"
         side="be"
         isMobile={isMobile}
         pct={pct}
@@ -231,7 +230,6 @@ export function LandingSlider() {
       {/* Cloud title — Privat (over DO side) */}
       <CloudTitle
         label="Privat"
-        sub="do"
         side="do"
         isMobile={isMobile}
         pct={pct}
@@ -251,14 +249,12 @@ export function LandingSlider() {
 
 function CloudTitle({
   label,
-  sub,
   side,
   isMobile,
   pct,
   onClick,
 }: {
   label: string;
-  sub: string;
   side: "be" | "do";
   isMobile: boolean;
   pct: number;
@@ -301,12 +297,6 @@ function CloudTitle({
         }}
       >
         {label}
-      </span>
-      <span
-        className="mt-2 block text-center text-[10px] uppercase tracking-[0.6em]"
-        style={{ color: tone.color, opacity: 0.75 }}
-      >
-        · {sub} ·
       </span>
     </button>
   );
