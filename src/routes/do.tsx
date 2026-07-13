@@ -404,7 +404,7 @@ function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
         setLoaded(true);
         onLoad?.(e);
       }}
-      className={`${className} opacity-0 blur-xl data-[loaded=true]:opacity-100 data-[loaded=true]:blur-0 transition-[opacity,filter] duration-700 ease-out`}
+      className={`${className} opacity-0 blur-xl data-[loaded=true]:opacity-100 data-[loaded=true]:blur-none transition-[opacity,filter] duration-700 ease-out`}
     />
   );
 }
