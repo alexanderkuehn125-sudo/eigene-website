@@ -385,7 +385,8 @@ export function LandingSlider() {
           onClick={(e) => {
             e.stopPropagation();
             setZoomOn((z) => !z);
-            setLens((l) => ({ ...l, visible: false }));
+            setBeLens((l) => ({ ...l, visible: false, reveal: false }));
+            setDoLens((l) => ({ ...l, visible: false, reveal: false }));
           }}
           aria-pressed={zoomOn}
           aria-label="Zoom umschalten"
