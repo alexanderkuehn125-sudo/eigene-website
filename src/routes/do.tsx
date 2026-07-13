@@ -180,7 +180,7 @@ function DoPage() {
         </section>
 
         {/* Grid */}
-        <section className="mt-12 columns-2 gap-3 sm:columns-3 md:mt-16 md:columns-4 md:gap-4 lg:columns-5">
+        <section className="mt-12 columns-1 gap-3 sm:columns-2 md:mt-16 md:columns-3 md:gap-4">
           {photos.map((p, i) => (
             <button
               key={p.id}
@@ -199,7 +199,7 @@ function DoPage() {
                 />
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute left-2 top-2 rounded-full bg-black/40 px-2 py-0.5 text-[10px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:left-3 md:top-3 md:text-[11px]"
+                  className="pointer-events-none absolute left-1.5 top-1.5 rounded-full bg-black/40 px-1.5 py-[1px] text-[5px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:left-2 md:top-2 md:text-[6px]"
                   style={{ fontWeight: 300 }}
                 >
                   {String(i + 1).padStart(2, "0")}
