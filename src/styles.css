@@ -222,3 +222,17 @@
   animation-delay: 6s;
 }
 
+@keyframes ufoDrift {
+  0%, 100% { transform: translate(0, 0) rotate(-2deg); }
+  50%      { transform: translate(24px, -8px) rotate(3deg); }
+}
+@keyframes shipBob {
+  0%, 100% { transform: translate(0, 0) rotate(-1deg); }
+  50%      { transform: translate(6px, -2px) rotate(1deg); }
+}
+@keyframes balloonFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-30px, 10px); }
+}
+
+
