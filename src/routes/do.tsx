@@ -294,7 +294,7 @@ function DoPage() {
                 </span>
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/35 px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm md:bottom-3 md:right-3 md:text-[10px]"
+                  className="pointer-events-none absolute bottom-1.5 right-1.5 rounded-full bg-black/35 px-1.5 py-[1px] text-[6px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm md:bottom-2 md:right-2 md:text-[7px]"
                 >
                   © Alexander Kühn
                 </span>
@@ -393,7 +393,7 @@ function DoPage() {
                 />
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-black/40 px-2.5 py-1 text-[10px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:text-[11px]"
+                  className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/40 px-1.5 py-[2px] text-[7px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:text-[7px]"
                 >
                   © Alexander Kühn
                 </span>
