@@ -33,7 +33,17 @@ export function LandingSlider() {
     visible: false,
   });
   const ZOOM = 2.5;
-  const LENS_SIZE = 180;
+  const LENS_SIZE = 270;
+
+  const EGGS = [
+    { emoji: "🛸", left: 18, top: 34, size: 24, animation: "ufoDrift 22s ease-in-out infinite", title: "Is that… a UFO?" },
+    { emoji: "👨‍🚀", left: 72, top: 62, size: 22, rotate: -8, title: "Wrong century, buddy." },
+    { emoji: "🦖", left: 44, top: 78, size: 22, title: "Rawr." },
+    { emoji: "🏴‍☠️", left: 6, top: 70, size: 22, animation: "shipBob 9s ease-in-out infinite", title: "Yo ho ho." },
+    { emoji: "🐈", left: 31, top: 55, size: 18, title: "Zzz." },
+    { emoji: "🎈", left: 60, top: 12, size: 26, animation: "balloonFloat 30s ease-in-out infinite", title: "Up, up and away." },
+    { emoji: "🦧", left: 88, top: 82, size: 20, title: "Bigfoot? In Manhattan?" },
+  ] as const;
 
   const updateFromEvent = useCallback(
     (clientX: number, clientY: number) => {
