@@ -257,4 +257,29 @@
                  drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
 }
 
+/* Chimney smoke — soft puffs rising and drifting */
+@keyframes smoke-rise {
+  0%   { transform: translate(-50%, 0) scale(0.5); opacity: 0; }
+  12%  { opacity: 0.6; }
+  60%  { opacity: 0.35; }
+  100% { transform: translate(calc(-50% + var(--drift, 18px)), -160px) scale(1.9); opacity: 0; }
+}
+.chimney-smoke {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(248,244,234,0.9),
+    rgba(220,214,200,0.45) 55%,
+    transparent 78%);
+  filter: blur(3px);
+  transform: translate(-50%, 0);
+  pointer-events: none;
+  animation: smoke-rise var(--dur, 5s) ease-in infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+
 
