@@ -180,34 +180,21 @@ function DoPage() {
         </section>
 
         {/* Grid */}
-        <section className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 md:mt-16 md:grid-cols-4 md:gap-4 lg:grid-cols-5">
+        <section className="mt-12 columns-2 gap-3 sm:columns-3 md:mt-16 md:columns-4 md:gap-4 lg:columns-5">
           {photos.map((p, i) => (
             <button
               key={p.id}
               type="button"
               onClick={() => setOpenId(p.id)}
-              className={`group relative block overflow-hidden rounded-2xl border border-[#2d2a22]/10 text-left shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] transition-all hover:-translate-y-1 hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 ${
-                p.span === "tall"
-                  ? "sm:row-span-2"
-                  : p.span === "wide"
-                    ? "sm:col-span-2"
-                    : ""
-              }`}
+              className="group relative mb-3 block w-full overflow-hidden rounded-2xl border border-[#2d2a22]/10 text-left shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] transition-all hover:-translate-y-1 hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-4"
+              style={{ breakInside: "avoid" }}
             >
-              <div
-                className={`relative w-full overflow-hidden ${
-                  p.span === "tall"
-                    ? "aspect-[4/5]"
-                    : p.span === "wide"
-                      ? "aspect-[16/9]"
-                      : "aspect-square"
-                }`}
-              >
+              <div className="relative w-full overflow-hidden">
                 <img
                   src={p.src}
                   alt={p.title}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                  className="block h-auto w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
                   draggable={false}
                 />
                 <span
