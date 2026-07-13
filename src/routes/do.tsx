@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ImpressumContent } from "@/components/ImpressumContent";
+
 
 export const Route = createFileRoute("/do")({
   head: () => ({
