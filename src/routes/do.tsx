@@ -142,7 +142,7 @@ function DoPage() {
               }`}
             >
               <div
-                className={`w-full overflow-hidden ${
+                className={`relative w-full overflow-hidden ${
                   p.span === "tall"
                     ? "aspect-[3/4] sm:aspect-[3/5]"
                     : p.span === "wide"
@@ -157,6 +157,12 @@ function DoPage() {
                   className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
                   draggable={false}
                 />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/35 px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm md:bottom-3 md:right-3 md:text-[10px]"
+                >
+                  © Alexander Kühn
+                </span>
               </div>
               <div className="flex items-center justify-between border-t border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
                 <span
@@ -209,13 +215,19 @@ function DoPage() {
               >
                 ×
               </button>
-              <div className="flex min-h-0 flex-1 items-center justify-center bg-[#2d2a22]">
+              <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#2d2a22]">
                 <img
                   src={active.src}
                   alt={active.title}
                   className="max-h-[72vh] w-auto max-w-full object-contain"
                   draggable={false}
                 />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-black/40 px-2.5 py-1 text-[10px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:text-[11px]"
+                >
+                  © Alexander Kühn
+                </span>
               </div>
               <div className="flex items-center justify-between gap-6 border-t border-[#2d2a22]/10 px-5 py-4 md:px-8 md:py-5">
                 <div>
