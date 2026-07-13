@@ -272,9 +272,13 @@ function BePage() {
               >
                 {activeItem.label}
               </h2>
-              <p className="max-w-3xl text-xl leading-relaxed opacity-90 md:text-2xl">
-                {activeItem.body}
-              </p>
+              {activeItem.slug === "impressum" ? (
+                <ImpressumContent />
+              ) : (
+                <p className="max-w-3xl text-xl leading-relaxed opacity-90 md:text-2xl">
+                  {activeItem.body}
+                </p>
+              )}
 
               {activeItem.slug === "ueber-mich" && (
                 <figure className="pointer-events-none absolute bottom-6 left-6 w-[38%] max-w-[320px] overflow-hidden rounded-2xl border border-[#f2ede0]/20 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)] md:bottom-10 md:left-10">
@@ -287,6 +291,7 @@ function BePage() {
                   />
                 </figure>
               )}
+
             </div>
           </div>
         )}
