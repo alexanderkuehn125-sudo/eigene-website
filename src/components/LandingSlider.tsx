@@ -45,13 +45,13 @@ export function LandingSlider() {
     animation?: string;
     title: string;
   }> = [
-    { emoji: "🛸", left: 38, top: 16, size: 30, hue: 0, animation: "ufoDrift 22s ease-in-out infinite", title: "Is that… a UFO?" },
-    { emoji: "🧑‍🚀", left: 72, top: 60, size: 26, hue: 40, rotate: -8, title: "Wrong century, buddy." },
-    { emoji: "🦕", left: 46, top: 74, size: 28, hue: 90, title: "Rawr." },
-    { emoji: "⛵", left: 14, top: 82, size: 34, hue: 160, animation: "shipBob 9s ease-in-out infinite", title: "Yo ho ho." },
-    { emoji: "🐈‍⬛", left: 30, top: 56, size: 22, hue: 210, title: "Zzz." },
-    { emoji: "🎈", left: 62, top: 10, size: 30, hue: 260, animation: "balloonFloat 30s ease-in-out infinite", title: "Up, up and away." },
-    { emoji: "🦣", left: 82, top: 68, size: 26, hue: 310, title: "Ice-age tourist." },
+    { emoji: "🛸", left: 42, top: 12, size: 32, hue: 0, animation: "ufoDrift 26s ease-in-out infinite", title: "Is that… a UFO?" },
+    { emoji: "🧑‍🚀", left: 55, top: 58, size: 26, hue: 40, rotate: -8, title: "Wrong century, buddy." },
+    { emoji: "🦕", left: 42, top: 62, size: 28, hue: 90, title: "Rawr." },
+    { emoji: "⛵", left: 10, top: 54, size: 36, hue: 160, animation: "shipBob 14s ease-in-out infinite", title: "Yo ho ho." },
+    { emoji: "🐈‍⬛", left: 48, top: 66, size: 22, hue: 210, title: "Zzz." },
+    { emoji: "🎈", left: 68, top: 18, size: 32, hue: 260, animation: "balloonFloat 34s ease-in-out infinite", title: "Up, up and away." },
+    { emoji: "🦣", left: 50, top: 70, size: 28, hue: 310, title: "Ice-age tourist." },
   ];
 
   const updateFromEvent = useCallback(
@@ -187,7 +187,7 @@ export function LandingSlider() {
                     left: `${egg.left}%`,
                     top: `${egg.top}%`,
                     fontSize: `${egg.size}px`,
-                    opacity: revealed ? 1 : 0.85,
+                    opacity: revealed ? 1 : 0.55,
                     filter: revealed
                       ? "drop-shadow(0 2px 4px rgba(0,0,0,0.55))"
                       : `hue-rotate(${egg.hue}deg) saturate(1.8) drop-shadow(0 1px 3px rgba(0,0,0,0.5))`,
