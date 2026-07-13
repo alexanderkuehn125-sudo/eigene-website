@@ -193,11 +193,18 @@ export function LandingSlider() {
 
       {/* DO side — 21st century, clipped */}
       <button
+        ref={doSideRef}
         type="button"
         onClick={() => goSide("do")}
         aria-label="Enter Privat"
+        onMouseMove={makeLensHandler(doSideRef, doBalloonRef, setDoLens)}
+        onMouseLeave={() => setDoLens((l) => ({ ...l, visible: false, reveal: false }))}
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
-        style={{ clipPath: doClip, WebkitClipPath: doClip }}
+        style={{
+          clipPath: doClip,
+          WebkitClipPath: doClip,
+          ...(zoomOn && !isMobile ? { cursor: "zoom-in" } : {}),
+        }}
       >
         <img
           src={doImg}
@@ -220,6 +227,23 @@ export function LandingSlider() {
         <span aria-hidden className="window-light window-light--fast" style={{ left: "49%", top: "71%" }} />
         {/* A silent airliner contrail crossing the sky */}
         <span aria-hidden className="contrail" />
+
+        {/* Rainbow balloon */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
+          <span
+            ref={doBalloonRef}
+            className="absolute"
+            style={{
+              ...BALLOON_STYLE,
+              opacity: doLens.reveal ? 1 : 0.55,
+              animation: BALLOON_ANIM,
+              transition: "opacity 180ms ease-out",
+            }}
+            title="Up, up and away."
+          >
+            🎈
+          </span>
+        </div>
       </button>
 
       {/* Divider line + handle */}
