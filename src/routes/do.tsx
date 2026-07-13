@@ -94,13 +94,7 @@ const photos: readonly Photo[] = [
     span: "wide",
   },
   {
-    id: "p16",
-    src: img16.url,
-    title: "Pfeil, weit",
-    caption: "Bodenmarkierung, Wolken, Sepia.",
-    span: "tall",
-  },
-  {
+
     id: "p36",
     src: img36.url,
     title: "The Grapes",
