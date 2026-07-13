@@ -234,22 +234,6 @@
   50%  { transform: translate(180px, -4px) rotate(2deg); }
   100% { transform: translate(-80px, 0) rotate(-2deg); }
 }
-
-/* Slow, gentle sailing motion for painted ships extracted from the base image */
-@keyframes shipSailA {
-  0%   { transform: translate(0, 0) rotate(-0.4deg); }
-  25%  { transform: translate(6px, -1px) rotate(0.2deg); }
-  50%  { transform: translate(12px, 1px) rotate(0.5deg); }
-  75%  { transform: translate(6px, 2px) rotate(0.1deg); }
-  100% { transform: translate(0, 0) rotate(-0.4deg); }
-}
-@keyframes shipSailB {
-  0%   { transform: translate(0, 0) rotate(0.3deg); }
-  25%  { transform: translate(-8px, 1px) rotate(-0.1deg); }
-  50%  { transform: translate(-14px, -1px) rotate(-0.4deg); }
-  75%  { transform: translate(-8px, 2px) rotate(-0.1deg); }
-  100% { transform: translate(0, 0) rotate(0.3deg); }
-}
 @keyframes balloonFloat {
   0%   { transform: translate(-42vw, 40px); }
   20%  { transform: translate(-18vw, -30px); }
