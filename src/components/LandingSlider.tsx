@@ -187,7 +187,7 @@ export function LandingSlider() {
                     left: `${egg.left}%`,
                     top: `${egg.top}%`,
                     fontSize: `${egg.size}px`,
-                    opacity: revealed ? 1 : 0.85,
+                    opacity: revealed ? 1 : 0.55,
                     filter: revealed
                       ? "drop-shadow(0 2px 4px rgba(0,0,0,0.55))"
                       : `hue-rotate(${egg.hue}deg) saturate(1.8) drop-shadow(0 1px 3px rgba(0,0,0,0.5))`,
