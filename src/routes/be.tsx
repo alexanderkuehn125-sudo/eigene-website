@@ -196,35 +196,16 @@ function BePage() {
               className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed]/95 shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] backdrop-blur-[2px] transition-all hover:-translate-y-1 hover:bg-[#fffdf8] hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)]"
             >
               {/* Body */}
-              <div className="flex flex-1 gap-4 px-4 py-3 md:gap-5 md:px-5 md:py-4">
-                {it.slug === "ueber-mich" && (
-                  <div className="relative hidden aspect-[3/4] h-full max-h-[220px] shrink-0 overflow-hidden rounded-xl border border-[#2d2a22]/10 shadow-[0_8px_20px_-8px_rgba(45,42,34,0.25)] sm:block">
-                    <img
-                      src={portrait.url}
-                      alt="Alexander Kühn"
-                      loading="lazy"
-                      draggable={false}
-                      className="h-full w-full object-cover"
-                    />
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute bottom-1.5 right-1.5 rounded-full bg-black/40 px-1.5 py-0.5 text-[8px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm"
-                    >
-                      © A. Kühn
-                    </span>
-                  </div>
-                )}
-                <div className="min-w-0 flex-1">
-                  <h2
-                    className="mb-2 text-xl leading-tight tracking-tight md:text-2xl"
-                    style={{ fontWeight: 300 }}
-                  >
-                    {it.label}
-                  </h2>
-                  <p className="text-sm leading-relaxed opacity-80">
-                    {it.body}
-                  </p>
-                </div>
+              <div className="flex-1 px-4 py-3 md:px-5 md:py-4">
+                <h2
+                  className="mb-2 text-xl leading-tight tracking-tight md:text-2xl"
+                  style={{ fontWeight: 300 }}
+                >
+                  {it.label}
+                </h2>
+                <p className="text-sm leading-relaxed opacity-80">
+                  {it.body}
+                </p>
               </div>
 
               {/* Footer */}
@@ -291,9 +272,33 @@ function BePage() {
               >
                 {activeItem.label}
               </h2>
-              <p className="max-w-3xl text-xl leading-relaxed opacity-90 md:text-2xl">
-                {activeItem.body}
-              </p>
+              <div
+                className={
+                  activeItem.slug === "ueber-mich"
+                    ? "grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-start md:gap-12"
+                    : ""
+                }
+              >
+                {activeItem.slug === "ueber-mich" && (
+                  <figure className="relative overflow-hidden rounded-2xl border border-[#f2ede0]/20 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)]">
+                    <img
+                      src={portrait.url}
+                      alt="Alexander Kühn"
+                      draggable={false}
+                      className="block h-auto w-full object-cover"
+                    />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/40 px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm md:bottom-3 md:right-3 md:text-[10px]"
+                    >
+                      © Alexander Kühn
+                    </span>
+                  </figure>
+                )}
+                <p className="max-w-3xl text-xl leading-relaxed opacity-90 md:text-2xl">
+                  {activeItem.body}
+                </p>
+              </div>
             </div>
           </div>
         )}
