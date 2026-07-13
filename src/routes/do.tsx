@@ -21,6 +21,16 @@ import img17 from "@/assets/photos/DSC_0051_18.jpeg.asset.json";
 import img18 from "@/assets/photos/DSC_0051_20.jpeg.asset.json";
 import img19 from "@/assets/photos/DSC_0052_6.jpeg.asset.json";
 import img20 from "@/assets/photos/DSC_0052_16.jpeg.asset.json";
+import img21 from "@/assets/photos/DSC_0054_12.jpeg.asset.json";
+import img22 from "@/assets/photos/DSC_0059_30.jpeg.asset.json";
+import img23 from "@/assets/photos/DSC_0062_23.jpeg.asset.json";
+import img24 from "@/assets/photos/DSC_0064_28.jpeg.asset.json";
+import img25 from "@/assets/photos/DSC_0067_13.jpeg.asset.json";
+import img26 from "@/assets/photos/DSC_0074_10.jpeg.asset.json";
+import img27 from "@/assets/photos/DSC_0080_16.jpeg.asset.json";
+import img28 from "@/assets/photos/DSC_0095_13.jpeg.asset.json";
+import img29 from "@/assets/photos/DSC_0097_19.jpeg.asset.json";
+import img30 from "@/assets/photos/DSC_0099_19.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
