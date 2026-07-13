@@ -23,8 +23,17 @@ export function LandingSlider() {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
+  const beSideRef = useRef<HTMLButtonElement>(null);
   const draggingRef = useRef(false);
   const [pct, setPct] = useState(50); // % of the "be" side visible (from left/top)
+  const [zoomOn, setZoomOn] = useState(false);
+  const [lens, setLens] = useState<{ x: number; y: number; visible: boolean }>({
+    x: 0,
+    y: 0,
+    visible: false,
+  });
+  const ZOOM = 2.5;
+  const LENS_SIZE = 180;
 
   const updateFromEvent = useCallback(
     (clientX: number, clientY: number) => {
