@@ -149,116 +149,59 @@ export function LandingSlider() {
           <div className="mist mist-b" />
         </div>
 
-        {/* Hidden easter eggs — only visible on closer inspection */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden text-[10px] leading-none select-none">
-          {/* Tiny UFO hovering over the colonial village */}
-          <span
-            className="absolute"
-            style={{
-              left: "18%",
-              top: "34%",
-              fontSize: "14px",
-              opacity: 0.55,
-              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
-              animation: "ufoDrift 22s ease-in-out infinite",
-            }}
-            title="Is that… a UFO?"
-          >
-            🛸
-          </span>
-
-          {/* Astronaut waving from the treeline */}
-          <span
-            className="absolute"
-            style={{
-              left: "72%",
-              top: "62%",
-              fontSize: "13px",
-              opacity: 0.6,
-              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
-              transform: "rotate(-8deg)",
-            }}
-            title="Wrong century, buddy."
-          >
-            👨‍🚀
-          </span>
-
-          {/* A tiny dinosaur peeking out of the forest */}
-          <span
-            className="absolute"
-            style={{
-              left: "44%",
-              top: "78%",
-              fontSize: "12px",
-              opacity: 0.55,
-              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
-            }}
-            title="Rawr."
-          >
-            🦖
-          </span>
-
-          {/* Little pirate ship on the river */}
-          <span
-            className="absolute"
-            style={{
-              left: "6%",
-              top: "70%",
-              fontSize: "13px",
-              opacity: 0.6,
-              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
-              animation: "shipBob 9s ease-in-out infinite",
-            }}
-            title="Yo ho ho."
-          >
-            🏴‍☠️
-          </span>
-
-          {/* Cat napping on a rooftop */}
-          <span
-            className="absolute"
-            style={{
-              left: "31%",
-              top: "55%",
-              fontSize: "10px",
-              opacity: 0.6,
-              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
-            }}
-            title="Zzz."
-          >
-            🐈
-          </span>
-
-          {/* Hot air balloon drifting high */}
-          <span
-            className="absolute"
-            style={{
-              left: "60%",
-              top: "12%",
-              fontSize: "15px",
-              opacity: 0.55,
-              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
-              animation: "balloonFloat 30s ease-in-out infinite",
-            }}
-            title="Up, up and away."
-          >
-            🎈
-          </span>
-
-          {/* A tiny yeti in the underbrush */}
-          <span
-            className="absolute"
-            style={{
-              left: "88%",
-              top: "82%",
-              fontSize: "11px",
-              opacity: 0.5,
-              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
-            }}
-            title="Bigfoot? In Manhattan?"
-          >
-            🦧
-          </span>
+        {/* Hidden easter eggs — faint by default, revealed by the zoom lens */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
+          {(() => {
+            const eggs: Array<{
+              emoji: string;
+              left: number;
+              top: number;
+              size: number;
+              rotate?: number;
+              animation?: string;
+              title: string;
+            }> = [
+              { emoji: "🛸", left: 18, top: 34, size: 24, animation: "ufoDrift 22s ease-in-out infinite", title: "Is that… a UFO?" },
+              { emoji: "👨‍🚀", left: 72, top: 62, size: 22, rotate: -8, title: "Wrong century, buddy." },
+              { emoji: "🦖", left: 44, top: 78, size: 22, title: "Rawr." },
+              { emoji: "🏴‍☠️", left: 6, top: 70, size: 22, animation: "shipBob 9s ease-in-out infinite", title: "Yo ho ho." },
+              { emoji: "🐈", left: 31, top: 55, size: 18, title: "Zzz." },
+              { emoji: "🎈", left: 60, top: 12, size: 26, animation: "balloonFloat 30s ease-in-out infinite", title: "Up, up and away." },
+              { emoji: "🦧", left: 88, top: 82, size: 20, title: "Bigfoot? In Manhattan?" },
+            ];
+            const rect = beSideRef.current?.getBoundingClientRect();
+            return eggs.map((egg, i) => {
+              let revealed = false;
+              if (zoomOn && lens.visible && rect) {
+                const ex = (egg.left / 100) * rect.width;
+                const ey = (egg.top / 100) * rect.height;
+                const dx = ex - lens.x;
+                const dy = ey - lens.y;
+                revealed = Math.hypot(dx, dy) < LENS_SIZE / 2;
+              }
+              return (
+                <span
+                  key={i}
+                  className="absolute"
+                  style={{
+                    left: `${egg.left}%`,
+                    top: `${egg.top}%`,
+                    fontSize: `${egg.size}px`,
+                    opacity: revealed ? 1 : 0.28,
+                    filter: revealed
+                      ? "drop-shadow(0 2px 4px rgba(0,0,0,0.55))"
+                      : "drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
+                    transform: egg.rotate ? `rotate(${egg.rotate}deg)` : undefined,
+                    animation: egg.animation,
+                    transition: "opacity 180ms ease-out, filter 180ms ease-out",
+                  }}
+                  title={egg.title}
+                >
+                  {egg.emoji}
+                </span>
+              );
+            });
+          })()}
         </div>
 
       </button>
