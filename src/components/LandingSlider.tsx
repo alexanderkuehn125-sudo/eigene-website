@@ -215,10 +215,12 @@ export function LandingSlider() {
         {/* Chimney smoke — rising puffs above the village chimneys */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           {[
-            { left: "40.0%", top: "56.5%", drift: "16px",  dur: "5.4s" },
-            { left: "49.2%", top: "55.0%", drift: "-12px", dur: "6.2s" },
-            { left: "57.4%", top: "54.2%", drift: "20px",  dur: "5.8s" },
+            { left: "32.8%", top: "66.0%", drift: "14px",  dur: "5.6s" },
+            { left: "45.3%", top: "62.8%", drift: "-10px", dur: "6.4s" },
+            { left: "55.4%", top: "63.0%", drift: "18px",  dur: "5.2s" },
+            { left: "55.0%", top: "71.2%", drift: "-14px", dur: "6.0s" },
           ].map((c, i) => (
+
             <div key={i} className="absolute" style={{ left: c.left, top: c.top }}>
               {[0, 1, 2, 3].map((k) => (
                 <span
