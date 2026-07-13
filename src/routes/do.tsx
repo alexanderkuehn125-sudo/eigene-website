@@ -225,7 +225,7 @@ function DoPage() {
       className="min-h-screen w-full"
       style={{
         background:
-          "radial-gradient(120% 80% at 50% 0%, #f2ede0 0%, #e6ddc9 45%, #cfc0a3 100%)",
+          "radial-gradient(140% 90% at 50% -10%, #f7f2e6 0%, #ede3cc 35%, #c9b891 75%, #8a7a5c 100%)",
         color: "#2d2a22",
         fontFamily: "'Roboto', sans-serif",
       }}
@@ -266,10 +266,18 @@ function DoPage() {
               key={p.id}
               type="button"
               onClick={() => setOpenId(p.id)}
-              className="group relative mb-3 block w-full overflow-hidden text-left shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] transition-all hover:-translate-y-1 hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-4"
+              className="group relative mb-3 block w-full overflow-hidden text-left shadow-[0_2px_4px_-1px_rgba(45,42,34,0.15),0_10px_25px_-6px_rgba(45,42,34,0.28),0_30px_60px_-18px_rgba(45,42,34,0.45)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_3px_6px_-1px_rgba(45,42,34,0.18),0_18px_38px_-8px_rgba(45,42,34,0.38),0_44px_80px_-22px_rgba(45,42,34,0.55)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-4"
               style={{ breakInside: "avoid" }}
             >
               <div className="relative w-full overflow-hidden">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 z-10"
+                  style={{
+                    boxShadow:
+                      "inset 0 0 60px rgba(0,0,0,0.35), inset 0 0 12px rgba(0,0,0,0.25)",
+                  }}
+                />
                 <img
                   src={p.src}
                   alt={p.title}
