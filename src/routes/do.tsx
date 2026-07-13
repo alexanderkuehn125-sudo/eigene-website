@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { ImgHTMLAttributes } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
 import img01 from "@/assets/photos/2008_02050072.jpeg.asset.json";
