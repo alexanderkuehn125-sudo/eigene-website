@@ -319,7 +319,7 @@ function DoPage() {
                   }}
                   className="hover:opacity-100"
                 >
-                  ← vor
+                  ← zurück
                 </button>
                 <span className="opacity-60">
                   {String(photos.findIndex((p) => p.id === active.id) + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
@@ -332,7 +332,7 @@ function DoPage() {
                   }}
                   className="hover:opacity-100"
                 >
-                  zurück →
+                  vor →
                 </button>
               </div>
             </div>
