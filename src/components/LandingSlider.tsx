@@ -33,7 +33,25 @@ export function LandingSlider() {
     visible: false,
   });
   const ZOOM = 2.5;
-  const LENS_SIZE = 180;
+  const LENS_SIZE = 270;
+
+  const EGGS: Array<{
+    emoji: string;
+    left: number;
+    top: number;
+    size: number;
+    rotate?: number;
+    animation?: string;
+    title: string;
+  }> = [
+    { emoji: "🛸", left: 18, top: 34, size: 24, animation: "ufoDrift 22s ease-in-out infinite", title: "Is that… a UFO?" },
+    { emoji: "👨‍🚀", left: 72, top: 62, size: 22, rotate: -8, title: "Wrong century, buddy." },
+    { emoji: "🦖", left: 44, top: 78, size: 22, title: "Rawr." },
+    { emoji: "🏴‍☠️", left: 6, top: 70, size: 22, animation: "shipBob 9s ease-in-out infinite", title: "Yo ho ho." },
+    { emoji: "🐈", left: 31, top: 55, size: 18, title: "Zzz." },
+    { emoji: "🎈", left: 60, top: 12, size: 26, animation: "balloonFloat 30s ease-in-out infinite", title: "Up, up and away." },
+    { emoji: "🦧", left: 88, top: 82, size: 20, title: "Bigfoot? In Manhattan?" },
+  ];
 
   const updateFromEvent = useCallback(
     (clientX: number, clientY: number) => {
@@ -152,32 +170,13 @@ export function LandingSlider() {
         {/* Hidden easter eggs — faint by default, revealed by the zoom lens */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
           {(() => {
-            const eggs: Array<{
-              emoji: string;
-              left: number;
-              top: number;
-              size: number;
-              rotate?: number;
-              animation?: string;
-              title: string;
-            }> = [
-              { emoji: "🛸", left: 18, top: 34, size: 24, animation: "ufoDrift 22s ease-in-out infinite", title: "Is that… a UFO?" },
-              { emoji: "👨‍🚀", left: 72, top: 62, size: 22, rotate: -8, title: "Wrong century, buddy." },
-              { emoji: "🦖", left: 44, top: 78, size: 22, title: "Rawr." },
-              { emoji: "🏴‍☠️", left: 6, top: 70, size: 22, animation: "shipBob 9s ease-in-out infinite", title: "Yo ho ho." },
-              { emoji: "🐈", left: 31, top: 55, size: 18, title: "Zzz." },
-              { emoji: "🎈", left: 60, top: 12, size: 26, animation: "balloonFloat 30s ease-in-out infinite", title: "Up, up and away." },
-              { emoji: "🦧", left: 88, top: 82, size: 20, title: "Bigfoot? In Manhattan?" },
-            ];
             const rect = beSideRef.current?.getBoundingClientRect();
-            return eggs.map((egg, i) => {
+            return EGGS.map((egg, i) => {
               let revealed = false;
               if (zoomOn && lens.visible && rect) {
                 const ex = (egg.left / 100) * rect.width;
                 const ey = (egg.top / 100) * rect.height;
-                const dx = ex - lens.x;
-                const dy = ey - lens.y;
-                revealed = Math.hypot(dx, dy) < LENS_SIZE / 2;
+                revealed = Math.hypot(ex - lens.x, ey - lens.y) < LENS_SIZE / 2;
               }
               return (
                 <span
@@ -319,25 +318,54 @@ export function LandingSlider() {
         if (!rect) return null;
         const bgW = rect.width * ZOOM;
         const bgH = rect.height * ZOOM;
-        const bgX = -(lens.x * ZOOM - LENS_SIZE / 2);
-        const bgY = -(lens.y * ZOOM - LENS_SIZE / 2);
+        const offsetX = LENS_SIZE / 2 - lens.x * ZOOM;
+        const offsetY = LENS_SIZE / 2 - lens.y * ZOOM;
         return (
           <div
             aria-hidden
-            className="pointer-events-none absolute z-40 rounded-full border-2 border-white/80 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
+            className="pointer-events-none absolute z-40 overflow-hidden rounded-full border-2 border-white/80 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
             style={{
               width: LENS_SIZE,
               height: LENS_SIZE,
               left: lens.x - LENS_SIZE / 2,
               top: lens.y - LENS_SIZE / 2,
-              backgroundImage: `url(${beImg})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: `${bgW}px ${bgH}px`,
-              backgroundPosition: `${bgX}px ${bgY}px`,
             }}
-          />
+          >
+            <div
+              className="absolute top-0 left-0"
+              style={{
+                width: bgW,
+                height: bgH,
+                transform: `translate(${offsetX}px, ${offsetY}px)`,
+              }}
+            >
+              <img
+                src={beImg}
+                alt=""
+                className="block h-full w-full object-cover"
+                draggable={false}
+              />
+              {EGGS.map((egg, i) => (
+                <span
+                  key={i}
+                  className="absolute leading-none select-none"
+                  style={{
+                    left: `${egg.left}%`,
+                    top: `${egg.top}%`,
+                    fontSize: `${egg.size * ZOOM}px`,
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.55))",
+                    transform: egg.rotate ? `rotate(${egg.rotate}deg)` : undefined,
+                  }}
+                >
+                  {egg.emoji}
+                </span>
+              ))}
+            </div>
+          </div>
         );
       })()}
+
+
 
       {/* Zoom toggle */}
       {!isMobile && (
