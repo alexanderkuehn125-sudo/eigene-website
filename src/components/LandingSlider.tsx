@@ -212,6 +212,20 @@ export function LandingSlider() {
           <div className="mist mist-b" />
         </div>
 
+        {/* Chimney smoke — rising slowly from village rooftops */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <span className="smoke" style={{ left: "23%", top: "72%", animationDelay: "0s",  animationDuration: "12s" }} />
+          <span className="smoke" style={{ left: "23%", top: "72%", animationDelay: "4s",  animationDuration: "12s" }} />
+          <span className="smoke" style={{ left: "23%", top: "72%", animationDelay: "8s",  animationDuration: "12s" }} />
+          <span className="smoke" style={{ left: "32%", top: "75%", animationDelay: "1.5s", animationDuration: "14s" }} />
+          <span className="smoke" style={{ left: "32%", top: "75%", animationDelay: "8s",   animationDuration: "14s" }} />
+          <span className="smoke" style={{ left: "40%", top: "70%", animationDelay: "0s",   animationDuration: "13s" }} />
+          <span className="smoke" style={{ left: "40%", top: "70%", animationDelay: "6.5s", animationDuration: "13s" }} />
+          <span className="smoke" style={{ left: "48%", top: "76%", animationDelay: "3s",   animationDuration: "15s" }} />
+          <span className="smoke" style={{ left: "48%", top: "76%", animationDelay: "10s",  animationDuration: "15s" }} />
+        </div>
+
+
         {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
           <span
