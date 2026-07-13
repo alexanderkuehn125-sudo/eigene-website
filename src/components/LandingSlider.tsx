@@ -318,25 +318,54 @@ export function LandingSlider() {
         if (!rect) return null;
         const bgW = rect.width * ZOOM;
         const bgH = rect.height * ZOOM;
-        const bgX = -(lens.x * ZOOM - LENS_SIZE / 2);
-        const bgY = -(lens.y * ZOOM - LENS_SIZE / 2);
+        const offsetX = LENS_SIZE / 2 - lens.x * ZOOM;
+        const offsetY = LENS_SIZE / 2 - lens.y * ZOOM;
         return (
           <div
             aria-hidden
-            className="pointer-events-none absolute z-40 rounded-full border-2 border-white/80 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
+            className="pointer-events-none absolute z-40 overflow-hidden rounded-full border-2 border-white/80 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
             style={{
               width: LENS_SIZE,
               height: LENS_SIZE,
               left: lens.x - LENS_SIZE / 2,
               top: lens.y - LENS_SIZE / 2,
-              backgroundImage: `url(${beImg})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: `${bgW}px ${bgH}px`,
-              backgroundPosition: `${bgX}px ${bgY}px`,
             }}
-          />
+          >
+            <div
+              className="absolute top-0 left-0"
+              style={{
+                width: bgW,
+                height: bgH,
+                transform: `translate(${offsetX}px, ${offsetY}px)`,
+              }}
+            >
+              <img
+                src={beImg}
+                alt=""
+                className="block h-full w-full object-cover"
+                draggable={false}
+              />
+              {EGGS.map((egg, i) => (
+                <span
+                  key={i}
+                  className="absolute leading-none select-none"
+                  style={{
+                    left: `${egg.left}%`,
+                    top: `${egg.top}%`,
+                    fontSize: `${egg.size * ZOOM}px`,
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.55))",
+                    transform: egg.rotate ? `rotate(${egg.rotate}deg)` : undefined,
+                  }}
+                >
+                  {egg.emoji}
+                </span>
+              ))}
+            </div>
+          </div>
         );
       })()}
+
+
 
       {/* Zoom toggle */}
       {!isMobile && (
