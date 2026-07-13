@@ -376,7 +376,7 @@ function DoPage() {
               >
                 ×
               </button>
-              <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#2d2a22]">
+              <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#faf6ed]">
                 <img
                   src={active.src}
                   alt={active.title}
