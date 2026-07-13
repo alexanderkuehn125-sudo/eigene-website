@@ -465,13 +465,8 @@ function DoPage() {
                       "inset 0 0 60px rgba(0,0,0,0.35), inset 0 0 12px rgba(0,0,0,0.25)",
                   }}
                 />
-                <img
-                  src={p.src}
-                  alt={p.title}
-                  loading="lazy"
-                  className="block h-auto w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-                  draggable={false}
-                />
+                <LazyPhoto src={p.src} alt={p.title} eager={i < 3} />
+
                 <span
                   aria-hidden
                   className="pointer-events-none absolute left-1.5 top-1.5 rounded-full bg-black/40 px-1.5 py-[1px] text-[5px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:left-2 md:top-2 md:text-[6px]"
