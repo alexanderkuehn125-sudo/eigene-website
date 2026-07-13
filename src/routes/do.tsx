@@ -600,12 +600,14 @@ function DoPage() {
                 ×
               </button>
               <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#faf6ed]">
-                <img
+                <LazyImage
+                  key={active.id}
                   src={active.src}
                   alt={active.title}
+                  eager
                   className="block max-h-[82vh] max-w-[95vw] w-auto h-auto object-contain"
-                  draggable={false}
                 />
+
                 <span
                   aria-hidden
                   className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/40 px-1.5 py-[2px] text-[7px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:text-[7px]"
