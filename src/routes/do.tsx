@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ImpressumContent } from "@/components/ImpressumContent";
+
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -71,7 +73,18 @@ const photos: readonly Photo[] = [
 
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
+  const [impressumOpen, setImpressumOpen] = useState(false);
   const active = photos.find((p) => p.id === openId);
+
+  useEffect(() => {
+    if (!impressumOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setImpressumOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [impressumOpen]);
+
 
   useEffect(() => {
     if (!openId) return;
@@ -185,7 +198,7 @@ function DoPage() {
           ))}
         </section>
 
-        <div className="mt-16 flex justify-center">
+        <div className="mt-16 flex flex-col items-center gap-6">
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -194,6 +207,54 @@ function DoPage() {
             nach oben ↑
           </button>
         </div>
+
+        <footer className="mt-16 flex flex-col items-center gap-4 border-t border-[#2d2a22]/15 pt-8 text-[11px] uppercase tracking-[0.35em] opacity-70 md:mt-24">
+          <button
+            type="button"
+            onClick={() => setImpressumOpen(true)}
+            className="rounded-full border border-[#2d2a22]/25 px-5 py-2.5 tracking-[0.35em] transition-colors hover:bg-[#2d2a22]/[0.06] hover:opacity-100"
+          >
+            Impressum
+          </button>
+          <span className="opacity-70">
+            © {new Date().getFullYear()} Alexander Kühn · Alle Rechte vorbehalten
+          </span>
+        </footer>
+
+        {/* Impressum modal */}
+        {impressumOpen && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+            style={{
+              background: "rgba(45, 42, 34, 0.55)",
+              backdropFilter: "blur(4px)",
+            }}
+            onClick={() => setImpressumOpen(false)}
+          >
+            <div
+              className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-[#f2ede0]/20 bg-[#faf6ed] p-8 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] md:p-12"
+              style={{ color: "#2d2a22" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setImpressumOpen(false)}
+                aria-label="Schließen"
+                className="absolute right-5 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100"
+              >
+                ×
+              </button>
+              <h2
+                className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
+                style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
+              >
+                Impressum
+              </h2>
+              <ImpressumContent />
+            </div>
+          </div>
+        )}
+
 
         {/* Lightbox */}
         {active && (
