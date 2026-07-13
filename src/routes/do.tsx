@@ -128,7 +128,7 @@ function DoPage() {
 
         {/* Grid */}
         <section className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:grid-cols-3 md:gap-5">
-          {photos.map((p) => (
+          {photos.map((p, i) => (
             <button
               key={p.id}
               type="button"
@@ -164,7 +164,13 @@ function DoPage() {
                   © Alexander Kühn
                 </span>
               </div>
-              <div className="flex items-center justify-end border-t border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
+              <div className="flex items-center justify-between border-t border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
+                <span
+                  className="text-[11px] uppercase tracking-[0.35em] opacity-60"
+                  style={{ fontWeight: 300 }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span
                   aria-hidden
                   className="text-[11px] uppercase tracking-[0.35em] opacity-50 transition-transform group-hover:translate-x-1"
