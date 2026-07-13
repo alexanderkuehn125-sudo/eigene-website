@@ -282,7 +282,7 @@ function BePage() {
                     src={portrait.url}
                     alt="Alexander Kühn"
                     draggable={false}
-                    className="block h-auto w-full object-cover opacity-60"
+                    className="block h-auto w-full object-cover opacity-40"
                     style={{ filter: "contrast(1.15) saturate(0.85)" }}
                   />
                 </figure>
