@@ -186,10 +186,11 @@ export function LandingSlider() {
                     left: `${egg.left}%`,
                     top: `${egg.top}%`,
                     fontSize: `${egg.size}px`,
-                    opacity: revealed ? 1 : 0.28,
+                    opacity: revealed ? 1 : 0.4,
                     filter: revealed
                       ? "drop-shadow(0 2px 4px rgba(0,0,0,0.55))"
-                      : "drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
+                      : "sepia(0.75) saturate(0.8) brightness(0.9) drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
+                    mixBlendMode: revealed ? "normal" : "multiply",
                     transform: egg.rotate ? `rotate(${egg.rotate}deg)` : undefined,
                     animation: egg.animation,
                     transition: "opacity 180ms ease-out, filter 180ms ease-out",
