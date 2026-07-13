@@ -158,13 +158,6 @@ const photos: readonly Photo[] = [
     span: "wide",
   },
   {
-    id: "p03",
-    src: img03.url,
-    title: "Rückseite",
-    caption: "Verblasste Wandmalerei zwischen Rolltoren.",
-    span: "wide",
-  },
-  {
     id: "p27",
     src: img27.url,
     title: "Reachstacker",
