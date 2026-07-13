@@ -661,7 +661,7 @@ function DoPage() {
                   type="button"
                   onClick={() => {
                     const i = photos.findIndex((p) => p.id === active.id);
-                    setOpenId(photos[(i - 1 + photos.length) % photos.length].id);
+                    openPhoto(photos[(i - 1 + photos.length) % photos.length].id);
                   }}
                   className="hover:opacity-100"
                 >
