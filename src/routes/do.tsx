@@ -1,7 +1,16 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
-
+import img01 from "@/assets/photos/2008_02050072.jpeg.asset.json";
+import img02 from "@/assets/photos/DC_NYC_289.jpeg.asset.json";
+import img03 from "@/assets/photos/DSC_0001_30.jpeg.asset.json";
+import img04 from "@/assets/photos/DSC_0004_48.jpeg.asset.json";
+import img05 from "@/assets/photos/DSC_0011_6.jpeg.asset.json";
+import img06 from "@/assets/photos/DSC_0014_26.jpeg.asset.json";
+import img07 from "@/assets/photos/DSC_0019_39.jpeg.asset.json";
+import img08 from "@/assets/photos/DSC_0024_26.jpeg.asset.json";
+import img09 from "@/assets/photos/DSC_0027_38.jpeg.asset.json";
+import img10 from "@/assets/photos/DSC_0032_7.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -25,51 +34,79 @@ type Photo = {
   span?: "tall" | "wide" | "square";
 };
 
-// Placeholders — bitte durch eigene Fotos ersetzen.
 const photos: readonly Photo[] = [
   {
     id: "p01",
-    src: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=80",
-    title: "Bergstille",
-    caption: "Frühes Licht, klare Luft — irgendwo in den Alpen.",
+    src: img01.url,
+    title: "Aufgang",
+    caption: "Geschlossenes Tor, geschwungene Treppe — ein Ort dazwischen.",
     span: "tall",
   },
   {
     id: "p02",
-    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80",
-    title: "Küstenlinie",
-    caption: "Ein langer Nachmittag am Meer.",
+    src: img02.url,
+    title: "Katz's",
+    caption: "Späte Stunde am Tresen. New York, Lower East Side.",
     span: "wide",
   },
   {
     id: "p03",
-    src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1400&q=80",
-    title: "Nebelwald",
-    caption: "Zwischen Bäumen, kurz nach Sonnenaufgang.",
-    span: "square",
+    src: img03.url,
+    title: "Rückseite",
+    caption: "Verblasste Wandmalerei zwischen Rolltoren.",
+    span: "wide",
   },
   {
     id: "p04",
-    src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1400&q=80",
-    title: "Reflexion",
-    caption: "Ein ruhiger See als Spiegel.",
-    span: "square",
+    src: img04.url,
+    title: "Überhang",
+    caption: "Neue Architektur über alten Gleisen.",
+    span: "tall",
   },
   {
     id: "p05",
-    src: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1400&q=80",
-    title: "Weite",
-    caption: "Wo Landschaft in Himmel übergeht.",
+    src: img05.url,
+    title: "Markenwelt",
+    caption: "Beschilderung unter der Membran.",
     span: "wide",
   },
   {
     id: "p06",
-    src: "https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?auto=format&fit=crop&w=1400&q=80",
-    title: "Stadtnacht",
-    caption: "Späte Stunde, wache Straßen.",
+    src: img06.url,
+    title: "Markt",
+    caption: "Turm gegen Himmel — Gelb, Rot, Sepia.",
+    span: "tall",
+  },
+  {
+    id: "p07",
+    src: img07.url,
+    title: "Blick hinein",
+    caption: "Ein verlassener Raum, ein Sessel, das Licht.",
+    span: "tall",
+  },
+  {
+    id: "p08",
+    src: img08.url,
+    title: "IBM",
+    caption: "Zaun, Firmenschilder, gedeckte Abendfarben.",
+    span: "wide",
+  },
+  {
+    id: "p09",
+    src: img09.url,
+    title: "Durchgang",
+    caption: "Aus dem Dunkel Richtung Straße.",
+    span: "wide",
+  },
+  {
+    id: "p10",
+    src: img10.url,
+    title: "Pfeil",
+    caption: "Bodenmarkierung, Halle im Hintergrund.",
     span: "tall",
   },
 ] as const;
+
 
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
