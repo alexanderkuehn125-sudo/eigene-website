@@ -280,12 +280,16 @@ function BePage() {
                 }
               >
                 {activeItem.slug === "ueber-mich" && (
-                  <figure className="relative overflow-hidden rounded-2xl border border-[#f2ede0]/20 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)]">
+                  <figure className="relative w-1/2 overflow-hidden rounded-2xl border border-[#f2ede0]/20 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)]">
                     <img
                       src={portrait.url}
                       alt="Alexander Kühn"
                       draggable={false}
-                      className="block h-auto w-full object-cover"
+                      className="block h-auto w-full object-cover opacity-60 mix-blend-luminosity"
+                      style={{
+                        filter: "contrast(1.2) saturate(0.9)",
+                        imageRendering: "auto",
+                      }}
                     />
                     <span
                       aria-hidden
