@@ -47,6 +47,8 @@ import img42 from "@/assets/photos/DSCF0030.jpeg.asset.json";
 import img43 from "@/assets/photos/DSCF0033.jpeg.asset.json";
 import img44 from "@/assets/photos/DSCF0036.jpeg.asset.json";
 import img45 from "@/assets/photos/DSCF0269.jpeg.asset.json";
+import img46 from "@/assets/photos/J-Brandner1.jpeg.asset.json";
+import img47 from "@/assets/photos/media-park_2.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -371,6 +373,20 @@ const photos: readonly Photo[] = [
     src: img41.url,
     title: "Zeppelinfeld II",
     caption: "Aufstieg gegen Wolken.",
+    span: "tall",
+  },
+  {
+    id: "p44",
+    src: img46.url,
+    title: "Brothandwerk",
+    caption: "Blick durchs Schaufenster, Mehl in der Luft.",
+    span: "wide",
+  },
+  {
+    id: "p45",
+    src: img47.url,
+    title: "MediaPark",
+    caption: "Gelbe Rahmen, Glas, Spiegelung.",
     span: "tall",
   },
 ] as const;
