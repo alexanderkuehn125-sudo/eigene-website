@@ -212,51 +212,6 @@ export function LandingSlider() {
           <div className="mist mist-b" />
         </div>
 
-        {/* Chimney smoke — anchored to image coordinates via SVG viewBox
-            so the puffs stay glued to the chimneys regardless of object-cover crop. */}
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          viewBox="0 0 2528 1696"
-          preserveAspectRatio={isMobile ? "xMidYMid slice" : "xMidYMid slice"}
-        >
-          <defs>
-            <radialGradient id="smokePuff" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="rgba(250,246,236,0.95)" />
-              <stop offset="55%" stopColor="rgba(220,214,200,0.45)" />
-              <stop offset="100%" stopColor="rgba(220,214,200,0)" />
-            </radialGradient>
-            <filter id="smokeBlur" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="6" />
-            </filter>
-          </defs>
-          {[
-            { x: 830,  y: 1090, drift:  28, dur: 5.6 },
-            { x: 1145, y: 1040, drift: -22, dur: 6.4 },
-            { x: 1400, y: 1045, drift:  32, dur: 5.2 },
-            { x: 1390, y: 1170, drift: -26, dur: 6.0 },
-          ].map((c, i) =>
-            [0, 1, 2, 3].map((k) => (
-              <circle
-                key={`${i}-${k}`}
-                cx={c.x}
-                cy={c.y}
-                r={22}
-                fill="url(#smokePuff)"
-                filter="url(#smokeBlur)"
-                style={{
-                  transformOrigin: `${c.x}px ${c.y}px`,
-                  animation: `smoke-rise-svg ${c.dur}s ease-in infinite`,
-                  animationDelay: `${k * (c.dur / 4)}s`,
-                  ["--drift" as string]: `${c.drift}px`,
-                }}
-              />
-            )),
-          )}
-        </svg>
-
-
-
         {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
           <span
