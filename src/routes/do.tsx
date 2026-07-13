@@ -420,13 +420,13 @@ function DoPage() {
         </section>
 
         {/* Grid */}
-        <section className="mt-16 columns-1 gap-3 sm:columns-2 md:mt-24 md:columns-3 md:gap-4">
+        <section className="mt-16 columns-1 gap-6 sm:columns-2 md:mt-24 md:columns-3 md:gap-8">
           {photos.map((p, i) => (
             <button
               key={p.id}
               type="button"
               onClick={() => setOpenId(p.id)}
-              className="group relative mb-3 block w-full overflow-hidden text-left shadow-[0_2px_4px_-1px_rgba(45,42,34,0.15),0_10px_25px_-6px_rgba(45,42,34,0.28),0_30px_60px_-18px_rgba(45,42,34,0.45)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_3px_6px_-1px_rgba(45,42,34,0.18),0_18px_38px_-8px_rgba(45,42,34,0.38),0_44px_80px_-22px_rgba(45,42,34,0.55)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-4"
+              className="group relative mb-6 block w-full overflow-hidden text-left shadow-[0_2px_4px_-1px_rgba(45,42,34,0.15),0_10px_25px_-6px_rgba(45,42,34,0.28),0_30px_60px_-18px_rgba(45,42,34,0.45)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_3px_6px_-1px_rgba(45,42,34,0.18),0_18px_38px_-8px_rgba(45,42,34,0.38),0_44px_80px_-22px_rgba(45,42,34,0.55)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-8"
               style={{ breakInside: "avoid" }}
             >
               <div className="relative w-full overflow-hidden">
