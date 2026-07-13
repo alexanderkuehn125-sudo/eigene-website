@@ -186,7 +186,7 @@ function DoPage() {
               key={p.id}
               type="button"
               onClick={() => setOpenId(p.id)}
-              className={`group relative block overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed]/95 text-left shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] transition-all hover:-translate-y-1 hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 ${
+              className={`group relative block overflow-hidden rounded-2xl border border-[#2d2a22]/10 text-left shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] transition-all hover:-translate-y-1 hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 ${
                 p.span === "tall"
                   ? "sm:row-span-2"
                   : p.span === "wide"
@@ -212,23 +212,16 @@ function DoPage() {
                 />
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/35 px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm md:bottom-3 md:right-3 md:text-[10px]"
-                >
-                  © Alexander Kühn
-                </span>
-              </div>
-              <div className="flex items-center justify-between border-t border-[#2d2a22]/10 px-3 py-1.5 md:px-4 md:py-2">
-                <span
-                  className="text-[11px] uppercase tracking-[0.35em] opacity-60"
+                  className="pointer-events-none absolute left-2 top-2 rounded-full bg-black/40 px-2 py-0.5 text-[10px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:left-3 md:top-3 md:text-[11px]"
                   style={{ fontWeight: 300 }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span
                   aria-hidden
-                  className="text-[11px] uppercase tracking-[0.35em] opacity-50 transition-transform group-hover:translate-x-1"
+                  className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/35 px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm md:bottom-3 md:right-3 md:text-[10px]"
                 >
-                  ansehen →
+                  © Alexander Kühn
                 </span>
               </div>
             </button>
