@@ -2,7 +2,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import beHorizontal from "@/assets/manhattan-18-horizontal.jpg";
+import beHorizontal from "@/assets/manhattan-18-horizontal-clean.jpg";
+import beShipA from "@/assets/manhattan-18-ship-a.png";
+import beShipB from "@/assets/manhattan-18-ship-b.png";
 import doHorizontal from "@/assets/manhattan-21-horizontal.jpg";
 import beVertical from "@/assets/manhattan-18-vertical.jpg";
 import doVertical from "@/assets/manhattan-21-vertical.jpg";
