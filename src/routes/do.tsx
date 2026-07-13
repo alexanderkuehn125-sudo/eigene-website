@@ -411,10 +411,38 @@ function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
 
 
 
+function preloadImage(src: string) {
+  if (typeof window === "undefined") return;
+  const img = new Image();
+  img.decoding = "async";
+  img.src = src;
+  // decode() ist optional (nicht überall verfügbar) — Fehler bewusst schlucken.
+  img.decode?.().catch(() => {});
+}
+
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [impressumOpen, setImpressumOpen] = useState(false);
   const active = photos.find((p) => p.id === openId);
+
+  // Beim Öffnen der Lightbox: aktives Bild + Nachbarn vorwärmen,
+  // damit Weiter/Zurück ohne Ladepause bleibt.
+  useEffect(() => {
+    if (!openId) return;
+    const idx = photos.findIndex((p) => p.id === openId);
+    if (idx < 0) return;
+    preloadImage(photos[idx].src);
+    preloadImage(photos[(idx + 1) % photos.length].src);
+    preloadImage(photos[(idx - 1 + photos.length) % photos.length].src);
+  }, [openId]);
+
+  const openPhoto = (id: string) => {
+    const p = photos.find((x) => x.id === id);
+    if (p) preloadImage(p.src);
+    setOpenId(id);
+  };
+
+
 
   useEffect(() => {
     if (!impressumOpen) return;
@@ -488,7 +516,9 @@ function DoPage() {
             <button
               key={p.id}
               type="button"
-              onClick={() => setOpenId(p.id)}
+              onClick={() => openPhoto(p.id)}
+              onPointerEnter={() => preloadImage(p.src)}
+              onFocus={() => preloadImage(p.src)}
               className="group relative mb-6 block w-full overflow-hidden text-left shadow-[0_2px_4px_-1px_rgba(45,42,34,0.15),0_10px_25px_-6px_rgba(45,42,34,0.28),0_30px_60px_-18px_rgba(45,42,34,0.45)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_3px_6px_-1px_rgba(45,42,34,0.18),0_18px_38px_-8px_rgba(45,42,34,0.38),0_44px_80px_-22px_rgba(45,42,34,0.55)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-8"
               style={{ breakInside: "avoid" }}
             >
@@ -631,7 +661,7 @@ function DoPage() {
                   type="button"
                   onClick={() => {
                     const i = photos.findIndex((p) => p.id === active.id);
-                    setOpenId(photos[(i - 1 + photos.length) % photos.length].id);
+                    openPhoto(photos[(i - 1 + photos.length) % photos.length].id);
                   }}
                   className="hover:opacity-100"
                 >
@@ -644,7 +674,7 @@ function DoPage() {
                   type="button"
                   onClick={() => {
                     const i = photos.findIndex((p) => p.id === active.id);
-                    setOpenId(photos[(i + 1) % photos.length].id);
+                    openPhoto(photos[(i + 1) % photos.length].id);
                   }}
                   className="hover:opacity-100"
                 >
