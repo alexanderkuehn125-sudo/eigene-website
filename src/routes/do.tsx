@@ -186,7 +186,7 @@ function DoPage() {
               key={p.id}
               type="button"
               onClick={() => setOpenId(p.id)}
-              className="group relative mb-3 block w-full overflow-hidden rounded-2xl border border-[#2d2a22]/10 text-left shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] transition-all hover:-translate-y-1 hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-4"
+              className="group relative mb-3 block w-full overflow-hidden rounded-2xl text-left shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_6px_18px_-6px_rgba(45,42,34,0.12),0_20px_40px_-12px_rgba(45,42,34,0.16)] transition-all hover:-translate-y-1 hover:shadow-[0_1px_1px_-0.5px_rgba(45,42,34,0.05),0_12px_30px_-8px_rgba(45,42,34,0.18),0_28px_56px_-16px_rgba(45,42,34,0.22)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-4"
               style={{ breakInside: "avoid" }}
             >
               <div className="relative w-full overflow-hidden">
