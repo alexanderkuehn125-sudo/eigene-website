@@ -31,6 +31,16 @@ import img27 from "@/assets/photos/DSC_0080_16.jpeg.asset.json";
 import img28 from "@/assets/photos/DSC_0095_13.jpeg.asset.json";
 import img29 from "@/assets/photos/DSC_0097_19.jpeg.asset.json";
 import img30 from "@/assets/photos/DSC_0099_19.jpeg.asset.json";
+import img31 from "@/assets/photos/DSC_0102_18.jpeg.asset.json";
+import img32 from "@/assets/photos/DSC_0134_11.jpeg.asset.json";
+import img33 from "@/assets/photos/DSC_0140_9.jpeg.asset.json";
+import img34 from "@/assets/photos/DSC_0174.jpeg.asset.json";
+import img35 from "@/assets/photos/DSC_0206_4.jpeg.asset.json";
+import img36 from "@/assets/photos/DSC_0213_4.jpeg.asset.json";
+import img37 from "@/assets/photos/DSC_0225_2.jpeg.asset.json";
+import img38 from "@/assets/photos/DSC_0268_3.jpeg.asset.json";
+import img39 from "@/assets/photos/DSC_0341.jpeg.asset.json";
+import img40 from "@/assets/photos/DSCF0023.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -263,6 +273,76 @@ const photos: readonly Photo[] = [
     src: img30.url,
     title: "Borough Market",
     caption: "Menschen in Bewegung unter den Trägern.",
+    span: "wide",
+  },
+  {
+    id: "p31",
+    src: img31.url,
+    title: "Aufstieg",
+    caption: "Leere Straße, Leitplanken, Himmel.",
+    span: "tall",
+  },
+  {
+    id: "p32",
+    src: img32.url,
+    title: "Hinterhof",
+    caption: "Kuppel zwischen Brandmauern.",
+    span: "wide",
+  },
+  {
+    id: "p33",
+    src: img33.url,
+    title: "Covrigi Calzi",
+    caption: "Bukarest, Altstadt, Fassaden.",
+    span: "tall",
+  },
+  {
+    id: "p34",
+    src: img34.url,
+    title: "Lava Jato",
+    caption: "Wandmalerei, Kabel, Sonne.",
+    span: "wide",
+  },
+  {
+    id: "p35",
+    src: img35.url,
+    title: "Oliver's Wharf",
+    caption: "Themse, viktorianisches Speicherhaus.",
+    span: "wide",
+  },
+  {
+    id: "p36",
+    src: img36.url,
+    title: "The Grapes",
+    caption: "Uferfront, Hochhäuser, Backstein.",
+    span: "wide",
+  },
+  {
+    id: "p37",
+    src: img37.url,
+    title: "Telefonzelle",
+    caption: "Dresden, Sepia, Semperoper im Hintergrund.",
+    span: "tall",
+  },
+  {
+    id: "p38",
+    src: img38.url,
+    title: "Camden Lock",
+    caption: "Jenny Wren wartet auf die Schleuse.",
+    span: "square",
+  },
+  {
+    id: "p39",
+    src: img39.url,
+    title: "Dresdner Straße",
+    caption: "Gründerzeit, Gleise, Nachmittagslicht.",
+    span: "tall",
+  },
+  {
+    id: "p40",
+    src: img40.url,
+    title: "Stufen",
+    caption: "Verwitterter Beton, wachsendes Grün.",
     span: "wide",
   },
 ] as const;
