@@ -197,7 +197,7 @@ function DoPage() {
               <div
                 className={`relative w-full overflow-hidden ${
                   p.span === "tall"
-                    ? "aspect-[3/4] sm:aspect-[3/5]"
+                    ? "aspect-[4/5]"
                     : p.span === "wide"
                       ? "aspect-[16/9]"
                       : "aspect-square"
@@ -217,7 +217,7 @@ function DoPage() {
                   © Alexander Kühn
                 </span>
               </div>
-              <div className="flex items-center justify-between border-t border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
+              <div className="flex items-center justify-between border-t border-[#2d2a22]/10 px-3 py-1.5 md:px-4 md:py-2">
                 <span
                   className="text-[11px] uppercase tracking-[0.35em] opacity-60"
                   style={{ fontWeight: 300 }}
