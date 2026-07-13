@@ -115,6 +115,7 @@ const photos: readonly Photo[] = [
     caption: "Bodenmarkierung, Halle im Hintergrund.",
     span: "tall",
   },
+  {
     id: "p11",
     src: img11.url,
     title: "Dachlinie",
