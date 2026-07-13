@@ -142,7 +142,7 @@ function DoPage() {
               }`}
             >
               <div
-                className={`w-full overflow-hidden ${
+                className={`relative w-full overflow-hidden ${
                   p.span === "tall"
                     ? "aspect-[3/4] sm:aspect-[3/5]"
                     : p.span === "wide"
