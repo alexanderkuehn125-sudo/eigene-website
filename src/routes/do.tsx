@@ -310,43 +310,30 @@ function DoPage() {
                   © Alexander Kühn
                 </span>
               </div>
-              <div className="flex items-center justify-between gap-6 border-t border-[#2d2a22]/10 px-5 py-4 md:px-8 md:py-5">
-                <div>
-                  <h3
-                    className="text-xl tracking-tight md:text-2xl"
-                    style={{ fontWeight: 300 }}
-                  >
-                    {active.title}
-                  </h3>
-                  <p className="mt-1 text-sm opacity-75 md:text-base">
-                    {active.caption}
-                  </p>
-                </div>
-                <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] opacity-60">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const i = photos.findIndex((p) => p.id === active.id);
-                      setOpenId(photos[(i - 1 + photos.length) % photos.length].id);
-                    }}
-                    className="hover:opacity-100"
-                  >
-                    ← vor
-                  </button>
-                  <span className="opacity-50">
-                    {photos.findIndex((p) => p.id === active.id) + 1} / {photos.length}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const i = photos.findIndex((p) => p.id === active.id);
-                      setOpenId(photos[(i + 1) % photos.length].id);
-                    }}
-                    className="hover:opacity-100"
-                  >
-                    zurück →
-                  </button>
-                </div>
+              <div className="flex items-center justify-center gap-6 border-t border-[#2d2a22]/10 px-4 py-2 text-[11px] uppercase tracking-[0.35em] opacity-70 md:px-6 md:py-2.5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const i = photos.findIndex((p) => p.id === active.id);
+                    setOpenId(photos[(i - 1 + photos.length) % photos.length].id);
+                  }}
+                  className="hover:opacity-100"
+                >
+                  ← vor
+                </button>
+                <span className="opacity-60">
+                  {String(photos.findIndex((p) => p.id === active.id) + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const i = photos.findIndex((p) => p.id === active.id);
+                    setOpenId(photos[(i + 1) % photos.length].id);
+                  }}
+                  className="hover:opacity-100"
+                >
+                  zurück →
+                </button>
               </div>
             </div>
           </div>
