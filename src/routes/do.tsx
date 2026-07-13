@@ -215,13 +215,19 @@ function DoPage() {
               >
                 ×
               </button>
-              <div className="flex min-h-0 flex-1 items-center justify-center bg-[#2d2a22]">
+              <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#2d2a22]">
                 <img
                   src={active.src}
                   alt={active.title}
                   className="max-h-[72vh] w-auto max-w-full object-contain"
                   draggable={false}
                 />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-black/40 px-2.5 py-1 text-[10px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:text-[11px]"
+                >
+                  © Alexander Kühn
+                </span>
               </div>
               <div className="flex items-center justify-between gap-6 border-t border-[#2d2a22]/10 px-5 py-4 md:px-8 md:py-5">
                 <div>
