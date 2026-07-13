@@ -272,37 +272,21 @@ function BePage() {
               >
                 {activeItem.label}
               </h2>
-              <div
-                className={
-                  activeItem.slug === "ueber-mich"
-                    ? "grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-start md:gap-12"
-                    : ""
-                }
-              >
-                {activeItem.slug === "ueber-mich" && (
-                  <figure className="relative w-1/2 overflow-hidden rounded-2xl border border-[#f2ede0]/20 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)]">
-                    <img
-                      src={portrait.url}
-                      alt="Alexander Kühn"
-                      draggable={false}
-                      className="block h-auto w-full object-cover opacity-60 mix-blend-luminosity"
-                      style={{
-                        filter: "contrast(1.2) saturate(0.9)",
-                        imageRendering: "auto",
-                      }}
-                    />
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/40 px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm md:bottom-3 md:right-3 md:text-[10px]"
-                    >
-                      © Alexander Kühn
-                    </span>
-                  </figure>
-                )}
-                <p className="max-w-3xl text-xl leading-relaxed opacity-90 md:text-2xl">
-                  {activeItem.body}
-                </p>
-              </div>
+              <p className="max-w-3xl text-xl leading-relaxed opacity-90 md:text-2xl">
+                {activeItem.body}
+              </p>
+
+              {activeItem.slug === "ueber-mich" && (
+                <figure className="pointer-events-none absolute bottom-6 left-6 w-[38%] max-w-[320px] overflow-hidden rounded-2xl border border-[#f2ede0]/20 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)] md:bottom-10 md:left-10">
+                  <img
+                    src={portrait.url}
+                    alt="Alexander Kühn"
+                    draggable={false}
+                    className="block h-auto w-full object-cover opacity-60"
+                    style={{ filter: "contrast(1.15) saturate(0.85)" }}
+                  />
+                </figure>
+              )}
             </div>
           </div>
         )}
