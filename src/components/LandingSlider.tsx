@@ -24,35 +24,48 @@ export function LandingSlider() {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const beSideRef = useRef<HTMLButtonElement>(null);
+  const doSideRef = useRef<HTMLButtonElement>(null);
+  const beBalloonRef = useRef<HTMLSpanElement>(null);
+  const doBalloonRef = useRef<HTMLSpanElement>(null);
   const draggingRef = useRef(false);
   const [pct, setPct] = useState(50); // % of the "be" side visible (from left/top)
   const [zoomOn, setZoomOn] = useState(false);
-  const [lens, setLens] = useState<{ x: number; y: number; visible: boolean }>({
+  const [beLens, setBeLens] = useState<{ x: number; y: number; visible: boolean; reveal: boolean }>({
     x: 0,
     y: 0,
     visible: false,
+    reveal: false,
+  });
+  const [doLens, setDoLens] = useState<{ x: number; y: number; visible: boolean; reveal: boolean }>({
+    x: 0,
+    y: 0,
+    visible: false,
+    reveal: false,
   });
   const ZOOM = 2.5;
   const LENS_SIZE = 270;
+  const BALLOON_ANIM = "balloonFloat 34s ease-in-out infinite, rainbowHue 6s linear infinite";
+  const BALLOON_STYLE = { left: "62%", top: "18%", fontSize: "36px" };
 
-  const EGGS: Array<{
-    emoji: string;
-    left: number;
-    top: number;
-    size: number;
-    hue: number;
-    rotate?: number;
-    animation?: string;
-    title: string;
-  }> = [
-    { emoji: "🛸", left: 42, top: 12, size: 32, hue: 0, animation: "ufoDrift 26s ease-in-out infinite", title: "Is that… a UFO?" },
-    { emoji: "🧑‍🚀", left: 55, top: 58, size: 26, hue: 40, rotate: -8, title: "Wrong century, buddy." },
-    { emoji: "🦕", left: 42, top: 62, size: 28, hue: 90, title: "Rawr." },
-    { emoji: "⛵", left: 10, top: 54, size: 36, hue: 160, animation: "shipBob 14s ease-in-out infinite", title: "Yo ho ho." },
-    { emoji: "🐈‍⬛", left: 48, top: 66, size: 22, hue: 210, title: "Zzz." },
-    { emoji: "🎈", left: 68, top: 18, size: 32, hue: 260, animation: "balloonFloat 34s ease-in-out infinite", title: "Up, up and away." },
-    { emoji: "🦣", left: 50, top: 70, size: 28, hue: 310, title: "Ice-age tourist." },
-  ];
+  const makeLensHandler = (
+    sideRef: React.RefObject<HTMLButtonElement | null>,
+    balloonRef: React.RefObject<HTMLSpanElement | null>,
+    setter: typeof setBeLens,
+  ) => (e: React.MouseEvent) => {
+    if (!zoomOn || isMobile) return;
+    const rect = sideRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const br = balloonRef.current?.getBoundingClientRect();
+    let reveal = false;
+    if (br) {
+      const bx = br.left + br.width / 2 - rect.left;
+      const by = br.top + br.height / 2 - rect.top;
+      reveal = Math.hypot(bx - x, by - y) < LENS_SIZE / 2;
+    }
+    setter({ x, y, visible: true, reveal });
+  };
 
   const updateFromEvent = useCallback(
     (clientX: number, clientY: number) => {
