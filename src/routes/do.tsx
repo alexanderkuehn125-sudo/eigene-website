@@ -172,7 +172,7 @@ function DoPage() {
 
         <section className="mt-16 md:mt-24">
           <p
-            className="text-lg uppercase tracking-[0.35em] opacity-60 md:text-2xl"
+            className="text-base uppercase tracking-[0.35em] opacity-60 md:text-xl"
             style={{ fontWeight: 300 }}
           >
             Ausstellung
