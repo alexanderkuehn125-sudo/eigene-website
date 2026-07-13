@@ -2,7 +2,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import beHorizontal from "@/assets/manhattan-18-horizontal.jpg";
+import beHorizontal from "@/assets/manhattan-18-horizontal-clean.jpg";
+import beShipA from "@/assets/manhattan-18-ship-a.png";
+import beShipB from "@/assets/manhattan-18-ship-b.png";
 import doHorizontal from "@/assets/manhattan-21-horizontal.jpg";
 import beVertical from "@/assets/manhattan-18-vertical.jpg";
 import doVertical from "@/assets/manhattan-21-vertical.jpg";
@@ -197,6 +199,27 @@ export function LandingSlider() {
           className="h-full w-full object-cover"
           draggable={false}
         />
+        {/* Slowly sailing ships — extracted from the original painting, drifting on the water */}
+        {!isMobile && (
+          <>
+            <img
+              src={beShipA}
+              alt=""
+              aria-hidden
+              draggable={false}
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+              style={{ animation: "shipSailA 42s ease-in-out infinite", transformOrigin: "12% 88%" }}
+            />
+            <img
+              src={beShipB}
+              alt=""
+              aria-hidden
+              draggable={false}
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+              style={{ animation: "shipSailB 54s ease-in-out infinite", transformOrigin: "92% 88%" }}
+            />
+          </>
+        )}
         {/* Warm painterly wash + soft vignette */}
         <div
           aria-hidden
