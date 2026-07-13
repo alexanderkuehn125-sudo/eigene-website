@@ -246,6 +246,21 @@ function BePage() {
           </button>
         </div>
 
+        {/* Footer with Impressum */}
+        <footer className="mt-16 flex flex-col items-center gap-4 border-t border-[#2d2a22]/15 pt-8 text-[11px] uppercase tracking-[0.35em] opacity-70 md:mt-24">
+          <button
+            type="button"
+            onClick={() => setOpenSlug("impressum")}
+            className="rounded-full border border-[#2d2a22]/25 px-5 py-2.5 tracking-[0.35em] transition-colors hover:bg-[#2d2a22]/[0.06] hover:opacity-100"
+          >
+            Impressum
+          </button>
+          <span className="opacity-70">
+            © {new Date().getFullYear()} Alexander Kühn · Portfolio
+          </span>
+        </footer>
+
+
         {/* Expanded panel modal */}
         {activeItem && (
           <div
