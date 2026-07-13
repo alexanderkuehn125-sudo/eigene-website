@@ -54,21 +54,22 @@ const items: readonly Item[] = [
   },
   {
     n: "04",
-    label: "Impressum",
-    slug: "impressum",
-    to: "/be/impressum",
-    kicker: "Rechtliches",
-    body: "Anbieterkennzeichnung, verantwortliche Personen, Kontaktdaten und Hinweise nach TMG und DSGVO. Alles Formale — klar und vollständig.",
-  },
-  {
-    n: "05",
     label: "Kontakt",
     slug: "kontakt",
     to: "/be/kontakt",
     kicker: "Sprich mich an",
     body: "Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch. Per Mail oder Telefon — Antwort in der Regel innerhalb von 24 Stunden.",
   },
+  {
+    n: "05",
+    label: "Impressum",
+    slug: "impressum",
+    to: "/be/impressum",
+    kicker: "Rechtliches",
+    body: "Anbieterkennzeichnung, verantwortliche Personen, Kontaktdaten und Hinweise nach TMG und DSGVO. Alles Formale — klar und vollständig.",
+  },
 ] as const;
+
 
 function BePage() {
   const [open, setOpen] = useState(false);
