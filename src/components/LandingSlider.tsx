@@ -63,7 +63,7 @@ export function LandingSlider() {
         strokeLinecap="round"
       />
       {/* Balloon body — rainbow cycles via filter animation */}
-      <g style={{ animation: "rainbowHue 6s linear infinite", transformOrigin: "20px 22px" }}>
+      <g style={{ animation: "rainbowHue 18s linear infinite", transformOrigin: "20px 22px" }}>
         <path
           d="M20 2 C 30 2 36 10 36 20 C 36 30 28 40 22 42 L 20 44 L 18 42 C 12 40 4 30 4 20 C 4 10 10 2 20 2 Z"
           fill="#e63946"
