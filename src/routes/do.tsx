@@ -157,6 +157,12 @@ function DoPage() {
                   className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
                   draggable={false}
                 />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute bottom-[52px] right-2 rounded-full bg-black/35 px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm md:bottom-[58px] md:right-3 md:text-[10px]"
+                >
+                  © Alexander Kühn
+                </span>
               </div>
               <div className="flex items-center justify-between border-t border-[#2d2a22]/10 px-4 py-2.5 md:px-5 md:py-3">
                 <span
