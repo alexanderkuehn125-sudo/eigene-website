@@ -218,14 +218,12 @@ export function LandingSlider() {
             ref={beBalloonRef}
             className="absolute"
             style={{
-              ...BALLOON_STYLE,
-              opacity: 1,
-              animation: BALLOON_ANIM,
-              transition: "opacity 180ms ease-out",
+              ...BALLOON_POS,
+              animation: BALLOON_FLOAT,
             }}
             title="Up, up and away."
           >
-            🎈
+            <Balloon />
           </span>
         </div>
 
