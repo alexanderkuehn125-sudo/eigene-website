@@ -192,7 +192,7 @@ export function LandingSlider() {
             className="absolute"
             style={{
               ...BALLOON_STYLE,
-              opacity: beLens.reveal ? 1 : 0.55,
+              opacity: 1,
               animation: BALLOON_ANIM,
               transition: "opacity 180ms ease-out",
             }}
