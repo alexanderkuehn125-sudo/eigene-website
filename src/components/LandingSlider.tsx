@@ -110,10 +110,23 @@ export function LandingSlider() {
     >
       {/* BE side — 18th century, full bleed */}
       <button
+        ref={beSideRef}
         type="button"
         onClick={() => goSide("be")}
         aria-label="Enter Portfolio"
+        onMouseMove={(e) => {
+          if (!zoomOn || isMobile) return;
+          const rect = beSideRef.current?.getBoundingClientRect();
+          if (!rect) return;
+          setLens({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top,
+            visible: true,
+          });
+        }}
+        onMouseLeave={() => setLens((l) => ({ ...l, visible: false }))}
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
+        style={zoomOn && !isMobile ? { cursor: "zoom-in" } : undefined}
       >
         <img
           src={beImg}
