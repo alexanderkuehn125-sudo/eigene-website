@@ -73,7 +73,18 @@ const photos: readonly Photo[] = [
 
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
+  const [impressumOpen, setImpressumOpen] = useState(false);
   const active = photos.find((p) => p.id === openId);
+
+  useEffect(() => {
+    if (!impressumOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setImpressumOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [impressumOpen]);
+
 
   useEffect(() => {
     if (!openId) return;
