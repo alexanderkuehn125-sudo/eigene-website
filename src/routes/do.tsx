@@ -120,22 +120,6 @@ function DoPage() {
           </span>
         </header>
 
-        {/* Intro */}
-        <section className="mt-16 md:mt-24">
-          <p className="mb-4 text-[11px] uppercase tracking-[0.4em] opacity-60">
-            Ausstellung
-          </p>
-          <h2
-            className="text-4xl leading-[0.95] tracking-tight md:text-6xl"
-            style={{ fontWeight: 300 }}
-          >
-            Eigene Aufnahmen.
-          </h2>
-          <p className="mt-6 max-w-xl text-base leading-relaxed opacity-75 md:text-lg">
-            Eine wachsende Sammlung — Momente, Orte, Licht. Klick auf ein Bild,
-            um es größer zu sehen.
-          </p>
-        </section>
 
         {/* Grid */}
         <section className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:grid-cols-3 md:gap-5">
