@@ -44,13 +44,13 @@ export function LandingSlider() {
     animation?: string;
     title: string;
   }> = [
-    { emoji: "🛸", left: 18, top: 34, size: 24, animation: "ufoDrift 22s ease-in-out infinite", title: "Is that… a UFO?" },
-    { emoji: "👨‍🚀", left: 72, top: 62, size: 22, rotate: -8, title: "Wrong century, buddy." },
-    { emoji: "🦖", left: 44, top: 78, size: 22, title: "Rawr." },
-    { emoji: "🏴‍☠️", left: 6, top: 70, size: 22, animation: "shipBob 9s ease-in-out infinite", title: "Yo ho ho." },
-    { emoji: "🐈", left: 31, top: 55, size: 18, title: "Zzz." },
-    { emoji: "🎈", left: 60, top: 12, size: 26, animation: "balloonFloat 30s ease-in-out infinite", title: "Up, up and away." },
-    { emoji: "🦧", left: 88, top: 82, size: 20, title: "Bigfoot? In Manhattan?" },
+    { emoji: "🛸", left: 38, top: 16, size: 30, animation: "ufoDrift 22s ease-in-out infinite", title: "Is that… a UFO?" },
+    { emoji: "🧑‍🚀", left: 72, top: 60, size: 26, rotate: -8, title: "Wrong century, buddy." },
+    { emoji: "🦕", left: 46, top: 74, size: 28, title: "Rawr." },
+    { emoji: "⛵", left: 14, top: 82, size: 34, animation: "shipBob 9s ease-in-out infinite", title: "Yo ho ho." },
+    { emoji: "🐈‍⬛", left: 30, top: 56, size: 22, title: "Zzz." },
+    { emoji: "🎈", left: 62, top: 10, size: 30, animation: "balloonFloat 30s ease-in-out infinite", title: "Up, up and away." },
+    { emoji: "🦣", left: 86, top: 80, size: 26, title: "Ice-age tourist." },
   ];
 
   const updateFromEvent = useCallback(
