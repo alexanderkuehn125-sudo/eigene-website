@@ -392,6 +392,27 @@ const photos: readonly Photo[] = [
     caption: "Gelbe Rahmen, Glas, Spiegelung.",
     span: "tall",
   },
+  {
+    id: "p46",
+    src: img48.url,
+    title: "Downtown",
+    caption: "U-Bahn, New York, ein Waggon voller Wege.",
+    span: "tall",
+  },
+  {
+    id: "p47",
+    src: img49.url,
+    title: "Rote Kammer",
+    caption: "Angelehnte Tür, Pendellampe, gedämpftes Licht.",
+    span: "tall",
+  },
+  {
+    id: "p48",
+    src: img50.url,
+    title: "General Barber",
+    caption: "Rot-weiße Markise, Ziegelwand, Barbier-Pol.",
+    span: "tall",
+  },
 ] as const;
 
 
