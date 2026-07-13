@@ -457,7 +457,10 @@ function DoPage() {
               className="group relative mb-6 block w-full overflow-hidden text-left shadow-[0_2px_4px_-1px_rgba(45,42,34,0.15),0_10px_25px_-6px_rgba(45,42,34,0.28),0_30px_60px_-18px_rgba(45,42,34,0.45)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_3px_6px_-1px_rgba(45,42,34,0.18),0_18px_38px_-8px_rgba(45,42,34,0.38),0_44px_80px_-22px_rgba(45,42,34,0.55)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-8"
               style={{ breakInside: "avoid" }}
             >
-              <div className="relative w-full overflow-hidden">
+              <div
+                className="relative w-full overflow-hidden"
+                style={{ backgroundColor: "#c9b891" }}
+              >
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0 z-10"
@@ -466,13 +469,13 @@ function DoPage() {
                       "inset 0 0 60px rgba(0,0,0,0.35), inset 0 0 12px rgba(0,0,0,0.25)",
                   }}
                 />
-                <img
+                <LazyImage
                   src={p.src}
                   alt={p.title}
-                  loading="lazy"
+                  eager={i < 3}
                   className="block h-auto w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-                  draggable={false}
                 />
+
                 <span
                   aria-hidden
                   className="pointer-events-none absolute left-1.5 top-1.5 rounded-full bg-black/40 px-1.5 py-[1px] text-[5px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:left-2 md:top-2 md:text-[6px]"
