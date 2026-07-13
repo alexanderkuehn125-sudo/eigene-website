@@ -127,6 +127,117 @@ export function LandingSlider() {
           <div className="mist mist-b" />
         </div>
 
+        {/* Hidden easter eggs — only visible on closer inspection */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden text-[10px] leading-none select-none">
+          {/* Tiny UFO hovering over the colonial village */}
+          <span
+            className="absolute"
+            style={{
+              left: "18%",
+              top: "34%",
+              fontSize: "14px",
+              opacity: 0.55,
+              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
+              animation: "ufoDrift 22s ease-in-out infinite",
+            }}
+            title="Is that… a UFO?"
+          >
+            🛸
+          </span>
+
+          {/* Astronaut waving from the treeline */}
+          <span
+            className="absolute"
+            style={{
+              left: "72%",
+              top: "62%",
+              fontSize: "13px",
+              opacity: 0.6,
+              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
+              transform: "rotate(-8deg)",
+            }}
+            title="Wrong century, buddy."
+          >
+            👨‍🚀
+          </span>
+
+          {/* A tiny dinosaur peeking out of the forest */}
+          <span
+            className="absolute"
+            style={{
+              left: "44%",
+              top: "78%",
+              fontSize: "12px",
+              opacity: 0.55,
+              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
+            }}
+            title="Rawr."
+          >
+            🦖
+          </span>
+
+          {/* Little pirate ship on the river */}
+          <span
+            className="absolute"
+            style={{
+              left: "6%",
+              top: "70%",
+              fontSize: "13px",
+              opacity: 0.6,
+              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
+              animation: "shipBob 9s ease-in-out infinite",
+            }}
+            title="Yo ho ho."
+          >
+            🏴‍☠️
+          </span>
+
+          {/* Cat napping on a rooftop */}
+          <span
+            className="absolute"
+            style={{
+              left: "31%",
+              top: "55%",
+              fontSize: "10px",
+              opacity: 0.6,
+              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
+            }}
+            title="Zzz."
+          >
+            🐈
+          </span>
+
+          {/* Hot air balloon drifting high */}
+          <span
+            className="absolute"
+            style={{
+              left: "60%",
+              top: "12%",
+              fontSize: "15px",
+              opacity: 0.55,
+              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
+              animation: "balloonFloat 30s ease-in-out infinite",
+            }}
+            title="Up, up and away."
+          >
+            🎈
+          </span>
+
+          {/* A tiny yeti in the underbrush */}
+          <span
+            className="absolute"
+            style={{
+              left: "88%",
+              top: "82%",
+              fontSize: "11px",
+              opacity: 0.5,
+              filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
+            }}
+            title="Bigfoot? In Manhattan?"
+          >
+            🦧
+          </span>
+        </div>
 
       </button>
 
