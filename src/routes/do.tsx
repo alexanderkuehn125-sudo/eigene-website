@@ -36,11 +36,16 @@ import img32 from "@/assets/photos/DSC_0134_11.jpeg.asset.json";
 import img33 from "@/assets/photos/DSC_0140_9.jpeg.asset.json";
 import img34 from "@/assets/photos/DSC_0174.jpeg.asset.json";
 import img35 from "@/assets/photos/DSC_0206_4.jpeg.asset.json";
-import img36 from "@/assets/photos/DSC_0213_4.jpeg.asset.json";
-import img37 from "@/assets/photos/DSC_0225_2.jpeg.asset.json";
-import img38 from "@/assets/photos/DSC_0268_3.jpeg.asset.json";
-import img39 from "@/assets/photos/DSC_0341.jpeg.asset.json";
-import img40 from "@/assets/photos/DSCF0023.jpeg.asset.json";
+import img36 from "@/assets/photos/DSC_0213_4-2.jpeg.asset.json";
+import img37 from "@/assets/photos/DSC_0225_2-2.jpeg.asset.json";
+import img38 from "@/assets/photos/DSC_0268_3-2.jpeg.asset.json";
+import img39 from "@/assets/photos/DSC_0341-2.jpeg.asset.json";
+import img40 from "@/assets/photos/DSCF0023-2.jpeg.asset.json";
+import img41 from "@/assets/photos/DSCF0029.jpeg.asset.json";
+import img42 from "@/assets/photos/DSCF0030.jpeg.asset.json";
+import img43 from "@/assets/photos/DSCF0033.jpeg.asset.json";
+import img44 from "@/assets/photos/DSCF0036.jpeg.asset.json";
+import img45 from "@/assets/photos/DSCF0269.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -331,6 +336,41 @@ const photos: readonly Photo[] = [
     title: "Lava Jato",
     caption: "Wandmalerei, Kabel, Sonne.",
     span: "wide",
+  },
+  {
+    id: "p42",
+    src: img42.url,
+    title: "Zeppelinfeld I",
+    caption: "Steintreppe, Fassade, Zeit.",
+    span: "tall",
+  },
+  {
+    id: "p43",
+    src: img43.url,
+    title: "Portal",
+    caption: "Schwarze Tür, grüne Marken, Sandstein.",
+    span: "tall",
+  },
+  {
+    id: "p45",
+    src: img45.url,
+    title: "Saída",
+    caption: "Leere Ränge, ein Ausgang, Türkis.",
+    span: "wide",
+  },
+  {
+    id: "p44",
+    src: img44.url,
+    title: "Damen",
+    caption: "Verwitterte Wand, kleines Wort.",
+    span: "tall",
+  },
+  {
+    id: "p41",
+    src: img41.url,
+    title: "Zeppelinfeld II",
+    caption: "Aufstieg gegen Wolken.",
+    span: "tall",
   },
 ] as const;
 
