@@ -180,7 +180,7 @@ function DoPage() {
         </section>
 
         {/* Grid */}
-        <section className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:grid-cols-3 md:gap-5">
+        <section className="mx-auto mt-12 grid w-full max-w-[66%] grid-cols-1 gap-3 sm:grid-cols-2 md:mt-16 md:grid-cols-3 md:gap-4">
           {photos.map((p, i) => (
             <button
               key={p.id}
