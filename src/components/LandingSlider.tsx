@@ -280,6 +280,14 @@ export function LandingSlider() {
         {/* A silent airliner contrail crossing the sky */}
         <span aria-hidden className="contrail" />
 
+        {/* Slow drifting cloud wisps — same calm breath as the smoke on the left */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <span className="cloud-wisp" style={{ top: "9%",  width: "26vw", animationDuration: "110s", animationDelay: "0s"  }} />
+          <span className="cloud-wisp" style={{ top: "18%", width: "34vw", animationDuration: "150s", animationDelay: "-40s", opacity: 0.7 }} />
+          <span className="cloud-wisp" style={{ top: "26%", width: "20vw", animationDuration: "90s",  animationDelay: "-20s" }} />
+        </div>
+
+
         {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
           <span
