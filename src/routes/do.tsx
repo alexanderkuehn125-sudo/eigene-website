@@ -49,6 +49,9 @@ import img44 from "@/assets/photos/DSCF0036.jpeg.asset.json";
 import img45 from "@/assets/photos/DSCF0269.jpeg.asset.json";
 import img46 from "@/assets/photos/J-Brandner1.jpeg.asset.json";
 import img47 from "@/assets/photos/media-park_2.jpeg.asset.json";
+import img48 from "@/assets/photos/NYC_489_30.jpeg.asset.json";
+import img49 from "@/assets/photos/IMG_8116.jpeg.asset.json";
+import img50 from "@/assets/photos/NYC_489_477.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
