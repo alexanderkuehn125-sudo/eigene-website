@@ -375,6 +375,20 @@ const photos: readonly Photo[] = [
     caption: "Aufstieg gegen Wolken.",
     span: "tall",
   },
+  {
+    id: "p44",
+    src: img46.url,
+    title: "Brothandwerk",
+    caption: "Blick durchs Schaufenster, Mehl in der Luft.",
+    span: "wide",
+  },
+  {
+    id: "p45",
+    src: img47.url,
+    title: "MediaPark",
+    caption: "Gelbe Rahmen, Glas, Spiegelung.",
+    span: "tall",
+  },
 ] as const;
 
 
