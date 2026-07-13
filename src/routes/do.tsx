@@ -36,11 +36,16 @@ import img32 from "@/assets/photos/DSC_0134_11.jpeg.asset.json";
 import img33 from "@/assets/photos/DSC_0140_9.jpeg.asset.json";
 import img34 from "@/assets/photos/DSC_0174.jpeg.asset.json";
 import img35 from "@/assets/photos/DSC_0206_4.jpeg.asset.json";
-import img36 from "@/assets/photos/DSC_0213_4.jpeg.asset.json";
-import img37 from "@/assets/photos/DSC_0225_2.jpeg.asset.json";
-import img38 from "@/assets/photos/DSC_0268_3.jpeg.asset.json";
-import img39 from "@/assets/photos/DSC_0341.jpeg.asset.json";
-import img40 from "@/assets/photos/DSCF0023.jpeg.asset.json";
+import img36 from "@/assets/photos/DSC_0213_4-2.jpeg.asset.json";
+import img37 from "@/assets/photos/DSC_0225_2-2.jpeg.asset.json";
+import img38 from "@/assets/photos/DSC_0268_3-2.jpeg.asset.json";
+import img39 from "@/assets/photos/DSC_0341-2.jpeg.asset.json";
+import img40 from "@/assets/photos/DSCF0023-2.jpeg.asset.json";
+import img41 from "@/assets/photos/DSCF0029.jpeg.asset.json";
+import img42 from "@/assets/photos/DSCF0030.jpeg.asset.json";
+import img43 from "@/assets/photos/DSCF0033.jpeg.asset.json";
+import img44 from "@/assets/photos/DSCF0036.jpeg.asset.json";
+import img45 from "@/assets/photos/DSCF0269.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
