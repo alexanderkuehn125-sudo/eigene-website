@@ -49,6 +49,9 @@ import img44 from "@/assets/photos/DSCF0036.jpeg.asset.json";
 import img45 from "@/assets/photos/DSCF0269.jpeg.asset.json";
 import img46 from "@/assets/photos/J-Brandner1.jpeg.asset.json";
 import img47 from "@/assets/photos/media-park_2.jpeg.asset.json";
+import img48 from "@/assets/photos/NYC_489_30.jpeg.asset.json";
+import img49 from "@/assets/photos/IMG_8116.jpeg.asset.json";
+import img50 from "@/assets/photos/NYC_489_477.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -387,6 +390,27 @@ const photos: readonly Photo[] = [
     src: img47.url,
     title: "MediaPark",
     caption: "Gelbe Rahmen, Glas, Spiegelung.",
+    span: "tall",
+  },
+  {
+    id: "p46",
+    src: img48.url,
+    title: "Downtown",
+    caption: "U-Bahn, New York, ein Waggon voller Wege.",
+    span: "tall",
+  },
+  {
+    id: "p47",
+    src: img49.url,
+    title: "Rote Kammer",
+    caption: "Angelehnte Tür, Pendellampe, gedämpftes Licht.",
+    span: "tall",
+  },
+  {
+    id: "p48",
+    src: img50.url,
+    title: "General Barber",
+    caption: "Rot-weiße Markise, Ziegelwand, Barbier-Pol.",
     span: "tall",
   },
 ] as const;
