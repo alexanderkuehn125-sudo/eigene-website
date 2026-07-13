@@ -399,13 +399,14 @@ export function LandingSlider() {
               <span
                 className="absolute leading-none select-none"
                 style={{
-                  left: BALLOON_STYLE.left,
-                  top: BALLOON_STYLE.top,
-                  fontSize: `${36 * ZOOM}px`,
-                  animation: BALLOON_ANIM,
+                  left: BALLOON_POS.left,
+                  top: BALLOON_POS.top,
+                  transform: `scale(${ZOOM})`,
+                  transformOrigin: "top left",
+                  animation: BALLOON_FLOAT,
                 }}
               >
-                🎈
+                <Balloon />
               </span>
             </div>
           </div>
