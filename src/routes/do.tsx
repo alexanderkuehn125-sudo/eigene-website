@@ -21,6 +21,16 @@ import img17 from "@/assets/photos/DSC_0051_18.jpeg.asset.json";
 import img18 from "@/assets/photos/DSC_0051_20.jpeg.asset.json";
 import img19 from "@/assets/photos/DSC_0052_6.jpeg.asset.json";
 import img20 from "@/assets/photos/DSC_0052_16.jpeg.asset.json";
+import img21 from "@/assets/photos/DSC_0054_12.jpeg.asset.json";
+import img22 from "@/assets/photos/DSC_0059_30.jpeg.asset.json";
+import img23 from "@/assets/photos/DSC_0062_23.jpeg.asset.json";
+import img24 from "@/assets/photos/DSC_0064_28.jpeg.asset.json";
+import img25 from "@/assets/photos/DSC_0067_13.jpeg.asset.json";
+import img26 from "@/assets/photos/DSC_0074_10.jpeg.asset.json";
+import img27 from "@/assets/photos/DSC_0080_16.jpeg.asset.json";
+import img28 from "@/assets/photos/DSC_0095_13.jpeg.asset.json";
+import img29 from "@/assets/photos/DSC_0097_19.jpeg.asset.json";
+import img30 from "@/assets/photos/DSC_0099_19.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -183,6 +193,76 @@ const photos: readonly Photo[] = [
     src: img20.url,
     title: "Astoux & Brun",
     caption: "Zebrastreifen, Passanten, ein Mittag in Cannes.",
+    span: "wide",
+  },
+  {
+    id: "p21",
+    src: img21.url,
+    title: "Ernest",
+    caption: "Eckgebäude im Goldlicht, Cannes seit 1936.",
+    span: "tall",
+  },
+  {
+    id: "p22",
+    src: img22.url,
+    title: "Salopetă",
+    caption: "Werbebanner vor Bukarester Fassaden.",
+    span: "wide",
+  },
+  {
+    id: "p23",
+    src: img23.url,
+    title: "Toni Neuber",
+    caption: "Stahllager, Garagen, Berliner Hinterhof.",
+    span: "wide",
+  },
+  {
+    id: "p24",
+    src: img24.url,
+    title: "Plattenbau",
+    caption: "Bukarester Fassade, Balkon an Balkon.",
+    span: "wide",
+  },
+  {
+    id: "p25",
+    src: img25.url,
+    title: "Olympia",
+    caption: "Kinofassade, alte Plakate, leerer Vorplatz.",
+    span: "tall",
+  },
+  {
+    id: "p26",
+    src: img26.url,
+    title: "Hochhaus",
+    caption: "Winterlicht auf Betonzeilen, Berlin.",
+    span: "square",
+  },
+  {
+    id: "p27",
+    src: img27.url,
+    title: "Reachstacker",
+    caption: "Container gegen Abendsonne, Staub in der Luft.",
+    span: "wide",
+  },
+  {
+    id: "p28",
+    src: img28.url,
+    title: "FIAT",
+    caption: "Brücke über eine leere Landstraße.",
+    span: "wide",
+  },
+  {
+    id: "p29",
+    src: img29.url,
+    title: "Bankside",
+    caption: "Nasser Nachmittag, rosa Stühle, blauer Schirm.",
+    span: "wide",
+  },
+  {
+    id: "p30",
+    src: img30.url,
+    title: "Borough Market",
+    caption: "Menschen in Bewegung unter den Trägern.",
     span: "wide",
   },
 ] as const;
