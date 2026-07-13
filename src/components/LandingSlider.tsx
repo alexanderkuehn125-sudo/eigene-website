@@ -146,17 +146,8 @@ export function LandingSlider() {
         type="button"
         onClick={() => goSide("be")}
         aria-label="Enter Portfolio"
-        onMouseMove={(e) => {
-          if (!zoomOn || isMobile) return;
-          const rect = beSideRef.current?.getBoundingClientRect();
-          if (!rect) return;
-          setLens({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-            visible: true,
-          });
-        }}
-        onMouseLeave={() => setLens((l) => ({ ...l, visible: false }))}
+        onMouseMove={makeLensHandler(beSideRef, beBalloonRef, setBeLens)}
+        onMouseLeave={() => setBeLens((l) => ({ ...l, visible: false, reveal: false }))}
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
         style={zoomOn && !isMobile ? { cursor: "zoom-in" } : undefined}
       >
@@ -181,41 +172,21 @@ export function LandingSlider() {
           <div className="mist mist-b" />
         </div>
 
-        {/* Hidden easter eggs — faint by default, revealed by the zoom lens */}
+        {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
-          {(() => {
-            const rect = beSideRef.current?.getBoundingClientRect();
-            return EGGS.map((egg, i) => {
-              let revealed = false;
-              if (zoomOn && lens.visible && rect) {
-                const ex = (egg.left / 100) * rect.width;
-                const ey = (egg.top / 100) * rect.height;
-                revealed = Math.hypot(ex - lens.x, ey - lens.y) < LENS_SIZE / 2;
-              }
-              return (
-                <span
-                  key={i}
-                  className="absolute"
-                  style={{
-                    left: `${egg.left}%`,
-                    top: `${egg.top}%`,
-                    fontSize: `${egg.size}px`,
-                    opacity: revealed ? 1 : 0.55,
-                    filter: revealed
-                      ? "drop-shadow(0 2px 4px rgba(0,0,0,0.55))"
-                      : `hue-rotate(${egg.hue}deg) saturate(1.8) drop-shadow(0 1px 3px rgba(0,0,0,0.5))`,
-                    mixBlendMode: "normal",
-                    transform: egg.rotate ? `rotate(${egg.rotate}deg)` : undefined,
-                    animation: egg.animation,
-                    transition: "opacity 180ms ease-out, filter 180ms ease-out",
-                  }}
-                  title={egg.title}
-                >
-                  {egg.emoji}
-                </span>
-              );
-            });
-          })()}
+          <span
+            ref={beBalloonRef}
+            className="absolute"
+            style={{
+              ...BALLOON_STYLE,
+              opacity: beLens.reveal ? 1 : 0.55,
+              animation: BALLOON_ANIM,
+              transition: "opacity 180ms ease-out",
+            }}
+            title="Up, up and away."
+          >
+            🎈
+          </span>
         </div>
 
       </button>
