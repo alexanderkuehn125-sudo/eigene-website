@@ -376,6 +376,36 @@ const photos: readonly Photo[] = [
 ] as const;
 
 
+type LazyImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "loading"> & {
+  eager?: boolean;
+};
+
+function LazyImage({ eager, className, style, onLoad, ...rest }: LazyImageProps) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <img
+      {...rest}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      fetchPriority={eager ? "high" : "auto"}
+      draggable={false}
+      onLoad={(e) => {
+        setLoaded(true);
+        onLoad?.(e);
+      }}
+      className={className}
+      style={{
+        ...style,
+        opacity: loaded ? 1 : 0,
+        filter: loaded ? "blur(0px)" : "blur(18px)",
+        transform: loaded ? "scale(1)" : "scale(1.04)",
+        transition:
+          "opacity 700ms ease-out, filter 700ms ease-out, transform 900ms ease-out",
+      }}
+    />
+  );
+}
+
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [impressumOpen, setImpressumOpen] = useState(false);
