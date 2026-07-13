@@ -380,7 +380,7 @@ type LazyImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "loading"> & {
   eager?: boolean;
 };
 
-function LazyImage({ eager, className, style, onLoad, ...rest }: LazyImageProps) {
+function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
   const [loaded, setLoaded] = useState(false);
   return (
     <img
@@ -389,22 +389,16 @@ function LazyImage({ eager, className, style, onLoad, ...rest }: LazyImageProps)
       decoding="async"
       fetchPriority={eager ? "high" : "auto"}
       draggable={false}
+      data-loaded={loaded}
       onLoad={(e) => {
         setLoaded(true);
         onLoad?.(e);
       }}
-      className={className}
-      style={{
-        ...style,
-        opacity: loaded ? 1 : 0,
-        filter: loaded ? "blur(0px)" : "blur(18px)",
-        transform: loaded ? "scale(1)" : "scale(1.04)",
-        transition:
-          "opacity 700ms ease-out, filter 700ms ease-out, transform 900ms ease-out",
-      }}
+      className={`${className} opacity-0 blur-xl data-[loaded=true]:opacity-100 data-[loaded=true]:blur-0 transition-[opacity,filter] duration-700 ease-out`}
     />
   );
 }
+
 
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
