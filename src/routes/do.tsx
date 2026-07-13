@@ -120,6 +120,11 @@ function DoPage() {
           </span>
         </header>
 
+        <section className="mt-16 md:mt-24">
+          <p className="text-[11px] uppercase tracking-[0.4em] opacity-60">
+            Ausstellung
+          </p>
+        </section>
 
         {/* Grid */}
         <section className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:grid-cols-3 md:gap-5">
