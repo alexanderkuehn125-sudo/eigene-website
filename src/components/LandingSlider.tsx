@@ -322,23 +322,28 @@ export function LandingSlider() {
       />
 
 
-      {/* Zoom lens — reveals hidden details on the BE side */}
-      {zoomOn && !isMobile && lens.visible && (() => {
-        const rect = beSideRef.current?.getBoundingClientRect();
+      {/* Zoom lenses — one per side */}
+      {(["be", "do"] as const).map((side) => {
+        const lensState = side === "be" ? beLens : doLens;
+        const sideRef = side === "be" ? beSideRef : doSideRef;
+        const img = side === "be" ? beImg : doImg;
+        if (!zoomOn || isMobile || !lensState.visible) return null;
+        const rect = sideRef.current?.getBoundingClientRect();
         if (!rect) return null;
         const bgW = rect.width * ZOOM;
         const bgH = rect.height * ZOOM;
-        const offsetX = LENS_SIZE / 2 - lens.x * ZOOM;
-        const offsetY = LENS_SIZE / 2 - lens.y * ZOOM;
+        const offsetX = LENS_SIZE / 2 - lensState.x * ZOOM;
+        const offsetY = LENS_SIZE / 2 - lensState.y * ZOOM;
         return (
           <div
+            key={side}
             aria-hidden
             className="pointer-events-none absolute z-40 overflow-hidden rounded-full border-2 border-white/80 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
             style={{
               width: LENS_SIZE,
               height: LENS_SIZE,
-              left: lens.x - LENS_SIZE / 2,
-              top: lens.y - LENS_SIZE / 2,
+              left: lensState.x - LENS_SIZE / 2,
+              top: lensState.y - LENS_SIZE / 2,
             }}
           >
             <div
@@ -350,30 +355,26 @@ export function LandingSlider() {
               }}
             >
               <img
-                src={beImg}
+                src={img}
                 alt=""
                 className="block h-full w-full object-cover"
                 draggable={false}
               />
-              {EGGS.map((egg, i) => (
-                <span
-                  key={i}
-                  className="absolute leading-none select-none"
-                  style={{
-                    left: `${egg.left}%`,
-                    top: `${egg.top}%`,
-                    fontSize: `${egg.size * ZOOM}px`,
-                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.55))",
-                    transform: egg.rotate ? `rotate(${egg.rotate}deg)` : undefined,
-                  }}
-                >
-                  {egg.emoji}
-                </span>
-              ))}
+              <span
+                className="absolute leading-none select-none"
+                style={{
+                  left: BALLOON_STYLE.left,
+                  top: BALLOON_STYLE.top,
+                  fontSize: `${36 * ZOOM}px`,
+                  animation: BALLOON_ANIM,
+                }}
+              >
+                🎈
+              </span>
             </div>
           </div>
         );
-      })()}
+      })}
 
 
 
