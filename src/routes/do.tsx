@@ -364,7 +364,7 @@ function DoPage() {
             onClick={() => setOpenId(null)}
           >
             <div
-              className="relative flex w-full max-w-6xl max-h-[92vh] flex-col overflow-hidden border border-[#f2ede0]/20 bg-[#faf6ed] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
+              className="relative flex max-h-[92vh] max-w-[95vw] flex-col overflow-hidden border border-[#f2ede0]/20 bg-[#faf6ed] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
               style={{ color: "#2d2a22" }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -380,7 +380,7 @@ function DoPage() {
                 <img
                   src={active.src}
                   alt={active.title}
-                  className="max-h-[72vh] w-auto max-w-full object-contain"
+                  className="block max-h-[82vh] max-w-[95vw] w-auto h-auto object-contain"
                   draggable={false}
                 />
                 <span
