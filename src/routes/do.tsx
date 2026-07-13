@@ -375,6 +375,50 @@ const photos: readonly Photo[] = [
 ] as const;
 
 
+function LazyPhoto({
+  src,
+  alt,
+  eager = false,
+}: {
+  src: string;
+  alt: string;
+  eager?: boolean;
+}) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <>
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 transition-opacity duration-700 ease-out ${
+          loaded ? "opacity-0" : "opacity-100"
+        }`}
+        style={{
+          background:
+            "linear-gradient(135deg, #d9cba8 0%, #c9b891 55%, #a89572 100%)",
+        }}
+      />
+      <img
+        src={src}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={eager ? "high" : "auto"}
+        onLoad={() => setLoaded(true)}
+        className={`block h-auto w-full object-cover transition-[filter,opacity,transform] duration-[900ms] ease-out group-hover:scale-[1.04] ${
+          loaded
+            ? "opacity-100 blur-0 scale-100"
+            : "opacity-0 blur-xl scale-[1.03]"
+        }`}
+        draggable={false}
+      />
+    </>
+  );
+}
+
+
+
+
+
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [impressumOpen, setImpressumOpen] = useState(false);
