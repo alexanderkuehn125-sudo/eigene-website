@@ -44,8 +44,35 @@ export function LandingSlider() {
   });
   const ZOOM = 2.5;
   const LENS_SIZE = 270;
-  const BALLOON_ANIM = "balloonFloat 34s ease-in-out infinite, rainbowHue 6s linear infinite";
-  const BALLOON_STYLE = { left: "62%", top: "18%", fontSize: "36px" };
+  const BALLOON_FLOAT = "balloonFloat 34s ease-in-out infinite";
+  const BALLOON_POS = { left: "62%", top: "18%" };
+
+  const Balloon = () => (
+    <svg
+      width="40"
+      height="64"
+      viewBox="0 0 40 64"
+      style={{ overflow: "visible", display: "block" }}
+    >
+      {/* Thin string — drawn first so it sits behind the knot */}
+      <path
+        d="M20 44 Q 17 50 20 56 T 20 64"
+        stroke="rgba(15,15,15,0.9)"
+        strokeWidth="0.6"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Balloon body — rainbow cycles via filter animation */}
+      <g style={{ animation: "rainbowHue 6s linear infinite", transformOrigin: "20px 22px" }}>
+        <path
+          d="M20 2 C 30 2 36 10 36 20 C 36 30 28 40 22 42 L 20 44 L 18 42 C 12 40 4 30 4 20 C 4 10 10 2 20 2 Z"
+          fill="#e63946"
+        />
+        {/* Highlight */}
+        <ellipse cx="14" cy="14" rx="3" ry="4.5" fill="rgba(255,255,255,0.55)" />
+      </g>
+    </svg>
+  );
 
   const makeLensHandler = (
     sideRef: React.RefObject<HTMLButtonElement | null>,
@@ -191,14 +218,12 @@ export function LandingSlider() {
             ref={beBalloonRef}
             className="absolute"
             style={{
-              ...BALLOON_STYLE,
-              opacity: 1,
-              animation: BALLOON_ANIM,
-              transition: "opacity 180ms ease-out",
+              ...BALLOON_POS,
+              animation: BALLOON_FLOAT,
             }}
             title="Up, up and away."
           >
-            🎈
+            <Balloon />
           </span>
         </div>
 
@@ -247,14 +272,12 @@ export function LandingSlider() {
             ref={doBalloonRef}
             className="absolute"
             style={{
-              ...BALLOON_STYLE,
-              opacity: 1,
-              animation: BALLOON_ANIM,
-              transition: "opacity 180ms ease-out",
+              ...BALLOON_POS,
+              animation: BALLOON_FLOAT,
             }}
             title="Up, up and away."
           >
-            🎈
+            <Balloon />
           </span>
         </div>
       </button>
@@ -376,13 +399,14 @@ export function LandingSlider() {
               <span
                 className="absolute leading-none select-none"
                 style={{
-                  left: BALLOON_STYLE.left,
-                  top: BALLOON_STYLE.top,
-                  fontSize: `${36 * ZOOM}px`,
-                  animation: BALLOON_ANIM,
+                  left: BALLOON_POS.left,
+                  top: BALLOON_POS.top,
+                  transform: `scale(${ZOOM})`,
+                  transformOrigin: "top left",
+                  animation: BALLOON_FLOAT,
                 }}
               >
-                🎈
+                <Balloon />
               </span>
             </div>
           </div>
