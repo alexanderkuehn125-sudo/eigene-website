@@ -382,9 +382,19 @@ type LazyImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "loading"> & {
 
 function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
   const [loaded, setLoaded] = useState(false);
+  const ref = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    // Bilder aus dem Browser-Cache feuern kein onLoad -> beim Mount prüfen.
+    if (ref.current?.complete && ref.current.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, []);
+
   return (
     <img
       {...rest}
+      ref={ref}
       loading={eager ? "eager" : "lazy"}
       decoding="async"
       fetchPriority={eager ? "high" : "auto"}
@@ -398,6 +408,7 @@ function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
     />
   );
 }
+
 
 
 function DoPage() {
