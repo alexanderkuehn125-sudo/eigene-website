@@ -260,7 +260,7 @@ function DoPage() {
         </section>
 
         {/* Grid */}
-        <section className="mt-12 columns-1 gap-3 sm:columns-2 md:mt-16 md:columns-3 md:gap-4">
+        <section className="mt-16 columns-1 gap-3 sm:columns-2 md:mt-24 md:columns-3 md:gap-4">
           {photos.map((p, i) => (
             <button
               key={p.id}
