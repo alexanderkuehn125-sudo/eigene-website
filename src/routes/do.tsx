@@ -337,6 +337,41 @@ const photos: readonly Photo[] = [
     caption: "Wandmalerei, Kabel, Sonne.",
     span: "wide",
   },
+  {
+    id: "p42",
+    src: img42.url,
+    title: "Zeppelinfeld I",
+    caption: "Steintreppe, Fassade, Zeit.",
+    span: "tall",
+  },
+  {
+    id: "p43",
+    src: img43.url,
+    title: "Portal",
+    caption: "Schwarze Tür, grüne Marken, Sandstein.",
+    span: "tall",
+  },
+  {
+    id: "p45",
+    src: img45.url,
+    title: "Saída",
+    caption: "Leere Ränge, ein Ausgang, Türkis.",
+    span: "wide",
+  },
+  {
+    id: "p44",
+    src: img44.url,
+    title: "Damen",
+    caption: "Verwitterte Wand, kleines Wort.",
+    span: "tall",
+  },
+  {
+    id: "p41",
+    src: img41.url,
+    title: "Zeppelinfeld II",
+    caption: "Aufstieg gegen Wolken.",
+    span: "tall",
+  },
 ] as const;
 
 
