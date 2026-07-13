@@ -411,10 +411,38 @@ function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
 
 
 
+function preloadImage(src: string) {
+  if (typeof window === "undefined") return;
+  const img = new Image();
+  img.decoding = "async";
+  img.src = src;
+  // decode() ist optional (nicht überall verfügbar) — Fehler bewusst schlucken.
+  img.decode?.().catch(() => {});
+}
+
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [impressumOpen, setImpressumOpen] = useState(false);
   const active = photos.find((p) => p.id === openId);
+
+  // Beim Öffnen der Lightbox: aktives Bild + Nachbarn vorwärmen,
+  // damit Weiter/Zurück ohne Ladepause bleibt.
+  useEffect(() => {
+    if (!openId) return;
+    const idx = photos.findIndex((p) => p.id === openId);
+    if (idx < 0) return;
+    preloadImage(photos[idx].src);
+    preloadImage(photos[(idx + 1) % photos.length].src);
+    preloadImage(photos[(idx - 1 + photos.length) % photos.length].src);
+  }, [openId]);
+
+  const openPhoto = (id: string) => {
+    const p = photos.find((x) => x.id === id);
+    if (p) preloadImage(p.src);
+    setOpenId(id);
+  };
+
+
 
   useEffect(() => {
     if (!impressumOpen) return;
