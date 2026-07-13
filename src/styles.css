@@ -244,13 +244,17 @@
 }
 @keyframes rainbowHue {
   0%   { filter: hue-rotate(0deg) saturate(1.9)
-                 drop-shadow(0 0 1px rgba(0,0,0,0.95))
-                 drop-shadow(0 0 2px rgba(0,0,0,0.85))
-                 drop-shadow(0 2px 5px rgba(0,0,0,0.6)); }
+                 drop-shadow(0.6px 0 0 rgba(0,0,0,0.95))
+                 drop-shadow(-0.6px 0 0 rgba(0,0,0,0.95))
+                 drop-shadow(0 0.6px 0 rgba(0,0,0,0.95))
+                 drop-shadow(0 -0.6px 0 rgba(0,0,0,0.95))
+                 drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
   100% { filter: hue-rotate(360deg) saturate(1.9)
-                 drop-shadow(0 0 1px rgba(0,0,0,0.95))
-                 drop-shadow(0 0 2px rgba(0,0,0,0.85))
-                 drop-shadow(0 2px 5px rgba(0,0,0,0.6)); }
+                 drop-shadow(0.6px 0 0 rgba(0,0,0,0.95))
+                 drop-shadow(-0.6px 0 0 rgba(0,0,0,0.95))
+                 drop-shadow(0 0.6px 0 rgba(0,0,0,0.95))
+                 drop-shadow(0 -0.6px 0 rgba(0,0,0,0.95))
+                 drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
 }
 
 
