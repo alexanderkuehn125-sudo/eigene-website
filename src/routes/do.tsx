@@ -393,7 +393,7 @@ function DoPage() {
                 />
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-black/40 px-2.5 py-1 text-[10px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:text-[11px]"
+                  className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/40 px-1.5 py-[2px] text-[7px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:text-[7px]"
                 >
                   © Alexander Kühn
                 </span>
