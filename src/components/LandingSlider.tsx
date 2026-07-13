@@ -212,20 +212,6 @@ export function LandingSlider() {
           <div className="mist mist-b" />
         </div>
 
-        {/* Chimney smoke — rising slowly from village rooftops */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <span className="smoke" style={{ left: "23%", top: "72%", animationDelay: "0s",  animationDuration: "12s" }} />
-          <span className="smoke" style={{ left: "23%", top: "72%", animationDelay: "4s",  animationDuration: "12s" }} />
-          <span className="smoke" style={{ left: "23%", top: "72%", animationDelay: "8s",  animationDuration: "12s" }} />
-          <span className="smoke" style={{ left: "32%", top: "75%", animationDelay: "1.5s", animationDuration: "14s" }} />
-          <span className="smoke" style={{ left: "32%", top: "75%", animationDelay: "8s",   animationDuration: "14s" }} />
-          <span className="smoke" style={{ left: "40%", top: "70%", animationDelay: "0s",   animationDuration: "13s" }} />
-          <span className="smoke" style={{ left: "40%", top: "70%", animationDelay: "6.5s", animationDuration: "13s" }} />
-          <span className="smoke" style={{ left: "48%", top: "76%", animationDelay: "3s",   animationDuration: "15s" }} />
-          <span className="smoke" style={{ left: "48%", top: "76%", animationDelay: "10s",  animationDuration: "15s" }} />
-        </div>
-
-
         {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
           <span
@@ -279,14 +265,6 @@ export function LandingSlider() {
         <span aria-hidden className="window-light window-light--fast" style={{ left: "49%", top: "71%" }} />
         {/* A silent airliner contrail crossing the sky */}
         <span aria-hidden className="contrail" />
-
-        {/* Slow drifting cloud wisps — same calm breath as the smoke on the left */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <span className="cloud-wisp" style={{ top: "9%",  width: "26vw", animationDuration: "110s", animationDelay: "0s"  }} />
-          <span className="cloud-wisp" style={{ top: "18%", width: "34vw", animationDuration: "150s", animationDelay: "-40s", opacity: 0.7 }} />
-          <span className="cloud-wisp" style={{ top: "26%", width: "20vw", animationDuration: "90s",  animationDelay: "-20s" }} />
-        </div>
-
 
         {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">

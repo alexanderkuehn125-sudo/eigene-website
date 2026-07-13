@@ -199,53 +199,10 @@
   border-radius: 9999px;
   background: #ffd88a;
   box-shadow: 0 0 8px 2px rgba(255, 216, 138, 0.7);
-  animation: window-blink 12s ease-in-out infinite;
+  animation: window-blink 6s ease-in-out infinite;
 }
-.window-light--slow { animation-duration: 18s; animation-delay: 3s; }
-.window-light--fast { animation-duration: 8s;  animation-delay: 1s; }
-
-/* -- Shared 24s breath: chimney smoke (left) + drifting sky wisps (right) - */
-
-@keyframes smokeRise {
-  0%   { transform: translate(0, 0) scale(0.55); opacity: 0; }
-  15%  { opacity: 0.6; }
-  60%  { transform: translate(-6px, -70px) scale(1.4); opacity: 0.35; }
-  100% { transform: translate(-16px, -150px) scale(2.3); opacity: 0; }
-}
-.smoke {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 9999px;
-  background: radial-gradient(circle at 40% 40%,
-              rgba(245,238,225,0.8) 0%,
-              rgba(228,218,198,0.5) 45%,
-              rgba(210,200,180,0) 75%);
-  filter: blur(3px);
-  transform-origin: center bottom;
-  animation: smokeRise 12s ease-out infinite;
-  pointer-events: none;
-}
-
-@keyframes cloudDrift {
-  0%   { transform: translate3d(-20%, 0, 0); opacity: 0; }
-  15%  { opacity: 0.4; }
-  85%  { opacity: 0.4; }
-  100% { transform: translate3d(120%, 0, 0); opacity: 0; }
-}
-.cloud-wisp {
-  position: absolute;
-  height: 22px;
-  border-radius: 9999px;
-  background: linear-gradient(90deg,
-              rgba(255,255,255,0) 0%,
-              rgba(255,255,255,0.55) 30%,
-              rgba(255,255,255,0.55) 70%,
-              rgba(255,255,255,0) 100%);
-  filter: blur(6px);
-  animation: cloudDrift 96s linear infinite;
-  pointer-events: none;
-}
+.window-light--slow { animation-duration: 11s; animation-delay: 2s; }
+.window-light--fast { animation-duration: 4s;  animation-delay: 1s; }
 
 @keyframes contrail-cross {
   0%   { transform: translate(-10vw, 0) rotate(6deg); opacity: 0; }
