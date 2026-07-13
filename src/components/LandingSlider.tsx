@@ -23,8 +23,17 @@ export function LandingSlider() {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
+  const beSideRef = useRef<HTMLButtonElement>(null);
   const draggingRef = useRef(false);
   const [pct, setPct] = useState(50); // % of the "be" side visible (from left/top)
+  const [zoomOn, setZoomOn] = useState(false);
+  const [lens, setLens] = useState<{ x: number; y: number; visible: boolean }>({
+    x: 0,
+    y: 0,
+    visible: false,
+  });
+  const ZOOM = 2.5;
+  const LENS_SIZE = 180;
 
   const updateFromEvent = useCallback(
     (clientX: number, clientY: number) => {
@@ -101,10 +110,23 @@ export function LandingSlider() {
     >
       {/* BE side — 18th century, full bleed */}
       <button
+        ref={beSideRef}
         type="button"
         onClick={() => goSide("be")}
         aria-label="Enter Portfolio"
+        onMouseMove={(e) => {
+          if (!zoomOn || isMobile) return;
+          const rect = beSideRef.current?.getBoundingClientRect();
+          if (!rect) return;
+          setLens({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top,
+            visible: true,
+          });
+        }}
+        onMouseLeave={() => setLens((l) => ({ ...l, visible: false }))}
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
+        style={zoomOn && !isMobile ? { cursor: "zoom-in" } : undefined}
       >
         <img
           src={beImg}
@@ -348,10 +370,62 @@ export function LandingSlider() {
       />
 
 
+      {/* Zoom lens — reveals hidden details on the BE side */}
+      {zoomOn && !isMobile && lens.visible && (() => {
+        const rect = beSideRef.current?.getBoundingClientRect();
+        if (!rect) return null;
+        const bgW = rect.width * ZOOM;
+        const bgH = rect.height * ZOOM;
+        const bgX = -(lens.x * ZOOM - LENS_SIZE / 2);
+        const bgY = -(lens.y * ZOOM - LENS_SIZE / 2);
+        return (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute z-40 rounded-full border-2 border-white/80 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
+            style={{
+              width: LENS_SIZE,
+              height: LENS_SIZE,
+              left: lens.x - LENS_SIZE / 2,
+              top: lens.y - LENS_SIZE / 2,
+              backgroundImage: `url(${beImg})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: `${bgW}px ${bgH}px`,
+              backgroundPosition: `${bgX}px ${bgY}px`,
+            }}
+          />
+        );
+      })()}
+
+      {/* Zoom toggle */}
+      {!isMobile && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setZoomOn((z) => !z);
+            setLens((l) => ({ ...l, visible: false }));
+          }}
+          aria-pressed={zoomOn}
+          aria-label="Zoom umschalten"
+          className={`absolute bottom-4 left-4 z-30 flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] uppercase tracking-[0.3em] backdrop-blur-sm transition-colors ${
+            zoomOn
+              ? "bg-white/90 text-[#1a1a1a]"
+              : "bg-black/30 text-white/85 hover:bg-black/45"
+          }`}
+        >
+          <span aria-hidden>🔍</span>
+          <span>{zoomOn ? "Zoom an" : "Zoom"}</span>
+        </button>
+      )}
+
       {/* Foot hint */}
       <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
         <p className="rounded-full bg-black/25 px-4 py-1.5 text-[10px] uppercase tracking-[0.4em] text-white/80 backdrop-blur-sm">
-          {isMobile ? "drag ↕ · tap a side to enter" : "drag ↔ · click a side to enter"}
+          {isMobile
+            ? "drag ↕ · tap a side to enter"
+            : zoomOn
+              ? "Zoom aktiv · Maus über das linke Bild bewegen"
+              : "drag ↔ · click a side to enter"}
         </p>
       </div>
     </section>
