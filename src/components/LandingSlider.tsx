@@ -24,35 +24,48 @@ export function LandingSlider() {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const beSideRef = useRef<HTMLButtonElement>(null);
+  const doSideRef = useRef<HTMLButtonElement>(null);
+  const beBalloonRef = useRef<HTMLSpanElement>(null);
+  const doBalloonRef = useRef<HTMLSpanElement>(null);
   const draggingRef = useRef(false);
   const [pct, setPct] = useState(50); // % of the "be" side visible (from left/top)
   const [zoomOn, setZoomOn] = useState(false);
-  const [lens, setLens] = useState<{ x: number; y: number; visible: boolean }>({
+  const [beLens, setBeLens] = useState<{ x: number; y: number; visible: boolean; reveal: boolean }>({
     x: 0,
     y: 0,
     visible: false,
+    reveal: false,
+  });
+  const [doLens, setDoLens] = useState<{ x: number; y: number; visible: boolean; reveal: boolean }>({
+    x: 0,
+    y: 0,
+    visible: false,
+    reveal: false,
   });
   const ZOOM = 2.5;
   const LENS_SIZE = 270;
+  const BALLOON_ANIM = "balloonFloat 34s ease-in-out infinite, rainbowHue 6s linear infinite";
+  const BALLOON_STYLE = { left: "62%", top: "18%", fontSize: "36px" };
 
-  const EGGS: Array<{
-    emoji: string;
-    left: number;
-    top: number;
-    size: number;
-    hue: number;
-    rotate?: number;
-    animation?: string;
-    title: string;
-  }> = [
-    { emoji: "🛸", left: 42, top: 12, size: 32, hue: 0, animation: "ufoDrift 26s ease-in-out infinite", title: "Is that… a UFO?" },
-    { emoji: "🧑‍🚀", left: 55, top: 58, size: 26, hue: 40, rotate: -8, title: "Wrong century, buddy." },
-    { emoji: "🦕", left: 42, top: 62, size: 28, hue: 90, title: "Rawr." },
-    { emoji: "⛵", left: 10, top: 54, size: 36, hue: 160, animation: "shipBob 14s ease-in-out infinite", title: "Yo ho ho." },
-    { emoji: "🐈‍⬛", left: 48, top: 66, size: 22, hue: 210, title: "Zzz." },
-    { emoji: "🎈", left: 68, top: 18, size: 32, hue: 260, animation: "balloonFloat 34s ease-in-out infinite", title: "Up, up and away." },
-    { emoji: "🦣", left: 50, top: 70, size: 28, hue: 310, title: "Ice-age tourist." },
-  ];
+  const makeLensHandler = (
+    sideRef: React.RefObject<HTMLButtonElement | null>,
+    balloonRef: React.RefObject<HTMLSpanElement | null>,
+    setter: typeof setBeLens,
+  ) => (e: React.MouseEvent) => {
+    if (!zoomOn || isMobile) return;
+    const rect = sideRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const br = balloonRef.current?.getBoundingClientRect();
+    let reveal = false;
+    if (br) {
+      const bx = br.left + br.width / 2 - rect.left;
+      const by = br.top + br.height / 2 - rect.top;
+      reveal = Math.hypot(bx - x, by - y) < LENS_SIZE / 2;
+    }
+    setter({ x, y, visible: true, reveal });
+  };
 
   const updateFromEvent = useCallback(
     (clientX: number, clientY: number) => {
@@ -133,17 +146,8 @@ export function LandingSlider() {
         type="button"
         onClick={() => goSide("be")}
         aria-label="Enter Portfolio"
-        onMouseMove={(e) => {
-          if (!zoomOn || isMobile) return;
-          const rect = beSideRef.current?.getBoundingClientRect();
-          if (!rect) return;
-          setLens({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-            visible: true,
-          });
-        }}
-        onMouseLeave={() => setLens((l) => ({ ...l, visible: false }))}
+        onMouseMove={makeLensHandler(beSideRef, beBalloonRef, setBeLens)}
+        onMouseLeave={() => setBeLens((l) => ({ ...l, visible: false, reveal: false }))}
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
         style={zoomOn && !isMobile ? { cursor: "zoom-in" } : undefined}
       >
@@ -168,52 +172,39 @@ export function LandingSlider() {
           <div className="mist mist-b" />
         </div>
 
-        {/* Hidden easter eggs — faint by default, revealed by the zoom lens */}
+        {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
-          {(() => {
-            const rect = beSideRef.current?.getBoundingClientRect();
-            return EGGS.map((egg, i) => {
-              let revealed = false;
-              if (zoomOn && lens.visible && rect) {
-                const ex = (egg.left / 100) * rect.width;
-                const ey = (egg.top / 100) * rect.height;
-                revealed = Math.hypot(ex - lens.x, ey - lens.y) < LENS_SIZE / 2;
-              }
-              return (
-                <span
-                  key={i}
-                  className="absolute"
-                  style={{
-                    left: `${egg.left}%`,
-                    top: `${egg.top}%`,
-                    fontSize: `${egg.size}px`,
-                    opacity: revealed ? 1 : 0.55,
-                    filter: revealed
-                      ? "drop-shadow(0 2px 4px rgba(0,0,0,0.55))"
-                      : `hue-rotate(${egg.hue}deg) saturate(1.8) drop-shadow(0 1px 3px rgba(0,0,0,0.5))`,
-                    mixBlendMode: "normal",
-                    transform: egg.rotate ? `rotate(${egg.rotate}deg)` : undefined,
-                    animation: egg.animation,
-                    transition: "opacity 180ms ease-out, filter 180ms ease-out",
-                  }}
-                  title={egg.title}
-                >
-                  {egg.emoji}
-                </span>
-              );
-            });
-          })()}
+          <span
+            ref={beBalloonRef}
+            className="absolute"
+            style={{
+              ...BALLOON_STYLE,
+              opacity: beLens.reveal ? 1 : 0.55,
+              animation: BALLOON_ANIM,
+              transition: "opacity 180ms ease-out",
+            }}
+            title="Up, up and away."
+          >
+            🎈
+          </span>
         </div>
 
       </button>
 
       {/* DO side — 21st century, clipped */}
       <button
+        ref={doSideRef}
         type="button"
         onClick={() => goSide("do")}
         aria-label="Enter Privat"
+        onMouseMove={makeLensHandler(doSideRef, doBalloonRef, setDoLens)}
+        onMouseLeave={() => setDoLens((l) => ({ ...l, visible: false, reveal: false }))}
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
-        style={{ clipPath: doClip, WebkitClipPath: doClip }}
+        style={{
+          clipPath: doClip,
+          WebkitClipPath: doClip,
+          ...(zoomOn && !isMobile ? { cursor: "zoom-in" } : {}),
+        }}
       >
         <img
           src={doImg}
@@ -236,6 +227,23 @@ export function LandingSlider() {
         <span aria-hidden className="window-light window-light--fast" style={{ left: "49%", top: "71%" }} />
         {/* A silent airliner contrail crossing the sky */}
         <span aria-hidden className="contrail" />
+
+        {/* Rainbow balloon */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
+          <span
+            ref={doBalloonRef}
+            className="absolute"
+            style={{
+              ...BALLOON_STYLE,
+              opacity: doLens.reveal ? 1 : 0.55,
+              animation: BALLOON_ANIM,
+              transition: "opacity 180ms ease-out",
+            }}
+            title="Up, up and away."
+          >
+            🎈
+          </span>
+        </div>
       </button>
 
       {/* Divider line + handle */}
@@ -314,23 +322,28 @@ export function LandingSlider() {
       />
 
 
-      {/* Zoom lens — reveals hidden details on the BE side */}
-      {zoomOn && !isMobile && lens.visible && (() => {
-        const rect = beSideRef.current?.getBoundingClientRect();
+      {/* Zoom lenses — one per side */}
+      {(["be", "do"] as const).map((side) => {
+        const lensState = side === "be" ? beLens : doLens;
+        const sideRef = side === "be" ? beSideRef : doSideRef;
+        const img = side === "be" ? beImg : doImg;
+        if (!zoomOn || isMobile || !lensState.visible) return null;
+        const rect = sideRef.current?.getBoundingClientRect();
         if (!rect) return null;
         const bgW = rect.width * ZOOM;
         const bgH = rect.height * ZOOM;
-        const offsetX = LENS_SIZE / 2 - lens.x * ZOOM;
-        const offsetY = LENS_SIZE / 2 - lens.y * ZOOM;
+        const offsetX = LENS_SIZE / 2 - lensState.x * ZOOM;
+        const offsetY = LENS_SIZE / 2 - lensState.y * ZOOM;
         return (
           <div
+            key={side}
             aria-hidden
             className="pointer-events-none absolute z-40 overflow-hidden rounded-full border-2 border-white/80 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
             style={{
               width: LENS_SIZE,
               height: LENS_SIZE,
-              left: lens.x - LENS_SIZE / 2,
-              top: lens.y - LENS_SIZE / 2,
+              left: lensState.x - LENS_SIZE / 2,
+              top: lensState.y - LENS_SIZE / 2,
             }}
           >
             <div
@@ -342,30 +355,26 @@ export function LandingSlider() {
               }}
             >
               <img
-                src={beImg}
+                src={img}
                 alt=""
                 className="block h-full w-full object-cover"
                 draggable={false}
               />
-              {EGGS.map((egg, i) => (
-                <span
-                  key={i}
-                  className="absolute leading-none select-none"
-                  style={{
-                    left: `${egg.left}%`,
-                    top: `${egg.top}%`,
-                    fontSize: `${egg.size * ZOOM}px`,
-                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.55))",
-                    transform: egg.rotate ? `rotate(${egg.rotate}deg)` : undefined,
-                  }}
-                >
-                  {egg.emoji}
-                </span>
-              ))}
+              <span
+                className="absolute leading-none select-none"
+                style={{
+                  left: BALLOON_STYLE.left,
+                  top: BALLOON_STYLE.top,
+                  fontSize: `${36 * ZOOM}px`,
+                  animation: BALLOON_ANIM,
+                }}
+              >
+                🎈
+              </span>
             </div>
           </div>
         );
-      })()}
+      })}
 
 
 
@@ -376,7 +385,8 @@ export function LandingSlider() {
           onClick={(e) => {
             e.stopPropagation();
             setZoomOn((z) => !z);
-            setLens((l) => ({ ...l, visible: false }));
+            setBeLens((l) => ({ ...l, visible: false, reveal: false }));
+            setDoLens((l) => ({ ...l, visible: false, reveal: false }));
           }}
           aria-pressed={zoomOn}
           aria-label="Zoom umschalten"
