@@ -11,6 +11,16 @@ import img07 from "@/assets/photos/DSC_0019_39.jpeg.asset.json";
 import img08 from "@/assets/photos/DSC_0024_26.jpeg.asset.json";
 import img09 from "@/assets/photos/DSC_0027_38.jpeg.asset.json";
 import img10 from "@/assets/photos/DSC_0032_7.jpeg.asset.json";
+import img11 from "@/assets/photos/DSC_0032_18.jpeg.asset.json";
+import img12 from "@/assets/photos/DSC_0034_32.jpeg.asset.json";
+import img13 from "@/assets/photos/DSC_0038_11.jpeg.asset.json";
+import img14 from "@/assets/photos/DSC_0043_23.jpeg.asset.json";
+import img15 from "@/assets/photos/DSC_0044_4.jpeg.asset.json";
+import img16 from "@/assets/photos/DSC_0044_19.jpeg.asset.json";
+import img17 from "@/assets/photos/DSC_0051_18.jpeg.asset.json";
+import img18 from "@/assets/photos/DSC_0051_20.jpeg.asset.json";
+import img19 from "@/assets/photos/DSC_0052_6.jpeg.asset.json";
+import img20 from "@/assets/photos/DSC_0052_16.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -104,6 +114,75 @@ const photos: readonly Photo[] = [
     title: "Pfeil",
     caption: "Bodenmarkierung, Halle im Hintergrund.",
     span: "tall",
+  {
+    id: "p11",
+    src: img11.url,
+    title: "Dachlinie",
+    caption: "Fassade, Spiegelung, ein ferner Turm.",
+    span: "wide",
+  },
+  {
+    id: "p12",
+    src: img12.url,
+    title: "Unterstand",
+    caption: "Autobahnbrücke, Schnee, ein wartender Ort.",
+    span: "wide",
+  },
+  {
+    id: "p13",
+    src: img13.url,
+    title: "Butter · Milch · Käse",
+    caption: "Verlassenes Schaufenster, Bordsteinreste.",
+    span: "tall",
+  },
+  {
+    id: "p14",
+    src: img14.url,
+    title: "Cosco",
+    caption: "Container gestapelt, Buchstaben als Landschaft.",
+    span: "tall",
+  },
+  {
+    id: "p15",
+    src: img15.url,
+    title: "Zaun",
+    caption: "Gitter, Schnee, warmes Abendlicht.",
+    span: "wide",
+  },
+  {
+    id: "p16",
+    src: img16.url,
+    title: "Pfeil, weit",
+    caption: "Bodenmarkierung, Wolken, Sepia.",
+    span: "tall",
+  },
+  {
+    id: "p17",
+    src: img17.url,
+    title: "Streifen",
+    caption: "Ein flacher Blick über die Ebene.",
+    span: "wide",
+  },
+  {
+    id: "p18",
+    src: img18.url,
+    title: "Stapler",
+    caption: "Silhouette gegen Morgenlicht, Staub in der Luft.",
+    span: "tall",
+  },
+  {
+    id: "p19",
+    src: img19.url,
+    title: "Schornsteine",
+    caption: "Skyline im Winter, Rauch als Fahne.",
+    span: "wide",
+  },
+  {
+    id: "p20",
+    src: img20.url,
+    title: "Astoux & Brun",
+    caption: "Zebrastreifen, Passanten, ein Mittag in Cannes.",
+    span: "wide",
   },
 ] as const;
 
