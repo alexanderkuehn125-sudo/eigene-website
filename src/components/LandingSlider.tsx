@@ -67,6 +67,19 @@ export function LandingSlider() {
     setter({ x, y, visible: true, reveal });
   };
 
+  useEffect(() => {
+    if (!zoomOn) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setZoomOn(false);
+        setBeLens((l) => ({ ...l, visible: false, reveal: false }));
+        setDoLens((l) => ({ ...l, visible: false, reveal: false }));
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [zoomOn]);
+
   const updateFromEvent = useCallback(
     (clientX: number, clientY: number) => {
       const el = containerRef.current;
