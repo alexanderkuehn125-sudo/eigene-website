@@ -489,8 +489,9 @@ function CloudTitle({
         e.stopPropagation();
         onClick();
       }}
-      className="cloud-title group absolute z-30 focus:outline-none"
-      style={{ ...pos }}
+      className="cloud-title group absolute z-30 focus:outline-none transition-opacity duration-200"
+      style={{ ...pos, opacity: hidden ? 0 : 1, pointerEvents: hidden ? "none" : undefined }}
+      aria-hidden={hidden}
       aria-label={`Enter ${label}`}
     >
       <span
