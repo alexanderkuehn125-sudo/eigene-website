@@ -56,7 +56,7 @@ import img50 from "@/assets/photos/NYC_489_477.jpeg.asset.json";
 export const Route = createFileRoute("/do")({
   head: () => ({
     meta: [
-      { title: "Privat — Fotografie" },
+      { title: "Ausstellung — Fotografie" },
       {
         name: "description",
         content:
@@ -250,7 +250,7 @@ function DoPage() {
             className="text-lg uppercase tracking-[0.35em] md:text-2xl"
             style={{ fontWeight: 300 }}
           >
-            Privat
+            Ausstellung
           </h1>
           <span className="text-[11px] uppercase tracking-[0.35em] opacity-60">
             Fotografie

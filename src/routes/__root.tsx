@@ -81,14 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "A landing between the 18th and 21st centuries of Manhattan — slide to reveal, choose Portfolio or Privat.",
+          "A landing between the 18th and 21st centuries of Manhattan — slide to reveal, choose Portfolio or Ausstellung.",
       },
       { name: "author", content: "be / do" },
       { property: "og:title", content: "be / do" },
       {
         property: "og:description",
         content:
-          "Slide between untouched nature and the modern skyline. Enter Portfolio or Privat.",
+          "Slide between untouched nature and the modern skyline. Enter Portfolio or Ausstellung.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

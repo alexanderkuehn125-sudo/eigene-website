@@ -234,7 +234,7 @@ export function LandingSlider() {
         ref={doSideRef}
         type="button"
         onClick={() => goSide("do")}
-        aria-label="Enter Privat"
+        aria-label="Enter Ausstellung"
         onMouseMove={makeLensHandler(doSideRef, doBalloonRef, setDoLens)}
         onMouseLeave={() => setDoLens((l) => ({ ...l, visible: false, reveal: false }))}
         className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
@@ -349,9 +349,9 @@ export function LandingSlider() {
         onClick={() => goSide("be")}
       />
 
-      {/* Cloud title — Privat (over DO side) */}
+      {/* Cloud title — Ausstellung (over DO side) */}
       <CloudTitle
-        label="Privat"
+        label="Ausstellung"
         side="do"
         isMobile={isMobile}
         pct={pct}
