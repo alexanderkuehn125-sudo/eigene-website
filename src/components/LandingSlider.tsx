@@ -460,7 +460,6 @@ function CloudTitle({
   side,
   isMobile,
   pct,
-  hidden,
   onClick,
 }: {
   label: string;
@@ -482,8 +481,45 @@ function CloudTitle({
       ? { color: "rgba(250,244,225,0.92)", shadow: "0 0 60px rgba(255,236,180,0.35)" }
       : { color: "rgba(232,238,250,0.92)", shadow: "0 0 60px rgba(160,190,240,0.35)" };
 
+  const letterRefs = useRef<Array<HTMLSpanElement | null>>([]);
+  const containerRef = useRef<HTMLElement | null>(null);
+  const [letterPcts, setLetterPcts] = useState<number[]>([]);
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      const parent = containerRef.current?.offsetParent as HTMLElement | null;
+      const parentRect = parent?.getBoundingClientRect();
+      if (!parentRect) return;
+      const size = isMobile ? parentRect.height : parentRect.width;
+      const origin = isMobile ? parentRect.top : parentRect.left;
+      const pcts = letterRefs.current.map((el) => {
+        if (!el) return 50;
+        const r = el.getBoundingClientRect();
+        const c = isMobile ? r.top + r.height / 2 : r.left + r.width / 2;
+        return ((c - origin) / size) * 100;
+      });
+      setLetterPcts(pcts);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [label, isMobile]);
+
+  // Smooth step easing across a soft edge width.
+  const SOFT = 1.2;
+  const opacityFor = (letterPct: number) => {
+    // BE: visible when pct > letterPct; DO: visible when pct < letterPct.
+    const t =
+      side === "be"
+        ? (pct - letterPct) / SOFT + 0.5
+        : (letterPct - pct) / SOFT + 0.5;
+    const x = Math.max(0, Math.min(1, t));
+    return x * x * (3 - 2 * x);
+  };
+
   return (
     <button
+      ref={containerRef as React.RefObject<HTMLButtonElement>}
       type="button"
       onClick={(e) => {
         e.stopPropagation();
@@ -492,12 +528,7 @@ function CloudTitle({
       className="cloud-title group absolute z-30 focus:outline-none"
       style={{
         ...pos,
-        opacity: hidden ? 0 : 1,
-        filter: hidden ? "blur(6px)" : "blur(0px)",
-        pointerEvents: hidden ? "none" : undefined,
-        transition: "opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 700ms cubic-bezier(0.22, 1, 0.36, 1)",
       }}
-      aria-hidden={hidden}
       aria-label={`Enter ${label}`}
     >
       <span
@@ -510,10 +541,31 @@ function CloudTitle({
           letterSpacing: "0.02em",
           filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.35))",
           fontSize: "clamp(1.33rem, 4.47vw, 3.8rem)",
+          whiteSpace: "nowrap",
         }}
       >
-        {label}
+        {Array.from(label).map((ch, i) => {
+          const o = letterPcts[i] !== undefined ? opacityFor(letterPcts[i]) : 1;
+          return (
+            <span
+              key={i}
+              ref={(el) => {
+                letterRefs.current[i] = el;
+              }}
+              style={{
+                display: "inline-block",
+                opacity: o,
+                filter: `blur(${(1 - o) * 6}px)`,
+                transition:
+                  "opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms cubic-bezier(0.22, 1, 0.36, 1)",
+              }}
+            >
+              {ch === " " ? "\u00A0" : ch}
+            </span>
+          );
+        })}
       </span>
     </button>
   );
 }
+
