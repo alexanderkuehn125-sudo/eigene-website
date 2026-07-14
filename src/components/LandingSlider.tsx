@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useIsMobile } from "@/hooks/use-mobile";
 
