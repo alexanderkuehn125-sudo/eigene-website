@@ -489,8 +489,14 @@ function CloudTitle({
         e.stopPropagation();
         onClick();
       }}
-      className="cloud-title group absolute z-30 focus:outline-none transition-opacity duration-200"
-      style={{ ...pos, opacity: hidden ? 0 : 1, pointerEvents: hidden ? "none" : undefined }}
+      className="cloud-title group absolute z-30 focus:outline-none"
+      style={{
+        ...pos,
+        opacity: hidden ? 0 : 1,
+        filter: hidden ? "blur(6px)" : "blur(0px)",
+        pointerEvents: hidden ? "none" : undefined,
+        transition: "opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 700ms cubic-bezier(0.22, 1, 0.36, 1)",
+      }}
       aria-hidden={hidden}
       aria-label={`Enter ${label}`}
     >
