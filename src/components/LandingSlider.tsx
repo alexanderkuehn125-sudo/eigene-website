@@ -349,9 +349,9 @@ export function LandingSlider() {
         onClick={() => goSide("be")}
       />
 
-      {/* Cloud title — Privat (over DO side) */}
+      {/* Cloud title — Ausstellung (over DO side) */}
       <CloudTitle
-        label="Privat"
+        label="Ausstellung"
         side="do"
         isMobile={isMobile}
         pct={pct}
