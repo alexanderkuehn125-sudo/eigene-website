@@ -345,6 +345,7 @@ export function LandingSlider() {
         side="be"
         isMobile={isMobile}
         pct={pct}
+        hidden={pct <= 27}
         onClick={() => goSide("be")}
       />
 
@@ -354,8 +355,10 @@ export function LandingSlider() {
         side="do"
         isMobile={isMobile}
         pct={pct}
+        hidden={pct >= 73}
         onClick={() => goSide("do")}
       />
+
 
 
       {/* Zoom lenses — one per side */}
@@ -457,12 +460,14 @@ function CloudTitle({
   side,
   isMobile,
   pct,
+  hidden,
   onClick,
 }: {
   label: string;
   side: "be" | "do";
   isMobile: boolean;
   pct: number;
+  hidden?: boolean;
   onClick: () => void;
 }) {
   // Fixed at the center of each half — independent of slider position.
