@@ -250,7 +250,7 @@ function DoPage() {
             className="text-lg uppercase tracking-[0.35em] md:text-2xl"
             style={{ fontWeight: 300 }}
           >
-            Privat
+            Ausstellung
           </h1>
           <span className="text-[11px] uppercase tracking-[0.35em] opacity-60">
             Fotografie
