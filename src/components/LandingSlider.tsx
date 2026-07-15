@@ -45,7 +45,7 @@ export function LandingSlider() {
   const ZOOM = 2.5;
   const LENS_SIZE = 270;
   const BALLOON_FLOAT = "balloonFloat 34s ease-in-out infinite";
-  const BALLOON_POS = { left: "62%", top: "18%" };
+  const BALLOON_POS = { left: "62%", top: "6%" };
 
   const Balloon = () => (
     <svg
