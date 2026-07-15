@@ -247,12 +247,12 @@ function DoPage() {
             ← zurück
           </Link>
           <h1
-            className="text-lg uppercase tracking-[0.35em] md:text-2xl"
+            className="text-sm uppercase tracking-[0.3em] sm:text-lg sm:tracking-[0.35em] md:text-2xl"
             style={{ fontWeight: 300 }}
           >
             Ausstellung
           </h1>
-          <span className="text-[11px] uppercase tracking-[0.35em] opacity-60">
+          <span className="hidden text-[11px] uppercase tracking-[0.35em] opacity-60 sm:inline">
             Fotografie
           </span>
         </header>
