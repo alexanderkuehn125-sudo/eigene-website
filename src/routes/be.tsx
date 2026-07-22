@@ -628,13 +628,11 @@ function CustomCursor() {
           transform: "translate3d(-50%, -50%, 0) scale(0.8)",
         }}
       >
-        {/* Animated Rainbow Border Layer */}
+        {/* Elegant Solid Border Layer */}
         <div
-          className="absolute inset-0 z-0 animate-spin rounded-full"
+          className="absolute inset-0 z-0 rounded-full"
           style={{
-            background:
-              "conic-gradient(from 0deg, #FF0018, #FFA52C, #FFFF41, #008018, #0000F9, #86007D, #FF0018)",
-            animationDuration: "3s",
+            background: "#EFECE4",
             WebkitMaskImage:
               "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 1px))",
             maskImage:
