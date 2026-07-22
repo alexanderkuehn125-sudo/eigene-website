@@ -1,66 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import type { ImgHTMLAttributes } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
-import img01 from "@/assets/photos/2008_02050072.jpeg.asset.json";
-import img02 from "@/assets/photos/DC_NYC_289.jpeg.asset.json";
-import img03 from "@/assets/photos/DSC_0001_30.jpeg.asset.json";
-import img04 from "@/assets/photos/DSC_0004_48.jpeg.asset.json";
-import img05 from "@/assets/photos/DSC_0011_6.jpeg.asset.json";
-import img06 from "@/assets/photos/DSC_0014_26.jpeg.asset.json";
-import img07 from "@/assets/photos/DSC_0019_39.jpeg.asset.json";
-import img08 from "@/assets/photos/DSC_0024_26.jpeg.asset.json";
-import img09 from "@/assets/photos/DSC_0027_38.jpeg.asset.json";
-import img10 from "@/assets/photos/DSC_0032_7.jpeg.asset.json";
-import img11 from "@/assets/photos/DSC_0032_18.jpeg.asset.json";
-import img12 from "@/assets/photos/DSC_0034_32.jpeg.asset.json";
-import img13 from "@/assets/photos/DSC_0038_11.jpeg.asset.json";
-import img14 from "@/assets/photos/DSC_0043_23.jpeg.asset.json";
-import img15 from "@/assets/photos/DSC_0044_4.jpeg.asset.json";
-import img16 from "@/assets/photos/DSC_0044_19.jpeg.asset.json";
-import img17 from "@/assets/photos/DSC_0051_18.jpeg.asset.json";
-import img18 from "@/assets/photos/DSC_0051_20.jpeg.asset.json";
-import img19 from "@/assets/photos/DSC_0052_6.jpeg.asset.json";
-import img20 from "@/assets/photos/DSC_0052_16.jpeg.asset.json";
-import img21 from "@/assets/photos/DSC_0054_12.jpeg.asset.json";
-import img22 from "@/assets/photos/DSC_0059_30.jpeg.asset.json";
-import img23 from "@/assets/photos/DSC_0062_23.jpeg.asset.json";
-import img24 from "@/assets/photos/DSC_0064_28.jpeg.asset.json";
-import img25 from "@/assets/photos/DSC_0067_13.jpeg.asset.json";
-import img26 from "@/assets/photos/DSC_0074_10.jpeg.asset.json";
-import img27 from "@/assets/photos/DSC_0080_16.jpeg.asset.json";
-import img28 from "@/assets/photos/DSC_0095_13.jpeg.asset.json";
-import img29 from "@/assets/photos/DSC_0097_19.jpeg.asset.json";
-import img30 from "@/assets/photos/DSC_0099_19.jpeg.asset.json";
-import img31 from "@/assets/photos/DSC_0102_18.jpeg.asset.json";
-import img32 from "@/assets/photos/DSC_0134_11.jpeg.asset.json";
-import img33 from "@/assets/photos/DSC_0140_9.jpeg.asset.json";
-import img34 from "@/assets/photos/DSC_0174.jpeg.asset.json";
-import img35 from "@/assets/photos/DSC_0206_4.jpeg.asset.json";
-import img36 from "@/assets/photos/DSC_0213_4-2.jpeg.asset.json";
-import img37 from "@/assets/photos/DSC_0225_2-2.jpeg.asset.json";
-import img38 from "@/assets/photos/DSC_0268_3-2.jpeg.asset.json";
-import img39 from "@/assets/photos/DSC_0341-2.jpeg.asset.json";
-import img40 from "@/assets/photos/DSCF0023-2.jpeg.asset.json";
-import img41 from "@/assets/photos/DSCF0029.jpeg.asset.json";
-import img42 from "@/assets/photos/DSCF0030.jpeg.asset.json";
-import img43 from "@/assets/photos/DSCF0033.jpeg.asset.json";
-import img44 from "@/assets/photos/DSCF0036.jpeg.asset.json";
-import img45 from "@/assets/photos/DSCF0269.jpeg.asset.json";
-import img46 from "@/assets/photos/J-Brandner1.jpeg.asset.json";
-import img47 from "@/assets/photos/media-park_2.jpeg.asset.json";
-import img48 from "@/assets/photos/NYC_489_30.jpeg.asset.json";
-import img49 from "@/assets/photos/IMG_8116.jpeg.asset.json";
-import img50 from "@/assets/photos/NYC_489_477.jpeg.asset.json";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
     meta: [
-      { title: "Ausstellung — Fotografie" },
+      { title: "Ausstellung — Fotografie von Alexander Kühn" },
       {
         name: "description",
         content:
-          "Eine persönliche Auswahl an Fotografien — Momente, Orte, Licht.",
+          "Eine persönliche fotografische Ausstellung von Alexander Kühn — Momente, Orte, Licht und architektonische Perspektiven.",
+      },
+      {
+        tagName: "style",
+        content: `
+          @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap');
+        `,
       },
     ],
   }),
@@ -72,65 +29,57 @@ type Photo = {
   src: string;
   title: string;
   caption: string;
+  category: string;
   span?: "tall" | "wide" | "square";
+  originalIndex: number;
 };
 
-const photos: readonly Photo[] = [
-  // — kühl / blau / winter —
-  { id: "p41", src: img45.url, title: "Saída", caption: "Leere Ränge, ein Ausgang, Türkis.", span: "wide" },
-  { id: "p20", src: img12.url, title: "Unterstand", caption: "Autobahnbrücke, Schnee, ein wartender Ort.", span: "wide" },
-  { id: "p24", src: img26.url, title: "Hochhaus", caption: "Winterlicht auf Betonzeilen, Berlin.", span: "square" },
-  { id: "p16", src: img19.url, title: "Schornsteine", caption: "Skyline im Winter, Rauch als Fahne.", span: "wide" },
-  { id: "p34", src: img29.url, title: "Bankside", caption: "Nasser Nachmittag, rosa Stühle, blauer Schirm.", span: "wide" },
-  { id: "p45", src: img47.url, title: "MediaPark", caption: "Gelbe Rahmen, Glas, Spiegelung.", span: "tall" },
-  { id: "p19", src: img18.url, title: "Stapler", caption: "Silhouette gegen Morgenlicht, Staub in der Luft.", span: "tall" },
+// Dynamisches Laden aller Bilder im Ordner (funktioniert durch Vite automatisch)
+// Lade alle Bilddateien aus dem Verzeichnis. Vite gibt uns direkt die URLs als String zurück.
+const imageModules = import.meta.glob("@/assets/photos/*.{jpeg,jpg,png,webp}", {
+  eager: true,
+  import: "default",
+});
 
-  // — neutral / stein / architektur —
-  { id: "p01", src: img31.url, title: "Aufstieg", caption: "Leere Straße, Leitplanken, Himmel.", span: "tall" },
-  { id: "p03", src: img04.url, title: "Überhang", caption: "Neue Architektur über alten Gleisen.", span: "tall" },
-  { id: "p13", src: img32.url, title: "Hinterhof", caption: "Kuppel zwischen Brandmauern.", span: "wide" },
-  { id: "p04", src: img35.url, title: "Oliver's Wharf", caption: "Themse, viktorianisches Speicherhaus.", span: "wide" },
-  { id: "p05", src: img36.url, title: "The Grapes", caption: "Uferfront, Hochhäuser, Backstein.", span: "wide" },
-  { id: "p06", src: img11.url, title: "Dachlinie", caption: "Fassade, Spiegelung, ein ferner Turm.", span: "wide" },
-  { id: "p12", src: img14.url, title: "Cosco", caption: "Container gestapelt, Buchstaben als Landschaft.", span: "tall" },
-  { id: "p22", src: img40.url, title: "Stufen", caption: "Verwitterter Beton, wachsendes Grün.", span: "wide" },
-  { id: "p39", src: img42.url, title: "Zeppelinfeld I", caption: "Steintreppe, Fassade, Zeit.", span: "tall" },
-  { id: "p43", src: img41.url, title: "Zeppelinfeld II", caption: "Aufstieg gegen Wolken.", span: "tall" },
-  { id: "p40", src: img43.url, title: "Portal", caption: "Schwarze Tür, grüne Marken, Sandstein.", span: "tall" },
-  { id: "p42", src: img44.url, title: "Damen", caption: "Verwitterte Wand, kleines Wort.", span: "tall" },
-  { id: "p37", src: img23.url, title: "Toni Neuber", caption: "Stahllager, Garagen, Berliner Hinterhof.", span: "wide" },
-  { id: "p36", src: img24.url, title: "Plattenbau", caption: "Bukarester Fassade, Balkon an Balkon.", span: "wide" },
-  { id: "p30", src: img07.url, title: "Blick hinein", caption: "Ein verlassener Raum, ein Sessel, das Licht.", span: "tall" },
-  { id: "p32", src: img01.url, title: "Aufgang", caption: "Geschlossenes Tor, geschwungene Treppe — ein Ort dazwischen.", span: "tall" },
-  { id: "p33", src: img09.url, title: "Durchgang", caption: "Aus dem Dunkel Richtung Straße.", span: "wide" },
-  { id: "p17", src: img13.url, title: "Butter · Milch · Käse", caption: "Verlassenes Schaufenster, Bordsteinreste.", span: "tall" },
-  { id: "p46", src: img48.url, title: "Downtown", caption: "U-Bahn, New York, ein Waggon voller Wege.", span: "tall" },
-  { id: "p47", src: img49.url, title: "Rote Kammer", caption: "Angelehnte Tür, Pendellampe, gedämpftes Licht.", span: "tall" },
-  { id: "p35", src: img05.url, title: "Markenwelt", caption: "Beschilderung unter der Membran.", span: "wide" },
-  { id: "p02", src: img17.url, title: "Streifen", caption: "Ein flacher Blick über die Ebene.", span: "wide" },
-  { id: "p18", src: img28.url, title: "FIAT", caption: "Brücke über eine leere Landstraße.", span: "wide" },
-  { id: "p10", src: img38.url, title: "Camden Lock", caption: "Jenny Wren wartet auf die Schleuse.", span: "square" },
-  { id: "p11", src: img30.url, title: "Borough Market", caption: "Menschen in Bewegung unter den Trägern.", span: "wide" },
-  { id: "p21", src: img10.url, title: "Pfeil", caption: "Bodenmarkierung, Halle im Hintergrund.", span: "tall" },
+let photos: Photo[] = Object.entries(imageModules)
+  .map(([path, url], index) => {
+    // Extrahiere den Dateinamen ohne Endung, um ihn als Titel zu nutzen
+    const filename = path.split("/").pop() || `foto-${index}`;
+    const title = filename.split(".")[0].replace(/[-_]/g, " ") || `Foto ${index + 1}`;
 
-  // — warm / sepia / gold / rot —
-  { id: "p31", src: img02.url, title: "Katz's", caption: "Späte Stunde am Tresen. New York, Lower East Side.", span: "wide" },
-  { id: "p26", src: img25.url, title: "Olympia", caption: "Kinofassade, alte Plakate, leerer Vorplatz.", span: "tall" },
-  { id: "p08", src: img37.url, title: "Telefonzelle", caption: "Dresden, Sepia, Semperoper im Hintergrund.", span: "tall" },
-  { id: "p07", src: img33.url, title: "Covrigi Calzi", caption: "Bukarest, Altstadt, Fassaden.", span: "tall" },
-  { id: "p28", src: img39.url, title: "Dresdner Straße", caption: "Gründerzeit, Gleise, Nachmittagslicht.", span: "tall" },
-  { id: "p15", src: img22.url, title: "Salopetă", caption: "Werbebanner vor Bukarester Fassaden.", span: "wide" },
-  { id: "p09", src: img20.url, title: "Astoux & Brun", caption: "Zebrastreifen, Passanten, ein Mittag in Cannes.", span: "wide" },
-  { id: "p44", src: img46.url, title: "Brothandwerk", caption: "Blick durchs Schaufenster, Mehl in der Luft.", span: "wide" },
-  { id: "p29", src: img08.url, title: "IBM", caption: "Zaun, Firmenschilder, gedeckte Abendfarben.", span: "wide" },
-  { id: "p14", src: img27.url, title: "Reachstacker", caption: "Container gegen Abendsonne, Staub in der Luft.", span: "wide" },
-  { id: "p23", src: img15.url, title: "Zaun", caption: "Gitter, Schnee, warmes Abendlicht.", span: "wide" },
-  { id: "p25", src: img21.url, title: "Ernest", caption: "Eckgebäude im Goldlicht, Cannes seit 1936.", span: "tall" },
-  { id: "p27", src: img06.url, title: "Markt", caption: "Turm gegen Himmel — Gelb, Rot, Sepia.", span: "tall" },
-  { id: "p48", src: img50.url, title: "General Barber", caption: "Rot-weiße Markise, Ziegelwand, Barbier-Pol.", span: "tall" },
-  { id: "p38", src: img34.url, title: "Lava Jato", caption: "Wandmalerei, Kabel, Sonne.", span: "wide" },
-] as const;
+    const categories = ["Momente", "Orte", "Licht"];
+    const category = categories[index % categories.length];
 
+    return {
+      id: `p${index}`,
+      src: url as string,
+      title: title,
+      caption: title, // Kann natürlich später individuell erweitert werden
+      category: category,
+      span: "tall",
+      originalIndex: index,
+    };
+  })
+  .sort((a, b) => a.originalIndex - b.originalIndex);
+
+// Gewünschte Umordnung: Spezifische Bilder ans Ende verschieben
+const reorderedPhotos = [...photos];
+
+// Hilfsfunktion zum sicheren Verschieben anhand des originalIndex
+function moveToBoytom(origIndex: number) {
+  const idx = reorderedPhotos.findIndex((p) => p.originalIndex === origIndex);
+  if (idx !== -1) {
+    const photo = reorderedPhotos.splice(idx, 1)[0];
+    reorderedPhotos.push(photo);
+  }
+}
+
+// 1. Zuerst Bild 40/58 (originalIndex 39) ans Ende
+moveToBoytom(39);
+// 2. Dann das neue Bild "DSC_0062 23" (originalIndex 36) ganz ans Ende, also unter Bild 40
+moveToBoytom(36);
+
+photos = reorderedPhotos;
 
 type LazyImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "loading"> & {
   eager?: boolean;
@@ -141,11 +90,23 @@ function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
   const ref = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    // Bilder aus dem Browser-Cache feuern kein onLoad -> beim Mount prüfen.
-    if (ref.current?.complete && ref.current.naturalWidth > 0) {
+    const img = ref.current;
+    if (!img) return;
+
+    // Wenn das Bild bereits vollständig geladen oder aus dem Cache ist
+    if (img.complete) {
       setLoaded(true);
     }
-  }, []);
+
+    const handleLoad = () => setLoaded(true);
+    img.addEventListener("load", handleLoad);
+    img.addEventListener("error", handleLoad);
+
+    return () => {
+      img.removeEventListener("load", handleLoad);
+      img.removeEventListener("error", handleLoad);
+    };
+  }, [rest.src]);
 
   return (
     <img
@@ -155,50 +116,69 @@ function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
       decoding="async"
       fetchPriority={eager ? "high" : "auto"}
       draggable={false}
-      data-loaded={loaded}
+      className={`${className} transition-opacity duration-1000 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
       onLoad={(e) => {
         setLoaded(true);
         onLoad?.(e);
       }}
-      className={`${className} opacity-0 blur-xl data-[loaded=true]:opacity-100 data-[loaded=true]:blur-none transition-[opacity,filter] duration-700 ease-out`}
+      onError={() => setLoaded(true)}
     />
   );
 }
-
-
 
 function preloadImage(src: string) {
   if (typeof window === "undefined") return;
   const img = new Image();
   img.decoding = "async";
   img.src = src;
-  // decode() ist optional (nicht überall verfügbar) — Fehler bewusst schlucken.
   img.decode?.().catch(() => {});
 }
 
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [impressumOpen, setImpressumOpen] = useState(false);
-  const active = photos.find((p) => p.id === openId);
+  const [activeCategory, setActiveCategory] = useState("Alle");
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Beim Öffnen der Lightbox: aktives Bild + Nachbarn vorwärmen,
-  // damit Weiter/Zurück ohne Ladepause bleibt.
+  const handleCategoryClick = (cat: string) => {
+    if (cat === activeCategory || isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveCategory(cat);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 450); // Dauer des Vorhang-Fades
+  };
+
+  const filteredPhotos = useMemo(() => {
+    return activeCategory === "Alle" ? photos : photos.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
+
+  // Zwingt den Browser, beim Neuladen (F5 / Refresh) wieder ganz oben zu starten
+  useEffect(() => {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  const active = filteredPhotos.find((p) => p.id === openId);
+
   useEffect(() => {
     if (!openId) return;
-    const idx = photos.findIndex((p) => p.id === openId);
+    const idx = filteredPhotos.findIndex((p) => p.id === openId);
     if (idx < 0) return;
-    preloadImage(photos[idx].src);
-    preloadImage(photos[(idx + 1) % photos.length].src);
-    preloadImage(photos[(idx - 1 + photos.length) % photos.length].src);
-  }, [openId]);
+    preloadImage(filteredPhotos[idx].src);
+    preloadImage(filteredPhotos[(idx + 1) % filteredPhotos.length].src);
+    preloadImage(filteredPhotos[(idx - 1 + filteredPhotos.length) % filteredPhotos.length].src);
+  }, [openId, filteredPhotos]);
 
   const openPhoto = (id: string) => {
-    const p = photos.find((x) => x.id === id);
+    const p = filteredPhotos.find((x) => x.id === id);
     if (p) preloadImage(p.src);
     setOpenId(id);
   };
-
-
 
   useEffect(() => {
     if (!impressumOpen) return;
@@ -209,127 +189,219 @@ function DoPage() {
     return () => document.removeEventListener("keydown", onKey);
   }, [impressumOpen]);
 
+  const navigateLightbox = (dir: 1 | -1) => {
+    setOpenId((prev) => {
+      if (!prev) return prev;
+      const idx = filteredPhotos.findIndex((p) => p.id === prev);
+      if (idx < 0) return prev;
+      return filteredPhotos[(idx + dir + filteredPhotos.length) % filteredPhotos.length].id;
+    });
+  };
 
   useEffect(() => {
     if (!openId) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpenId(null);
-      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-        const idx = photos.findIndex((p) => p.id === openId);
-        const next =
-          e.key === "ArrowRight"
-            ? (idx + 1) % photos.length
-            : (idx - 1 + photos.length) % photos.length;
-        setOpenId(photos[next].id);
-      }
+      if (e.key === "ArrowRight") navigateLightbox(1);
+      if (e.key === "ArrowLeft") navigateLightbox(-1);
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [openId]);
+  }, [openId, filteredPhotos]);
 
   return (
     <main
-      className="min-h-screen w-full"
+      className="relative min-h-screen w-full bg-[#050504] text-[#EFECE4] overflow-clip [&_a]:cursor-none [&_button]:cursor-none"
       style={{
-        background:
-          "radial-gradient(140% 90% at 50% -10%, #f7f2e6 0%, #ede3cc 35%, #c9b891 75%, #8a7a5c 100%)",
-        color: "#2d2a22",
+        background: "radial-gradient(circle at 50% 30%, #1c1a18 0%, #050504 100%)",
+        color: "#EFECE4",
         fontFamily: "'Roboto', sans-serif",
       }}
     >
-      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-10 md:px-12 md:py-16">
+      {/* Film-Grain / Papier-Rauschen Overlay (Invertiert für dunklen Hintergrund) */}
+      <div
+        // Jetzt ohne mix-blend-screen (Hardware-Beschleunigung / kein GPU Repaint pro Frame beim Scrollen)
+        // Reduzierte Opacity sorgt für denselben visuellen Effekt ohne Performance-Probleme
+        className="pointer-events-none fixed inset-0 z-0 opacity-[0.06]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+        aria-hidden
+      />
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-10 md:px-12 md:py-16 page-transition-enter">
         {/* Header */}
-        <header className="flex items-center justify-between">
+        <header className="flex items-center justify-between pt-2 relative z-50">
           <Link
             to="/"
-            className="text-[11px] uppercase tracking-[0.35em] opacity-70 underline-offset-8 hover:underline"
+            className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
           >
-            ← zurück
+            ← Start
           </Link>
-          <h1
-            className="text-sm uppercase tracking-[0.3em] sm:text-lg sm:tracking-[0.35em] md:text-2xl"
-            style={{ fontWeight: 300 }}
-          >
-            Ausstellung
-          </h1>
-          <span className="hidden text-[11px] uppercase tracking-[0.35em] opacity-60 sm:inline">
-            Fotografie
-          </span>
+          <span className="text-[10px] uppercase tracking-[0.3em] opacity-60">Ausstellung</span>
         </header>
 
-        <section className="mt-16 md:mt-24">
-          <p
-            className="text-base uppercase tracking-[0.35em] opacity-60 md:text-xl"
-            style={{ fontWeight: 300 }}
-          >
-            Ausstellung
-          </p>
-        </section>
-
-        {/* Grid */}
-        <section className="mt-16 columns-1 gap-6 sm:columns-2 md:mt-24 md:columns-3 md:gap-8">
-          {photos.map((p, i) => (
-            <button
-              key={p.id}
-              type="button"
-              onClick={() => openPhoto(p.id)}
-              onPointerEnter={() => preloadImage(p.src)}
-              onFocus={() => preloadImage(p.src)}
-              className="group relative mb-6 block w-full overflow-hidden text-left shadow-[0_2px_4px_-1px_rgba(45,42,34,0.15),0_10px_25px_-6px_rgba(45,42,34,0.28),0_30px_60px_-18px_rgba(45,42,34,0.45)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_3px_6px_-1px_rgba(45,42,34,0.18),0_18px_38px_-8px_rgba(45,42,34,0.38),0_44px_80px_-22px_rgba(45,42,34,0.55)] focus:outline-none focus:ring-2 focus:ring-[#2d2a22]/30 md:mb-8"
-              style={{ breakInside: "avoid" }}
+        <section className="mt-28 mb-20 md:mt-36 md:mb-32 flex justify-center relative z-50">
+          <FadeIn>
+            <h1
+              className="text-4xl md:text-5xl lg:text-6xl text-center leading-[1.3] tracking-wide"
+              style={{
+                fontFamily: "'Jost', sans-serif",
+                fontWeight: 400,
+                color: "#EFECE4",
+              }}
             >
-              <div
-                className="relative w-full overflow-hidden"
-                style={{ backgroundColor: "#c9b891" }}
-              >
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 z-10"
-                  style={{
-                    boxShadow:
-                      "inset 0 0 60px rgba(0,0,0,0.35), inset 0 0 12px rgba(0,0,0,0.25)",
-                  }}
-                />
-                <LazyImage
-                  src={p.src}
-                  alt={p.title}
-                  eager={i < 3}
-                  className="block h-auto w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-                />
+              Eine persönliche Auswahl <br className="hidden sm:block" />
+              <span className="opacity-80 text-[0.8em]">Momente, Orte, Licht.</span>
+            </h1>
 
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute left-1.5 top-1.5 rounded-full bg-black/40 px-1.5 py-[1px] text-[5px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:left-2 md:top-2 md:text-[6px]"
-                  style={{ fontWeight: 300 }}
+            {/* Filters */}
+            <div className="mt-12 flex flex-wrap justify-center gap-6 md:gap-10 text-[10px] md:text-xs uppercase tracking-[0.25em]">
+              {["Alle", "Momente", "Orte", "Licht"].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`transition-all duration-500 ease-out ${
+                    activeCategory === cat
+                      ? "opacity-100 font-bold scale-105"
+                      : "opacity-40 hover:opacity-80 hover:scale-105"
+                  }`}
                 >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute bottom-1.5 right-1.5 rounded-full bg-black/35 px-1.5 py-[1px] text-[6px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm md:bottom-2 md:right-2 md:text-[7px]"
-                >
-                  © Alexander Kühn
-                </span>
-              </div>
-            </button>
-          ))}
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </FadeIn>
         </section>
 
-        <div className="mt-16 flex flex-col items-center gap-6">
+        {/* Grid - The Cinematic Dark Room (3 Spalten, Versetzt) */}
+        <section className="mt-16 group columns-1 gap-12 sm:columns-2 md:mt-24 md:columns-3 md:gap-16 lg:gap-24 relative z-10">
+          <AnimatePresence>
+            {filteredPhotos.map((p, i) => {
+              // Versetzte Hängung (Staggered Grid) für organische Tiefe
+              const margins = [
+                "md:mt-0 md:mb-40",
+                "md:mt-32 md:mb-24",
+                "md:mt-16 md:mb-32",
+                "md:mt-48 md:mb-16",
+                "md:mt-8 md:mb-48",
+              ];
+
+              // Variierende horizontale Abstände durch unterschiedliche Margins und Breiten
+              const widths = [
+                "w-full",
+                "w-[85%] md:ml-12", // Bild nach rechts geschoben -> linker Gap wirkt größer
+                "w-[90%] md:mr-16", // Bild nach links geschoben -> rechter Gap wirkt größer
+                "w-[80%] mx-auto", // Viel Luft auf beiden Seiten
+                "w-[95%] md:ml-8",
+                "w-[85%] md:mr-24",
+              ];
+
+              const marginClass = margins[i % margins.length];
+              let widthClass = widths[i % widths.length];
+              let maxHClass = "max-h-[60vh]";
+              let zClass = "z-10";
+
+              // Sonderbehandlung anhand des originalIndex, damit die Bilder ihre Größe behalten, auch wenn sie verschoben wurden
+              const isHero =
+                p.originalIndex === 7 || // 08/58
+                p.originalIndex === 9 || // 10/58
+                p.originalIndex === 39 || // 40/58 (wurde ans Ende verschoben)
+                p.originalIndex === 49 || // 50/58
+                p.originalIndex === 57 || // 58/58 (ehemals das letzte)
+                p.originalIndex === 36; // Neu: DSC_0062 23 (unter 40 verschoben)
+
+              if (isHero) {
+                if (p.originalIndex === 39) {
+                  // Extragroße Sonderbehandlung für Bild 40/58 (nochmals ~20% größer als andere Heros)
+                  widthClass = "w-[115%] md:w-[140%] md:-ml-[20%]";
+                  maxHClass = "max-h-[100vh]"; // Volle Bildschirmhöhe erlaubt
+                  zClass = "z-30"; // Ganz obenauf
+                } else if (p.originalIndex === 36) {
+                  // Sondergröße für das neue Schlussbild (DSC_0062 23)
+                  widthClass = "w-[110%] md:w-[130%] md:-ml-[15%]";
+                  maxHClass = "max-h-[90vh]";
+                  zClass = "z-30";
+                } else {
+                  // Standard Hero-Bilder
+                  widthClass = "w-[105%] md:w-[120%] md:-ml-[10%]";
+                  maxHClass = "max-h-[85vh]";
+                  zClass = "z-20";
+                }
+              }
+
+              return (
+                <motion.div
+                  layout="position"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "100px" }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    layout: { type: "spring", bounce: 0, duration: 2.2 },
+                    opacity: { duration: 0.8, ease: "easeOut" },
+                    y: { duration: 0.8, ease: "easeOut" },
+                  }}
+                  key={p.id}
+                  className={`relative block text-left mb-24 ${widthClass} ${marginClass} ${zClass}`}
+                  style={{ breakInside: "avoid" }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => openPhoto(p.id)}
+                    onPointerEnter={() => preloadImage(p.src)}
+                    onFocus={() => preloadImage(p.src)}
+                    // Reines, nacktes Bild. Hover-Dim-Effekt greift auf die innere Button-Struktur (nur auf Desktop via lg:).
+                    className="group/item w-full transition-opacity duration-700 focus:outline-none focus:ring-1 focus:ring-white/20 lg:group-hover:opacity-30 lg:hover:!opacity-100 cursor-none cursor-trigger-zoom"
+                  >
+                    <div className="relative flex justify-center w-full">
+                      {/* 3D-Glas-Platten Effekt: 
+                      1. inset 0 1px 1px -> Lichtreflexion an der oberen Kante (Deckenlicht)
+                      2. inset 0 0 0 1px -> Hauchdünne Haarlinie zur Definition des Randes
+                      3. 0 30px 60px -> Massiver, tiefschwarzer Drop-Shadow nach unten
+                      4. 0 0 20px -> Schwarzer Ambient-Glow in alle Richtungen zur Trennung vom Hintergrund */}
+                      <div className="relative overflow-hidden bg-[#0A0A0A] transform-gpu rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.05),_0_30px_60px_-10px_rgba(0,0,0,1),_0_0_20px_rgba(0,0,0,0.8)] transition-all duration-700">
+                        <LazyImage
+                          src={p.src}
+                          alt={p.title}
+                          eager={i < 6}
+                          // maxHClass steuert nun die Höhe flexibel (z.B. für Ausreißer)
+                          className={`block h-auto w-auto max-w-full ${maxHClass} object-contain transition-transform duration-[800ms] ease-out group-hover/item:scale-[1.03] translate-z-0`}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Dezente Nummerierung schwebend unterhalb, blendet nur bei Hover über DIESES Bild ein */}
+                    <div className="absolute -bottom-7 left-0 opacity-0 transition-opacity duration-500 group-hover/item:opacity-100">
+                      <span
+                        aria-hidden
+                        className="text-[9px] sm:text-[10px] tracking-[0.3em] font-medium text-white/90 uppercase"
+                      >
+                        {String(i + 1).padStart(2, "0")}/
+                        {String(filteredPhotos.length).padStart(2, "0")}
+                      </span>
+                    </div>
+                  </button>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </section>
+
+        <div className="mt-16 flex flex-col items-center gap-6 md:mt-24">
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-[11px] uppercase tracking-[0.35em] opacity-60 transition-opacity hover:opacity-100"
+            className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
           >
             nach oben ↑
           </button>
         </div>
 
-        <footer className="mt-16 flex flex-col items-center gap-4 border-t border-[#2d2a22]/15 pt-8 text-[11px] uppercase tracking-[0.35em] opacity-70 md:mt-24">
+        <footer className="mt-16 flex flex-col items-center gap-4 text-[11px] uppercase tracking-[0.35em] opacity-70 md:mt-24">
           <button
             type="button"
             onClick={() => setImpressumOpen(true)}
-            className="rounded-full border border-[#2d2a22]/25 px-5 py-2.5 tracking-[0.35em] transition-colors hover:bg-[#2d2a22]/[0.06] hover:opacity-100"
+            className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
           >
             Impressum
           </button>
@@ -337,110 +409,270 @@ function DoPage() {
             © {new Date().getFullYear()} Alexander Kühn · Alle Rechte vorbehalten
           </span>
         </footer>
-
-        {/* Impressum modal */}
-        {impressumOpen && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
-            style={{
-              background: "rgba(45, 42, 34, 0.55)",
-              backdropFilter: "blur(4px)",
-            }}
-            onClick={() => setImpressumOpen(false)}
-          >
-            <div
-              className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-[#f2ede0]/20 bg-[#faf6ed] p-8 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] md:p-12"
-              style={{ color: "#2d2a22" }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={() => setImpressumOpen(false)}
-                aria-label="Schließen"
-                className="absolute right-5 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100"
-              >
-                ×
-              </button>
-              <h2
-                className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
-                style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
-              >
-                Impressum
-              </h2>
-              <ImpressumContent />
-            </div>
-          </div>
-        )}
-
-
-        {/* Lightbox */}
-        {active && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
-            style={{
-              background: "rgba(45, 42, 34, 0.55)",
-              backdropFilter: "blur(4px)",
-            }}
-            onClick={() => setOpenId(null)}
-          >
-            <div
-              className="relative flex max-h-[92vh] max-w-[95vw] flex-col overflow-hidden border border-[#f2ede0]/20 bg-[#faf6ed] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
-              style={{ color: "#2d2a22" }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={() => setOpenId(null)}
-                aria-label="Schließen"
-                className="absolute right-4 top-3 z-10 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100"
-              >
-                ×
-              </button>
-              <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#faf6ed]">
-                <LazyImage
-                  key={active.id}
-                  src={active.src}
-                  alt={active.title}
-                  eager
-                  className="block max-h-[82vh] max-w-[95vw] w-auto h-auto object-contain"
-                />
-
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/40 px-1.5 py-[2px] text-[7px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm md:text-[7px]"
-                >
-                  © Alexander Kühn
-                </span>
-              </div>
-              <div className="flex items-center justify-center gap-6 border-t border-[#2d2a22]/10 px-4 py-2 text-[11px] uppercase tracking-[0.35em] opacity-70 md:px-6 md:py-2.5">
-                <button
-                  type="button"
-                  onClick={() => {
-                    const i = photos.findIndex((p) => p.id === active.id);
-                    openPhoto(photos[(i - 1 + photos.length) % photos.length].id);
-                  }}
-                  className="hover:opacity-100"
-                >
-                  ← zurück
-                </button>
-                <span className="opacity-60">
-                  {String(photos.findIndex((p) => p.id === active.id) + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const i = photos.findIndex((p) => p.id === active.id);
-                    openPhoto(photos[(i + 1) % photos.length].id);
-                  }}
-                  className="hover:opacity-100"
-                >
-                  vor →
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Floating 'Start' Button */}
+      <div className="md:hidden fixed bottom-6 right-6 z-40">
+        <Link
+          to="/"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A1918] border border-white/20 text-[#EFECE4] shadow-[0_10px_30px_rgba(0,0,0,0.8)] transition-transform hover:scale-105 focus:outline-none"
+        >
+          <span className="text-[8px] uppercase tracking-[0.25em] font-medium mt-[1px]">Start</span>
+        </Link>
+      </div>
+
+      {/* Impressum modal */}
+      {impressumOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 cursor-none cursor-trigger-close"
+          style={{
+            background: "rgba(45, 42, 34, 0.55)",
+            backdropFilter: "blur(4px)",
+          }}
+          onClick={() => setImpressumOpen(false)}
+        >
+          <div
+            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12"
+            style={{ color: "#EFECE4" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setImpressumOpen(false)}
+              aria-label="Schließen"
+              className="absolute right-4 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100 p-4 -m-4"
+            >
+              ×
+            </button>
+            <h2
+              className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
+              style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
+            >
+              Impressum
+            </h2>
+            <ImpressumContent />
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox */}
+      {active && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 cursor-none cursor-trigger-close"
+          style={{
+            background: "rgba(20, 18, 15, 0.9)",
+            backdropFilter: "blur(8px)",
+          }}
+          onClick={() => setOpenId(null)}
+        >
+          <div
+            className="relative flex max-h-[95vh] max-w-[95vw] flex-col overflow-hidden bg-[#11100F] cursor-default"
+            style={{ color: "#EFECE4" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setOpenId(null)}
+              aria-label="Schließen"
+              className="absolute right-4 top-4 z-10 text-3xl leading-none opacity-60 transition-opacity hover:opacity-100 mix-blend-difference text-white p-4 -m-4"
+            >
+              ×
+            </button>
+
+            {/* Inner container for image */}
+            <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#11100F]">
+              <LazyImage
+                key={active.id}
+                src={active.src}
+                alt={active.title}
+                eager
+                className="block max-h-[90vh] max-w-[90vw] w-auto h-auto object-contain cursor-none cursor-trigger-close"
+                onClick={() => setOpenId(null)}
+              />
+            </div>
+
+            {/* Numbering and controls at the bottom */}
+            <div className="absolute bottom-4 left-4 flex items-center justify-center mix-blend-difference text-white">
+              <span className="text-[9px] sm:text-[11px] tracking-[0.3em] font-medium uppercase opacity-50">
+                {String(photos.findIndex((p) => p.id === active.id) + 1).padStart(2, "0")}/
+                {String(photos.length).padStart(2, "0")}
+              </span>
+            </div>
+
+            {/* Mobile Touch Navigation Zones */}
+            <div
+              className="absolute inset-y-0 left-0 w-1/3 z-20 flex items-center pl-4 cursor-pointer md:hidden opacity-50 mix-blend-difference text-white text-2xl"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateLightbox(-1);
+              }}
+            >
+              ◀
+            </div>
+            <div
+              className="absolute inset-y-0 right-0 w-1/3 z-20 flex items-center justify-end pr-4 cursor-pointer md:hidden opacity-50 mix-blend-difference text-white text-2xl"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateLightbox(1);
+              }}
+            >
+              ▶
+            </div>
+          </div>
+        </div>
+      )}
+      <CustomCursor />
     </main>
+  );
+}
+
+function FadeIn({
+  children,
+  className = "",
+  style = {},
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  delay?: number;
+}) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      // rootMargin: "150px" sorgt dafür, dass die Animation schon minimal früher startet,
+      // bevor das Bild überhaupt den Bildschirmrand erreicht. Das macht es bei schnellem Scrollen flüssiger.
+      { rootMargin: "150px", threshold: 0.01 },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      // Deutlich längere Duration (1800ms) und kürzere Fallhöhe (translate-y-10 statt 24)
+      // für einen schwebenden, ultra-weichen Parallax-artigen Effekt.
+      className={`${className} transition-all duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+      style={{ ...style, transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function CustomCursor() {
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    let state = "default";
+    let isTouch = false;
+    let rAF = 0;
+
+    const onTouch = () => {
+      isTouch = true;
+    };
+    window.addEventListener("touchstart", onTouch, { once: true });
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (isTouch) return;
+
+      const el = e.target as HTMLElement;
+      if (!el || !el.closest) return;
+
+      if (el.closest(".cursor-trigger-zoom")) {
+        state = "zoom";
+      } else if (el.closest(".cursor-trigger-close")) {
+        state = "close";
+      } else if (el.closest("a, button")) {
+        state = "hover";
+      } else {
+        state = "default";
+      }
+
+      if (rAF) cancelAnimationFrame(rAF);
+      rAF = requestAnimationFrame(() => {
+        if (cursorRef.current && ringRef.current && textRef.current) {
+          // Positioniert den Container extrem schnell und ohne Delay am Mauszeiger
+          cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+
+          // Animiert sanft die Skalierung und Sichtbarkeit des inneren Rings
+          if (state === "default") {
+            ringRef.current.style.opacity = "0";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.5)`;
+            textRef.current.innerText = "";
+          } else if (state === "close") {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            textRef.current.innerText = "CLOSE";
+          } else {
+            // hover und zoom bekommen exakt dasselbe "VIEW" in mittlerer Größe
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            textRef.current.innerText = "VIEW";
+          }
+        }
+      });
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    return () => {
+      if (rAF) cancelAnimationFrame(rAF);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("touchstart", onTouch);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={cursorRef}
+      className="pointer-events-none fixed left-0 top-0 z-[9999] hidden md:flex"
+      style={{ width: 0, height: 0 }}
+    >
+      <div
+        ref={ringRef}
+        className="absolute left-0 top-0 flex items-center justify-center rounded-full text-[#11100F] shadow-sm transition-all duration-300 ease-out overflow-hidden"
+        style={{
+          width: "64px",
+          height: "64px",
+          opacity: 0,
+          transform: "translate3d(-50%, -50%, 0) scale(0.8)",
+        }}
+      >
+        {/* Animated Rainbow Border Layer */}
+        <div
+          className="absolute inset-0 z-0 animate-spin rounded-full"
+          style={{
+            background:
+              "conic-gradient(from 0deg, #FF0018, #FFA52C, #FFFF41, #008018, #0000F9, #86007D, #FF0018)",
+            animationDuration: "3s",
+            WebkitMaskImage:
+              "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 1px))",
+            maskImage:
+              "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 1px))",
+          }}
+        />
+        {/* Inner Solid Circle (stark transparent für Lesbarkeit) */}
+        <div className="absolute inset-[2px] rounded-full bg-[#EFECE4]/20 z-10" />
+
+        {/* Text */}
+        <span
+          ref={textRef}
+          className="relative z-20 text-[10px] uppercase tracking-[0.2em] font-medium"
+        />
+      </div>
+    </div>
   );
 }

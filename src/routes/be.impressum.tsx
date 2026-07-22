@@ -19,8 +19,7 @@ function ImpressumPage() {
     <main
       className="min-h-screen w-full"
       style={{
-        background:
-          "radial-gradient(120% 80% at 50% 0%, #f2ede0 0%, #e6ddc9 45%, #cfc0a3 100%)",
+        background: "radial-gradient(120% 80% at 50% 0%, #f2ede0 0%, #e6ddc9 45%, #cfc0a3 100%)",
         color: "#2d2a22",
       }}
     >
@@ -32,15 +31,11 @@ function ImpressumPage() {
           >
             ← Übersicht
           </Link>
-          <span className="text-[11px] uppercase tracking-[0.4em] opacity-60">
-            Portfolio
-          </span>
+          <span className="text-[11px] uppercase tracking-[0.4em] opacity-60">Portfolio</span>
         </header>
 
         <section className="mt-16 md:mt-24">
-          <p className="mb-4 text-[11px] uppercase tracking-[0.4em] opacity-60">
-            04 · Impressum
-          </p>
+          <p className="mb-4 text-[11px] uppercase tracking-[0.4em] opacity-60">04 · Impressum</p>
           <h1
             className="text-5xl leading-[0.95] tracking-tight md:text-7xl"
             style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
@@ -48,8 +43,7 @@ function ImpressumPage() {
             Rechtliches, klar und knapp.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed opacity-75 md:text-lg">
-            Pflichtangaben nach § 5 TMG, Kontaktdaten sowie Hinweise zu
-            Urheber- und Bildrechten.
+            Pflichtangaben nach § 5 TMG, Kontaktdaten sowie Hinweise zu Urheber- und Bildrechten.
           </p>
         </section>
 
@@ -84,62 +78,56 @@ function ImpressumPage() {
 
           <Block title="Urheberrecht">
             <p>
-              Die auf dieser Website veröffentlichten Inhalte, Texte und
-              Gestaltungselemente unterliegen dem deutschen Urheberrecht.
-              Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
-              Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der
+              Die auf dieser Website veröffentlichten Inhalte, Texte und Gestaltungselemente
+              unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und
+              jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der
               vorherigen schriftlichen Zustimmung von Alexander Kühn.
             </p>
           </Block>
 
           <Block title="Bildrechte und Fotografie">
             <p>
-              Alle auf dieser Website gezeigten Fotografien sind, sofern nicht
-              anders gekennzeichnet, © Alexander Kühn. Alle Rechte vorbehalten.
+              Alle auf dieser Website gezeigten Fotografien sind, sofern nicht anders
+              gekennzeichnet, © Alexander Kühn. Alle Rechte vorbehalten.
             </p>
             <p className="mt-4">
-              Die Fotografien dienen ausschließlich der Präsentation im Rahmen
-              dieses Portfolios. Ein Download, eine Speicherung, Bearbeitung,
-              Weitergabe oder Nutzung der Bilder – gleich in welcher Form,
-              analog oder digital, privat oder kommerziell – ist ohne
-              ausdrückliche schriftliche Genehmigung nicht gestattet. Dies gilt
-              insbesondere für die Nutzung in sozialen Netzwerken, auf Websites
-              Dritter, in Druckerzeugnissen oder für das Training von
-              KI-Modellen.
+              Die Fotografien dienen ausschließlich der Präsentation im Rahmen dieses Portfolios.
+              Ein Download, eine Speicherung, Bearbeitung, Weitergabe oder Nutzung der Bilder –
+              gleich in welcher Form, analog oder digital, privat oder kommerziell – ist ohne
+              ausdrückliche schriftliche Genehmigung nicht gestattet. Dies gilt insbesondere für die
+              Nutzung in sozialen Netzwerken, auf Websites Dritter, in Druckerzeugnissen oder für
+              das Training von KI-Modellen.
             </p>
             <p className="mt-4">
-              Für Anfragen zu Lizenzierungen, Abzügen oder redaktionellen
-              Nutzungen bitte ich um Kontaktaufnahme per E-Mail.
+              Für Anfragen zu Lizenzierungen, Abzügen oder redaktionellen Nutzungen bitte ich um
+              Kontaktaufnahme per E-Mail.
             </p>
           </Block>
 
           <Block title="Haftung für Inhalte">
             <p>
-              Die Inhalte dieser Seiten wurden mit größtmöglicher Sorgfalt
-              erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der
-              Inhalte kann jedoch keine Gewähr übernommen werden. Als
-              Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte
-              auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
-              Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht
-              verpflichtet, übermittelte oder gespeicherte fremde Informationen
-              zu überwachen.
+              Die Inhalte dieser Seiten wurden mit größtmöglicher Sorgfalt erstellt. Für die
+              Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr
+              übernommen werden. Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte
+              auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG
+              bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte
+              fremde Informationen zu überwachen.
             </p>
           </Block>
 
           <Block title="Haftung für Links">
             <p>
-              Diese Website enthält gegebenenfalls Links zu externen Websites
-              Dritter, auf deren Inhalte ich keinen Einfluss habe. Für die
-              Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter
-              oder Betreiber verantwortlich. Bei Bekanntwerden von
+              Diese Website enthält gegebenenfalls Links zu externen Websites Dritter, auf deren
+              Inhalte ich keinen Einfluss habe. Für die Inhalte der verlinkten Seiten ist stets der
+              jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden von
               Rechtsverletzungen werden derartige Links umgehend entfernt.
             </p>
           </Block>
 
           <Block title="Streitschlichtung">
             <p>
-              Die Europäische Kommission stellt eine Plattform zur
-              Online-Streitbeilegung (OS) bereit:{" "}
+              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS)
+              bereit:{" "}
               <a
                 href="https://ec.europa.eu/consumers/odr"
                 className="underline underline-offset-4 hover:opacity-70"
@@ -149,8 +137,7 @@ function ImpressumPage() {
                 ec.europa.eu/consumers/odr
               </a>
               . Zur Teilnahme an einem Streitbeilegungsverfahren vor einer
-              Verbraucherschlichtungsstelle bin ich nicht verpflichtet und
-              nicht bereit.
+              Verbraucherschlichtungsstelle bin ich nicht verpflichtet und nicht bereit.
             </p>
           </Block>
         </div>

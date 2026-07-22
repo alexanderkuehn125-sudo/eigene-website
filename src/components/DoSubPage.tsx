@@ -13,8 +13,7 @@ export function SubPage({ section }: { section: Section }) {
     <main
       className="min-h-screen w-full"
       style={{
-        background:
-          "radial-gradient(120% 80% at 50% 0%, #f2ede0 0%, #e6ddc9 45%, #cfc0a3 100%)",
+        background: "radial-gradient(120% 80% at 50% 0%, #f2ede0 0%, #e6ddc9 45%, #cfc0a3 100%)",
         color: "#2d2a22",
       }}
     >
@@ -26,9 +25,7 @@ export function SubPage({ section }: { section: Section }) {
           >
             ← Übersicht
           </Link>
-          <span className="text-[11px] uppercase tracking-[0.4em] opacity-60">
-            Portfolio
-          </span>
+          <span className="text-[11px] uppercase tracking-[0.4em] opacity-60">Portfolio</span>
         </header>
 
         <section className="mt-16 grid gap-12 md:mt-24 md:grid-cols-[1.1fr_0.9fr] md:items-start md:gap-16">

@@ -4,10 +4,12 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -77,18 +79,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "be / do — a portfolio between nature and culture" },
+      { title: "Alexander Kühn — Projektmanagement & Fotografie" },
       {
         name: "description",
         content:
-          "A landing between the 18th and 21st centuries of Manhattan — slide to reveal, choose Portfolio or Ausstellung.",
+          "Alexander Kühn: Projektmanager, dipl. Eventmanager (IST) & KI-Berater. Entdecken Sie mein Portfolio und meine fotografische Ausstellung.",
       },
-      { name: "author", content: "be / do" },
-      { property: "og:title", content: "be / do" },
+      { name: "author", content: "Alexander Kühn" },
+      { property: "og:title", content: "Alexander Kühn — Projektmanagement & Fotografie" },
       {
         property: "og:description",
         content:
-          "Slide between untouched nature and the modern skyline. Enter Portfolio or Ausstellung.",
+          "Alexander Kühn: Projektmanager, dipl. Eventmanager (IST) & KI-Berater. Entdecken Sie mein Portfolio und meine fotografische Ausstellung.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -104,10 +106,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inter:wght@300;400;500&family=Jost:wght@300;400;500&display=swap",
       },
     ],
-
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -131,11 +132,22 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0, filter: "blur(8px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, filter: "blur(8px)" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="min-h-screen w-full bg-[#050504]"
+        >
+          <Outlet />
+        </motion.div>
+      </AnimatePresence>
     </QueryClientProvider>
   );
 }

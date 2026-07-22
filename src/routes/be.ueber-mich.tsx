@@ -3,7 +3,12 @@ import { SubPage } from "@/components/DoSubPage";
 import portrait from "@/assets/alexander-kuehn.jpg.asset.json";
 
 export const Route = createFileRoute("/be/ueber-mich")({
-  head: () => ({ meta: [{ title: "Über mich — Portfolio" }, { name: "description", content: "Herkunft und Haltung." }] }),
+  head: () => ({
+    meta: [
+      { title: "Über mich — Portfolio" },
+      { name: "description", content: "Herkunft und Haltung." },
+    ],
+  }),
   component: () => (
     <SubPage
       section={{
