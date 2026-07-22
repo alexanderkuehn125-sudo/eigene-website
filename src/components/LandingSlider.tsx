@@ -592,10 +592,10 @@ function CloudTitle({
           fontFamily: "'Roboto', sans-serif",
           fontWeight: 300,
           color: tone.color,
+          textShadow: tone.shadow,
           letterSpacing: "0.15em",
           fontSize: "clamp(0.6rem, 1vw, 0.9rem)",
           textTransform: "uppercase",
-          opacity: pct === (side === "be" ? 0 : 100) ? 1 : 0.8,
           transition: "opacity 0.5s ease",
         }}
       >
