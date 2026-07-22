@@ -129,10 +129,10 @@ export function LandingSlider() {
       if (draggingRef.current) {
         setPct((p) => {
           if (p <= 5) {
-            setTimeout(() => { void navigate({ to: "/do" }); }, 300);
+            setTimeout(() => { void navigate({ to: "/be" }); }, 300);
             return 0;
           } else if (p >= 95) {
-            setTimeout(() => { void navigate({ to: "/be" }); }, 300);
+            setTimeout(() => { void navigate({ to: "/do" }); }, 300);
             return 100;
           }
           return p;
@@ -547,10 +547,12 @@ function CloudTitle({
     return x * x * (3 - 2 * x);
   };
 
-  const subtextOpacity =
-    letterPcts.length > 0
-      ? Math.min(...letterPcts.map((p) => (p !== undefined ? opacityFor(p) : 1)))
-      : 1;
+  const subtextT =
+    side === "be"
+      ? (pct - (center + 12)) / 20 + 0.5
+      : ((center - 12) - pct) / 20 + 0.5;
+  const subtextX = Math.max(0, Math.min(1, subtextT));
+  const subtextOpacity = subtextX * subtextX * (3 - 2 * subtextX);
 
   return (
     <button
