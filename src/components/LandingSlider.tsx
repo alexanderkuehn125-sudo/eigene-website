@@ -206,6 +206,21 @@ export function LandingSlider() {
               "radial-gradient(120% 80% at 50% 30%, transparent 40%, rgba(30,25,10,0.35) 100%)",
           }}
         />
+        {/* Fassaden-Raster — technical window-grid on buildings */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(to right, rgba(168,216,255,0.09) 0 1px, transparent 1px 8px), repeating-linear-gradient(to bottom, rgba(168,216,255,0.09) 0 1px, transparent 1px 12px)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, transparent 45%, #000 62%, #000 88%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, transparent 45%, #000 62%, #000 88%, transparent 100%)",
+            mixBlendMode: "screen",
+          }}
+        />
+
         {/* Drifting mist — light animation */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="mist mist-a" />
