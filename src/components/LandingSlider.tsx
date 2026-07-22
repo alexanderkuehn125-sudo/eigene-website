@@ -345,8 +345,8 @@ export function LandingSlider() {
             fontWeight: 200,
             letterSpacing: "0.38em",
             fontSize: "clamp(0.7rem, 1.1vw, 0.95rem)",
-            color: "rgba(255,255,255,0.72)",
-            textShadow: "0 2px 12px rgba(0,0,0,0.55)",
+            color: "black",
+            textShadow: "0 0 8px rgba(255,255,255,0.3)",
             textTransform: "uppercase",
           }}
         >
@@ -357,6 +357,7 @@ export function LandingSlider() {
       {/* Cloud title — Portfolio (over BE side) */}
       <CloudTitle
         label="Portfolio"
+        subtext="Architektur · Fotografie · CGI"
         side="be"
         isMobile={isMobile}
         pct={pct}
@@ -367,6 +368,7 @@ export function LandingSlider() {
       {/* Cloud title — Ausstellung (over DO side) */}
       <CloudTitle
         label="Ausstellung"
+        subtext="Freie fotografische Arbeiten"
         side="do"
         isMobile={isMobile}
         pct={pct}
@@ -472,12 +474,14 @@ export function LandingSlider() {
 
 function CloudTitle({
   label,
+  subtext,
   side,
   isMobile,
   pct,
   onClick,
 }: {
   label: string;
+  subtext: string;
   side: "be" | "do";
   isMobile: boolean;
   pct: number;
@@ -568,6 +572,7 @@ function CloudTitle({
                 letterRefs.current[i] = el;
               }}
               style={{
+                fontFamily: "'Jost', sans-serif",
                 display: "inline-block",
                 opacity: o,
                 filter: `blur(${(1 - o) * 6}px)`,
@@ -579,6 +584,22 @@ function CloudTitle({
             </span>
           );
         })}
+      </span>
+      {/* Subtext */}
+      <span
+        className="block text-center mt-3"
+        style={{
+          fontFamily: "'Roboto', sans-serif",
+          fontWeight: 300,
+          color: tone.color,
+          letterSpacing: "0.15em",
+          fontSize: "clamp(0.6rem, 1vw, 0.9rem)",
+          textTransform: "uppercase",
+          opacity: pct === (side === "be" ? 0 : 100) ? 1 : 0.8,
+          transition: "opacity 0.5s ease",
+        }}
+      >
+        {subtext}
       </span>
     </button>
   );
