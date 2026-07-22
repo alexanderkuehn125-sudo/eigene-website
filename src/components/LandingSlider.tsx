@@ -129,10 +129,10 @@ export function LandingSlider() {
       if (draggingRef.current) {
         setPct((p) => {
           if (p <= 5) {
-            setTimeout(() => navigate("/do"), 300);
+            setTimeout(() => { void navigate({ to: "/do" }); }, 300);
             return 0;
           } else if (p >= 95) {
-            setTimeout(() => navigate("/be"), 300);
+            setTimeout(() => { void navigate({ to: "/be" }); }, 300);
             return 100;
           }
           return p;
@@ -547,6 +547,11 @@ function CloudTitle({
     return x * x * (3 - 2 * x);
   };
 
+  const subtextOpacity =
+    letterPcts.length > 0
+      ? Math.min(...letterPcts.map((p) => (p !== undefined ? opacityFor(p) : 1)))
+      : 1;
+
   return (
     <button
       ref={containerRef as React.RefObject<HTMLButtonElement>}
@@ -607,8 +612,8 @@ function CloudTitle({
           letterSpacing: "0.15em",
           fontSize: "clamp(0.6rem, 1vw, 0.9rem)",
           textTransform: "uppercase",
-          opacity: opacityFor(center),
-          filter: `blur(${(1 - opacityFor(center)) * 6}px)`,
+          opacity: subtextOpacity,
+          filter: `blur(${(1 - subtextOpacity) * 6}px)`,
           transition: "opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
