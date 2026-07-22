@@ -320,7 +320,7 @@ export function LandingSlider() {
         onPointerDown={startDrag}
         onKeyDown={onKey}
         onClick={(e) => e.stopPropagation()}
-        className={`group absolute z-20 grid place-items-center rounded-full shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur focus:outline-none focus:ring-2 focus:ring-white/80 ${
+        className={`group absolute z-20 grid place-items-center rounded-full border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 ${
           isMobile ? "cursor-ns-resize" : "cursor-ew-resize"
         }`}
         style={
@@ -331,8 +331,7 @@ export function LandingSlider() {
                 width: 68,
                 height: 28,
                 transform: "translate(-50%, -50%)",
-                background:
-                  "transparent",
+                background: "transparent",
                 animation: "handlePulse 4s ease-in-out infinite",
               }
             : {
@@ -341,22 +340,22 @@ export function LandingSlider() {
                 width: 28,
                 height: 68,
                 transform: "translate(-50%, -50%)",
-                background:
-                  "transparent",
+                background: "transparent",
                 animation: "handlePulse 4s ease-in-out infinite",
               }
         }
 
       >
         {isMobile ? (
-          <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-[#1a1a1a]">
+          <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-white/80">
             <span aria-hidden>▲</span>
             <span aria-hidden>▼</span>
           </span>
         ) : (
-          <span className="flex flex-col items-center gap-1 text-[10px] tracking-[0.3em] text-[#1a1a1a]">
+          <span className="flex flex-col items-center gap-1 text-[10px] tracking-[0.3em] text-white/80">
             <span aria-hidden>◀</span>
             <span aria-hidden>▶</span>
+
           </span>
         )}
       </div>
