@@ -115,7 +115,7 @@ export function LandingSlider() {
       const raw = isMobile
         ? ((clientY - rect.top) / rect.height) * 100
         : ((clientX - rect.left) / rect.width) * 100;
-      setPct(Math.max(0, Math.min(100, raw)));
+      setPct(Math.max(4, Math.min(96, raw)));
     },
     [isMobile],
   );
@@ -156,7 +156,7 @@ export function LandingSlider() {
       e.preventDefault();
       const dir =
         e.key === "ArrowRight" || e.key === "ArrowDown" ? +1 : -1;
-      setPct((p) => Math.max(0, Math.min(100, p + dir * step)));
+      setPct((p) => Math.max(4, Math.min(96, p + dir * step)));
     }
   };
 
@@ -188,7 +188,7 @@ export function LandingSlider() {
         aria-label="Enter Portfolio"
         onMouseMove={makeLensHandler(beSideRef, beBalloonRef, setBeLens)}
         onMouseLeave={() => setBeLens((l) => ({ ...l, visible: false, reveal: false }))}
-        className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
+        className="absolute inset-0 block h-full w-full cursor-elegant focus:outline-none"
         style={zoomOn && !isMobile ? { cursor: "zoom-in" } : undefined}
       >
         <img
@@ -206,246 +206,6 @@ export function LandingSlider() {
               "radial-gradient(120% 80% at 50% 30%, transparent 40%, rgba(30,25,10,0.35) 100%)",
           }}
         />
-        {/* Fassaden-Raster — technical window-grid on buildings */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(to right, rgba(168,216,255,0.09) 0 1px, transparent 1px 8px), repeating-linear-gradient(to bottom, rgba(168,216,255,0.09) 0 1px, transparent 1px 12px)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, transparent 45%, #000 62%, #000 88%, transparent 100%)",
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, transparent 45%, #000 62%, #000 88%, transparent 100%)",
-            mixBlendMode: "screen",
-          }}
-        />
-
-        {/* Edge-Trace — zeichnet die Gebäudekanten via SVG-Kantenfilter nach */}
-        <svg aria-hidden width="0" height="0" style={{ position: "absolute" }}>
-          <defs>
-            <filter id="edge-trace-be" x="0" y="0" width="100%" height="100%">
-              <feColorMatrix
-                type="matrix"
-                values="0.33 0.33 0.33 0 0
-                        0.33 0.33 0.33 0 0
-                        0.33 0.33 0.33 0 0
-                        0    0    0    1 0"
-              />
-              <feConvolveMatrix
-                order="3"
-                preserveAlpha="true"
-                kernelMatrix="-1 -1 -1  -1  8 -1  -1 -1 -1"
-              />
-              <feComponentTransfer>
-                <feFuncR type="linear" slope="2.4" intercept="0" />
-                <feFuncG type="linear" slope="2.4" intercept="0" />
-                <feFuncB type="linear" slope="2.4" intercept="0" />
-                <feFuncA type="linear" slope="1.6" intercept="0" />
-              </feComponentTransfer>
-              <feColorMatrix
-                type="matrix"
-                values="0    0    0    0 0.66
-                        0    0    0    0 0.85
-                        0    0    0    0 1
-                        0.34 0.5  0.16 0 0"
-              />
-            </filter>
-          </defs>
-        </svg>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            filter: "url(#edge-trace-be)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, transparent 42%, #000 58%, #000 90%, transparent 100%)",
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, transparent 42%, #000 58%, #000 90%, transparent 100%)",
-            mixBlendMode: "screen",
-            opacity: 0.55,
-          }}
-        >
-          <img
-            src={beImg}
-            alt=""
-            className="h-full w-full object-cover"
-            draggable={false}
-          />
-        </div>
-
-
-        {/* Crop-Marks + Koordinaten-Ticks — rahmt das Bild als technisches Dokument */}
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          viewBox="0 0 1000 1000"
-          preserveAspectRatio="none"
-          style={{ mixBlendMode: "screen", opacity: 0.55 }}
-        >
-          <g stroke="rgba(168,216,255,0.75)" strokeWidth="0.6" fill="none">
-            {/* Corner fiducials — top-left */}
-            <path d="M20 40 L20 20 L40 20" />
-            <circle cx="20" cy="20" r="3" />
-            {/* top-right */}
-            <path d="M960 20 L980 20 L980 40" />
-            <circle cx="980" cy="20" r="3" />
-            {/* bottom-left */}
-            <path d="M20 960 L20 980 L40 980" />
-            <circle cx="20" cy="980" r="3" />
-            {/* bottom-right */}
-            <path d="M960 980 L980 980 L980 960" />
-            <circle cx="980" cy="980" r="3" />
-          </g>
-          {/* Left edge — measurement ticks */}
-          <g stroke="rgba(168,216,255,0.5)" strokeWidth="0.4">
-            {Array.from({ length: 21 }, (_, i) => 60 + i * 44).map((y, i) => (
-              <line
-                key={`lt-${i}`}
-                x1="20"
-                x2={i % 5 === 0 ? 34 : 26}
-                y1={y}
-                y2={y}
-              />
-            ))}
-          </g>
-          {/* Top edge — measurement ticks */}
-          <g stroke="rgba(168,216,255,0.5)" strokeWidth="0.4">
-            {Array.from({ length: 21 }, (_, i) => 60 + i * 44).map((x, i) => (
-              <line
-                key={`tt-${i}`}
-                y1="20"
-                y2={i % 5 === 0 ? 34 : 26}
-                x1={x}
-                x2={x}
-              />
-            ))}
-          </g>
-          {/* Coordinate labels */}
-          <g
-            fill="rgba(200,225,255,0.7)"
-            fontFamily="ui-monospace, 'JetBrains Mono', monospace"
-            fontSize="10"
-            letterSpacing="1"
-          >
-            <text x="46" y="16">N 40.7128°</text>
-            <text x="828" y="16">W 74.0060°</text>
-            <text x="46" y="994">SCAN · 001</text>
-            <text x="880" y="994">v.2026</text>
-          </g>
-        </svg>
-
-        {/* HUD Micro-Labels — Objekt-IDs, Höhen, Koordinaten */}
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          viewBox="0 0 1000 1000"
-          preserveAspectRatio="none"
-          style={{ mixBlendMode: "screen", opacity: 0.7 }}
-        >
-          <defs>
-            <style>{`
-              @keyframes hudBlink {
-                0%, 100% { opacity: 0.65; }
-                50% { opacity: 1; }
-              }
-              .hud { animation: hudBlink 4.4s ease-in-out infinite; }
-            `}</style>
-          </defs>
-          <g
-            className="hud"
-            fill="rgba(200,225,255,0.85)"
-            fontFamily="ui-monospace, 'JetBrains Mono', monospace"
-            fontSize="8"
-            letterSpacing="0.6"
-          >
-            {/* Label 1 — links */}
-            <g stroke="rgba(180,220,255,0.55)" strokeWidth="0.4" fill="none">
-              <line x1="340" y1="600" x2="340" y2="558" />
-              <line x1="340" y1="558" x2="250" y2="558" />
-              <circle cx="340" cy="600" r="1.6" fill="rgba(200,225,255,0.9)" />
-            </g>
-            <text x="248" y="554" textAnchor="end">OBJ_042 · H 218M</text>
-            <text x="248" y="564" textAnchor="end" fill="rgba(200,225,255,0.5)">40.7118° N</text>
-
-            {/* Label 2 — Mitte */}
-            <g stroke="rgba(180,220,255,0.55)" strokeWidth="0.4" fill="none">
-              <line x1="512" y1="574" x2="512" y2="522" />
-              <line x1="512" y1="522" x2="612" y2="522" />
-              <circle cx="512" cy="574" r="1.6" fill="rgba(200,225,255,0.9)" />
-            </g>
-            <text x="616" y="518">OBJ_128 · H 381M</text>
-            <text x="616" y="528" fill="rgba(200,225,255,0.5)">STR · CORE</text>
-
-            {/* Label 3 — rechts */}
-            <g stroke="rgba(180,220,255,0.55)" strokeWidth="0.4" fill="none">
-              <line x1="708" y1="596" x2="708" y2="546" />
-              <line x1="708" y1="546" x2="820" y2="546" />
-              <circle cx="708" cy="596" r="1.6" fill="rgba(200,225,255,0.9)" />
-            </g>
-            <text x="824" y="542">OBJ_204 · H 306M</text>
-            <text x="824" y="552" fill="rgba(200,225,255,0.5)">74.0048° W</text>
-          </g>
-        </svg>
-
-
-
-
-        {/* Wireframe Floor-plan Footprint — technische Grundriss-Projektion am Fuß der Skyline */}
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          viewBox="0 0 1000 1000"
-          preserveAspectRatio="none"
-          style={{ mixBlendMode: "screen", opacity: 0.55 }}
-        >
-          <defs>
-            <style>{`
-              @keyframes fpFade {
-                0%, 100% { opacity: 0.6; }
-                50% { opacity: 1; }
-              }
-              .fp { animation: fpFade 5.2s ease-in-out infinite; }
-            `}</style>
-          </defs>
-          <g
-            stroke="rgba(180,220,255,0.75)"
-            strokeWidth="0.5"
-            fill="rgba(140,200,255,0.05)"
-            strokeDasharray="2 2"
-            className="fp"
-          >
-            {/* isometrische Grundrisse — Rechtecke leicht perspektivisch verzerrt */}
-            <polygon points="298,712 358,706 366,742 302,748" />
-            <polygon points="372,704 428,700 434,738 378,742" />
-            <polygon points="442,700 496,696 502,734 448,738" />
-            <polygon points="510,696 562,692 568,732 516,736" />
-            <polygon points="576,694 628,690 634,730 582,734" />
-            <polygon points="642,692 700,688 706,732 648,736" />
-            <polygon points="712,694 764,690 770,734 718,738" />
-          </g>
-          {/* Verbindungslinien Fassade → Grundriss */}
-          <g stroke="rgba(180,220,255,0.35)" strokeWidth="0.35" strokeDasharray="1 3">
-            <line x1="328" y1="612" x2="328" y2="712" />
-            <line x1="400" y1="596" x2="400" y2="704" />
-            <line x1="470" y1="588" x2="470" y2="700" />
-            <line x1="540" y1="580" x2="540" y2="696" />
-            <line x1="608" y1="586" x2="608" y2="694" />
-            <line x1="676" y1="594" x2="676" y2="692" />
-            <line x1="740" y1="600" x2="740" y2="694" />
-          </g>
-          {/* Grundriss-Label */}
-          <g
-            fill="rgba(200,225,255,0.7)"
-            fontFamily="ui-monospace, 'JetBrains Mono', monospace"
-            fontSize="8"
-            letterSpacing="1"
-          >
-            <text x="298" y="768">PLAN · LVL 00 · 1:2000</text>
-          </g>
-        </svg>
-
-
         {/* Drifting mist — light animation */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="mist mist-a" />
@@ -477,7 +237,7 @@ export function LandingSlider() {
         aria-label="Enter Ausstellung"
         onMouseMove={makeLensHandler(doSideRef, doBalloonRef, setDoLens)}
         onMouseLeave={() => setDoLens((l) => ({ ...l, visible: false, reveal: false }))}
-        className="absolute inset-0 block h-full w-full cursor-pointer focus:outline-none"
+        className="absolute inset-0 block h-full w-full cursor-elegant focus:outline-none"
         style={{
           clipPath: doClip,
           WebkitClipPath: doClip,
@@ -545,7 +305,7 @@ export function LandingSlider() {
         onPointerDown={startDrag}
         onKeyDown={onKey}
         onClick={(e) => e.stopPropagation()}
-        className={`group absolute z-20 grid place-items-center rounded-full border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 ${
+        className={`group absolute z-20 grid place-items-center rounded-full bg-white/85 shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur focus:outline-none focus:ring-2 focus:ring-white/80 ${
           isMobile ? "cursor-ns-resize" : "cursor-ew-resize"
         }`}
         style={
@@ -556,8 +316,6 @@ export function LandingSlider() {
                 width: 68,
                 height: 28,
                 transform: "translate(-50%, -50%)",
-                background: "transparent",
-                animation: "handlePulse 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
               }
             : {
                 top: "50%",
@@ -565,22 +323,18 @@ export function LandingSlider() {
                 width: 28,
                 height: 68,
                 transform: "translate(-50%, -50%)",
-                background: "transparent",
-                animation: "handlePulse 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
               }
         }
-
       >
         {isMobile ? (
-          <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-white/80">
+          <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-[#1a1a1a]">
             <span aria-hidden>▲</span>
             <span aria-hidden>▼</span>
           </span>
         ) : (
-          <span className="flex flex-col items-center gap-1 text-[10px] tracking-[0.3em] text-white/80">
+          <span className="flex flex-col items-center gap-1 text-[10px] tracking-[0.3em] text-[#1a1a1a]">
             <span aria-hidden>◀</span>
             <span aria-hidden>▶</span>
-
           </span>
         )}
       </div>
