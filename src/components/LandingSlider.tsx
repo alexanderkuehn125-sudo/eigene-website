@@ -332,7 +332,7 @@ export function LandingSlider() {
                 height: 28,
                 transform: "translate(-50%, -50%)",
                 background: "transparent",
-                animation: "handlePulse 4s ease-in-out infinite",
+                animation: "handlePulse 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
               }
             : {
                 top: "50%",
@@ -341,7 +341,7 @@ export function LandingSlider() {
                 height: 68,
                 transform: "translate(-50%, -50%)",
                 background: "transparent",
-                animation: "handlePulse 4s ease-in-out infinite",
+                animation: "handlePulse 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
               }
         }
 
