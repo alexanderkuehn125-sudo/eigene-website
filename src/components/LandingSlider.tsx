@@ -221,6 +221,60 @@ export function LandingSlider() {
           }}
         />
 
+        {/* Edge-Trace — zeichnet die Gebäudekanten via SVG-Kantenfilter nach */}
+        <svg aria-hidden width="0" height="0" style={{ position: "absolute" }}>
+          <defs>
+            <filter id="edge-trace-be" x="0" y="0" width="100%" height="100%">
+              <feColorMatrix
+                type="matrix"
+                values="0.33 0.33 0.33 0 0
+                        0.33 0.33 0.33 0 0
+                        0.33 0.33 0.33 0 0
+                        0    0    0    1 0"
+              />
+              <feConvolveMatrix
+                order="3"
+                preserveAlpha="true"
+                kernelMatrix="-1 -1 -1  -1  8 -1  -1 -1 -1"
+              />
+              <feComponentTransfer>
+                <feFuncR type="linear" slope="2.4" intercept="0" />
+                <feFuncG type="linear" slope="2.4" intercept="0" />
+                <feFuncB type="linear" slope="2.4" intercept="0" />
+                <feFuncA type="linear" slope="1.6" intercept="0" />
+              </feComponentTransfer>
+              <feColorMatrix
+                type="matrix"
+                values="0    0    0    0 0.66
+                        0    0    0    0 0.85
+                        0    0    0    0 1
+                        0.34 0.5  0.16 0 0"
+              />
+            </filter>
+          </defs>
+        </svg>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            filter: "url(#edge-trace-be)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, transparent 42%, #000 58%, #000 90%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, transparent 42%, #000 58%, #000 90%, transparent 100%)",
+            mixBlendMode: "screen",
+            opacity: 0.55,
+          }}
+        >
+          <img
+            src={beImg}
+            alt=""
+            className="h-full w-full object-cover"
+            draggable={false}
+          />
+        </div>
+
+
         {/* Drifting mist — light animation */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="mist mist-a" />
