@@ -335,6 +335,91 @@ export function LandingSlider() {
           </g>
         </svg>
 
+        {/* Datenpunkt-Cluster — Vermessungs-Vertices auf markanten Gebäudekanten */}
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          viewBox="0 0 1000 1000"
+          preserveAspectRatio="none"
+          style={{ mixBlendMode: "screen", opacity: 0.8 }}
+        >
+          <defs>
+            <style>{`
+              @keyframes vertexPulse {
+                0%, 100% { opacity: 0.55; }
+                50% { opacity: 1; }
+              }
+              .vtx { animation: vertexPulse 3.8s ease-in-out infinite; transform-origin: center; }
+            `}</style>
+          </defs>
+
+          {(() => {
+            const vertices: Array<{ x: number; y: number; delay?: number }> = [
+              { x: 312, y: 612 },
+              { x: 348, y: 588 },
+              { x: 384, y: 604 },
+              { x: 422, y: 578 },
+              { x: 462, y: 596 },
+              { x: 498, y: 566 },
+              { x: 540, y: 590 },
+              { x: 582, y: 572 },
+              { x: 618, y: 602 },
+              { x: 656, y: 584 },
+              { x: 694, y: 610 },
+              { x: 732, y: 592 },
+              { x: 402, y: 640 },
+              { x: 512, y: 628 },
+              { x: 628, y: 648 },
+            ];
+            return vertices.map((v, i) => (
+              <g
+                key={`v-${i}`}
+                className="vtx"
+                style={{ animationDelay: `${(i % 5) * 0.4}s` }}
+              >
+                <circle
+                  cx={v.x}
+                  cy={v.y}
+                  r="2.2"
+                  fill="rgba(180,225,255,0.95)"
+                  stroke="rgba(255,255,255,0.6)"
+                  strokeWidth="0.4"
+                />
+                <circle
+                  cx={v.x}
+                  cy={v.y}
+                  r="5"
+                  fill="none"
+                  stroke="rgba(180,225,255,0.35)"
+                  strokeWidth="0.3"
+                />
+              </g>
+            ));
+          })()}
+
+          {/* Callout lines + labels */}
+          <g
+            stroke="rgba(200,225,255,0.55)"
+            strokeWidth="0.4"
+            fill="none"
+          >
+            <path d="M498 566 L498 500 L610 500" />
+            <path d="M348 588 L348 540 L260 540" />
+            <path d="M732 592 L732 522 L820 522" />
+          </g>
+          <g
+            fill="rgba(210,230,255,0.85)"
+            fontFamily="ui-monospace, 'JetBrains Mono', monospace"
+            fontSize="9"
+            letterSpacing="0.8"
+          >
+            <text x="614" y="498">▸ VTX_128 · H=381M</text>
+            <text x="256" y="538" textAnchor="end">VTX_073 · H=266M ◂</text>
+            <text x="824" y="520">▸ VTX_204 · H=306M</text>
+          </g>
+        </svg>
+
+
 
         {/* Drifting mist — light animation */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
