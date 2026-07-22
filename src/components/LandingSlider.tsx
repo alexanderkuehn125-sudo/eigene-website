@@ -508,8 +508,8 @@ function CloudTitle({
 
   const tone =
     side === "be"
-      ? { color: "rgba(250,244,225,0.65)", shadow: "0 0 60px rgba(255,236,180,0.35)" }
-      : { color: "rgba(232,238,250,0.65)", shadow: "0 0 60px rgba(160,190,240,0.35)" };
+      ? { color: "rgba(250,244,225,0.75)", shadow: "0 0 60px rgba(255,236,180,0.45)" }
+      : { color: "rgba(232,238,250,0.75)", shadow: "0 0 60px rgba(160,190,240,0.45)" };
 
   const letterRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const containerRef = useRef<HTMLElement | null>(null);
