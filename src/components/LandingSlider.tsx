@@ -320,7 +320,7 @@ export function LandingSlider() {
         onPointerDown={startDrag}
         onKeyDown={onKey}
         onClick={(e) => e.stopPropagation()}
-        className={`group absolute z-20 grid place-items-center rounded-full bg-white/85 shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur focus:outline-none focus:ring-2 focus:ring-white/80 ${
+        className={`group absolute z-20 grid place-items-center rounded-full shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur focus:outline-none focus:ring-2 focus:ring-white/80 ${
           isMobile ? "cursor-ns-resize" : "cursor-ew-resize"
         }`}
         style={
@@ -331,6 +331,9 @@ export function LandingSlider() {
                 width: 68,
                 height: 28,
                 transform: "translate(-50%, -50%)",
+                background:
+                  "radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0.9) 100%)",
+                animation: "handlePulse 2.6s ease-in-out infinite",
               }
             : {
                 top: "50%",
@@ -338,8 +341,12 @@ export function LandingSlider() {
                 width: 28,
                 height: 68,
                 transform: "translate(-50%, -50%)",
+                background:
+                  "radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0.9) 100%)",
+                animation: "handlePulse 2.6s ease-in-out infinite",
               }
         }
+
       >
         {isMobile ? (
           <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-[#1a1a1a]">

@@ -289,6 +289,18 @@
   animation: handleBreathe 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+@keyframes handlePulse {
+  0%, 100% {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 0 0 0 rgba(255, 255, 255, 0.35);
+    opacity: 0.92;
+  }
+  50% {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 0 0 8px rgba(255, 255, 255, 0);
+    opacity: 1;
+  }
+}
+
+
 .cursor-elegant {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1"/><circle cx="16" cy="16" r="2" fill="white"/></svg>') 16 16, pointer;
 }
