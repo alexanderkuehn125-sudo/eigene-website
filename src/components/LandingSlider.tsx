@@ -156,7 +156,7 @@ export function LandingSlider() {
       e.preventDefault();
       const dir =
         e.key === "ArrowRight" || e.key === "ArrowDown" ? +1 : -1;
-      setPct((p) => Math.max(4, Math.min(96, p + dir * step)));
+      setPct((p) => Math.max(0, Math.min(100, p + dir * step)));
     }
   };
 
