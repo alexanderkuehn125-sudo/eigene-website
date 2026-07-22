@@ -275,6 +275,67 @@ export function LandingSlider() {
         </div>
 
 
+        {/* Crop-Marks + Koordinaten-Ticks — rahmt das Bild als technisches Dokument */}
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          viewBox="0 0 1000 1000"
+          preserveAspectRatio="none"
+          style={{ mixBlendMode: "screen", opacity: 0.55 }}
+        >
+          <g stroke="rgba(168,216,255,0.75)" strokeWidth="0.6" fill="none">
+            {/* Corner fiducials — top-left */}
+            <path d="M20 40 L20 20 L40 20" />
+            <circle cx="20" cy="20" r="3" />
+            {/* top-right */}
+            <path d="M960 20 L980 20 L980 40" />
+            <circle cx="980" cy="20" r="3" />
+            {/* bottom-left */}
+            <path d="M20 960 L20 980 L40 980" />
+            <circle cx="20" cy="980" r="3" />
+            {/* bottom-right */}
+            <path d="M960 980 L980 980 L980 960" />
+            <circle cx="980" cy="980" r="3" />
+          </g>
+          {/* Left edge — measurement ticks */}
+          <g stroke="rgba(168,216,255,0.5)" strokeWidth="0.4">
+            {Array.from({ length: 21 }, (_, i) => 60 + i * 44).map((y, i) => (
+              <line
+                key={`lt-${i}`}
+                x1="20"
+                x2={i % 5 === 0 ? 34 : 26}
+                y1={y}
+                y2={y}
+              />
+            ))}
+          </g>
+          {/* Top edge — measurement ticks */}
+          <g stroke="rgba(168,216,255,0.5)" strokeWidth="0.4">
+            {Array.from({ length: 21 }, (_, i) => 60 + i * 44).map((x, i) => (
+              <line
+                key={`tt-${i}`}
+                y1="20"
+                y2={i % 5 === 0 ? 34 : 26}
+                x1={x}
+                x2={x}
+              />
+            ))}
+          </g>
+          {/* Coordinate labels */}
+          <g
+            fill="rgba(200,225,255,0.7)"
+            fontFamily="ui-monospace, 'JetBrains Mono', monospace"
+            fontSize="10"
+            letterSpacing="1"
+          >
+            <text x="46" y="16">N 40.7128°</text>
+            <text x="828" y="16">W 74.0060°</text>
+            <text x="46" y="994">SCAN · 001</text>
+            <text x="880" y="994">v.2026</text>
+          </g>
+        </svg>
+
+
         {/* Drifting mist — light animation */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="mist mist-a" />
