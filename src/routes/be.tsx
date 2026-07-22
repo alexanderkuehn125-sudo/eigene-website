@@ -79,7 +79,7 @@ function FadingFilmstrip() {
             <img
               src={img}
               alt={`Platzhalter ${i + 1}`}
-              className="w-full h-full object-cover rounded-md shadow-2xl"
+              className="w-full h-full object-cover rounded-md shadow-2xl cursor-none cursor-trigger-zoom"
               style={{ filter: offset === 0 ? "grayscale(30%)" : "grayscale(100%)" }}
               draggable={false}
             />
@@ -628,11 +628,13 @@ function CustomCursor() {
           transform: "translate3d(-50%, -50%, 0) scale(0.8)",
         }}
       >
-        {/* Elegant Solid Border Layer */}
+        {/* Animated Rainbow Border Layer */}
         <div
-          className="absolute inset-0 z-0 rounded-full"
+          className="absolute inset-0 z-0 animate-spin rounded-full"
           style={{
-            background: "#EFECE4",
+            background:
+              "conic-gradient(from 0deg, #FF0018, #FFA52C, #FFFF41, #008018, #0000F9, #86007D, #FF0018)",
+            animationDuration: "3s",
             WebkitMaskImage:
               "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 1px))",
             maskImage:
