@@ -129,10 +129,10 @@ export function LandingSlider() {
       if (draggingRef.current) {
         setPct((p) => {
           if (p <= 5) {
-            navigate("/do");
+            setTimeout(() => navigate("/do"), 300);
             return 0;
           } else if (p >= 95) {
-            navigate("/be");
+            setTimeout(() => navigate("/be"), 300);
             return 100;
           }
           return p;
@@ -308,7 +308,7 @@ export function LandingSlider() {
         onPointerDown={startDrag}
         onKeyDown={onKey}
         onClick={(e) => e.stopPropagation()}
-        className={`group absolute z-20 grid place-items-center rounded-full touch-none bg-transparent border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 ${
+        className={`group absolute z-40 grid place-items-center rounded-full touch-none bg-transparent border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 ${
           isMobile ? "cursor-ns-resize" : "cursor-ew-resize"
         }`}
         style={
@@ -607,7 +607,9 @@ function CloudTitle({
           letterSpacing: "0.15em",
           fontSize: "clamp(0.6rem, 1vw, 0.9rem)",
           textTransform: "uppercase",
-          transition: "opacity 0.5s ease",
+          opacity: opacityFor(center),
+          filter: `blur(${(1 - opacityFor(center)) * 6}px)`,
+          transition: "opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
         {subtext}
