@@ -220,6 +220,22 @@ export function LandingSlider() {
             mixBlendMode: "screen",
           }}
         />
+        {/* Fassaden-Raster — intensiviert auf der sonnenbeschienenen Ostseite (links) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(to right, rgba(255,214,150,0.24) 0 1px, transparent 1px 7px), repeating-linear-gradient(to bottom, rgba(255,214,150,0.24) 0 1px, transparent 1px 11px)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 42%, #000 60%, #000 88%, transparent 100%), linear-gradient(to right, #000 0%, rgba(0,0,0,0.75) 28%, rgba(0,0,0,0.2) 58%, transparent 78%)",
+            WebkitMaskComposite: "source-in",
+            maskImage:
+              "linear-gradient(to bottom, transparent 42%, #000 60%, #000 88%, transparent 100%), linear-gradient(to right, #000 0%, rgba(0,0,0,0.75) 28%, rgba(0,0,0,0.2) 58%, transparent 78%)",
+            maskComposite: "intersect",
+            mixBlendMode: "screen",
+          }}
+        />
 
         {/* Drifting mist — light animation */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
