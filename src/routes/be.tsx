@@ -65,7 +65,7 @@ function FadingFilmstrip() {
           <button
             key={i}
             type="button"
-            className="absolute w-[65%] md:w-[50%] lg:w-[40%] h-full transition-all duration-[1.6s] ease-[cubic-bezier(0.25,1,0.5,1)]"
+            className="absolute w-[65%] md:w-[50%] lg:w-[40%] h-full transition-all duration-[1.6s] ease-[cubic-bezier(0.25,1,0.5,1)] cursor-none cursor-trigger-zoom"
             style={{
               transform: `translateX(${offset * 80}%) scale(${offset === 0 ? 1 : 0.85})`,
               opacity: offset === 0 ? 1 : Math.abs(offset) <= 2 ? 0.4 : 0,
@@ -79,7 +79,7 @@ function FadingFilmstrip() {
             <img
               src={img}
               alt={`Platzhalter ${i + 1}`}
-              className="w-full h-full object-cover rounded-md shadow-2xl cursor-none cursor-trigger-zoom"
+              className="w-full h-full object-cover rounded-md shadow-2xl"
               style={{ filter: offset === 0 ? "grayscale(30%)" : "grayscale(100%)" }}
               draggable={false}
             />
