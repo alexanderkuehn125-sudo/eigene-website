@@ -115,7 +115,7 @@ export function LandingSlider() {
       const raw = isMobile
         ? ((clientY - rect.top) / rect.height) * 100
         : ((clientX - rect.left) / rect.width) * 100;
-      setPct(Math.max(4, Math.min(96, raw)));
+      setPct(Math.max(0, Math.min(100, raw)));
     },
     [isMobile],
   );
@@ -156,7 +156,7 @@ export function LandingSlider() {
       e.preventDefault();
       const dir =
         e.key === "ArrowRight" || e.key === "ArrowDown" ? +1 : -1;
-      setPct((p) => Math.max(4, Math.min(96, p + dir * step)));
+      setPct((p) => Math.max(0, Math.min(100, p + dir * step)));
     }
   };
 
