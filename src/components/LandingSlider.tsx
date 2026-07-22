@@ -188,8 +188,7 @@ export function LandingSlider() {
         aria-label="Enter Portfolio"
         onMouseMove={makeLensHandler(beSideRef, beBalloonRef, setBeLens)}
         onMouseLeave={() => setBeLens((l) => ({ ...l, visible: false, reveal: false }))}
-        className="absolute inset-0 block h-full w-full cursor-elegant focus:outline-none"
-        style={zoomOn && !isMobile ? { cursor: "zoom-in" } : undefined}
+        className="absolute inset-0 block h-full w-full cursor-default focus:outline-none"
       >
         <img
           src={beImg}
@@ -229,11 +228,10 @@ export function LandingSlider() {
         aria-label="Enter Ausstellung"
         onMouseMove={makeLensHandler(doSideRef, doBalloonRef, setDoLens)}
         onMouseLeave={() => setDoLens((l) => ({ ...l, visible: false, reveal: false }))}
-        className="absolute inset-0 block h-full w-full cursor-elegant focus:outline-none"
+        className="absolute inset-0 block h-full w-full cursor-default focus:outline-none"
         style={{
           clipPath: doClip,
           WebkitClipPath: doClip,
-          ...(zoomOn && !isMobile ? { cursor: "zoom-in" } : {}),
         }}
       >
         <img
@@ -544,7 +542,7 @@ function CloudTitle({
         e.stopPropagation();
         onClick();
       }}
-      className="cloud-title group absolute z-30 focus:outline-none"
+      className="cloud-title group absolute z-30 focus:outline-none cursor-pointer"
       style={{
         ...pos,
       }}
