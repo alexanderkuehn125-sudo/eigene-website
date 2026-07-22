@@ -335,6 +335,85 @@ export function LandingSlider() {
           </g>
         </svg>
 
+        {/* HUD Micro-Labels — Objekt-IDs, Höhen, Koordinaten */}
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          viewBox="0 0 1000 1000"
+          preserveAspectRatio="none"
+          style={{ mixBlendMode: "screen", opacity: 0.7 }}
+        >
+          <defs>
+            <style>{`
+              @keyframes hudBlink {
+                0%, 100% { opacity: 0.65; }
+                50% { opacity: 1; }
+              }
+              .hud { animation: hudBlink 4.4s ease-in-out infinite; }
+            `}</style>
+          </defs>
+          <g
+            className="hud"
+            fill="rgba(200,225,255,0.85)"
+            fontFamily="ui-monospace, 'JetBrains Mono', monospace"
+            fontSize="8"
+            letterSpacing="0.6"
+          >
+            {/* Label 1 — links */}
+            <g stroke="rgba(180,220,255,0.55)" strokeWidth="0.4" fill="none">
+              <line x1="340" y1="600" x2="340" y2="558" />
+              <line x1="340" y1="558" x2="250" y2="558" />
+              <circle cx="340" cy="600" r="1.6" fill="rgba(200,225,255,0.9)" />
+            </g>
+            <text x="248" y="554" textAnchor="end">OBJ_042 · H 218M</text>
+            <text x="248" y="564" textAnchor="end" fill="rgba(200,225,255,0.5)">40.7118° N</text>
+
+            {/* Label 2 — Mitte */}
+            <g stroke="rgba(180,220,255,0.55)" strokeWidth="0.4" fill="none">
+              <line x1="512" y1="574" x2="512" y2="522" />
+              <line x1="512" y1="522" x2="612" y2="522" />
+              <circle cx="512" cy="574" r="1.6" fill="rgba(200,225,255,0.9)" />
+            </g>
+            <text x="616" y="518">OBJ_128 · H 381M</text>
+            <text x="616" y="528" fill="rgba(200,225,255,0.5)">STR · CORE</text>
+
+            {/* Label 3 — rechts */}
+            <g stroke="rgba(180,220,255,0.55)" strokeWidth="0.4" fill="none">
+              <line x1="708" y1="596" x2="708" y2="546" />
+              <line x1="708" y1="546" x2="820" y2="546" />
+              <circle cx="708" cy="596" r="1.6" fill="rgba(200,225,255,0.9)" />
+            </g>
+            <text x="824" y="542">OBJ_204 · H 306M</text>
+            <text x="824" y="552" fill="rgba(200,225,255,0.5)">74.0048° W</text>
+          </g>
+        </svg>
+
+        {/* LIDAR-Scanline — horizontale Sweep-Animation */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 overflow-hidden"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, transparent 40%, #000 55%, #000 92%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, transparent 40%, #000 55%, #000 92%, transparent 100%)",
+          }}
+        >
+          <div
+            className="lidar-sweep"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(to right, transparent 0%, rgba(180,220,255,0) 44%, rgba(190,225,255,0.55) 49%, rgba(220,240,255,0.85) 50%, rgba(190,225,255,0.55) 51%, rgba(180,220,255,0) 56%, transparent 100%)",
+              mixBlendMode: "screen",
+              opacity: 0.55,
+            }}
+          />
+        </div>
+
+
+
         {/* Wireframe Floor-plan Footprint — technische Grundriss-Projektion am Fuß der Skyline */}
         <svg
           aria-hidden
