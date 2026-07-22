@@ -56,7 +56,7 @@ let photos: Photo[] = Object.entries(imageModules)
       title: title,
       caption: title, // Kann natürlich später individuell erweitert werden
       category: category,
-      span: "tall",
+      span: "tall" as const,
       originalIndex: index,
     };
   })

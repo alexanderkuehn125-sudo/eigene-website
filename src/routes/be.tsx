@@ -171,7 +171,7 @@ const items: readonly Item[] = [
 ] as const;
 
 function BePage() {
-  const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | null>(null);
+  const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | "menu" | null>(null);
   const [portraitOpen, setPortraitOpen] = useState(false);
 
   // Zwingt den Browser, beim Neuladen wieder ganz oben zu starten
