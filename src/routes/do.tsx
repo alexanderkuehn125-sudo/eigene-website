@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from "react";
+import { createPortal } from "react-dom";
 import type { ImgHTMLAttributes } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -635,7 +636,7 @@ function CustomCursor() {
     };
   }, []);
 
-  return (
+  return createPortal(
     <div
       ref={cursorRef}
       className="pointer-events-none fixed left-0 top-0 z-[9999] hidden md:flex"
@@ -674,5 +675,7 @@ function CustomCursor() {
         />
       </div>
     </div>
+  ,
+    document.body
   );
 }

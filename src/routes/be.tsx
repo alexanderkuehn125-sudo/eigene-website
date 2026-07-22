@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
 // Neues lokales Portrait
@@ -612,7 +613,7 @@ function CustomCursor() {
     };
   }, []);
 
-  return (
+  return createPortal(
     <div
       ref={cursorRef}
       className="pointer-events-none fixed left-0 top-0 z-[9999] hidden md:flex"
@@ -651,5 +652,7 @@ function CustomCursor() {
         />
       </div>
     </div>
+  ,
+    document.body
   );
 }
