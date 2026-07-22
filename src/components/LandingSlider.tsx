@@ -197,15 +197,7 @@ export function LandingSlider() {
           className="h-full w-full object-cover"
           draggable={false}
         />
-        {/* Warm painterly wash + soft vignette */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(120% 80% at 50% 30%, transparent 40%, rgba(30,25,10,0.35) 100%)",
-          }}
-        />
+
         {/* Drifting mist — light animation */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="mist mist-a" />
