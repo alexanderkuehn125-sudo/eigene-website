@@ -335,7 +335,59 @@ export function LandingSlider() {
           </g>
         </svg>
 
-
+        {/* Wireframe Floor-plan Footprint — technische Grundriss-Projektion am Fuß der Skyline */}
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          viewBox="0 0 1000 1000"
+          preserveAspectRatio="none"
+          style={{ mixBlendMode: "screen", opacity: 0.55 }}
+        >
+          <defs>
+            <style>{`
+              @keyframes fpFade {
+                0%, 100% { opacity: 0.6; }
+                50% { opacity: 1; }
+              }
+              .fp { animation: fpFade 5.2s ease-in-out infinite; }
+            `}</style>
+          </defs>
+          <g
+            stroke="rgba(180,220,255,0.75)"
+            strokeWidth="0.5"
+            fill="rgba(140,200,255,0.05)"
+            strokeDasharray="2 2"
+            className="fp"
+          >
+            {/* isometrische Grundrisse — Rechtecke leicht perspektivisch verzerrt */}
+            <polygon points="298,712 358,706 366,742 302,748" />
+            <polygon points="372,704 428,700 434,738 378,742" />
+            <polygon points="442,700 496,696 502,734 448,738" />
+            <polygon points="510,696 562,692 568,732 516,736" />
+            <polygon points="576,694 628,690 634,730 582,734" />
+            <polygon points="642,692 700,688 706,732 648,736" />
+            <polygon points="712,694 764,690 770,734 718,738" />
+          </g>
+          {/* Verbindungslinien Fassade → Grundriss */}
+          <g stroke="rgba(180,220,255,0.35)" strokeWidth="0.35" strokeDasharray="1 3">
+            <line x1="328" y1="612" x2="328" y2="712" />
+            <line x1="400" y1="596" x2="400" y2="704" />
+            <line x1="470" y1="588" x2="470" y2="700" />
+            <line x1="540" y1="580" x2="540" y2="696" />
+            <line x1="608" y1="586" x2="608" y2="694" />
+            <line x1="676" y1="594" x2="676" y2="692" />
+            <line x1="740" y1="600" x2="740" y2="694" />
+          </g>
+          {/* Grundriss-Label */}
+          <g
+            fill="rgba(200,225,255,0.7)"
+            fontFamily="ui-monospace, 'JetBrains Mono', monospace"
+            fontSize="8"
+            letterSpacing="1"
+          >
+            <text x="298" y="768">PLAN · LVL 00 · 1:2000</text>
+          </g>
+        </svg>
 
 
         {/* Drifting mist — light animation */}
