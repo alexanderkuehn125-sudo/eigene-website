@@ -210,11 +210,7 @@ export function LandingSlider() {
           draggable={false}
         />
 
-        {/* Drifting mist — light animation */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="mist mist-a" />
-          <div className="mist mist-b" />
-        </div>
+
 
         {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
