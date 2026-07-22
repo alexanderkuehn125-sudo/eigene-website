@@ -128,8 +128,13 @@ export function LandingSlider() {
     const onUp = () => {
       if (draggingRef.current) {
         setPct((p) => {
-          if (p <= 1) navigate("/do");
-          else if (p >= 99) navigate("/be");
+          if (p <= 5) {
+            navigate("/do");
+            return 0;
+          } else if (p >= 95) {
+            navigate("/be");
+            return 100;
+          }
           return p;
         });
       }
@@ -148,6 +153,7 @@ export function LandingSlider() {
   }, [updateFromEvent, navigate]);
 
   const startDrag = (e: React.PointerEvent) => {
+    e.currentTarget.setPointerCapture(e.pointerId);
     draggingRef.current = true;
     document.body.style.cursor = isMobile ? "ns-resize" : "ew-resize";
     document.body.style.userSelect = "none";
@@ -302,7 +308,7 @@ export function LandingSlider() {
         onPointerDown={startDrag}
         onKeyDown={onKey}
         onClick={(e) => e.stopPropagation()}
-        className={`group absolute z-20 grid place-items-center rounded-full bg-transparent border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 ${
+        className={`group absolute z-20 grid place-items-center rounded-full touch-none bg-transparent border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 ${
           isMobile ? "cursor-ns-resize" : "cursor-ew-resize"
         }`}
         style={
