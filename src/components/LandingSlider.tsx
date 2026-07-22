@@ -332,8 +332,8 @@ export function LandingSlider() {
                 height: 28,
                 transform: "translate(-50%, -50%)",
                 background:
-                  "radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0.9) 100%)",
-                animation: "handlePulse 2.6s ease-in-out infinite",
+                  "radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.25) 55%, rgba(255,255,255,0.55) 100%)",
+                animation: "handlePulse 4s ease-in-out infinite",
               }
             : {
                 top: "50%",
@@ -342,8 +342,8 @@ export function LandingSlider() {
                 height: 68,
                 transform: "translate(-50%, -50%)",
                 background:
-                  "radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0.9) 100%)",
-                animation: "handlePulse 2.6s ease-in-out infinite",
+                  "radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.25) 55%, rgba(255,255,255,0.55) 100%)",
+                animation: "handlePulse 4s ease-in-out infinite",
               }
         }
 
