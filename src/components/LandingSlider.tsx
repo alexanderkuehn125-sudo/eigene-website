@@ -115,7 +115,7 @@ export function LandingSlider() {
       const raw = isMobile
         ? ((clientY - rect.top) / rect.height) * 100
         : ((clientX - rect.left) / rect.width) * 100;
-      setPct(Math.max(4, Math.min(96, raw)));
+      setPct(Math.max(0, Math.min(100, raw)));
     },
     [isMobile],
   );
@@ -126,6 +126,13 @@ export function LandingSlider() {
       updateFromEvent(e.clientX, e.clientY);
     };
     const onUp = () => {
+      if (draggingRef.current) {
+        setPct((p) => {
+          if (p <= 1) navigate("/do");
+          else if (p >= 99) navigate("/be");
+          return p;
+        });
+      }
       draggingRef.current = false;
       document.body.style.cursor = "";
       document.body.style.userSelect = "";
@@ -138,7 +145,7 @@ export function LandingSlider() {
       window.removeEventListener("pointerup", onUp);
       window.removeEventListener("pointercancel", onUp);
     };
-  }, [updateFromEvent]);
+  }, [updateFromEvent, navigate]);
 
   const startDrag = (e: React.PointerEvent) => {
     draggingRef.current = true;
@@ -156,7 +163,7 @@ export function LandingSlider() {
       e.preventDefault();
       const dir =
         e.key === "ArrowRight" || e.key === "ArrowDown" ? +1 : -1;
-      setPct((p) => Math.max(4, Math.min(96, p + dir * step)));
+      setPct((p) => Math.max(0, Math.min(100, p + dir * step)));
     }
   };
 
@@ -542,7 +549,7 @@ function CloudTitle({
         e.stopPropagation();
         onClick();
       }}
-      className="cloud-title group absolute z-30 focus:outline-none cursor-pointer"
+      className="cloud-title group absolute z-30 focus:outline-none cursor-elegant"
       style={{
         ...pos,
       }}
