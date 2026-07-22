@@ -332,7 +332,7 @@ export function LandingSlider() {
                 height: 28,
                 transform: "translate(-50%, -50%)",
                 background:
-                  "radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.25) 55%, rgba(255,255,255,0.55) 100%)",
+                  "transparent",
                 animation: "handlePulse 4s ease-in-out infinite",
               }
             : {
@@ -342,7 +342,7 @@ export function LandingSlider() {
                 height: 68,
                 transform: "translate(-50%, -50%)",
                 background:
-                  "radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.25) 55%, rgba(255,255,255,0.55) 100%)",
+                  "transparent",
                 animation: "handlePulse 4s ease-in-out infinite",
               }
         }
