@@ -388,29 +388,6 @@ export function LandingSlider() {
           </g>
         </svg>
 
-        {/* LIDAR-Scanline — horizontale Sweep-Animation */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 overflow-hidden"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, transparent 40%, #000 55%, #000 92%, transparent 100%)",
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, transparent 40%, #000 55%, #000 92%, transparent 100%)",
-          }}
-        >
-          <div
-            className="lidar-sweep"
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(to right, transparent 0%, rgba(180,220,255,0) 44%, rgba(190,225,255,0.55) 49%, rgba(220,240,255,0.85) 50%, rgba(190,225,255,0.55) 51%, rgba(180,220,255,0) 56%, transparent 100%)",
-              mixBlendMode: "screen",
-              opacity: 0.55,
-            }}
-          />
-        </div>
 
 
 
