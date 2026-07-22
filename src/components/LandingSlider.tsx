@@ -345,8 +345,8 @@ export function LandingSlider() {
             fontWeight: 200,
             letterSpacing: "0.38em",
             fontSize: "clamp(0.7rem, 1.1vw, 0.95rem)",
-            color: "black",
-            textShadow: "0 0 8px rgba(255,255,255,0.3)",
+            color: "white",
+            textShadow: "0 2px 12px rgba(0,0,0,0.55)",
             textTransform: "uppercase",
           }}
         >
@@ -357,7 +357,7 @@ export function LandingSlider() {
       {/* Cloud title — Portfolio (over BE side) */}
       <CloudTitle
         label="Portfolio"
-        subtext="Architektur · Fotografie · CGI"
+        subtext="Projekt- / Eventmanagement und Digital"
         side="be"
         isMobile={isMobile}
         pct={pct}
@@ -368,7 +368,7 @@ export function LandingSlider() {
       {/* Cloud title — Ausstellung (over DO side) */}
       <CloudTitle
         label="Ausstellung"
-        subtext="Freie fotografische Arbeiten"
+        subtext="Digitale Bilder"
         side="do"
         isMobile={isMobile}
         pct={pct}
@@ -497,8 +497,8 @@ function CloudTitle({
 
   const tone =
     side === "be"
-      ? { color: "rgba(250,244,225,0.5)", shadow: "0 0 60px rgba(255,236,180,0.2)" }
-      : { color: "rgba(232,238,250,0.5)", shadow: "0 0 60px rgba(160,190,240,0.2)" };
+      ? { color: "rgba(250,244,225,0.65)", shadow: "0 0 60px rgba(255,236,180,0.35)" }
+      : { color: "rgba(232,238,250,0.65)", shadow: "0 0 60px rgba(160,190,240,0.35)" };
 
   const letterRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const containerRef = useRef<HTMLElement | null>(null);
