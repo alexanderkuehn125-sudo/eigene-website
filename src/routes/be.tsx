@@ -232,7 +232,7 @@ function BePage() {
 
       {/* Global Ghost Portrait Background */}
       <figure
-        className="fixed bottom-0 -right-[5vw] md:right-0 z-0 h-[60vh] md:h-[85vh] w-auto pointer-events-none"
+        className="fixed inset-y-0 right-0 z-0 h-screen w-full md:w-1/2 pointer-events-none"
         style={{
           opacity: 0.13,
           animation: "ghostFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards"
@@ -242,7 +242,7 @@ function BePage() {
           src={portrait}
           alt="Alexander Kühn"
           draggable={false}
-          className="h-full w-auto object-contain object-bottom mix-blend-screen"
+          className="h-full w-full object-cover object-center md:object-right mix-blend-screen"
           style={{
             filter: "grayscale(100%) contrast(1.3) brightness(1.2)",
             WebkitMaskImage: "radial-gradient(ellipse at 50% 100%, black 20%, transparent 70%)",
