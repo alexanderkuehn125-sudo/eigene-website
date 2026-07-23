@@ -19,6 +19,16 @@ export function CoffeeToProjectConverter() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<PrognoseResult | null>(null);
 
+  const handleClose = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      setCoffee(4);
+      setChaos(3);
+      setDays(3);
+      setResult(null);
+    }, 300); // Verzögerung, damit die UI nicht abrupt beim Schließen springt
+  };
+
   const handleGenerate = async () => {
     setIsLoading(true);
     setResult(null);
@@ -98,7 +108,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                 background: "rgba(20, 18, 15, 0.9)",
                 backdropFilter: "blur(8px)",
               }}
-              onClick={() => setIsOpen(false)}
+              onClick={handleClose}
             />
             {/* Eigentliches Modal */}
             <div
@@ -116,8 +126,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                   </p>
                 </div>
                 <button
-                  onClick={() => setIsOpen(false)}
                   className="p-2 text-[#C5A059]/50 hover:text-[#C5A059] transition-colors focus:outline-none cursor-none"
+                  onClick={handleClose}
                 >
                   <X className="h-6 w-6" />
                 </button>
