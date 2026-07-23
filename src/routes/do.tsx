@@ -245,7 +245,7 @@ function DoPage() {
         <section className="mt-28 mb-20 md:mt-36 md:mb-32 flex justify-center relative z-50">
           <FadeIn>
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl text-center leading-[1.3] tracking-wide"
+              className="text-3xl md:text-4xl lg:text-5xl text-center leading-[1.3] tracking-wide"
               style={{
                 fontFamily: "'Jost', sans-serif",
                 fontWeight: 400,
