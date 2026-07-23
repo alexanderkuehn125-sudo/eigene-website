@@ -236,8 +236,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                           <p className="text-sm text-[#EFECE4]/90 leading-relaxed italic border-l border-[#C5A059]/30 pl-4">{result.ki_schritt}</p>
                         </div>
 
-                        <div className="pt-4 border-t border-[#C5A059]/20 mt-auto">
-                          <p className="text-[10px] text-[#C5A059]/80 uppercase tracking-[0.2em] font-medium">
+                        <div className="pt-4 border-t border-[#C5A059]/30 mt-auto">
+                          <p className="text-xs text-[#C5A059] uppercase tracking-widest font-semibold leading-relaxed">
                             {result.punchline}
                           </p>
                         </div>
