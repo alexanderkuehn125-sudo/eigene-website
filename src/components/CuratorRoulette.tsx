@@ -55,7 +55,7 @@ Verfasse eine kurze, pointierte Kunstkritik (max. 3-4 Sätze) über die Bildkomp
 Beginne zwingend mit einem eigenen, extrem prätentiösen und leicht ironischen Titel für dieses Werk. Formatiere den Start deiner Antwort exakt so:
 "DEIN ERFUNDENER TITEL" – 
 Danach folgt nahtlos deine Kritik. Achte penibel auf makellose Rechtschreibung, Grammatik und einen eleganten Lesefluss!
-Nutze ausschließlich fotografische und künstlerische Fachbegriffe (z.B. Chiaroscuro, Fluchtpunkt, Tiefe, Überbelichtung, Negativraum).
+Verzichte auf zu obskure oder schwer verständliche Fachbegriffe. Schreibe stattdessen zugänglich, aber extrem witzig, überspitzt und unterhaltsam.
 WICHTIG: Erwähne KEINERLEI IT-Begriffe, kein Projektmanagement, kein Scrum oder Ähnliches. Bleibe strikt in der Welt der Kunst und Fotografie.
 Sei eloquent, analytisch und sehr bestimmt in deiner Meinung.
 Gib NUR den fertigen Text zurück, ohne Markdown-Blöcke.`;
