@@ -172,31 +172,39 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                     />
                   </div>
 
-                  <motion.button
+                  <button
                     onClick={handleGenerate}
                     disabled={isLoading}
-                    animate={{
-                      scale: [1, 1.015, 1],
-                      boxShadow: [
-                        "0px 0px 0px rgba(197,160,89,0)",
-                        "0px 0px 20px rgba(197,160,89,0.25)",
-                        "0px 0px 0px rgba(197,160,89,0)",
-                      ]
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="w-full flex items-center justify-center gap-2 border border-[#C5A059]/30 bg-[#C5A059]/10 px-6 py-4 text-sm tracking-widest uppercase text-[#EFECE4] transition-all hover:bg-[#C5A059]/20 hover:border-[#C5A059]/60 hover:text-[#C5A059] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed cursor-none"
+                    className="relative w-full flex items-center justify-center gap-2 px-6 py-4 text-sm tracking-widest uppercase text-[#EFECE4] transition-colors hover:text-[#C5A059] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed cursor-none group"
                   >
-                    {isLoading ? (
-                      <Loader2 className="h-4 w-4 animate-spin text-[#C5A059]" />
-                    ) : (
-                      <Zap className="h-4 w-4 text-[#C5A059]" />
-                    )}
-                    <span>{isLoading ? "Analysiere..." : "Koffein verwandeln"}</span>
-                  </motion.button>
+                    {/* Pulsierender Hintergrund & Glow */}
+                    <motion.div
+                      className="absolute inset-0 rounded-sm border border-[#C5A059]/30 bg-[#C5A059]/10 transition-colors group-hover:bg-[#C5A059]/20 group-hover:border-[#C5A059]/60"
+                      animate={{
+                        scale: [1, 1.015, 1],
+                        boxShadow: [
+                          "0px 0px 0px rgba(197,160,89,0)",
+                          "0px 0px 20px rgba(197,160,89,0.25)",
+                          "0px 0px 0px rgba(197,160,89,0)",
+                        ]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                    
+                    {/* Statischer Text im Vordergrund */}
+                    <div className="relative z-10 flex items-center gap-2 pointer-events-none">
+                      {isLoading ? (
+                        <Loader2 className="h-4 w-4 animate-spin text-[#C5A059]" />
+                      ) : (
+                        <Zap className="h-4 w-4 text-[#C5A059]" />
+                      )}
+                      <span>{isLoading ? "Analysiere..." : "Koffein verwandeln"}</span>
+                    </div>
+                  </button>
                 </div>
 
                 {/* Rechts: Output */}
