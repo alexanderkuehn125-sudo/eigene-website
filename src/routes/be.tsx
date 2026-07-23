@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
+import { CoffeeToProjectConverter } from "@/components/CoffeeToProjectConverter";
 // Neues lokales Portrait
 import portrait from "@/assets/Portrait.jpg";
 
@@ -286,6 +287,10 @@ function BePage() {
                   KI Berater
                 </div>
               </div>
+            </div>
+
+            <div className="mb-16">
+              <CoffeeToProjectConverter />
             </div>
 
             <nav className="flex flex-col gap-6">
