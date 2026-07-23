@@ -276,7 +276,7 @@ function DoPage() {
         </section>
 
         {/* Grid - The Cinematic Dark Room (3 Spalten, Versetzt) */}
-        <section className="mt-8 group columns-1 gap-12 sm:columns-2 md:mt-12 md:columns-3 md:gap-16 lg:gap-24 relative z-10">
+        <section className="mt-12 group columns-1 gap-12 sm:columns-2 md:mt-16 md:columns-3 md:gap-16 lg:gap-24 relative z-10">
           <AnimatePresence>
             {filteredPhotos.map((p, i) => {
               // Versetzte Hängung (Staggered Grid) für organische Tiefe
