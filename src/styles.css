@@ -321,15 +321,15 @@
 
 /* Custom Scrollbar for Widgets */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(197, 160, 89, 0.2);
+  background-color: rgba(197, 160, 89, 0.4);
   border-radius: 10px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(197, 160, 89, 0.4);
+  background-color: rgba(197, 160, 89, 0.7);
 }
