@@ -242,7 +242,7 @@ function DoPage() {
           <span className="text-[10px] uppercase tracking-[0.3em] opacity-60">Ausstellung</span>
         </header>
 
-        <section className="mt-28 mb-20 md:mt-36 md:mb-32 flex justify-center relative z-50">
+        <section className="mt-28 mb-10 md:mt-36 md:mb-16 flex justify-center relative z-50">
           <FadeIn>
             <h1
               className="text-3xl md:text-4xl lg:text-5xl text-center leading-[1.3] tracking-wide"
@@ -276,7 +276,7 @@ function DoPage() {
         </section>
 
         {/* Grid - The Cinematic Dark Room (3 Spalten, Versetzt) */}
-        <section className="mt-16 group columns-1 gap-12 sm:columns-2 md:mt-24 md:columns-3 md:gap-16 lg:gap-24 relative z-10">
+        <section className="mt-8 group columns-1 gap-12 sm:columns-2 md:mt-12 md:columns-3 md:gap-16 lg:gap-24 relative z-10">
           <AnimatePresence>
             {filteredPhotos.map((p, i) => {
               // Versetzte Hängung (Staggered Grid) für organische Tiefe
