@@ -112,7 +112,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                     Kaffee-zu-Projekt <br/><span className="text-[#C5A059]/80">Konverter</span>
                   </h3>
                   <p className="mt-2 text-sm text-[#EFECE4]/60 max-w-sm">
-                    Simuliere die Projektlage. Die KI analysiert das Chaos und liefert den Ausweg.
+                    Passe die Parameter passend zu deinem Projekt an. Die KI analysiert dann das Chaos und liefert den Ausweg.
                   </p>
                 </div>
                 <button
