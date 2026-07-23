@@ -22,10 +22,9 @@ export function CuratorRoulette({ photos }: { photos: Photo[] }) {
       let i = 0;
       setDisplayedText("");
       const interval = setInterval(() => {
-        if (i < critique.length) {
-          setDisplayedText((prev) => prev + critique.charAt(i));
-          i++;
-        } else {
+        setDisplayedText(critique.substring(0, i + 1));
+        i++;
+        if (i >= critique.length) {
           clearInterval(interval);
         }
       }, 30);
