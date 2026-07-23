@@ -174,7 +174,6 @@ const items: readonly Item[] = [
 
 function BePage() {
   const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | "menu" | null>(null);
-  const [portraitOpen, setPortraitOpen] = useState(false);
 
   // Zwingt den Browser, beim Neuladen wieder ganz oben zu starten
   useEffect(() => {
@@ -234,8 +233,7 @@ function BePage() {
       {/* Global Ghost Portrait Background */}
       {createPortal(
         <figure
-          className="fixed bottom-0 -right-[5vw] md:right-0 z-0 h-[60vh] md:h-[85vh] w-auto opacity-[0.13] hover:opacity-[0.20] transition-opacity duration-1000 pointer-events-auto"
-          onClick={() => setPortraitOpen(true)}
+          className="fixed bottom-0 -right-[5vw] md:right-0 z-0 h-[60vh] md:h-[85vh] w-auto opacity-[0.13]"
         >
           <img
             src={portrait}
@@ -514,41 +512,6 @@ function BePage() {
         </div>
       )}
 
-      {/* Portrait Lightbox */}
-      {portraitOpen && createPortal(
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 cursor-none cursor-trigger-close"
-          style={{
-            background: "rgba(20, 18, 15, 0.9)",
-            backdropFilter: "blur(8px)",
-          }}
-          onClick={() => setPortraitOpen(false)}
-        >
-          <div
-            className="relative flex max-h-[95vh] max-w-[95vw] flex-col overflow-hidden bg-[#11100F] cursor-default"
-            style={{ color: "#EFECE4" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="absolute right-4 top-4 z-50 text-white/50 hover:text-white transition-colors cursor-none focus:outline-none"
-              onClick={() => setPortraitOpen(false)}
-            >
-              ×
-            </button>
-
-            <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#11100F]">
-              <img
-                src={portrait}
-                alt="Alexander Kühn"
-                className="block max-h-[90vh] max-w-[90vw] w-auto h-auto object-contain cursor-none cursor-trigger-close shadow-2xl"
-                onClick={() => setPortraitOpen(false)}
-              />
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
-
       <CustomCursor />
     </main>
   );
@@ -579,7 +542,9 @@ function CustomCursor() {
         state = "zoom";
       } else if (el.closest(".cursor-trigger-close")) {
         state = "close";
-      } else if (el.closest("a, button, input")) {
+      } else if (el.closest("input")) {
+        state = "input";
+      } else if (el.closest("a, button")) {
         state = "hover";
       } else {
         state = "default";
@@ -600,6 +565,10 @@ function CustomCursor() {
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
             textRef.current.innerText = "CLOSE";
+          } else if (state === "input") {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            textRef.current.innerText = "";
           } else {
             // hover und zoom bekommen exakt dasselbe "VIEW" in mittlerer Größe
             ringRef.current.style.opacity = "1";
