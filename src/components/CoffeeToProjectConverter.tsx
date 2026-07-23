@@ -78,8 +78,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
             className="group relative flex items-center overflow-hidden rounded-full border border-white/20 bg-black/20 backdrop-blur-md p-4 text-[#EFECE4] transition-all hover:border-white/40 hover:bg-white/10 focus:outline-none cursor-none shadow-2xl"
           >
             <Coffee className="h-10 w-10 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
-            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pl-4 group-hover:pr-2">
-              KI-Prognose
+            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] group-hover:opacity-100 group-hover:pl-4 group-hover:pr-2">
+               Projekt - Prognose 
             </span>
             <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite]" />
           </motion.button>
