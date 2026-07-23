@@ -40,27 +40,23 @@ export function CuratorRoulette() {
     setShowCritique(false);
     setCritique(null);
 
-    // 1. Zufälliges Bild aus dem Filmstrip wählen (0 bis 8)
-    const randomIndex = Math.floor(Math.random() * 9);
-    
-    // 2. Event feuern, damit der Filmstrip dorthin slidet
-    window.dispatchEvent(new CustomEvent("set-filmstrip-index", { detail: { index: randomIndex } }));
+    // 1. Zufälliges Bild wählen (p0 bis p40 - es gibt 41 Bilder in do.tsx)
+    const randomIndex = Math.floor(Math.random() * 41);
+    const targetId = `p${randomIndex}`;
 
-    // 3. Zum Filmstrip scrollen
-    setTimeout(() => {
-      const container = document.getElementById("filmstrip-container");
-      if (container) {
-        container.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    }, 100);
+    // 2. Zum Foto scrollen
+    const container = document.getElementById(targetId);
+    if (container) {
+      container.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
 
-    // 4. KI aufrufen (Wir erfinden eine pointierte Kritik passend zum Thema Architektur/Projekte)
+    // 3. KI aufrufen (Kritik an einer Fotografie)
     try {
-      const prompt = `Du bist ein brillanter, aber leicht elitärer Kunstkurator auf einer Vernissage zum Thema 'Die Architektur digitaler Projekte'. 
-Du betrachtest gerade ein faszinierendes architektonisches Kunstwerk (eine Blaupause, eine Stadtlandschaft oder eine Szene).
-Verfasse eine kurze, pointierte Kunstkritik (max. 3-4 Sätze) über dieses Werk.
-Verknüpfe dabei architektonische Metaphern (z.B. Fundament, Statik, Monolith, Ruine, gläserne Fassade) humorvoll mit IT-Projektmanagement-Begriffen (z.B. Scope Creep, Legacy Code, Agile, Wasserfall, Microservices).
-Sei eloquent, analytisch und ein bisschen zynisch.
+      const prompt = `Du bist ein elitärer, leicht zynischer aber hochintelligenter Kunstkritiker auf einer Fotografie-Ausstellung von Alexander Kühn.
+Du betrachtest gerade ein Meisterwerk aus der Kategorie Momente, Orte oder Licht.
+Verfasse eine kurze, pointierte Kunstkritik (max. 3-4 Sätze) über die Bildkomposition.
+Nutze dabei fotografische und künstlerische Fachbegriffe (z.B. Chiaroscuro, Fluchtpunkt, Tiefe, Überbelichtung, Negativraum) und verknüpfe sie humorvoll, aber extrem elegant mit dem Thema Projektmanagement oder Eventplanung.
+Sei eloquent, analytisch und sehr bestimmt in deiner Meinung.
 Gib NUR die fertige Kritik zurück, ohne Anführungszeichen oder Markdown.`;
 
       const response = await fetch(

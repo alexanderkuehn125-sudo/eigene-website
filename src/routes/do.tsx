@@ -4,6 +4,7 @@ import type { ImgHTMLAttributes } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
+import { CuratorRoulette } from "@/components/CuratorRoulette";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -343,6 +344,7 @@ function DoPage() {
                     y: { duration: 0.8, ease: "easeOut" },
                   }}
                   key={p.id}
+                  id={p.id}
                   className={`relative block text-left mb-24 ${widthClass} ${marginClass} ${zClass}`}
                   style={{ breakInside: "avoid" }}
                 >
@@ -523,6 +525,7 @@ function DoPage() {
         </div>
       )}
       <CustomCursor />
+      <CuratorRoulette />
     </main>
   );
 }
