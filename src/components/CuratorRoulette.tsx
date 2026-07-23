@@ -132,9 +132,11 @@ Gib NUR die fertige Kritik zurück, ohne Anführungszeichen oder Markdown.`;
         </AnimatePresence>
 
         {/* Der Trigger Button */}
-        <button
+        <motion.button
           onClick={handleSurpriseMe}
           disabled={isAnalyzing}
+          animate={{ scale: [1, 1.02, 1] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="pointer-events-auto group relative flex items-center gap-3 overflow-hidden rounded-full border border-[#C5A059]/30 bg-[#141210]/90 px-6 py-3 shadow-lg backdrop-blur-sm transition-all hover:border-[#C5A059] hover:bg-[#1a1815] focus:outline-none"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C5A059]/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
@@ -143,7 +145,7 @@ Gib NUR die fertige Kritik zurück, ohne Anführungszeichen oder Markdown.`;
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-[#EFECE4]">
             {isAnalyzing ? "Analysiere..." : "Werk analysieren"}
           </span>
-        </button>
+        </motion.button>
       </div>
     </>,
     document.body
