@@ -236,10 +236,12 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                           <p className="text-sm text-[#EFECE4]/90 leading-relaxed italic border-l border-[#C5A059]/30 pl-4">{result.ki_schritt}</p>
                         </div>
 
-                        <div className="pt-4 border-t border-[#C5A059]/30 mt-auto">
-                          <p className="text-xs text-[#C5A059] uppercase tracking-widest font-semibold leading-relaxed">
-                            {result.punchline}
-                          </p>
+                        <div className="pt-6 mt-auto">
+                          <div className="relative border border-[#C5A059]/40 bg-[#C5A059]/10 p-4 md:p-5 rounded-sm shadow-[0_0_15px_rgba(197,160,89,0.15)] flex items-center justify-center">
+                            <p className="text-sm text-[#C5A059] uppercase tracking-wider font-bold leading-relaxed text-center">
+                              {result.punchline}
+                            </p>
+                          </div>
                         </div>
                       </motion.div>
                     ) : (
