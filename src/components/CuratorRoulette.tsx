@@ -50,7 +50,7 @@ export function CuratorRoulette({ photos }: { photos: Photo[] }) {
     // 2. KI aufrufen (Kritik an einer Fotografie, KEIN Projektmanagement)
     try {
       const prompt = `Du bist ein elitärer, leicht zynischer aber hochintelligenter Kunstkritiker auf einer Fotografie-Ausstellung von Alexander Kühn.
-Das ausgestellte Werk heißt "${photo.title}" aus der Kategorie "${photo.category}".
+Das ausgestellte Werk stammt aus der Kategorie "${photo.category}".
 Verfasse eine kurze, pointierte Kunstkritik (max. 3-4 Sätze) über die Bildkomposition.
 Nutze dabei ausschließlich fotografische und künstlerische Fachbegriffe (z.B. Chiaroscuro, Fluchtpunkt, Tiefe, Überbelichtung, Negativraum).
 WICHTIG: Erwähne KEINERLEI IT-Begriffe, kein Projektmanagement, kein Scrum oder Ähnliches. Bleibe strikt in der Welt der Kunst und Fotografie.
@@ -149,13 +149,7 @@ Gib NUR die fertige Kritik zurück, ohne Anführungszeichen oder Markdown.`;
                   <span className="text-xs uppercase tracking-[0.2em] font-medium">KI-Kurator Analyse</span>
                 </div>
                 
-                {selectedPhoto && (
-                  <div className="mb-6">
-                    <h2 className="text-xl font-light text-[#EFECE4] tracking-wide mb-1">{selectedPhoto.title}</h2>
-                    <p className="text-[#EFECE4]/40 text-xs uppercase tracking-[0.1em]">{selectedPhoto.category}</p>
-                  </div>
-                )}
-
+                {/* Dateinamen/Kategorie werden hier auf Nutzer-Wunsch bewusst nicht mehr gerendert, da sie kryptisch wirken können */}
                 <div className="flex-1 overflow-y-auto pr-2">
                   <p className="text-sm md:text-base leading-relaxed text-[#EFECE4]/90">
                     {isAnalyzing && !critique && (
