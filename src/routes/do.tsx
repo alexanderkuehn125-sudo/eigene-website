@@ -242,7 +242,7 @@ function DoPage() {
           <span className="text-[10px] uppercase tracking-[0.3em] opacity-60">Ausstellung</span>
         </header>
 
-        <section className="mt-28 mb-10 md:mt-36 md:mb-16 flex justify-center relative z-50">
+        <section className="mt-20 mb-10 md:mt-24 md:mb-16 flex justify-center relative z-50">
           <FadeIn>
             <h1
               className="text-3xl md:text-4xl lg:text-5xl text-center leading-[1.3] tracking-wide"
