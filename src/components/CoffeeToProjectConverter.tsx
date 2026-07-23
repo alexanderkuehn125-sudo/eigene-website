@@ -112,7 +112,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
             />
             {/* Eigentliches Modal */}
             <div
-              className="relative z-10 flex w-full max-w-2xl flex-col overflow-hidden rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl widget-cursor-area"
+              className="relative z-10 flex w-full max-w-2xl flex-col max-h-[95vh] overflow-y-auto rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl widget-cursor-area"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
