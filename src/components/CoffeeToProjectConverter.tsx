@@ -99,7 +99,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
             onClick={() => setIsOpen(false)}
           >
             <div
-              className="relative flex w-full max-w-2xl flex-col overflow-hidden rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl cursor-none"
+              className="relative flex w-full max-w-2xl flex-col overflow-hidden rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
@@ -135,7 +135,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                       max="10"
                       value={coffee}
                       onChange={(e) => setCoffee(Number(e.target.value))}
-                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-none"
+                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-pointer"
                     />
                   </div>
 
@@ -151,7 +151,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                       max="5"
                       value={chaos}
                       onChange={(e) => setChaos(Number(e.target.value))}
-                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-none"
+                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-pointer"
                     />
                   </div>
 
@@ -165,7 +165,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                       min="0"
                       value={days}
                       onChange={(e) => setDays(Number(e.target.value))}
-                      className="w-full bg-[#C5A059]/5 border border-[#C5A059]/20 rounded-sm px-4 py-2 text-[#EFECE4] outline-none focus:border-[#C5A059]/60 transition-colors cursor-none"
+                      className="w-full bg-[#C5A059]/5 border border-[#C5A059]/20 rounded-sm px-4 py-2 text-[#EFECE4] outline-none focus:border-[#C5A059]/60 transition-colors cursor-text"
                     />
                   </div>
 
