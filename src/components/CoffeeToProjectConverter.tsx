@@ -72,8 +72,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
       <div className="pt-8">
         <motion.button
           onClick={() => setIsOpen(true)}
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
           className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/20 bg-transparent px-8 py-3 text-sm tracking-[0.15em] uppercase text-[#EFECE4] transition-all hover:border-white/40 hover:bg-white/5 focus:outline-none cursor-none"
         >
           <Coffee className="h-4 w-4 opacity-70 group-hover:opacity-100 transition-opacity" />
