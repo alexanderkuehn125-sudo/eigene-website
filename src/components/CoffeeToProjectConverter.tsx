@@ -99,14 +99,14 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
             onClick={() => setIsOpen(false)}
           >
             <div
-              className="relative flex w-full max-w-2xl flex-col overflow-hidden rounded-sm border border-white/10 bg-[#0A0908] p-6 md:p-10 shadow-2xl cursor-default"
+              className="relative flex w-full max-w-2xl flex-col overflow-hidden rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
               <div className="flex items-start justify-between mb-8">
                 <div>
                   <h3 className="text-xl md:text-2xl font-light tracking-wide text-[#EFECE4] uppercase">
-                    Kaffee-zu-Projekt <br/><span className="text-white/50">Konverter</span>
+                    Kaffee-zu-Projekt <br/><span className="text-[#C5A059]/80">Konverter</span>
                   </h3>
                   <p className="mt-2 text-sm text-[#EFECE4]/60 max-w-sm">
                     Simuliere die Projektlage. Die KI analysiert das Chaos und liefert den Ausweg.
@@ -114,7 +114,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 text-white/50 hover:text-white transition-colors focus:outline-none cursor-none"
+                  className="p-2 text-[#C5A059]/50 hover:text-[#C5A059] transition-colors focus:outline-none cursor-none"
                 >
                   <X className="h-6 w-6" />
                 </button>
@@ -127,7 +127,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                   <div className="space-y-4">
                     <div className="flex justify-between text-sm text-[#EFECE4]/80 uppercase tracking-widest">
                       <span>Kaffeekonsum</span>
-                      <span>{coffee} Tassen</span>
+                      <span className="text-[#C5A059]">{coffee} Tassen</span>
                     </div>
                     <input
                       type="range"
@@ -135,7 +135,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                       max="10"
                       value={coffee}
                       onChange={(e) => setCoffee(Number(e.target.value))}
-                      className="w-full h-1 bg-white/10 rounded-full appearance-none outline-none accent-[#EFECE4] cursor-none"
+                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-none"
                     />
                   </div>
 
@@ -143,7 +143,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                   <div className="space-y-4">
                     <div className="flex justify-between text-sm text-[#EFECE4]/80 uppercase tracking-widest">
                       <span>Chaos-Faktor</span>
-                      <span>Level {chaos}</span>
+                      <span className="text-[#C5A059]">Level {chaos}</span>
                     </div>
                     <input
                       type="range"
@@ -151,7 +151,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                       max="5"
                       value={chaos}
                       onChange={(e) => setChaos(Number(e.target.value))}
-                      className="w-full h-1 bg-white/10 rounded-full appearance-none outline-none accent-[#EFECE4] cursor-none"
+                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-none"
                     />
                   </div>
 
@@ -165,26 +165,26 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                       min="0"
                       value={days}
                       onChange={(e) => setDays(Number(e.target.value))}
-                      className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-2 text-[#EFECE4] outline-none focus:border-white/30 transition-colors cursor-none"
+                      className="w-full bg-[#C5A059]/5 border border-[#C5A059]/20 rounded-sm px-4 py-2 text-[#EFECE4] outline-none focus:border-[#C5A059]/60 transition-colors cursor-none"
                     />
                   </div>
 
                   <button
                     onClick={handleGenerate}
                     disabled={isLoading}
-                    className="w-full flex items-center justify-center gap-2 border border-white/20 bg-white/5 px-6 py-4 text-sm tracking-widest uppercase text-[#EFECE4] transition-colors hover:bg-white/10 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed cursor-none"
+                    className="w-full flex items-center justify-center gap-2 border border-[#C5A059]/30 bg-[#C5A059]/10 px-6 py-4 text-sm tracking-widest uppercase text-[#EFECE4] transition-all hover:bg-[#C5A059]/20 hover:border-[#C5A059]/60 hover:text-[#C5A059] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed cursor-none shadow-[0_0_15px_rgba(197,160,89,0.0)] hover:shadow-[0_0_15px_rgba(197,160,89,0.15)]"
                   >
                     {isLoading ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <Loader2 className="h-4 w-4 animate-spin text-[#C5A059]" />
                     ) : (
-                      <Zap className="h-4 w-4" />
+                      <Zap className="h-4 w-4 text-[#C5A059]" />
                     )}
                     <span>{isLoading ? "Analysiere..." : "Koffein verwandeln"}</span>
                   </button>
                 </div>
 
                 {/* Rechts: Output */}
-                <div className="relative min-h-[300px] border border-white/5 bg-white/5 p-6 rounded-sm flex flex-col justify-center">
+                <div className="relative min-h-[300px] border border-[#C5A059]/15 bg-[#C5A059]/5 p-6 rounded-sm flex flex-col justify-center shadow-inner">
                   <AnimatePresence mode="wait">
                     {result ? (
                       <motion.div
@@ -196,24 +196,24 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                         className="space-y-6"
                       >
                         <div className="space-y-2">
-                          <h4 className="text-xs text-white/40 uppercase tracking-widest">Status</h4>
-                          <p className="text-lg text-[#EFECE4] font-medium leading-snug">{result.status_titel}</p>
+                          <h4 className="text-xs text-[#C5A059]/60 uppercase tracking-widest">Status</h4>
+                          <p className="text-lg text-[#C5A059] font-medium leading-snug drop-shadow-sm">{result.status_titel}</p>
                         </div>
                         
                         <div className="space-y-2">
-                          <h4 className="text-xs text-white/40 uppercase tracking-widest">Prognose</h4>
-                          <p className="text-sm text-[#EFECE4]/80 leading-relaxed">{result.prognose}</p>
+                          <h4 className="text-xs text-[#C5A059]/60 uppercase tracking-widest">Prognose</h4>
+                          <p className="text-sm text-[#EFECE4]/90 leading-relaxed">{result.prognose}</p>
                         </div>
 
                         <div className="space-y-2">
-                          <h4 className="text-xs text-white/40 uppercase tracking-widest flex items-center gap-2">
-                            <Sparkles className="h-3 w-3" /> KI-Lösungsansatz
+                          <h4 className="text-xs text-[#C5A059]/60 uppercase tracking-widest flex items-center gap-2">
+                            <Sparkles className="h-3 w-3 text-[#C5A059]" /> KI-Lösungsansatz
                           </h4>
-                          <p className="text-sm text-[#EFECE4]/80 leading-relaxed italic border-l border-white/20 pl-4">{result.ki_schritt}</p>
+                          <p className="text-sm text-[#EFECE4]/90 leading-relaxed italic border-l border-[#C5A059]/30 pl-4">{result.ki_schritt}</p>
                         </div>
 
-                        <div className="pt-4 border-t border-white/10 mt-auto">
-                          <p className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium">
+                        <div className="pt-4 border-t border-[#C5A059]/20 mt-auto">
+                          <p className="text-[10px] text-[#C5A059]/80 uppercase tracking-[0.2em] font-medium">
                             {result.punchline}
                           </p>
                         </div>
@@ -224,9 +224,9 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 flex flex-col items-center justify-center text-white/20 space-y-4 p-8 text-center"
+                        className="absolute inset-0 flex flex-col items-center justify-center text-[#C5A059]/30 space-y-4 p-8 text-center"
                       >
-                        <Coffee className="h-12 w-12 opacity-50" />
+                        <Coffee className="h-12 w-12 opacity-50 text-[#C5A059]" />
                         <p className="text-xs uppercase tracking-widest leading-relaxed">
                           Passe die Parameter an und starte die Projekt-Prognose.
                         </p>
