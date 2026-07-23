@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
 import { CoffeeToProjectConverter } from "@/components/CoffeeToProjectConverter";
+import { CuratorRoulette } from "@/components/CuratorRoulette";
 // Neues lokales Portrait
 import portrait from "@/assets/Portrait.jpg";
 
@@ -59,8 +60,19 @@ function FadingFilmstrip() {
     }
   }, [activeIndex, images.length]);
 
+  // Event Listener für das Kuratoren-Roulette
+  useEffect(() => {
+    const handleSetIndex = (e: any) => {
+      if (e.detail && typeof e.detail.index === "number") {
+        setActiveIndex(e.detail.index);
+      }
+    };
+    window.addEventListener("set-filmstrip-index", handleSetIndex);
+    return () => window.removeEventListener("set-filmstrip-index", handleSetIndex);
+  }, []);
+
   return (
-    <div className="relative w-full h-[30vh] md:h-[40vh] mt-16 mb-12 flex items-center justify-center overflow-hidden">
+    <div id="filmstrip-container" className="relative w-full h-[30vh] md:h-[40vh] mt-16 mb-12 flex items-center justify-center overflow-hidden">
       {images.map((img, i) => {
         const offset = i - activeIndex;
         return (
@@ -512,6 +524,7 @@ function BePage() {
         </div>
       )}
 
+      <CuratorRoulette />
       <CustomCursor />
     </main>
   );
