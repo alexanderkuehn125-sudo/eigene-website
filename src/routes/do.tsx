@@ -26,7 +26,7 @@ export const Route = createFileRoute("/do")({
   component: DoPage,
 });
 
-type Photo = {
+export type Photo = {
   id: string;
   src: string;
   title: string;
@@ -525,7 +525,7 @@ function DoPage() {
         </div>
       )}
       <CustomCursor />
-      <CuratorRoulette />
+      <CuratorRoulette photos={photos} />
     </main>
   );
 }
