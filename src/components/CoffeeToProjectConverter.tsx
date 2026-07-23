@@ -70,14 +70,16 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
     <>
       {/* Trigger Button (Option B) */}
       <div className="pt-8">
-        <button
+        <motion.button
           onClick={() => setIsOpen(true)}
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/20 bg-transparent px-8 py-3 text-sm tracking-[0.15em] uppercase text-[#EFECE4] transition-all hover:border-white/40 hover:bg-white/5 focus:outline-none cursor-none"
         >
           <Coffee className="h-4 w-4 opacity-70 group-hover:opacity-100 transition-opacity" />
           <span>Projekt-Prognose starten</span>
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite]" />
-        </button>
+        </motion.button>
       </div>
 
       {/* Modal im React Portal */}
