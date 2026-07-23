@@ -340,4 +340,4 @@
     transform: translateX(100%);
   }
 }
-@keyframes ghostFadeIn { from { opacity: 0; filter: blur(4px); } to { opacity: 0.13; filter: blur(0px); } }
+@keyframes ghostFadeIn { from { opacity: 0; } to { opacity: 0.13; } }
