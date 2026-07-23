@@ -26,7 +26,7 @@ export function CoffeeToProjectConverter() {
       const prompt = `Du bist der 'Kaffee-zu-Projekt-Konverter' auf einem Projektmanager-Portfolio. Generiere aus den Parametern Kaffee (${coffee} Tassen), Chaos (${chaos} von 5) und Resttage (${days} Tage) eine witzige, treffende Projekt-Prognose im JSON-Format mit genau folgenden Feldern:
 - prognose: Humorvolle Situationsbeschreibung
 - status_titel: Witziger Team-Status
-- ki_schritt: Ein konkreter agiler Tipp, wie KI das Chaos strukturiert. WICHTIG: Halte diesen Ansatz absolut allgemein für das Projektmanagement. Nenne KEINE spezifischen Tools (wie Slack, Jira, Teams, Trello etc.), sondern nutze Begriffe wie "Kommunikationskanäle", "Ticket-System" oder "Task-Boards".
+- ki_schritt: Ein konkreter agiler Tipp, wie KI das Chaos strukturiert. WICHTIG: Wenn du spezifische Tools nennst, nenne immer mehrere Alternativen (z.B. "Slack oder MS Teams", "Jira oder Trello"), um allgemeingültig zu bleiben, oder nutze direkt neutrale Begriffe wie "Kommunikationskanäle" und "Task-Boards".
 - punchline: Exakt der Wortlaut 'KI bringt das Tempo, Erfahrung die Struktur – so wird aus Koffein echter Fortschritt.'
 Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`json.`;
 
