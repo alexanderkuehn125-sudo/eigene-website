@@ -68,19 +68,24 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
 
   return (
     <>
-      {/* Trigger Button (Option B) */}
-      <div className="pt-8">
-        <motion.button
-          onClick={() => setIsOpen(true)}
-          animate={{ opacity: [0.3, 1, 0.3] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/20 bg-transparent px-8 py-3 text-sm tracking-[0.15em] uppercase text-[#EFECE4] transition-all hover:border-white/40 hover:bg-white/5 focus:outline-none cursor-none"
-        >
-          <Coffee className="h-4 w-4 opacity-70 group-hover:opacity-100 transition-opacity" />
-          <span>Projekt-Prognose starten</span>
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite]" />
-        </motion.button>
-      </div>
+      {/* Trigger Button (Option 1: Floating Bottom Left) */}
+      {createPortal(
+        <div className="fixed bottom-6 md:bottom-12 left-6 md:left-12 z-50 pointer-events-auto">
+          <motion.button
+            onClick={() => setIsOpen(true)}
+            animate={{ opacity: [0.3, 1, 0.3] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 bg-black/20 backdrop-blur-md p-4 text-[#EFECE4] transition-all hover:border-white/40 hover:bg-white/10 focus:outline-none cursor-none shadow-2xl"
+          >
+            <Coffee className="h-5 w-5 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
+            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pl-4 group-hover:pr-2">
+              KI-Prognose
+            </span>
+            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite]" />
+          </motion.button>
+        </div>,
+        document.body
+      )}
 
       {/* Modal im React Portal */}
       {isOpen &&

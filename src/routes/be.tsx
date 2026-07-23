@@ -289,9 +289,7 @@ function BePage() {
               </div>
             </div>
 
-            <div className="mb-16">
-              <CoffeeToProjectConverter />
-            </div>
+            <CoffeeToProjectConverter />
 
             <nav className="flex flex-col gap-6">
               {items.map((it) => (
