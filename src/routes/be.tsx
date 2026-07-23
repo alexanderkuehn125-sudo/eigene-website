@@ -542,6 +542,8 @@ function CustomCursor() {
         state = "zoom";
       } else if (el.closest(".cursor-trigger-close")) {
         state = "close";
+      } else if (el.closest(".widget-cursor-area") && el.closest("a, button, input")) {
+        state = "widget";
       } else if (el.closest("input")) {
         state = "input";
       } else if (el.closest("a, button")) {
@@ -553,6 +555,7 @@ function CustomCursor() {
       if (rAF) cancelAnimationFrame(rAF);
       rAF = requestAnimationFrame(() => {
         if (cursorRef.current && ringRef.current && textRef.current) {
+          const dot = cursorRef.current.querySelector("#cursor-dot") as HTMLElement;
           // Positioniert den Container extrem schnell und ohne Delay am Mauszeiger
           cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
 
@@ -561,19 +564,28 @@ function CustomCursor() {
             ringRef.current.style.opacity = "0";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.5)`;
             textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "0";
           } else if (state === "close") {
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
             textRef.current.innerText = "CLOSE";
+            if (dot) dot.style.opacity = "0";
           } else if (state === "input") {
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
             textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "0";
+          } else if (state === "widget") {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
           } else {
             // hover und zoom bekommen exakt dasselbe "VIEW" in mittlerer Größe
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
             textRef.current.innerText = "VIEW";
+            if (dot) dot.style.opacity = "0";
           }
         }
       });
@@ -618,6 +630,12 @@ function CustomCursor() {
         />
         {/* Inner Solid Circle (stark transparent für Lesbarkeit) */}
         <div className="absolute inset-[2px] rounded-full bg-[#EFECE4]/20 z-10" />
+
+        {/* White Dot für Widgets */}
+        <div
+          id="cursor-dot"
+          className="absolute inset-0 m-auto h-1.5 w-1.5 rounded-full bg-[#EFECE4] opacity-0 transition-opacity duration-300 z-30"
+        />
 
         {/* Text */}
         <span
