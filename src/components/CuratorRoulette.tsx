@@ -8,6 +8,11 @@ export function CuratorRoulette() {
   const [critique, setCritique] = useState<string | null>(null);
   const [displayedText, setDisplayedText] = useState("");
   const [showCritique, setShowCritique] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Typewriter Effekt
   useEffect(() => {
@@ -93,6 +98,8 @@ Gib NUR die fertige Kritik zurück, ohne Anführungszeichen oder Markdown.`;
   const handleClose = () => {
     setShowCritique(false);
   };
+
+  if (!mounted) return null;
 
   return createPortal(
     <>
