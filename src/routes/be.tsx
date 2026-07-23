@@ -232,21 +232,23 @@ function BePage() {
 
       {/* Global Ghost Portrait Background */}
       {createPortal(
-        <figure
-          className="fixed bottom-0 -right-[5vw] md:right-0 z-0 h-[60vh] md:h-[85vh] w-auto opacity-[0.13]"
-        >
-          <img
-            src={portrait}
-            alt="Alexander Kühn"
-            draggable={false}
-            className="h-full w-auto object-contain object-bottom mix-blend-screen"
-            style={{
-              filter: "grayscale(100%) contrast(1.3) brightness(1.2)",
-              WebkitMaskImage: "radial-gradient(ellipse at 50% 100%, black 20%, transparent 70%)",
-              maskImage: "radial-gradient(ellipse at 50% 100%, black 20%, transparent 70%)",
-            }}
-          />
-        </figure>,
+        <div className="page-transition-enter fixed inset-0 pointer-events-none z-0">
+          <figure
+            className="absolute bottom-0 -right-[5vw] md:right-0 h-[60vh] md:h-[85vh] w-auto opacity-[0.13]"
+          >
+            <img
+              src={portrait}
+              alt="Alexander Kühn"
+              draggable={false}
+              className="h-full w-auto object-contain object-bottom mix-blend-screen"
+              style={{
+                filter: "grayscale(100%) contrast(1.3) brightness(1.2)",
+                WebkitMaskImage: "radial-gradient(ellipse at 50% 100%, black 20%, transparent 70%)",
+                maskImage: "radial-gradient(ellipse at 50% 100%, black 20%, transparent 70%)",
+              }}
+            />
+          </figure>
+        </div>,
         document.body
       )}
 
