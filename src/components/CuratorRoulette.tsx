@@ -52,10 +52,11 @@ export function CuratorRoulette({ photos }: { photos: Photo[] }) {
       const prompt = `Du bist ein elitärer, leicht zynischer aber hochintelligenter Kunstkritiker auf einer Fotografie-Ausstellung von Alexander Kühn.
 Das ausgestellte Werk stammt aus der Kategorie "${photo.category}".
 Verfasse eine kurze, pointierte Kunstkritik (max. 3-4 Sätze) über die Bildkomposition.
-Nutze dabei ausschließlich fotografische und künstlerische Fachbegriffe (z.B. Chiaroscuro, Fluchtpunkt, Tiefe, Überbelichtung, Negativraum).
+Denke dir als Erstes einen eigenen, extrem prätentiösen und leicht ironischen Titel für dieses Werk aus und setze ihn in Anführungszeichen an den Anfang deiner Kritik.
+Nutze danach ausschließlich fotografische und künstlerische Fachbegriffe (z.B. Chiaroscuro, Fluchtpunkt, Tiefe, Überbelichtung, Negativraum).
 WICHTIG: Erwähne KEINERLEI IT-Begriffe, kein Projektmanagement, kein Scrum oder Ähnliches. Bleibe strikt in der Welt der Kunst und Fotografie.
 Sei eloquent, analytisch und sehr bestimmt in deiner Meinung.
-Gib NUR die fertige Kritik zurück, ohne Anführungszeichen oder Markdown.`;
+Gib NUR die fertige Kritik zurück, ohne Markdown-Blöcke (die Anführungszeichen für den Titel sind erlaubt).`;
 
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
