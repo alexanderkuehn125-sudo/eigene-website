@@ -90,16 +90,19 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
       {/* Modal im React Portal */}
       {isOpen &&
         createPortal(
-          <div
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 cursor-none cursor-trigger-close"
-            style={{
-              background: "rgba(20, 18, 15, 0.9)",
-              backdropFilter: "blur(8px)",
-            }}
-            onClick={() => setIsOpen(false)}
-          >
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+            {/* Backdrop (Klickbar für Schließen, mit Custom Cursor) */}
             <div
-              className="relative flex w-full max-w-2xl flex-col overflow-hidden rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl"
+              className="absolute inset-0 cursor-none cursor-trigger-close"
+              style={{
+                background: "rgba(20, 18, 15, 0.9)",
+                backdropFilter: "blur(8px)",
+              }}
+              onClick={() => setIsOpen(false)}
+            />
+            {/* Eigentliches Modal */}
+            <div
+              className="relative z-10 flex w-full max-w-2xl flex-col overflow-hidden rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
