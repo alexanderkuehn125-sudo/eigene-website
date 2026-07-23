@@ -99,7 +99,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
             onClick={() => setIsOpen(false)}
           >
             <div
-              className="relative flex w-full max-w-2xl flex-col overflow-hidden rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl cursor-default"
+              className="relative flex w-full max-w-2xl flex-col overflow-hidden rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl cursor-none"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
