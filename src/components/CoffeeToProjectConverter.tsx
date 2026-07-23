@@ -91,9 +91,9 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
       {isOpen &&
         createPortal(
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
-            {/* Backdrop (Klickbar für Schließen, mit Custom Cursor) */}
+            {/* Backdrop (Klickbar für Schließen, nativer Cursor) */}
             <div
-              className="absolute inset-0 cursor-none cursor-trigger-close"
+              className="absolute inset-0 cursor-pointer"
               style={{
                 background: "rgba(20, 18, 15, 0.9)",
                 backdropFilter: "blur(8px)",
@@ -138,7 +138,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                       max="10"
                       value={coffee}
                       onChange={(e) => setCoffee(Number(e.target.value))}
-                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-pointer"
+                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-none"
                     />
                   </div>
 
@@ -154,7 +154,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                       max="5"
                       value={chaos}
                       onChange={(e) => setChaos(Number(e.target.value))}
-                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-pointer"
+                      className="w-full h-1 bg-[#C5A059]/20 rounded-full appearance-none outline-none accent-[#C5A059] cursor-none"
                     />
                   </div>
 
@@ -168,7 +168,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                       min="0"
                       value={days}
                       onChange={(e) => setDays(Number(e.target.value))}
-                      className="w-full bg-[#C5A059]/5 border border-[#C5A059]/20 rounded-sm px-4 py-2 text-[#EFECE4] outline-none focus:border-[#C5A059]/60 transition-colors cursor-text"
+                      className="w-full bg-[#C5A059]/5 border border-[#C5A059]/20 rounded-sm px-4 py-2 text-[#EFECE4] outline-none focus:border-[#C5A059]/60 transition-colors cursor-none"
                     />
                   </div>
 

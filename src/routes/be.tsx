@@ -579,7 +579,7 @@ function CustomCursor() {
         state = "zoom";
       } else if (el.closest(".cursor-trigger-close")) {
         state = "close";
-      } else if (el.closest("a, button")) {
+      } else if (el.closest("a, button, input")) {
         state = "hover";
       } else {
         state = "default";
