@@ -227,10 +227,10 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 flex flex-col items-center justify-center text-[#C5A059]/30 space-y-4 p-8 text-center"
+                        className="absolute inset-0 flex flex-col items-center justify-center text-[#C5A059]/70 space-y-4 p-8 text-center"
                       >
-                        <Coffee className="h-12 w-12 opacity-50 text-[#C5A059]" />
-                        <p className="text-xs uppercase tracking-widest leading-relaxed">
+                        <Coffee className="h-12 w-12 opacity-80 text-[#C5A059]" />
+                        <p className="text-xs uppercase tracking-widest leading-relaxed font-medium">
                           Passe die Parameter an und starte die Projekt-Prognose.
                         </p>
                       </motion.div>
