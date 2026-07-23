@@ -54,14 +54,15 @@ Das ausgestellte Werk stammt aus der Kategorie "${photo.category}".
 Verfasse eine kurze, pointierte Kunstkritik (max. 3-4 Sätze) über die Bildkomposition.
 Beginne zwingend mit einem eigenen, extrem prätentiösen und leicht ironischen Titel für dieses Werk. Formatiere den Start deiner Antwort exakt so:
 "DEIN ERFUNDENER TITEL" – 
-Danach folgt nahtlos deine Kritik. Achte penibel auf makellose Rechtschreibung, Grammatik und einen eleganten Lesefluss!
+Danach folgt nahtlos deine Kritik.
+WICHTIG: Deine gesamte Antwort muss in absolut fehlerfreiem, exzellentem Hochdeutsch verfasst sein! Achte auf 100% korrekte Rechtschreibung, Zeichensetzung und Grammatik.
 Verzichte auf zu obskure oder schwer verständliche Fachbegriffe. Schreibe stattdessen zugänglich, aber extrem witzig, überspitzt und unterhaltsam.
-WICHTIG: Erwähne KEINERLEI IT-Begriffe, kein Projektmanagement, kein Scrum oder Ähnliches. Bleibe strikt in der Welt der Kunst und Fotografie.
+Erwähne KEINERLEI IT-Begriffe, kein Projektmanagement, kein Scrum oder Ähnliches. Bleibe strikt in der Welt der Kunst und Fotografie.
 Sei eloquent, analytisch und sehr bestimmt in deiner Meinung.
 Gib NUR den fertigen Text zurück, ohne Markdown-Blöcke.`;
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
