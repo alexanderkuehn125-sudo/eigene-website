@@ -1,19 +1,17 @@
-# Projekt-Spezifische Agenten-Regeln
+# Eigene Website - Project Rules & Learnings
 
-## Bild-Kategorisierung für die Ausstellungs-Seite (/do)
-Aktuell ist die Zuordnung der Bilder zu den Kategorien ("Momente", "Orte", "Licht") rein mathematisch (Zufall) gelöst, um die Filter-Funktionalität zu testen. 
-**WICHTIG:** Wenn der User in Zukunft die Kategorisierung "echt" machen möchte, haben wir uns auf einen der folgenden Wege geeinigt:
-1. **Ordnerstruktur:** Echte Unterordner `momente/`, `orte/`, `licht/` in `src/assets/photos/` anlegen und die Dateien verschieben. Die Logik muss dann den Ordnernamen auslesen.
-2. **Dateinamen-Kürzel:** Die Dateien entsprechend umbenennen (z.B. `M_DSC...`, `O_DSC...`, `L_DSC...`) und die Logik anpassen, um den Präfix zu lesen.
+## CSS Rendering Bugs & Workarounds
 
-Bitte diesen Status Quo bei zukünftigen Änderungen im Hinterkopf behalten.
+### 1. Framer Motion vs. Fixed Positioning
+- **Problem**: Framer Motion injects `filter` properties (e.g., `filter: blur()`) on wrapper elements like `<motion.div>` during page transitions (e.g., in `__root.tsx`). Any CSS `filter` on an ancestor element breaks `position: fixed` for its descendants, causing them to behave like `absolute` elements and scroll with the page content.
+- **Solution**: Never use `position: fixed` for elements inside `<main>` or any route components if they need to stay completely static relative to the viewport. Instead, use the **Sticky-Top Hack**: Wrap the element in `<div className="absolute inset-0 z-0 pointer-events-none flex justify-end items-start">` and apply `sticky top-0 h-screen` to the element itself. This perfectly emulates fixed positioning without being broken by CSS filters.
 
-## Verhaltensregeln Kommunikation
-- **Radikale Ehrlichkeit:** Der User legt größten Wert auf ungefilterte, radikal ehrliche Meinungen (insbesondere bei Design und Wirkung). Keine falsche KI-Höflichkeit, keine Schmeicheleien. Wenn ein Bild/Design zu "brav", "langweilig" oder "unpassend" wirkt, muss dies direkt kommuniziert werden. Lob ist nur dann zu äußern, wenn es zu 100% ernst gemeint und sachlich begründbar ist.
+### 2. Safari Rendering Bug: CSS Filters + Mask Image
+- **Problem**: In Safari (iOS and macOS), if you animate a CSS `filter` (like `blur()`) on an element that also has a CSS mask (`mask-image`), Safari will often miscalculate the scale/resolution of the element during hardware acceleration. The element will abruptly change size or appear shrunk.
+- **Solution**: Never apply CSS `filter` animations to elements with `mask-image`. If you need a fade-in animation for a masked image, only animate `opacity`. Remove any `filter: blur` from the `@keyframes` of masked elements.
 
-## Hosting & Deployment (GitHub Pages)
-- **WICHTIG:** Die Website wird über GitHub Pages gehostet. Das bedeutet, es handelt sich um ein reines Frontend/Static-Site-Hosting.
-- **Regeln für Animationen & Code:** Alle Animationen (CSS, Framer Motion etc.) und Logiken müssen rein clientseitig (im Browser) funktionieren. Serverseitige Endpunkte oder Datenbankanfragen sind nicht möglich. Beim Routing (React Router/TanStack Router) und bei Asset-Pfaden muss sichergestellt sein, dass sie mit statischem Hosting und potenziellen Base-Paths auf GitHub Pages kompatibel sind.
+## Design Patterns
 
-## Image Editing Rules
-- ONLY modify or apply filters to the images on the start page if the user gives an explicit command to do so. Otherwise, leave them exactly as they are.
+### 3. Ghost Portrait (Portfolio Seite)
+- **Layout**: Das Ghost-Portrait (`be.tsx`) MUSS immer die komplette **rechte Bildschirmhälfte** in voller Höhe einnehmen (`md:w-1/2 h-screen object-cover`), und nicht nur klein unten rechts in der Ecke kleben. Es muss absolut statisch im Hintergrund bleiben.
+- **Interaktion**: Das Element darf den Rest der Seite nicht blockieren (`pointer-events-none`).
