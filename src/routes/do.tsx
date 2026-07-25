@@ -220,16 +220,7 @@ function DoPage() {
         fontFamily: "'Roboto', sans-serif",
       }}
     >
-      {/* Film-Grain / Papier-Rauschen Overlay (Invertiert für dunklen Hintergrund) */}
-      <div
-        // Jetzt ohne mix-blend-screen (Hardware-Beschleunigung / kein GPU Repaint pro Frame beim Scrollen)
-        // Reduzierte Opacity sorgt für denselben visuellen Effekt ohne Performance-Probleme
-        className="pointer-events-none fixed inset-0 z-0 opacity-[0.06]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-        aria-hidden
-      />
+      {/* Film-Grain Overlay entfernt für deutlich bessere Scroll-Performance auf der Bilder-Seite */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-10 md:px-12 md:py-16 page-transition-enter">
         {/* Header */}
         <header className="flex items-center justify-between pt-2 relative z-50">
@@ -357,12 +348,8 @@ function DoPage() {
                     className="group/item w-full transition-opacity duration-700 focus:outline-none focus:ring-1 focus:ring-white/20 lg:group-hover:opacity-30 lg:hover:!opacity-100 cursor-none cursor-trigger-zoom"
                   >
                     <div className="relative flex justify-center w-full">
-                      {/* 3D-Glas-Platten Effekt: 
-                      1. inset 0 1px 1px -> Lichtreflexion an der oberen Kante (Deckenlicht)
-                      2. inset 0 0 0 1px -> Hauchdünne Haarlinie zur Definition des Randes
-                      3. 0 30px 60px -> Massiver, tiefschwarzer Drop-Shadow nach unten
-                      4. 0 0 20px -> Schwarzer Ambient-Glow in alle Richtungen zur Trennung vom Hintergrund */}
-                      <div className="relative overflow-hidden bg-[#0A0A0A] transform-gpu rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.05),_0_30px_60px_-10px_rgba(0,0,0,1),_0_0_20px_rgba(0,0,0,0.8)] transition-all duration-700">
+                      {/* 3D-Glas-Platten Effekt vereinfacht für extrem verbesserte Scroll-Performance */}
+                      <div className="relative overflow-hidden bg-[#0A0A0A] transform-gpu rounded-[2px] shadow-2xl transition-all duration-700">
                         <LazyImage
                           src={p.src}
                           alt={p.title}
