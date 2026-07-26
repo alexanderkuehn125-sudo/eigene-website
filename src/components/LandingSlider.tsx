@@ -74,24 +74,35 @@ export function LandingSlider() {
     </svg>
   );
 
-  const makeLensHandler = (
-    sideRef: React.RefObject<HTMLButtonElement | null>,
-    balloonRef: React.RefObject<HTMLSpanElement | null>,
-    setter: typeof setBeLens,
-  ) => (e: React.MouseEvent) => {
-    if (!zoomOn || isMobile) return;
-    const rect = sideRef.current?.getBoundingClientRect();
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!zoomOn || isMobile || draggingRef.current) return;
+    const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const br = balloonRef.current?.getBoundingClientRect();
+    const pctX = (x / rect.width) * 100;
+    const isBeSide = pctX <= pct;
+
     let reveal = false;
+    const br = isBeSide ? beBalloonRef.current?.getBoundingClientRect() : doBalloonRef.current?.getBoundingClientRect();
     if (br) {
       const bx = br.left + br.width / 2 - rect.left;
       const by = br.top + br.height / 2 - rect.top;
       reveal = Math.hypot(bx - x, by - y) < LENS_SIZE / 2;
     }
-    setter({ x, y, visible: true, reveal });
+
+    if (isBeSide) {
+      setBeLens({ x, y, visible: true, reveal });
+      setDoLens((l) => ({ ...l, visible: false, reveal: false }));
+    } else {
+      setDoLens({ x, y, visible: true, reveal });
+      setBeLens((l) => ({ ...l, visible: false, reveal: false }));
+    }
+  };
+
+  const handlePointerLeave = () => {
+    setBeLens((l) => ({ ...l, visible: false, reveal: false }));
+    setDoLens((l) => ({ ...l, visible: false, reveal: false }));
   };
 
   useEffect(() => {
@@ -190,6 +201,8 @@ export function LandingSlider() {
   return (
     <section
       ref={containerRef}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
       className="relative h-[100svh] w-full overflow-hidden bg-black select-none"
       aria-label="Landing — slide between 18th- and 21st-century Manhattan"
     >
@@ -199,8 +212,6 @@ export function LandingSlider() {
         type="button"
         onClick={() => goSide("be")}
         aria-label="Enter Portfolio"
-        onMouseMove={makeLensHandler(beSideRef, beBalloonRef, setBeLens)}
-        onMouseLeave={() => setBeLens((l) => ({ ...l, visible: false, reveal: false }))}
         className="absolute inset-0 block h-full w-full cursor-default focus:outline-none"
       >
         <img
@@ -235,8 +246,6 @@ export function LandingSlider() {
         type="button"
         onClick={() => goSide("do")}
         aria-label="Enter Ausstellung"
-        onMouseMove={makeLensHandler(doSideRef, doBalloonRef, setDoLens)}
-        onMouseLeave={() => setDoLens((l) => ({ ...l, visible: false, reveal: false }))}
         className="absolute inset-0 block h-full w-full cursor-default focus:outline-none"
         style={{
           clipPath: doClip,
@@ -452,7 +461,7 @@ export function LandingSlider() {
           }}
           aria-pressed={zoomOn}
           aria-label="Zoom umschalten"
-          className={`absolute bottom-4 left-4 z-30 flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] uppercase tracking-[0.3em] font-medium backdrop-blur-md transition-colors shadow-lg ${
+          className={`absolute bottom-4 left-4 z-50 flex items-center gap-2 rounded-full px-4 py-2 text-[10px] uppercase tracking-[0.3em] font-medium backdrop-blur-md transition-all duration-300 shadow-xl cursor-pointer hover:scale-105 hover:shadow-2xl ${
             zoomOn
               ? "bg-white text-[#1a1a1a]"
               : "bg-black/50 text-white hover:bg-black/70"
