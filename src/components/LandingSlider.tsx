@@ -340,20 +340,18 @@ export function LandingSlider() {
         )}
       </div>
 
-      {/* Name — oben in der Bildmitte */}
+      {/* Name — oben in der Bildmitte (Chamäleon-Effekt) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-6 z-30 -translate-x-1/2 select-none"
+        className="pointer-events-none absolute left-1/2 top-6 z-30 -translate-x-1/2 select-none mix-blend-difference"
       >
         <span
-          className="block whitespace-nowrap text-center"
+          className="block whitespace-nowrap text-center text-white"
           style={{
             fontFamily: "'Roboto', sans-serif",
             fontWeight: 200,
             letterSpacing: "0.38em",
             fontSize: "clamp(0.7rem, 1.1vw, 0.95rem)",
-            color: "white",
-            textShadow: "0 2px 12px rgba(0,0,0,0.55)",
             textTransform: "uppercase",
           }}
         >
