@@ -349,7 +349,7 @@ export function LandingSlider() {
           className="block whitespace-nowrap text-center text-white"
           style={{
             fontFamily: "'Roboto', sans-serif",
-            fontWeight: 200,
+            fontWeight: 400,
             letterSpacing: "0.38em",
             fontSize: "clamp(0.7rem, 1.1vw, 0.95rem)",
             textTransform: "uppercase",
