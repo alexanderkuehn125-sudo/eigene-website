@@ -452,10 +452,10 @@ export function LandingSlider() {
           }}
           aria-pressed={zoomOn}
           aria-label="Zoom umschalten"
-          className={`absolute bottom-4 left-4 z-30 flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] uppercase tracking-[0.3em] backdrop-blur-sm transition-colors ${
+          className={`absolute bottom-4 left-4 z-30 flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] uppercase tracking-[0.3em] font-medium backdrop-blur-md transition-colors shadow-lg ${
             zoomOn
-              ? "bg-white/90 text-[#1a1a1a]"
-              : "bg-black/30 text-white/85 hover:bg-black/45"
+              ? "bg-white text-[#1a1a1a]"
+              : "bg-black/50 text-white hover:bg-black/70"
           }`}
         >
           <span aria-hidden>🔍</span>
@@ -465,7 +465,7 @@ export function LandingSlider() {
 
       {/* Foot hint */}
       <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
-        <p className="rounded-full bg-black/25 px-4 py-1.5 text-[10px] uppercase tracking-[0.4em] text-white/80 backdrop-blur-sm">
+        <p className="rounded-full bg-black/50 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white backdrop-blur-md shadow-lg">
           {isMobile
             ? "drag ↕ · tap a side to enter"
             : zoomOn
@@ -502,8 +502,8 @@ function CloudTitle({
 
   const tone =
     side === "be"
-      ? { color: "rgba(250,244,225,0.85)", shadow: "0 0 60px rgba(255,236,180,0.55)" }
-      : { color: "rgba(232,238,250,0.85)", shadow: "0 0 60px rgba(160,190,240,0.55)" };
+      ? { color: "rgba(255,250,235,1)", shadow: "0 0 40px rgba(255,236,180,0.8)" }
+      : { color: "rgba(245,250,255,1)", shadow: "0 0 40px rgba(160,190,240,0.8)" };
 
   const letterRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const containerRef = useRef<HTMLElement | null>(null);
@@ -566,11 +566,11 @@ function CloudTitle({
         className="block text-center leading-none"
         style={{
           fontFamily: "'Roboto', sans-serif",
-          fontWeight: 300,
+          fontWeight: 400,
           color: tone.color,
           textShadow: tone.shadow,
           letterSpacing: "0.02em",
-          filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.35))",
+          filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.85))",
           fontSize: "clamp(1.33rem, 4.47vw, 3.8rem)",
           whiteSpace: "nowrap",
         }}
@@ -602,14 +602,14 @@ function CloudTitle({
         className="block text-center mt-3"
         style={{
           fontFamily: "'Roboto', sans-serif",
-          fontWeight: 300,
+          fontWeight: 500,
           color: tone.color,
           textShadow: tone.shadow,
           letterSpacing: "0.15em",
           fontSize: "clamp(0.6rem, 1vw, 0.9rem)",
           textTransform: "uppercase",
           opacity: subtextOpacity,
-          filter: `blur(${(1 - subtextOpacity) * 6}px)`,
+          filter: `drop-shadow(0 2px 8px rgba(0,0,0,0.85)) blur(${(1 - subtextOpacity) * 6}px)`,
           transition: "opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
