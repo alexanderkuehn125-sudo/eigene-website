@@ -217,7 +217,8 @@ export function LandingSlider() {
         <img
           src={beImg}
           alt="Manhattan in the 18th century, seen from north to south — forests, orchard meadows, a small Dutch village."
-          className="h-full w-full object-cover"
+          className="block h-full w-full object-cover"
+          style={isMobile ? { transform: "scale(1.15) translateY(-4%)" } : undefined}
           draggable={false}
         />
 
