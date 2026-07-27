@@ -503,7 +503,7 @@ function BePage() {
               <div className="flex flex-col gap-8 mt-4" style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}>
                 <div>
                   <span className="block text-[10px] uppercase tracking-[0.2em] opacity-50 mb-2">E-Mail</span>
-                  <a href="mailto:[email@placeholder.com]" className="inline-block text-xl md:text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity underline underline-offset-8">
+                  <a href="mailto:info@akuehn.eu" className="inline-block text-xl md:text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity underline underline-offset-8">
                     [email@placeholder.com]
                   </a>
                 </div>
