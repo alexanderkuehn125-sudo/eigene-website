@@ -399,11 +399,10 @@ function DoPage() {
           >
             Impressum
           </button>
-          <span className="opacity-70 text-center leading-relaxed">
-            © {new Date().getFullYear()} <span className="text-[12px] md:text-[14px] font-medium tracking-widest">Alexander Kühn</span>
-            <span className="hidden md:inline"> · </span>
-            <br className="md:hidden" />
-            Alle Rechte vorbehalten
+          <span className="opacity-70 text-center leading-relaxed flex flex-col items-center gap-1">
+            <span className="text-[9px] md:text-[11px]">© {new Date().getFullYear()}</span>
+            <span className="text-[20px] md:text-[24px] font-medium tracking-widest text-white opacity-100">Alexander Kühn</span>
+            <span className="text-[9px] md:text-[11px]">Alle Rechte vorbehalten</span>
           </span>
         </footer>
       </div>
