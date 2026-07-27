@@ -243,7 +243,7 @@ function DoPage() {
                 color: "#EFECE4",
               }}
             >
-              Eine persönliche Auswahl <br className="hidden sm:block" />
+              Eine persönliche Auswahl <br />
               <span className="opacity-80 text-[0.8em]">Momente, Orte, Licht.</span>
             </h1>
 
