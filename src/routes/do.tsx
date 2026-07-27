@@ -348,13 +348,12 @@ function DoPage() {
                   className={`relative block text-left mb-24 ${widthClass} ${marginClass} ${zClass}`}
                   style={{ breakInside: "avoid" }}
                 >
-                  <button
-                    type="button"
+                  <div
                     onClick={() => openPhoto(p.id)}
                     onPointerEnter={() => preloadImage(p.src)}
-                    onFocus={() => preloadImage(p.src)}
-                    // Reines, nacktes Bild. Hover-Dim-Effekt greift auf die innere Button-Struktur (nur auf Desktop via lg:).
-                    className="group/item block w-full transition-opacity duration-700 focus:outline-none focus:ring-1 focus:ring-white/20 lg:group-hover:opacity-30 lg:hover:!opacity-100 md:cursor-none cursor-trigger-zoom"
+                    className="group/item block w-full transition-opacity duration-700 cursor-pointer focus:outline-none lg:group-hover:opacity-30 lg:hover:!opacity-100 md:cursor-none cursor-trigger-zoom"
+                    role="button"
+                    tabIndex={0}
                   >
                     <div className="relative flex justify-center w-full">
                       {/* 3D-Glas-Platten Effekt vereinfacht für extrem verbesserte Scroll-Performance */}
@@ -379,7 +378,7 @@ function DoPage() {
                         {String(filteredPhotos.length).padStart(2, "0")}
                       </span>
                     </div>
-                  </button>
+                  </div>
                 </motion.div>
               );
             })}
