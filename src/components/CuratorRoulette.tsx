@@ -180,24 +180,21 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
         </div>
       )}
 
-      {/* Floating Button (Unten Rechts) */}
-      <div className="fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-4 pointer-events-none">
-        <motion.button
-          onClick={handleSurpriseMe}
-          disabled={isAnalyzing || showCritique}
-          animate={{ opacity: [0.3, 1, 0.3] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          className="pointer-events-auto group relative flex items-center gap-3 overflow-hidden rounded-full border border-[#C5A059]/30 bg-[#141210]/90 px-6 py-3 shadow-lg backdrop-blur-sm transition-all hover:border-[#C5A059] hover:bg-[#1a1815] focus:outline-none disabled:opacity-50"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C5A059]/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-          
-          <Search className={`h-4 w-4 text-[#C5A059] ${isAnalyzing && !showCritique ? 'animate-bounce' : ''}`} />
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-[#EFECE4]">
-            {isAnalyzing && !showCritique ? "Analysiere..." : "Werk analysieren"}
-          </span>
-        </motion.button>
-      </div>
-    </>,
-    document.body
+      {/* Trigger Button */}
+      <motion.button
+        onClick={handleSurpriseMe}
+        disabled={isAnalyzing || showCritique}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className="group relative flex items-center gap-3 overflow-hidden rounded-full border border-[#C5A059]/30 bg-[#141210]/90 px-8 py-4 shadow-[0_0_30px_rgba(197,160,89,0.15)] backdrop-blur-sm transition-all hover:border-[#C5A059] hover:bg-[#1a1815] focus:outline-none disabled:opacity-50 cursor-none"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C5A059]/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+        
+        <Search className={`h-4 w-4 text-[#C5A059] ${isAnalyzing && !showCritique ? 'animate-bounce' : ''}`} />
+        <span className="text-xs font-medium uppercase tracking-[0.2em] text-[#EFECE4]">
+          {isAnalyzing && !showCritique ? "Analysiere..." : "Werk analysieren"}
+        </span>
+      </motion.button>
+    </>
   );
 }

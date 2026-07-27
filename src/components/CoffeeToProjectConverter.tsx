@@ -78,24 +78,19 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
 
   return (
     <>
-      {/* Trigger Button (Option 1: Floating Bottom Left) */}
-      {createPortal(
-        <div className="fixed bottom-6 md:bottom-12 left-6 md:left-12 z-50 pointer-events-auto">
-          <motion.button
-            onClick={() => setIsOpen(true)}
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 bg-black/20 backdrop-blur-md p-4 text-[#EFECE4] transition-all hover:border-white/40 hover:bg-white/10 focus:outline-none cursor-none shadow-2xl"
-          >
-            <Coffee className="h-10 w-10 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
-            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] group-hover:opacity-100 group-hover:pl-4 group-hover:pr-2">
-               Projekt - Prognose 
-            </span>
-            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite]" />
-          </motion.button>
-        </div>,
-        document.body
-      )}
+      {/* Trigger Button */}
+      <motion.button
+        onClick={() => setIsOpen(true)}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className="group relative flex w-fit items-center gap-4 overflow-hidden rounded-full border border-[#C5A059]/30 bg-[#141210]/90 backdrop-blur-md px-8 py-4 text-[#EFECE4] transition-all hover:border-[#C5A059] hover:bg-[#1a1815] focus:outline-none cursor-none shadow-[0_0_30px_rgba(197,160,89,0.15)]"
+      >
+        <Coffee className="h-5 w-5 text-[#C5A059] shrink-0" />
+        <span className="text-xs tracking-[0.2em] uppercase font-medium">
+           Projekt-Prognose 
+        </span>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-[#C5A059]/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+      </motion.button>
 
       {/* Modal im React Portal */}
       {isOpen &&
