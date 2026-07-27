@@ -400,7 +400,7 @@ function DoPage() {
             Impressum
           </button>
           <span className="opacity-70 text-center leading-relaxed">
-            © {new Date().getFullYear()} Alexander Kühn
+            © {new Date().getFullYear()} <span className="text-[12px] md:text-[14px] font-medium tracking-widest">Alexander Kühn</span>
             <span className="hidden md:inline"> · </span>
             <br className="md:hidden" />
             Alle Rechte vorbehalten
