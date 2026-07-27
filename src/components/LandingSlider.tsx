@@ -323,7 +323,8 @@ export function LandingSlider() {
                 top: `${pct}%`,
                 width: 68,
                 height: 28,
-                transform: "translate(-50%, -50%)",
+                marginTop: -14,
+                marginLeft: -34,
                 animation: "handleBreathe 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
               }
             : {
@@ -331,7 +332,8 @@ export function LandingSlider() {
                 left: `${pct}%`,
                 width: 28,
                 height: 68,
-                transform: "translate(-50%, -50%)",
+                marginTop: -34,
+                marginLeft: -14,
                 animation: "handleBreathe 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
               }
         }
