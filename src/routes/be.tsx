@@ -581,16 +581,21 @@ function CustomCursor() {
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
             textRef.current.innerText = "CLOSE";
             if (dot) dot.style.opacity = "0";
-          } else if (state === "input") {
-            ringRef.current.style.opacity = "0";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.5)`;
+          } else if (state === "hover") {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.8)`;
             textRef.current.innerText = "";
-            if (dot) dot.style.opacity = "0";
+            if (dot) dot.style.opacity = "1";
           } else if (state === "widget") {
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "1";
+          } else if (state === "input") {
+            ringRef.current.style.opacity = "0";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.5)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "0";
           } else {
             // hover und zoom bekommen exakt dasselbe "VIEW" in mittlerer Größe
             ringRef.current.style.opacity = "1";
@@ -628,15 +633,13 @@ function CustomCursor() {
       >
         {/* Elegant White Border Layer */}
         <div
-          className="absolute inset-0 z-0 rounded-full border border-[#EFECE4]/50"
+          className="absolute inset-0 z-0 rounded-full border border-white/60"
         />
-        {/* Inner Solid Circle (stark transparent für Lesbarkeit) */}
-        <div className="absolute inset-[2px] rounded-full bg-[#EFECE4]/20 z-10" />
 
-        {/* White Dot für Widgets */}
+        {/* White Dot */}
         <div
           id="cursor-dot"
-          className="absolute inset-0 m-auto h-1.5 w-1.5 rounded-full bg-[#EFECE4] opacity-0 transition-opacity duration-300 z-30"
+          className="absolute inset-0 m-auto h-1 w-1 rounded-full bg-white opacity-0 transition-opacity duration-300 z-30"
         />
 
         {/* Text */}

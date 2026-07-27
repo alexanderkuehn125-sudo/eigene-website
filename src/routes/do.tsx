@@ -609,15 +609,23 @@ function CustomCursor() {
             ringRef.current.style.opacity = "0";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.5)`;
             textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "0";
           } else if (state === "close") {
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
             textRef.current.innerText = "CLOSE";
+            if (dot) dot.style.opacity = "0";
+          } else if (state === "hover") {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.8)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
           } else {
-            // hover und zoom bekommen exakt dasselbe "VIEW" in mittlerer Größe
+            // zoom
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
             textRef.current.innerText = "VIEW";
+            if (dot) dot.style.opacity = "0";
           }
         }
       });
@@ -639,7 +647,7 @@ function CustomCursor() {
     >
       <div
         ref={ringRef}
-        className="absolute left-0 top-0 flex items-center justify-center rounded-full text-[#11100F] shadow-sm transition-all duration-300 ease-out overflow-hidden"
+        className="absolute left-0 top-0 flex items-center justify-center rounded-full text-white shadow-sm transition-all duration-300 ease-out overflow-hidden"
         style={{
           width: "64px",
           height: "64px",
@@ -647,21 +655,16 @@ function CustomCursor() {
           transform: "translate3d(-50%, -50%, 0) scale(0.8)",
         }}
       >
-        {/* Animated Rainbow Border Layer */}
+        {/* Elegant White Border Layer */}
         <div
-          className="absolute inset-0 z-0 animate-spin rounded-full"
-          style={{
-            background:
-              "conic-gradient(from 0deg, #FF0018, #FFA52C, #FFFF41, #008018, #0000F9, #86007D, #FF0018)",
-            animationDuration: "3s",
-            WebkitMaskImage:
-              "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 1px))",
-            maskImage:
-              "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 1px))",
-          }}
+          className="absolute inset-0 z-0 rounded-full border border-white/60"
         />
-        {/* Inner Solid Circle (stark transparent für Lesbarkeit) */}
-        <div className="absolute inset-[2px] rounded-full bg-[#EFECE4]/20 z-10" />
+
+        {/* White Dot */}
+        <div
+          id="cursor-dot"
+          className="absolute inset-0 m-auto h-1.5 w-1.5 rounded-full bg-white opacity-0 transition-opacity duration-300 z-30"
+        />
 
         {/* Text */}
         <span
