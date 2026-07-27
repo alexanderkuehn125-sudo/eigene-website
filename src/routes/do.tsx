@@ -402,7 +402,7 @@ function DoPage() {
       </div>
 
       {/* Mobile Floating 'Start' Button */}
-      <div className="md:hidden fixed bottom-6 right-6 z-40">
+      <div className="md:hidden fixed bottom-6 left-6 z-40">
         <Link
           to="/"
           className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A1918] border border-white/20 text-[#EFECE4] shadow-[0_10px_30px_rgba(0,0,0,0.8)] transition-transform hover:scale-105 focus:outline-none"
