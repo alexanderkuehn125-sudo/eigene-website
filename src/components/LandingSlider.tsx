@@ -313,7 +313,7 @@ export function LandingSlider() {
         onPointerDown={startDrag}
         onKeyDown={onKey}
         onClick={(e) => e.stopPropagation()}
-        className={`group absolute z-40 grid place-items-center rounded-full touch-none bg-transparent border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 ${
+        className={`group absolute z-40 grid place-items-center rounded-full touch-none bg-transparent border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 after:absolute after:-inset-8 after:content-[''] ${
           isMobile ? "cursor-ns-resize" : "cursor-ew-resize"
         }`}
         style={
@@ -336,10 +336,10 @@ export function LandingSlider() {
               }
         }
       >
-        {/* Pulsierender Indikator, der verschwindet, sobald der Nutzer das erste Mal zieht */}
+        {/* Pulsierender perfekter Kreis, der exakt auf der Linie zentriert ist */}
         {pct === 50 && (
           <div 
-            className="pointer-events-none absolute inset-0 rounded-full border border-white/80 animate-ping opacity-70" 
+            className="pointer-events-none absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border-[1.5px] border-white/80 animate-ping opacity-80" 
             style={{ animationDuration: '2.5s' }} 
           />
         )}
