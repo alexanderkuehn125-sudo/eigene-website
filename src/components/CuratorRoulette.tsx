@@ -192,8 +192,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
           <div 
             className={
               mobileInline 
-                ? "flex flex-col items-center w-full mb-6 pointer-events-none" 
-                : "fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-4 pointer-events-none"
+                ? "flex flex-col items-center w-full mb-6 pointer-events-none md:hidden" 
+                : "fixed bottom-6 right-6 z-[90] flex-col items-end gap-4 pointer-events-none hidden md:flex"
             }
           >
             <motion.button
