@@ -9,16 +9,46 @@ export function ContactForm() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (status !== "idle") return;
     
     setStatus("submitting");
 
-    // Simulate network request
-    setTimeout(() => {
-      setStatus("success");
-    }, 1500);
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    
+    if (!accessKey) {
+      alert("Fehler: Kein Web3Forms Access Key in der .env.local gefunden!");
+      setStatus("idle");
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+      } else {
+        alert("Es gab ein Problem beim Senden der Nachricht.");
+        setStatus("idle");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Es gab ein Problem beim Senden der Nachricht.");
+      setStatus("idle");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
