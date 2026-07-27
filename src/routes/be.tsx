@@ -498,27 +498,14 @@ function BePage() {
               <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 max-w-2xl font-light">
                 <p className="mb-10">
                   Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch. Per Mail
-                  oder Telefon — Antwort in der Regel innerhalb von 24 Stunden.
+                  — Antwort in der Regel innerhalb von 24 Stunden.
                 </p>
               <div className="flex flex-col gap-8 mt-4" style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}>
                 <div>
                   <span className="block text-[10px] uppercase tracking-[0.2em] opacity-50 mb-2">E-Mail</span>
-                  <a href="mailto:info@akuehn.eu" className="inline-block text-xl md:text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity underline underline-offset-8">
-                    [email@placeholder.com]
+                  <a href="mailto:alexanderkuehn125@gmail.com" className="inline-block text-xl md:text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity underline underline-offset-8">
+                    alexanderkuehn125@gmail.com
                   </a>
-                </div>
-                <div>
-                  <span className="block text-[10px] uppercase tracking-[0.2em] opacity-50 mb-2">Telefon</span>
-                  <a href="tel:+49123456789" className="inline-block text-xl md:text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity">
-                    [+49 123 456789]
-                  </a>
-                </div>
-                <div>
-                  <span className="block text-[10px] uppercase tracking-[0.2em] opacity-50 mb-2">Adresse</span>
-                  <span className="block text-xl md:text-2xl tracking-wide opacity-80">
-                    [Musterstraße 1]<br />
-                    [12345 Musterstadt]
-                  </span>
                 </div>
               </div>
               </div>
