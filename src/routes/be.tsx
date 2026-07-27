@@ -501,7 +501,7 @@ function BePage() {
                   oder Telefon — Antwort in der Regel innerhalb von 24 Stunden.
                 </p>
                 <a
-                  href="mailto:hallo@example.com"
+                  href="mailto:info@akuehn.eu"
                   className="inline-block text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity underline underline-offset-8"
                   style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
                 >
