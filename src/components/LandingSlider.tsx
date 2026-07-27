@@ -229,7 +229,7 @@ export function LandingSlider() {
             }}
             title="Up, up and away."
           >
-            <Balloon />
+            {/* BALLOON HIDDEN ON USER REQUEST: <Balloon /> */}
           </span>
         </div>
       </button>
@@ -273,7 +273,7 @@ export function LandingSlider() {
             }}
             title="Up, up and away."
           >
-            <Balloon />
+            {/* BALLOON HIDDEN ON USER REQUEST: <Balloon /> */}
           </span>
         </div>
       </button>
@@ -423,7 +423,7 @@ export function LandingSlider() {
                   animation: BALLOON_FLOAT,
                 }}
               >
-                <Balloon />
+                {/* BALLOON HIDDEN ON USER REQUEST: <Balloon /> */}
               </span>
             </div>
           </div>
