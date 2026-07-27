@@ -313,7 +313,7 @@ export function LandingSlider() {
         onPointerDown={startDrag}
         onKeyDown={onKey}
         onClick={(e) => e.stopPropagation()}
-        className={`group absolute z-40 grid place-items-center rounded-full touch-none bg-transparent border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 after:absolute after:-inset-8 after:content-[''] ${
+        className={`group absolute z-40 grid place-items-center rounded-full touch-none bg-transparent border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 ${
           isMobile ? "cursor-ns-resize" : "cursor-ew-resize"
         }`}
         style={
@@ -323,8 +323,7 @@ export function LandingSlider() {
                 top: `${pct}%`,
                 width: 68,
                 height: 28,
-                marginTop: -14,
-                marginLeft: -34,
+                transform: "translate(-50%, -50%)",
                 animation: "handleBreathe 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
               }
             : {
@@ -332,19 +331,11 @@ export function LandingSlider() {
                 left: `${pct}%`,
                 width: 28,
                 height: 68,
-                marginTop: -34,
-                marginLeft: -14,
+                transform: "translate(-50%, -50%)",
                 animation: "handleBreathe 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
               }
         }
       >
-        {/* Pulsierender perfekter Kreis, der exakt auf der Linie zentriert ist */}
-        {pct === 50 && (
-          <div 
-            className="pointer-events-none absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border-[1.5px] border-white/80 animate-ping opacity-80" 
-            style={{ animationDuration: '2.5s' }} 
-          />
-        )}
 
         {isMobile ? (
           <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-white/80">
@@ -483,15 +474,15 @@ export function LandingSlider() {
       )}
 
       {/* Foot hint */}
-      {!isMobile && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
-          <p className="rounded-full bg-black/50 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white backdrop-blur-md shadow-lg">
-            {zoomOn
+      <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
+        <p className="rounded-full bg-black/50 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white backdrop-blur-md shadow-lg">
+          {isMobile
+            ? "drag ↕ · tap a side to enter"
+            : zoomOn
               ? "Zoom aktiv · Maus über das linke Bild bewegen"
               : "drag ↔ · click a side to enter"}
-          </p>
-        </div>
-      )}
+        </p>
+      </div>
     </section>
   );
 }
