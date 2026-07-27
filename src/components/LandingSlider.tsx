@@ -364,7 +364,7 @@ export function LandingSlider() {
             fontFamily: "'Roboto', sans-serif",
             fontWeight: 400,
             letterSpacing: "0.38em",
-            fontSize: "clamp(0.7rem, 1.1vw, 0.95rem)",
+            fontSize: "clamp(1.05rem, 1.65vw, 1.4rem)",
             textTransform: "uppercase",
           }}
         >
@@ -647,7 +647,7 @@ function CloudTitle({
         <a
           href={contactHref}
           onClick={(e) => e.stopPropagation()}
-          className="mt-6 inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-2 text-[10px] md:text-xs uppercase tracking-[0.2em] text-white backdrop-blur-sm transition-all hover:bg-white hover:text-black pointer-events-auto"
+          className="mt-8 inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-9 py-3 text-[15px] md:text-[18px] uppercase tracking-[0.2em] text-white backdrop-blur-sm transition-all hover:bg-white hover:text-black pointer-events-auto"
           style={{
             fontFamily: "'Roboto', sans-serif",
             opacity: subtextOpacity,
