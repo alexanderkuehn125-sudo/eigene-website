@@ -85,10 +85,10 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
             onClick={() => setIsOpen(true)}
             animate={{ opacity: [0.3, 1, 0.3] }}
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 bg-black/20 backdrop-blur-md p-4 text-[#EFECE4] transition-all hover:border-white/40 hover:bg-white/10 focus:outline-none cursor-none shadow-2xl"
+            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 bg-black/20 backdrop-blur-md p-4 md:p-8 text-[#EFECE4] transition-all hover:border-white/40 hover:bg-white/10 focus:outline-none cursor-none shadow-2xl"
           >
-            <Coffee className="h-10 w-10 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
-            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] group-hover:opacity-100 group-hover:pl-4 group-hover:pr-2">
+            <Coffee className="h-10 w-10 md:h-20 md:w-20 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
+            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs md:text-xl tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] md:group-hover:max-w-[500px] group-hover:opacity-100 group-hover:pl-4 md:group-hover:pl-8 group-hover:pr-2 md:group-hover:pr-4">
                Projekt - Prognose 
             </span>
             <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite]" />
