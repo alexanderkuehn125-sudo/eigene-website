@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Coffee, Sparkles, X, Loader2, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

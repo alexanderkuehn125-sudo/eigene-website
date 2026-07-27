@@ -24,8 +24,8 @@ export function LandingSlider() {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
-  const beSideRef = useRef<HTMLButtonElement>(null);
-  const doSideRef = useRef<HTMLButtonElement>(null);
+  const beSideRef = useRef<HTMLDivElement>(null);
+  const doSideRef = useRef<HTMLDivElement>(null);
   const beBalloonRef = useRef<HTMLSpanElement>(null);
   const doBalloonRef = useRef<HTMLSpanElement>(null);
   const draggingRef = useRef(false);
