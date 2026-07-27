@@ -354,7 +354,7 @@ function DoPage() {
                     onPointerEnter={() => preloadImage(p.src)}
                     onFocus={() => preloadImage(p.src)}
                     // Reines, nacktes Bild. Hover-Dim-Effekt greift auf die innere Button-Struktur (nur auf Desktop via lg:).
-                    className="group/item w-full transition-opacity duration-700 focus:outline-none focus:ring-1 focus:ring-white/20 lg:group-hover:opacity-30 lg:hover:!opacity-100 md:cursor-none cursor-trigger-zoom"
+                    className="group/item block w-full transition-opacity duration-700 focus:outline-none focus:ring-1 focus:ring-white/20 lg:group-hover:opacity-30 lg:hover:!opacity-100 md:cursor-none cursor-trigger-zoom"
                   >
                     <div className="relative flex justify-center w-full">
                       {/* 3D-Glas-Platten Effekt vereinfacht für extrem verbesserte Scroll-Performance */}
