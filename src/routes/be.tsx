@@ -582,8 +582,8 @@ function CustomCursor() {
             textRef.current.innerText = "CLOSE";
             if (dot) dot.style.opacity = "0";
           } else if (state === "input") {
-            ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            ringRef.current.style.opacity = "0";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.5)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "0";
           } else if (state === "widget") {
@@ -626,18 +626,9 @@ function CustomCursor() {
           transform: "translate3d(-50%, -50%, 0) scale(0.8)",
         }}
       >
-        {/* Animated Rainbow Border Layer */}
+        {/* Elegant White Border Layer */}
         <div
-          className="absolute inset-0 z-0 animate-spin rounded-full"
-          style={{
-            background:
-              "conic-gradient(from 0deg, #FF0018, #FFA52C, #FFFF41, #008018, #0000F9, #86007D, #FF0018)",
-            animationDuration: "3s",
-            WebkitMaskImage:
-              "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 1px))",
-            maskImage:
-              "radial-gradient(closest-side, transparent calc(100% - 2px), black calc(100% - 1px))",
-          }}
+          className="absolute inset-0 z-0 rounded-full border border-[#EFECE4]/50"
         />
         {/* Inner Solid Circle (stark transparent für Lesbarkeit) */}
         <div className="absolute inset-[2px] rounded-full bg-[#EFECE4]/20 z-10" />
