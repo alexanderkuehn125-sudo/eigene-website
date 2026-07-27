@@ -30,6 +30,7 @@ export function LandingSlider() {
   const draggingRef = useRef(false);
   const [pct, setPct] = useState(50); // % of the "be" side visible (from left/top)
   const [zoomOn, setZoomOn] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const [beLens, setBeLens] = useState<{ x: number; y: number; visible: boolean; reveal: boolean }>({
     x: 0,
     y: 0,
@@ -184,7 +185,6 @@ export function LandingSlider() {
     }
   };
 
-  // Click on a side (not on the handle) → navigate.
   const goSide = (side: "be" | "do") => {
     if (draggingRef.current) return;
     void navigate({ to: side === "be" ? "/be" : "/do" });
@@ -193,7 +193,6 @@ export function LandingSlider() {
   const beImg = isMobile ? beVertical : beHorizontal;
   const doImg = isMobile ? doVertical : doHorizontal;
 
-  // "do" layer is clipped by inset from the opposite side.
   const doClip = isMobile
     ? `inset(${pct}% 0 0 0)`
     : `inset(0 0 0 ${pct}%)`;
@@ -206,7 +205,6 @@ export function LandingSlider() {
       className="relative h-[100svh] w-full overflow-hidden bg-black select-none"
       aria-label="Landing — slide between 18th- and 21st-century Manhattan"
     >
-      {/* BE side — 18th century, full bleed */}
       <button
         ref={beSideRef}
         type="button"
@@ -221,10 +219,6 @@ export function LandingSlider() {
           style={isMobile ? { transform: "scale(1.15) translateY(-4%)" } : undefined}
           draggable={false}
         />
-
-
-
-        {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
           <span
             ref={beBalloonRef}
@@ -238,10 +232,8 @@ export function LandingSlider() {
             <Balloon />
           </span>
         </div>
-
       </button>
 
-      {/* DO side — 21st century, clipped */}
       <button
         ref={doSideRef}
         type="button"
@@ -259,7 +251,6 @@ export function LandingSlider() {
           className="h-full w-full object-cover"
           draggable={false}
         />
-        {/* Cool cinematic wash */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -268,14 +259,10 @@ export function LandingSlider() {
               "radial-gradient(120% 80% at 50% 30%, transparent 40%, rgba(6,10,20,0.5) 100%)",
           }}
         />
-        {/* Blinking window lights — light animation */}
         <span aria-hidden className="window-light" style={{ left: "42%", top: "58%" }} />
         <span aria-hidden className="window-light window-light--slow" style={{ left: "56%", top: "63%" }} />
         <span aria-hidden className="window-light window-light--fast" style={{ left: "49%", top: "71%" }} />
-        {/* A silent airliner contrail crossing the sky */}
         <span aria-hidden className="contrail" />
-
-        {/* Rainbow balloon */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden leading-none select-none">
           <span
             ref={doBalloonRef}
@@ -291,7 +278,6 @@ export function LandingSlider() {
         </div>
       </button>
 
-      {/* Divider line + handle */}
       <div
         aria-hidden
         className="pointer-events-none absolute bg-white/70 mix-blend-overlay"
@@ -302,7 +288,6 @@ export function LandingSlider() {
         }
       />
 
-      {/* Handle */}
       <div
         role="slider"
         tabIndex={0}
@@ -339,7 +324,6 @@ export function LandingSlider() {
               }
         }
       >
-
         {isMobile ? (
           <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-white/80">
             <span aria-hidden>▲</span>
@@ -353,7 +337,6 @@ export function LandingSlider() {
         )}
       </div>
 
-      {/* Name — oben in der Bildmitte (Chamäleon-Effekt) */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-6 z-30 -translate-x-1/2 select-none mix-blend-difference"
@@ -372,7 +355,6 @@ export function LandingSlider() {
         </span>
       </div>
 
-      {/* Cloud title — Portfolio (over BE side) */}
       <CloudTitle
         label="Portfolio"
         subtext="Projekt- / Eventmanagement und Digital"
@@ -381,10 +363,9 @@ export function LandingSlider() {
         pct={pct}
         hidden={pct <= 27}
         onClick={() => goSide("be")}
-        contactHref="mailto:info@akuehn.eu"
+        onContactClick={() => setContactModalOpen(true)}
       />
 
-      {/* Cloud title — Ausstellung (over DO side) */}
       <CloudTitle
         label="Ausstellung"
         subtext="Digitale Bilder"
@@ -395,9 +376,6 @@ export function LandingSlider() {
         onClick={() => goSide("do")}
       />
 
-
-
-      {/* Zoom lenses — one per side */}
       {(["be", "do"] as const).map((side) => {
         const lensState = side === "be" ? beLens : doLens;
         const sideRef = side === "be" ? beSideRef : doSideRef;
@@ -452,9 +430,6 @@ export function LandingSlider() {
         );
       })}
 
-
-
-      {/* Zoom toggle */}
       {!isMobile && (
         <button
           type="button"
@@ -477,7 +452,6 @@ export function LandingSlider() {
         </button>
       )}
 
-      {/* Foot hint */}
       <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
         <p className="rounded-full bg-black/50 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white backdrop-blur-md shadow-lg">
           {isMobile
@@ -487,6 +461,53 @@ export function LandingSlider() {
               : "drag ↔ · click a side to enter"}
         </p>
       </div>
+
+      {contactModalOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+          style={{
+            background: "rgba(45, 42, 34, 0.55)",
+            backdropFilter: "blur(4px)",
+          }}
+          onClick={() => setContactModalOpen(false)}
+        >
+          <div
+            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12"
+            style={{ color: "#EFECE4" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setContactModalOpen(false)}
+              aria-label="Schließen"
+              className="absolute right-4 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100 p-4 -m-4 z-50 cursor-pointer"
+            >
+              ×
+            </button>
+
+            <h2
+              className="mb-8 md:mb-12 pr-8 text-3xl leading-tight tracking-wide md:text-5xl uppercase"
+              style={{ fontFamily: "'Jost', sans-serif", fontWeight: 300 }}
+            >
+              Kontakt
+            </h2>
+            
+            <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 max-w-2xl font-light">
+              <p className="mb-10">
+                Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch. Per Mail
+                oder Telefon — Antwort in der Regel innerhalb von 24 Stunden.
+              </p>
+              <a
+                href="mailto:info@akuehn.eu"
+                className="inline-block text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity underline underline-offset-8"
+                style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
+              >
+                Nachricht schreiben ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -499,7 +520,7 @@ interface CloudTitleProps {
   pct: number;
   hidden?: boolean;
   onClick: () => void;
-  contactHref?: string;
+  onContactClick?: () => void;
 }
 
 function CloudTitle({
@@ -510,7 +531,7 @@ function CloudTitle({
   pct,
   hidden,
   onClick,
-  contactHref,
+  onContactClick,
 }: CloudTitleProps) {
   // Fixed at the center of each half — independent of slider position.
   const center = side === "be" ? 25 : 75;
@@ -643,11 +664,14 @@ function CloudTitle({
       </span>
       
       {/* Optional Contact Button */}
-      {contactHref && (
-        <a
-          href={contactHref}
-          onClick={(e) => e.stopPropagation()}
-          className="mt-8 inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-9 py-3 text-[15px] md:text-[18px] uppercase tracking-[0.2em] text-white backdrop-blur-sm transition-all hover:bg-white hover:text-black pointer-events-auto"
+      {onContactClick && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onContactClick();
+          }}
+          className="mt-8 inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-8 py-2.5 text-[13px] md:text-[16px] uppercase tracking-[0.2em] text-white backdrop-blur-sm transition-all hover:bg-white hover:text-black pointer-events-auto cursor-pointer"
           style={{
             fontFamily: "'Roboto', sans-serif",
             opacity: subtextOpacity,
@@ -656,7 +680,7 @@ function CloudTitle({
           }}
         >
           Kontakt
-        </a>
+        </button>
       )}
     </div>
   );
