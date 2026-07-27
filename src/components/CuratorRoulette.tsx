@@ -4,7 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Search, Image as ImageIcon } from "lucide-react";
 import type { Photo } from "@/routes/do";
 
-export function CuratorRoulette({ photos }: { photos: Photo[] }) {
+interface CuratorRouletteProps {
+  photos: Photo[];
+  mobileInline?: boolean;
+}
+
+export function CuratorRoulette({ photos, mobileInline = false }: CuratorRouletteProps) {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [critique, setCritique] = useState<string | null>(null);
   const [displayedText, setDisplayedText] = useState("");
@@ -181,8 +186,14 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
         document.body
       )}
 
-      {/* Button (Inline on mobile, Floating on desktop) */}
-      <div className="md:fixed md:bottom-6 md:right-6 md:z-[90] flex flex-col md:items-end md:gap-4 pointer-events-none order-first w-full md:w-auto mb-4 md:mb-0 items-center justify-center">
+      {/* Button Wrapper */}
+      <div 
+        className={
+          mobileInline 
+            ? "flex flex-col items-center w-full mb-6 pointer-events-none" 
+            : "fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-4 pointer-events-none"
+        }
+      >
         <motion.button
           onClick={handleSurpriseMe}
           disabled={isAnalyzing || showCritique}

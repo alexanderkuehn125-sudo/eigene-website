@@ -249,7 +249,9 @@ function DoPage() {
 
             {/* Filters */}
             <div className="mt-12 flex flex-wrap justify-center gap-6 md:gap-10 text-[10px] md:text-xs uppercase tracking-[0.25em]">
-              <CuratorRoulette photos={photos} />
+              <div className="w-full md:hidden flex justify-center">
+                <CuratorRoulette photos={photos} mobileInline={true} />
+              </div>
               
               {["Alle", "Momente", "Orte", "Licht"].map((cat) => (
                 <button
@@ -514,6 +516,11 @@ function DoPage() {
         </div>
       )}
       <CustomCursor />
+      
+      {/* Desktop-only floating button */}
+      <div className="hidden md:block">
+        <CuratorRoulette photos={photos} />
+      </div>
     </main>
   );
 }
