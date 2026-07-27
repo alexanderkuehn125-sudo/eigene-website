@@ -230,7 +230,12 @@ function DoPage() {
           >
             ← Start
           </Link>
-          <span className="text-[10px] uppercase tracking-[0.3em] opacity-60">Ausstellung</span>
+          <Link
+            to="/be"
+            className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
+          >
+            Portfolio →
+          </Link>
         </header>
 
         <section className="mt-20 mb-10 md:mt-24 md:mb-16 flex justify-center relative z-50">
