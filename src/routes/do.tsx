@@ -249,6 +249,8 @@ function DoPage() {
 
             {/* Filters */}
             <div className="mt-12 flex flex-wrap justify-center gap-6 md:gap-10 text-[10px] md:text-xs uppercase tracking-[0.25em]">
+              <CuratorRoulette photos={photos} />
+              
               {["Alle", "Momente", "Orte", "Licht"].map((cat) => (
                 <button
                   key={cat}
@@ -512,7 +514,6 @@ function DoPage() {
         </div>
       )}
       <CustomCursor />
-      <CuratorRoulette photos={photos} />
     </main>
   );
 }

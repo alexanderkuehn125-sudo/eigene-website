@@ -106,10 +106,10 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
 
   if (!mounted) return null;
 
-  return createPortal(
+  return (
     <>
       {/* Das Modal mit dem analysierten Bild */}
-      {showCritique && (
+      {showCritique && createPortal(
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
           {/* Backdrop */}
           <div
@@ -177,11 +177,12 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </div>,
+        document.body
       )}
 
-      {/* Floating Button (Unten Rechts) */}
-      <div className="fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-4 pointer-events-none">
+      {/* Button (Inline on mobile, Floating on desktop) */}
+      <div className="md:fixed md:bottom-6 md:right-6 md:z-[90] flex flex-col md:items-end md:gap-4 pointer-events-none order-first w-full md:w-auto mb-4 md:mb-0 items-center justify-center">
         <motion.button
           onClick={handleSurpriseMe}
           disabled={isAnalyzing || showCritique}
@@ -197,7 +198,6 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
           </span>
         </motion.button>
       </div>
-    </>,
-    document.body
+    </>
   );
 }
