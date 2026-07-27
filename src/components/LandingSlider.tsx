@@ -336,6 +336,14 @@ export function LandingSlider() {
               }
         }
       >
+        {/* Pulsierender Indikator, der verschwindet, sobald der Nutzer das erste Mal zieht */}
+        {pct === 50 && (
+          <div 
+            className="pointer-events-none absolute inset-0 rounded-full border border-white/80 animate-ping opacity-70" 
+            style={{ animationDuration: '2.5s' }} 
+          />
+        )}
+
         {isMobile ? (
           <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-white/80">
             <span aria-hidden>▲</span>
@@ -473,15 +481,15 @@ export function LandingSlider() {
       )}
 
       {/* Foot hint */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
-        <p className="rounded-full bg-black/50 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white backdrop-blur-md shadow-lg">
-          {isMobile
-            ? "drag ↕ · tap a side to enter"
-            : zoomOn
+      {!isMobile && (
+        <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
+          <p className="rounded-full bg-black/50 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white backdrop-blur-md shadow-lg">
+            {zoomOn
               ? "Zoom aktiv · Maus über das linke Bild bewegen"
               : "drag ↔ · click a side to enter"}
-        </p>
-      </div>
+          </p>
+        </div>
+      )}
     </section>
   );
 }
