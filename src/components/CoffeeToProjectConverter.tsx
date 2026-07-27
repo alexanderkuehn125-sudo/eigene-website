@@ -15,6 +15,11 @@ export function CoffeeToProjectConverter() {
   const [coffee, setCoffee] = useState(4);
   const [chaos, setChaos] = useState(3);
   const [days, setDays] = useState(3);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<PrognoseResult | null>(null);
@@ -79,7 +84,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
   return (
     <>
       {/* Trigger Button (Option 1: Floating Bottom Left on Desktop, Top Right on Mobile) */}
-      {createPortal(
+      {mounted && createPortal(
         <div className="fixed top-6 right-6 md:top-auto md:right-auto md:bottom-12 md:left-12 z-50 pointer-events-auto flex justify-end">
           <button
             onClick={() => setIsOpen(true)}
@@ -114,7 +119,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
       )}
 
       {/* Modal im React Portal */}
-      {isOpen &&
+      {mounted && isOpen &&
         createPortal(
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
             {/* Backdrop (Klickbar für Schließen, nativer Cursor) */}

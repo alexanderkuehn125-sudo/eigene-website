@@ -614,20 +614,16 @@ function CustomCursor() {
             if (dot) dot.style.opacity = "0";
           } else if (state === "close") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
-            textRef.current.innerText = "CLOSE";
-            if (dot) dot.style.opacity = "0";
-          } else if (state === "hover") {
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
+          } else if (state === "hover" || state === "zoom") {
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "1";
           } else {
-            // zoom
-            ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
-            textRef.current.innerText = "VIEW";
-            if (dot) dot.style.opacity = "0";
+            ringRef.current.style.opacity = "0";
           }
         }
       });
@@ -640,6 +636,10 @@ function CustomCursor() {
       window.removeEventListener("touchstart", onTouch);
     };
   }, []);
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  if (!mounted) return null;
 
   return createPortal(
     <div

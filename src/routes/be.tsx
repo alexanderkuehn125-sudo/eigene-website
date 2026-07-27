@@ -620,6 +620,10 @@ function CustomCursor() {
     };
   }, []);
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  if (!mounted) return null;
+
   return createPortal(
     <div
       ref={cursorRef}

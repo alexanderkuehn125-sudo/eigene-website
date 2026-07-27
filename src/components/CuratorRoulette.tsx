@@ -10,11 +10,11 @@ interface CuratorRouletteProps {
 }
 
 export function CuratorRoulette({ photos, mobileInline = false }: CuratorRouletteProps) {
+  const [mounted, setMounted] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [critique, setCritique] = useState<string | null>(null);
   const [displayedText, setDisplayedText] = useState("");
   const [showCritique, setShowCritique] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
 
   useEffect(() => {
@@ -228,6 +228,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
           </div>
         );
 
+        if (!mounted) return mobileInline ? buttonContent : null;
         return mobileInline ? buttonContent : createPortal(buttonContent, document.body);
       })()}
     </>
