@@ -213,7 +213,7 @@ function DoPage() {
 
   return (
     <main
-      className="relative min-h-screen w-full bg-[#050504] text-[#EFECE4] overflow-clip [&_a]:cursor-none [&_button]:cursor-none"
+      className="relative min-h-screen w-full bg-[#050504] text-[#EFECE4] overflow-clip md:[&_a]:cursor-none md:[&_button]:cursor-none"
       style={{
         background: "radial-gradient(circle at 50% 30%, #1c1a18 0%, #050504 100%)",
         color: "#EFECE4",
@@ -354,7 +354,7 @@ function DoPage() {
                     onPointerEnter={() => preloadImage(p.src)}
                     onFocus={() => preloadImage(p.src)}
                     // Reines, nacktes Bild. Hover-Dim-Effekt greift auf die innere Button-Struktur (nur auf Desktop via lg:).
-                    className="group/item w-full transition-opacity duration-700 focus:outline-none focus:ring-1 focus:ring-white/20 lg:group-hover:opacity-30 lg:hover:!opacity-100 cursor-none cursor-trigger-zoom"
+                    className="group/item w-full transition-opacity duration-700 focus:outline-none focus:ring-1 focus:ring-white/20 lg:group-hover:opacity-30 lg:hover:!opacity-100 md:cursor-none cursor-trigger-zoom"
                   >
                     <div className="relative flex justify-center w-full">
                       {/* 3D-Glas-Platten Effekt vereinfacht für extrem verbesserte Scroll-Performance */}
@@ -415,7 +415,7 @@ function DoPage() {
       {/* Impressum modal */}
       {impressumOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 cursor-none cursor-trigger-close"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
           style={{
             background: "rgba(45, 42, 34, 0.55)",
             backdropFilter: "blur(4px)",
@@ -449,7 +449,7 @@ function DoPage() {
       {/* Lightbox */}
       {active && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 cursor-none cursor-trigger-close"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
           style={{
             background: "rgba(20, 18, 15, 0.9)",
             backdropFilter: "blur(8px)",
@@ -477,7 +477,7 @@ function DoPage() {
                 src={active.src}
                 alt={active.title}
                 eager
-                className="block max-h-[90vh] max-w-[90vw] w-auto h-auto object-contain cursor-none cursor-trigger-close"
+                className="block max-h-[90vh] max-w-[90vw] w-auto h-auto object-contain md:cursor-none cursor-trigger-close"
                 onClick={() => setOpenId(null)}
               />
             </div>

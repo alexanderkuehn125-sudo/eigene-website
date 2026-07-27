@@ -195,7 +195,7 @@ function BePage() {
 
   return (
     <main
-      className="min-h-screen w-full relative bg-[#050504] text-[#EFECE4] overflow-clip [&_a]:cursor-none [&_button]:cursor-none"
+      className="min-h-screen w-full relative bg-[#050504] text-[#EFECE4] overflow-clip md:[&_a]:cursor-none md:[&_button]:cursor-none"
       onContextMenu={(e) => e.preventDefault()}
     >
       {/* Film-Grain / Papier-Rauschen Overlay */}
@@ -428,7 +428,7 @@ function BePage() {
       {/* Modal Overlay (Analog zur Ausstellung) */}
       {modalOpen && createPortal(
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 cursor-none cursor-trigger-close"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
           style={{
             background: "rgba(45, 42, 34, 0.55)",
             backdropFilter: "blur(4px)",
@@ -436,7 +436,7 @@ function BePage() {
           onClick={() => setModalOpen(null)}
         >
           <div
-            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 [&_a]:cursor-none [&_button]:cursor-none"
+            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none"
             onClick={(e) => e.stopPropagation()}
           >
             <button
