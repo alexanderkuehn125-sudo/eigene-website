@@ -59,8 +59,35 @@ function FadingFilmstrip() {
     }
   }, [activeIndex, images.length]);
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart === null || touchEnd === null) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 50 && activeIndex < images.length - 1) {
+      setActiveIndex(activeIndex + 1);
+    } else if (distance < -50 && activeIndex > 0) {
+      setActiveIndex(activeIndex - 1);
+    }
+  };
+
   return (
-    <div className="relative w-full h-[30vh] md:h-[40vh] mt-16 mb-12 flex items-center justify-center overflow-hidden">
+    <div
+      className="relative w-full h-[30vh] md:h-[40vh] mt-16 mb-12 flex items-center justify-center overflow-hidden touch-pan-y"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {images.map((img, i) => {
         const offset = i - activeIndex;
         return (
