@@ -235,35 +235,13 @@ function BePage() {
         aria-hidden
       />
 
-      {/* Holographic Oil Slick / Diversity Gradient */}
-      <div
-        className="pointer-events-none fixed inset-0 z-0 opacity-[0.18] blur-[80px] md:blur-[120px]"
-        style={{
-          background:
-            "linear-gradient(45deg, #FF0018, #FFA52C, #FFFF41, #008018, #0000F9, #86007D)",
-          backgroundSize: "300% 300%",
-          animation: "rainbow-pan 12s ease-in-out infinite",
-        }}
-        aria-hidden
-      />
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-        @keyframes rainbow-pan {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `,
-        }}
-      />
 
       {/* Global Ghost Portrait Background - Sticky Hack for Framer Motion Filter bug */}
       <div className="absolute inset-0 z-0 pointer-events-none flex justify-end items-start">
         <figure
           className="sticky top-0 h-screen w-full md:w-1/2 pointer-events-none"
           style={{
-            opacity: 0.13,
+            opacity: 0.06,
             animation: "ghostFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards"
           }}
         >
