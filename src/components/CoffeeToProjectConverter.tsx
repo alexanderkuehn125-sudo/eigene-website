@@ -87,17 +87,22 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
             className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-3 md:p-6 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shadow-2xl"
           >
-            {/* Holographic Oil Slick Background Layer */}
+            {/* Static Rainbow Background Layer */}
             <div 
-              className="absolute inset-0 -z-20 opacity-50 group-hover:opacity-80 transition-opacity duration-700 blur-[15px]"
+              className="absolute inset-0 -z-20 opacity-60 group-hover:opacity-90 transition-opacity duration-700"
               style={{
-                background: "linear-gradient(45deg, #FF003C, #FF007F, #E100FF, #86007D, #4B0082, #0000F9, #E100FF)",
-                backgroundSize: "300% 300%",
-                animation: "rainbow-pan 7s ease-in-out infinite",
+                background: "linear-gradient(180deg, #9C27B0 0%, #E91E63 20%, #FF9800 40%, #FFEB3B 60%, #4CAF50 80%, #00BCD4 100%)",
               }}
             />
-            {/* Frosted Glass Overlay */}
-            <div className="absolute inset-0 -z-10 bg-black/60 backdrop-blur-xl group-hover:bg-black/30 transition-colors duration-700" />
+            {/* Textured Glass Overlay */}
+            <div 
+              className="absolute inset-0 -z-10 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" 
+              style={{
+                backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(255,255,255,0.08) 6px, rgba(255,255,255,0.08) 7px)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+              }}
+            />
 
             <Coffee className="h-8 w-8 md:h-16 md:w-16 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
             <span className="max-w-0 overflow-hidden whitespace-nowrap text-[10px] md:text-base tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] md:group-hover:max-w-[400px] group-hover:opacity-100 group-hover:pl-3 md:group-hover:pl-6 group-hover:pr-2 md:group-hover:pr-3">
