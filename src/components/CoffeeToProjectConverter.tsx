@@ -91,9 +91,9 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
             <div 
               className="absolute inset-0 -z-20 opacity-50 group-hover:opacity-80 transition-opacity duration-700 blur-[15px]"
               style={{
-                background: "linear-gradient(45deg, #FF0018, #FFA52C, #FFFF41, #008018, #0000F9, #86007D)",
+                background: "linear-gradient(45deg, #FF003C, #FF007F, #E100FF, #86007D, #4B0082, #0000F9, #E100FF)",
                 backgroundSize: "300% 300%",
-                animation: "rainbow-pan 6s ease-in-out infinite",
+                animation: "rainbow-pan 7s ease-in-out infinite",
               }}
             />
             {/* Frosted Glass Overlay */}
