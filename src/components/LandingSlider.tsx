@@ -206,12 +206,9 @@ export function LandingSlider() {
       className="relative h-[100svh] w-full overflow-hidden bg-black select-none"
       aria-label="Landing — slide between 18th- and 21st-century Manhattan"
     >
-      <button
+      <div
         ref={beSideRef}
-        type="button"
-        onClick={() => goSide("be")}
-        aria-label="Enter Portfolio"
-        className="absolute inset-0 block h-full w-full cursor-default focus:outline-none"
+        className="absolute inset-0 block h-full w-full cursor-default"
       >
         <img
           src={beImg}
@@ -233,14 +230,11 @@ export function LandingSlider() {
             {/* BALLOON HIDDEN ON USER REQUEST: <Balloon /> */}
           </span>
         </div>
-      </button>
+      </div>
 
-      <button
+      <div
         ref={doSideRef}
-        type="button"
-        onClick={() => goSide("do")}
-        aria-label="Enter Ausstellung"
-        className="absolute inset-0 block h-full w-full cursor-default focus:outline-none"
+        className="absolute inset-0 block h-full w-full cursor-default"
         style={{
           clipPath: doClip,
           WebkitClipPath: doClip,
@@ -277,7 +271,7 @@ export function LandingSlider() {
             {/* BALLOON HIDDEN ON USER REQUEST: <Balloon /> */}
           </span>
         </div>
-      </button>
+      </div>
 
       <div
         aria-hidden
