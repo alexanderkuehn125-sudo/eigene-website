@@ -381,6 +381,7 @@ export function LandingSlider() {
         pct={pct}
         hidden={pct <= 27}
         onClick={() => goSide("be")}
+        contactHref="mailto:info@akuehn.eu"
       />
 
       {/* Cloud title — Ausstellung (over DO side) */}
@@ -490,14 +491,7 @@ export function LandingSlider() {
   );
 }
 
-function CloudTitle({
-  label,
-  subtext,
-  side,
-  isMobile,
-  pct,
-  onClick,
-}: {
+interface CloudTitleProps {
   label: string;
   subtext: string;
   side: "be" | "do";
@@ -505,7 +499,19 @@ function CloudTitle({
   pct: number;
   hidden?: boolean;
   onClick: () => void;
-}) {
+  contactHref?: string;
+}
+
+function CloudTitle({
+  label,
+  subtext,
+  side,
+  isMobile,
+  pct,
+  hidden,
+  onClick,
+  contactHref,
+}: CloudTitleProps) {
   // Fixed at the center of each half — independent of slider position.
   const center = side === "be" ? 25 : 75;
   const pos = isMobile
@@ -562,18 +568,25 @@ function CloudTitle({
   const subtextOpacity = subtextX * subtextX * (3 - 2 * subtextX);
 
   return (
-    <button
-      ref={containerRef as React.RefObject<HTMLButtonElement>}
-      type="button"
+    <div
+      ref={containerRef as React.RefObject<HTMLDivElement>}
       onClick={(e) => {
         e.stopPropagation();
         onClick();
       }}
-      className="cloud-title group absolute z-30 focus:outline-none cursor-elegant"
+      className="cloud-title group absolute z-30 focus:outline-none cursor-elegant flex flex-col items-center"
       style={{
         ...pos,
       }}
       aria-label={`Enter ${label}`}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
     >
       <span
         className="block text-center leading-none"
@@ -628,7 +641,24 @@ function CloudTitle({
       >
         {subtext}
       </span>
-    </button>
+      
+      {/* Optional Contact Button */}
+      {contactHref && (
+        <a
+          href={contactHref}
+          onClick={(e) => e.stopPropagation()}
+          className="mt-6 inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-2 text-[10px] md:text-xs uppercase tracking-[0.2em] text-white backdrop-blur-sm transition-all hover:bg-white hover:text-black pointer-events-auto"
+          style={{
+            fontFamily: "'Roboto', sans-serif",
+            opacity: subtextOpacity,
+            filter: `drop-shadow(0 2px 8px rgba(0,0,0,0.85)) blur(${(1 - subtextOpacity) * 6}px)`,
+            transition: "opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
+        >
+          Kontakt
+        </a>
+      )}
+    </div>
   );
 }
 
