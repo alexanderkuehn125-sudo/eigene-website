@@ -85,7 +85,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
             onClick={() => setIsOpen(true)}
             animate={{ opacity: [0.3, 1, 0.3] }}
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-3 md:p-6 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shadow-2xl"
+            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-2.5 md:p-4 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shadow-2xl"
           >
             {/* Static Rainbow Background Layer */}
             <div 
@@ -104,8 +104,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
               }}
             />
 
-            <Coffee className="h-8 w-8 md:h-16 md:w-16 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
-            <span className="max-w-0 overflow-hidden whitespace-nowrap text-[10px] md:text-base tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] md:group-hover:max-w-[400px] group-hover:opacity-100 group-hover:pl-3 md:group-hover:pl-6 group-hover:pr-2 md:group-hover:pr-3">
+            <Coffee className="h-6 w-6 md:h-12 md:w-12 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
+            <span className="max-w-0 overflow-hidden whitespace-nowrap text-[9px] md:text-sm tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[250px] md:group-hover:max-w-[350px] group-hover:opacity-100 group-hover:pl-2.5 md:group-hover:pl-5 group-hover:pr-1.5 md:group-hover:pr-2.5">
                Projekt - Prognose 
             </span>
           </motion.button>
