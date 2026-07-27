@@ -604,26 +604,28 @@ function CustomCursor() {
           // Positioniert den Container extrem schnell und ohne Delay am Mauszeiger
           cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
 
+          const dot = document.getElementById("cursor-dot");
+          
           // Animiert sanft die Skalierung und Sichtbarkeit des inneren Rings
           if (state === "default") {
             ringRef.current.style.opacity = "0";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.5)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "0";
           } else if (state === "close") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
             textRef.current.innerText = "CLOSE";
             if (dot) dot.style.opacity = "0";
           } else if (state === "hover") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.8)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "1";
           } else {
             // zoom
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
             textRef.current.innerText = "VIEW";
             if (dot) dot.style.opacity = "0";
           }
@@ -649,10 +651,10 @@ function CustomCursor() {
         ref={ringRef}
         className="absolute left-0 top-0 flex items-center justify-center rounded-full text-white shadow-sm transition-all duration-300 ease-out overflow-hidden"
         style={{
-          width: "64px",
-          height: "64px",
+          width: "32px",
+          height: "32px",
           opacity: 0,
-          transform: "translate3d(-50%, -50%, 0) scale(0.8)",
+          transform: "translate3d(-50%, -50%, 0) scale(1)",
         }}
       >
         {/* Elegant White Border Layer */}

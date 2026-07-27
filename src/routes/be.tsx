@@ -573,22 +573,27 @@ function CustomCursor() {
           // Animiert sanft die Skalierung und Sichtbarkeit des inneren Rings
           if (state === "default") {
             ringRef.current.style.opacity = "0";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.5)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
             textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "0";
+          } else if (state === "zoom") {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
+            textRef.current.innerText = "ZOOM";
             if (dot) dot.style.opacity = "0";
           } else if (state === "close") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
             textRef.current.innerText = "CLOSE";
             if (dot) dot.style.opacity = "0";
           } else if (state === "hover") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.8)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "1";
           } else if (state === "widget") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "1";
           } else if (state === "input") {
@@ -599,7 +604,7 @@ function CustomCursor() {
           } else {
             // hover und zoom bekommen exakt dasselbe "VIEW" in mittlerer Größe
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.65)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
             textRef.current.innerText = "VIEW";
             if (dot) dot.style.opacity = "0";
           }
@@ -625,10 +630,10 @@ function CustomCursor() {
         ref={ringRef}
         className="absolute left-0 top-0 flex items-center justify-center rounded-full text-[#11100F] shadow-sm transition-all duration-300 ease-out overflow-hidden"
         style={{
-          width: "64px",
-          height: "64px",
+          width: "32px",
+          height: "32px",
           opacity: 0,
-          transform: "translate3d(-50%, -50%, 0) scale(0.8)",
+          transform: "translate3d(-50%, -50%, 0) scale(1)",
         }}
       >
         {/* Elegant White Border Layer */}
