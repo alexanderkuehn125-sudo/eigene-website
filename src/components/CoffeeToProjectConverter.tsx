@@ -81,15 +81,15 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
       {/* Trigger Button (Option 1: Floating Bottom Left on Desktop, Top Right on Mobile) */}
       {createPortal(
         <div className="fixed top-6 right-6 md:top-auto md:right-auto md:bottom-12 md:left-12 z-50 pointer-events-auto flex justify-end">
-          <motion.button
+          <button
             onClick={() => setIsOpen(true)}
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
             className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-2.5 md:p-4 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shadow-2xl"
           >
-            {/* Static Rainbow Background Layer */}
-            <div 
-              className="absolute inset-0 -z-20 opacity-60 group-hover:opacity-90 transition-opacity duration-700"
+            {/* Pulsing Rainbow Background Layer */}
+            <motion.div
+              animate={{ opacity: [0.2, 0.8, 0.2] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-0 -z-20 group-hover:!opacity-90 transition-opacity duration-700"
               style={{
                 background: "linear-gradient(180deg, #9C27B0 0%, #E91E63 20%, #FF9800 40%, #FFEB3B 60%, #4CAF50 80%, #00BCD4 100%)",
               }}
@@ -104,11 +104,11 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
               }}
             />
 
-            <Coffee className="h-6 w-6 md:h-12 md:w-12 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
+            <Coffee className="h-6 w-6 md:h-12 md:w-12 opacity-80 group-hover:opacity-100 transition-opacity shrink-0" />
             <span className="max-w-0 overflow-hidden whitespace-nowrap text-[9px] md:text-sm tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[250px] md:group-hover:max-w-[350px] group-hover:opacity-100 group-hover:pl-2.5 md:group-hover:pl-5 group-hover:pr-1.5 md:group-hover:pr-2.5">
                Projekt - Prognose 
             </span>
-          </motion.button>
+          </button>
         </div>,
         document.body
       )}
