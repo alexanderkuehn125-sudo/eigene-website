@@ -15,3 +15,10 @@
 ### 3. Ghost Portrait (Portfolio Seite)
 - **Layout**: Das Ghost-Portrait (`be.tsx`) MUSS immer die komplette **rechte Bildschirmhälfte** in voller Höhe einnehmen (`md:w-1/2 h-screen object-cover`), und nicht nur klein unten rechts in der Ecke kleben. Es muss absolut statisch im Hintergrund bleiben.
 - **Interaktion**: Das Element darf den Rest der Seite nicht blockieren (`pointer-events-none`).
+
+## Deployment & Hosting
+
+### 4. Hosting via Vercel (Status Quo)
+- **Framework**: TanStack Start (SSR/Nitro)
+- **Host**: Vercel (NICHT GitHub Pages)
+- **Regel**: Das Projekt ist als Server-Side Rendered (SSR) Applikation konfiguriert und nutzt `@lovable.dev/vite-tanstack-config` (mit Cloudflare preset). Ein Umbau auf reine statische Dateien (Static Site Generation / SSG für GitHub Pages) ist extrem fehleranfällig und unerwünscht. Änderungen am Build-Prozess zur Erstellung statischer Seiten dürfen nicht vorgenommen werden. Alle Deployments laufen vollautomatisiert von GitHub nach Vercel.

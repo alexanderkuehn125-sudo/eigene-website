@@ -271,7 +271,7 @@ function BePage() {
               Alexander Kühn
             </h1>
 
-            <div className="flex items-start gap-4 md:gap-6 mb-16">
+            <div className="flex items-start gap-4 md:gap-6 mb-20">
               <div className="flex flex-col gap-4">
                 <p className="text-xs uppercase tracking-[0.2em] opacity-80 leading-loose">
                   Projektmanagement.
@@ -290,9 +290,7 @@ function BePage() {
               </div>
             </div>
 
-            <div className="mb-20">
-              <CoffeeToProjectConverter />
-            </div>
+            <CoffeeToProjectConverter />
 
             <nav className="flex flex-col gap-6">
               {items.map((it) => (

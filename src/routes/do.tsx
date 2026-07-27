@@ -263,10 +263,6 @@ function DoPage() {
                 </button>
               ))}
             </div>
-            
-            <div className="mt-14 mb-4 flex justify-center w-full">
-              <CuratorRoulette photos={photos} />
-            </div>
           </FadeIn>
         </section>
 
@@ -516,6 +512,7 @@ function DoPage() {
         </div>
       )}
       <CustomCursor />
+      <CuratorRoulette photos={photos} />
     </main>
   );
 }
