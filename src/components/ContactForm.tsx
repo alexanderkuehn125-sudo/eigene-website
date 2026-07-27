@@ -86,7 +86,7 @@ export function ContactForm() {
                 value={formData.name}
                 onChange={handleChange}
                 disabled={status === "submitting"}
-                className="w-full bg-transparent border-b border-white/20 py-2 text-lg md:text-xl text-[#EFECE4] placeholder-white/20 focus:outline-none focus:border-white/60 transition-colors disabled:opacity-50 md:cursor-none"
+                className="w-full bg-transparent border-b border-white/20 py-2 text-lg md:text-xl text-[#EFECE4] placeholder-white/20 focus:outline-none focus:border-white/60 transition-colors disabled:opacity-50"
                 placeholder="Dein Name"
               />
             </div>
@@ -103,7 +103,7 @@ export function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 disabled={status === "submitting"}
-                className="w-full bg-transparent border-b border-white/20 py-2 text-lg md:text-xl text-[#EFECE4] placeholder-white/20 focus:outline-none focus:border-white/60 transition-colors disabled:opacity-50 md:cursor-none"
+                className="w-full bg-transparent border-b border-white/20 py-2 text-lg md:text-xl text-[#EFECE4] placeholder-white/20 focus:outline-none focus:border-white/60 transition-colors disabled:opacity-50"
                 placeholder="hallo@beispiel.de"
               />
             </div>
@@ -120,7 +120,7 @@ export function ContactForm() {
                 value={formData.message}
                 onChange={handleChange}
                 disabled={status === "submitting"}
-                className="w-full bg-transparent border-b border-white/20 py-2 text-lg md:text-xl text-[#EFECE4] placeholder-white/20 focus:outline-none focus:border-white/60 transition-colors resize-none disabled:opacity-50 md:cursor-none"
+                className="w-full bg-transparent border-b border-white/20 py-2 text-lg md:text-xl text-[#EFECE4] placeholder-white/20 focus:outline-none focus:border-white/60 transition-colors resize-none disabled:opacity-50"
                 placeholder="Wie kann ich helfen?"
               />
             </div>
@@ -128,7 +128,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="mt-4 self-start inline-flex items-center gap-2 text-xl md:text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity disabled:opacity-50 md:cursor-none"
+              className="mt-4 self-start inline-flex items-center gap-2 text-xl md:text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity disabled:opacity-50"
             >
               <span className="underline underline-offset-8">
                 {status === "submitting" ? "Wird gesendet..." : "Nachricht senden"}
@@ -157,7 +157,7 @@ export function ContactForm() {
                 setStatus("idle");
                 setFormData({ name: "", email: "", message: "" });
               }}
-              className="mt-4 text-[10px] uppercase tracking-[0.2em] opacity-50 hover:opacity-100 transition-opacity underline underline-offset-4 md:cursor-none"
+              className="mt-4 text-[10px] uppercase tracking-[0.2em] opacity-50 hover:opacity-100 transition-opacity underline underline-offset-4"
             >
               Weitere Nachricht senden
             </button>
