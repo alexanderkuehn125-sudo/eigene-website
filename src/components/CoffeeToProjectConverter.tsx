@@ -78,9 +78,9 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
 
   return (
     <>
-      {/* Trigger Button (Option 1: Floating Bottom Left) */}
+      {/* Trigger Button (Option 1: Floating Bottom Left on Desktop, Top Right on Mobile) */}
       {createPortal(
-        <div className="fixed bottom-6 md:bottom-12 left-6 md:left-12 z-50 pointer-events-auto">
+        <div className="fixed top-6 right-6 md:top-auto md:right-auto md:bottom-12 md:left-12 z-50 pointer-events-auto flex justify-end">
           <motion.button
             onClick={() => setIsOpen(true)}
             animate={{ opacity: [0.3, 1, 0.3] }}
