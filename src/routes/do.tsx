@@ -391,7 +391,7 @@ function DoPage() {
           </button>
         </div>
 
-        <footer className="mt-16 flex flex-col items-center gap-4 text-[11px] uppercase tracking-[0.35em] opacity-70 md:mt-24">
+        <footer className="mt-16 flex flex-col items-center gap-4 text-[9px] md:text-[11px] uppercase tracking-[0.35em] opacity-70 md:mt-24 mb-6 md:mb-0">
           <button
             type="button"
             onClick={() => setImpressumOpen(true)}
@@ -399,20 +399,13 @@ function DoPage() {
           >
             Impressum
           </button>
-          <span className="opacity-70">
-            © {new Date().getFullYear()} Alexander Kühn · Alle Rechte vorbehalten
+          <span className="opacity-70 text-center leading-relaxed">
+            © {new Date().getFullYear()} Alexander Kühn
+            <span className="hidden md:inline"> · </span>
+            <br className="md:hidden" />
+            Alle Rechte vorbehalten
           </span>
         </footer>
-      </div>
-
-      {/* Mobile Floating 'Start' Button */}
-      <div className="md:hidden fixed bottom-6 left-6 z-40">
-        <Link
-          to="/"
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A1918] border border-white/20 text-[#EFECE4] shadow-[0_10px_30px_rgba(0,0,0,0.8)] transition-transform hover:scale-105 focus:outline-none"
-        >
-          <span className="text-[8px] uppercase tracking-[0.25em] font-medium mt-[1px]">Start</span>
-        </Link>
       </div>
 
       {/* Impressum modal */}
