@@ -426,7 +426,7 @@ function BePage() {
       </div>
 
       {/* Modal Overlay (Analog zur Ausstellung) */}
-      {modalOpen && (
+      {modalOpen && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 cursor-none cursor-trigger-close"
           style={{
@@ -436,7 +436,7 @@ function BePage() {
           onClick={() => setModalOpen(null)}
         >
           <div
-            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12"
+            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 [&_a]:cursor-none [&_button]:cursor-none"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -526,7 +526,8 @@ function BePage() {
               <ImpressumContent />
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       <CustomCursor />
