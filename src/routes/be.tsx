@@ -450,7 +450,7 @@ function BePage() {
           onClick={() => setModalOpen(null)}
         >
           <div
-            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none"
+            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none cursor-content-area"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -551,11 +551,11 @@ function CustomCursor() {
 
       if (el.closest(".cursor-trigger-zoom")) {
         state = "zoom";
-      } else if (el.closest(".cursor-trigger-close")) {
+      } else if (el.closest(".cursor-trigger-close") && !el.closest(".cursor-content-area")) {
         state = "close";
       } else if (el.closest(".widget-cursor-area") && el.closest("a, button, input")) {
         state = "widget";
-      } else if (el.closest("input")) {
+      } else if (el.closest("input") || el.closest("textarea")) {
         state = "input";
       } else if (el.closest("a, button")) {
         state = "hover";
