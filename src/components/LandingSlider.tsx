@@ -659,7 +659,7 @@ function CloudTitle({
             e.stopPropagation();
             onContactClick();
           }}
-          className="mt-8 inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-8 py-2.5 text-[13px] md:text-[16px] uppercase tracking-[0.2em] text-white backdrop-blur-sm transition-all hover:bg-white hover:text-black pointer-events-auto cursor-pointer"
+          className="absolute top-full mt-8 inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-8 py-2.5 text-[13px] md:text-[16px] uppercase tracking-[0.2em] text-white backdrop-blur-sm transition-all hover:bg-white hover:text-black pointer-events-auto cursor-pointer"
           style={{
             fontFamily: "'Roboto', sans-serif",
             opacity: subtextOpacity,
