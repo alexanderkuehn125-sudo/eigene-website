@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
 import { CoffeeToProjectConverter } from "@/components/CoffeeToProjectConverter";
+import { ContactForm } from "@/components/ContactForm";
 // Neues lokales Portrait
 import portrait from "@/assets/Portrait.jpg";
 
@@ -523,18 +524,10 @@ function BePage() {
               </nav>
             ) : modalOpen === "kontakt" ? (
               <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 max-w-2xl font-light">
-                <p className="mb-10">
-                  Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch. Per Mail
-                  — Antwort in der Regel innerhalb von 24 Stunden.
+                <p className="mb-6">
+                  Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch.
                 </p>
-              <div className="flex flex-col gap-8 mt-4" style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}>
-                <div>
-                  <span className="block text-[10px] uppercase tracking-[0.2em] opacity-50 mb-2">E-Mail</span>
-                  <a href="mailto:alexanderkuehn125@gmail.com" className="inline-block text-xl md:text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity underline underline-offset-8">
-                    alexanderkuehn125@gmail.com
-                  </a>
-                </div>
-              </div>
+                <ContactForm />
               </div>
             ) : (
               <ImpressumContent />

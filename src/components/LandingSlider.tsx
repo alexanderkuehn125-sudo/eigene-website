@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { ContactForm } from "@/components/ContactForm";
 
 import beHorizontal from "@/assets/manhattan-18-horizontal.jpg";
 import doHorizontal from "@/assets/manhattan-21-horizontal.jpg";
@@ -493,18 +494,10 @@ export function LandingSlider() {
             </h2>
             
             <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 max-w-2xl font-light">
-              <p className="mb-10">
-                Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch. Per Mail
-                — Antwort in der Regel innerhalb von 24 Stunden.
+              <p className="mb-6">
+                Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch.
               </p>
-              <div className="flex flex-col gap-8 mt-4" style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}>
-                <div>
-                  <span className="block text-[10px] uppercase tracking-[0.2em] opacity-50 mb-2">E-Mail</span>
-                  <a href="mailto:alexanderkuehn125@gmail.com" className="inline-block text-xl md:text-2xl tracking-wide opacity-80 hover:opacity-100 transition-opacity underline underline-offset-8">
-                    alexanderkuehn125@gmail.com
-                  </a>
-                </div>
-              </div>
+              <ContactForm />
             </div>
           </div>
         </div>
