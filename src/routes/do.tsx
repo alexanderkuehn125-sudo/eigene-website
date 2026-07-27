@@ -141,6 +141,8 @@ function DoPage() {
   const [impressumOpen, setImpressumOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("Alle");
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const handleCategoryClick = (cat: string) => {
     if (cat === activeCategory || isTransitioning) return;
@@ -445,8 +447,8 @@ function DoPage() {
         </div>
       )}
 
-      {/* Lightbox */}
-      {active && (
+      {/* Lightbox im React Portal */}
+      {mounted && active && createPortal(
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
           style={{
@@ -509,7 +511,8 @@ function DoPage() {
               ▶
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
       <CustomCursor />
       
