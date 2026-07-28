@@ -490,7 +490,7 @@ function BePage() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none cursor-content-area"
+                className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none cursor-content-area md:cursor-none"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
@@ -618,6 +618,8 @@ function CustomCursor() {
         state = "input";
       } else if (el.closest("a, button")) {
         state = "hover";
+      } else if (el.closest(".cursor-content-area")) {
+        state = "content";
       } else {
         state = "default";
       }
@@ -635,6 +637,11 @@ function CustomCursor() {
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "0";
+          } else if (state === "content") {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
           } else if (state === "zoom") {
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1.5)`;
