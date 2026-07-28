@@ -67,8 +67,14 @@ function HoverRevealGrid() {
     <>
       <style>{`
         @keyframes smoothPulse {
-          0%, 100% { transform: scale(1); box-shadow: inset 0 0 20px rgba(255,255,255,0.01); }
-          50% { transform: scale(1.02); box-shadow: inset 0 0 35px rgba(255,255,255,0.04); }
+          0%, 100% { 
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.01), 0 0 0px rgba(255,255,255,0); 
+            border-color: rgba(255,255,255,0.05); 
+          }
+          50% { 
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.03), 0 0 15px rgba(255,255,255,0.05); 
+            border-color: rgba(255,255,255,0.25); 
+          }
         }
         .animate-smooth-pulse {
           animation: smoothPulse 5s ease-in-out infinite;
