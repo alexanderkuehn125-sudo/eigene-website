@@ -22,7 +22,20 @@ const projects = [
     bgColor: "bg-gradient-to-br from-[#4285F4] via-[#EA4335] to-[#FBBC05]"
   },
   { client: "IAA MOBILITY", project: "Citizens Lab 2023", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#0096D6]", bgColor: "bg-[#0096D6]" },
-  { client: "Constantin Medien", project: "Hauptversammlung 2015", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#1C3664]", bgColor: "bg-[#1C3664]" },
+  { 
+    client: "Sport1 MEDIEN", 
+    clientNode: (
+      <div className="flex flex-col items-center">
+        <span className="text-xl md:text-2xl font-black italic lowercase tracking-tighter text-[#EFECE4]">sport1</span>
+        <div className="h-[1px] w-[80%] bg-[#EFECE4]/50 my-1"></div>
+        <span className="text-[9px] md:text-[10px] font-normal uppercase tracking-[0.3em] text-[#EFECE4]/80 ml-[0.3em]">Medien</span>
+      </div>
+    ),
+    project: "Hauptversammlung 2015", 
+    tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
+    color: "text-[#EFECE4]", 
+    bgColor: "bg-[#111111]" 
+  },
   { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], color: "text-[#0070B9]", bgColor: "bg-[#0070B9]" },
   { client: "Krombacher", project: "Festivalauftritte 2022-2025", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#D4AF37]", bgColor: "bg-[#D4AF37]" },
   { client: "Messe München", project: "Eröffnungsfeier neue Hallen 2018", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#004A99]", bgColor: "bg-[#004A99]" },
