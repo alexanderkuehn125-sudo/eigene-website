@@ -502,18 +502,18 @@ function BePage() {
                   ×
                 </button>
 
-            <h2
-              className={`mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl ${modalOpen === "kiworkflow" ? "rainbow-text-glow font-medium" : ""}`}
-              style={{ fontFamily: "'Jost', sans-serif", fontWeight: modalOpen === "kiworkflow" ? undefined : 400 }}
-            >
-              {modalOpen === "kontakt"
-                ? "Kontakt"
-                : modalOpen === "impressum"
-                  ? "Impressum"
-                  : modalOpen === "kiworkflow"
-                    ? "KI-Workflow Website"
+            {modalOpen !== "kiworkflow" && (
+              <h2
+                className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
+                style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
+              >
+                {modalOpen === "kontakt"
+                  ? "Kontakt"
+                  : modalOpen === "impressum"
+                    ? "Impressum"
                     : "Menü"}
-            </h2>
+              </h2>
+            )}
 
             {modalOpen === "menu" ? (
               <nav className="flex flex-col gap-8 items-start">
