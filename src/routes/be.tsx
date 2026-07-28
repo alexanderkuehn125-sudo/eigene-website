@@ -125,12 +125,12 @@ function HoverRevealGrid() {
               {proj.clientNode ? proj.clientNode : proj.client}
             </span>
 
-            <span className="mb-4 text-center text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#EFECE4]/60">
+            <span className="mb-5 text-center text-[10px] md:text-[11px] font-semibold uppercase tracking-widest text-[#EFECE4]/60">
               {proj.project}
             </span>
-            <ul className="flex w-full flex-col items-center gap-1.5 md:gap-2 text-center text-[9px] md:text-[10px] uppercase tracking-wider text-[#EFECE4]">
+            <ul className="flex w-full flex-col items-center gap-2 md:gap-2.5 text-center text-[11px] md:text-[13px] font-medium tracking-wide text-[#EFECE4]">
               {proj.tasks.map((task, j) => (
-                <li key={j} className="opacity-90 leading-tight">
+                <li key={j} className="opacity-100 leading-snug">
                   {task}
                 </li>
               ))}
