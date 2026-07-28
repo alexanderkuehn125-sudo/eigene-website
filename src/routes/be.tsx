@@ -51,31 +51,40 @@ const projects = [
     ),
     project: "Google Roadshow DACH 2024", 
     tasks: ["Projektmanagement", "Ausschreibungserstellung", "Produktionsleitung", "Locationmanagement", "Dienstleisterhandling", "Budget-Kontrolle"], 
-    glow: "rgba(66, 133, 244, 0.15)", 
     color: "" 
   },
-  { client: "IAA MOBILITY", project: "Citizens Lab 2023", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(0, 150, 214, 0.15)", color: "text-[#0096D6]" },
-  { client: "Sport1", project: "Hauptversammlung 2015", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(237, 28, 36, 0.15)", color: "text-[#ED1C24]" },
-  { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], glow: "rgba(0, 112, 185, 0.15)", color: "text-[#0070B9]" },
-  { client: "Krombacher", project: "Festivalauftritte 2022-2025", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(212, 175, 55, 0.15)", color: "text-[#D4AF37]" },
-  { client: "Messe München", project: "Eröffnungsfeier neue Hallen 2018", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(0, 74, 153, 0.15)", color: "text-[#004A99]" },
-  { client: "KRONES", project: "Messeauftritt gesamt 2017", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(0, 85, 165, 0.15)", color: "text-[#0055A5]" },
-  { client: "LIEBHERR", project: "Liebherr-Familientag 2018", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"], glow: "rgba(255, 204, 0, 0.15)", color: "text-[#FFCC00]" },
+  { client: "IAA MOBILITY", project: "Citizens Lab 2023", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#0096D6]" },
+  { client: "Sport1", project: "Hauptversammlung 2015", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#ED1C24]" },
+  { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], color: "text-[#0070B9]" },
+  { client: "Krombacher", project: "Festivalauftritte 2022-2025", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#D4AF37]" },
+  { client: "Messe München", project: "Eröffnungsfeier neue Hallen 2018", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#004A99]" },
+  { client: "KRONES", project: "Messeauftritt gesamt 2017", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#0055A5]" },
+  { client: "LIEBHERR", project: "Liebherr-Familientag 2018", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"], color: "text-[#FFCC00]" },
 ];
 
 function HoverRevealGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mt-16 mb-12">
-      {projects.map((proj, i) => (
-        <div
-          key={i}
-          className="group relative flex aspect-square w-full items-center justify-center md:cursor-none cursor-trigger-zoom z-10 hover:z-50"
-        >
-          {/* Base Tile (Idle State) */}
+    <>
+      <style>{`
+        @keyframes smoothPulse {
+          0%, 100% { transform: scale(1); box-shadow: inset 0 0 20px rgba(255,255,255,0.01); }
+          50% { transform: scale(1.02); box-shadow: inset 0 0 35px rgba(255,255,255,0.04); }
+        }
+        .animate-smooth-pulse {
+          animation: smoothPulse 5s ease-in-out infinite;
+        }
+      `}</style>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mt-16 mb-12">
+        {projects.map((proj, i) => (
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-[#141312] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-all duration-500 group-hover:scale-95 group-hover:opacity-0 group-hover:blur-sm"
-            style={{ boxShadow: `inset 0 0 40px ${proj.glow}, inset 0 0 2px rgba(255,255,255,0.05)` }}
+            key={i}
+            className="group relative flex aspect-square w-full items-center justify-center md:cursor-none cursor-trigger-zoom z-10 hover:z-50"
           >
+            {/* Base Tile (Idle State) */}
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-[#141312] transition-all duration-500 group-hover:scale-95 group-hover:opacity-0 group-hover:blur-sm animate-smooth-pulse"
+              style={{ animationDelay: `${i * 0.4}s` }}
+            >
             {/* White Text Layer */}
             <span
               className="text-center text-xl md:text-2xl font-light tracking-wider text-[#EFECE4]/90"
@@ -86,7 +95,7 @@ function HoverRevealGrid() {
           </div>
 
           {/* Pop-Out Overlay (Hover State) */}
-          <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-4 md:group-hover:-inset-6 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
+          <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-8 md:group-hover:-inset-12 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
             
             {/* Client Name in Full Color */}
             <span
@@ -110,6 +119,7 @@ function HoverRevealGrid() {
         </div>
       ))}
     </div>
+    </>
   );
 }
 
