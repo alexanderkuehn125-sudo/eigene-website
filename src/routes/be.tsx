@@ -36,14 +36,14 @@ type Item = {
 };
 
 const projects = [
-  { client: "Google Cloud", project: "Google Roadshow DACH 2024", tasks: ["Projektmanagement", "Ausschreibungserstellung", "Produktionsleitung", "Locationmanagement", "Dienstleisterhandling", "Budget-Kontrolle"] },
-  { client: "IAA MOBILITY", project: "Citizens Lab 2023", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"] },
-  { client: "Sport1", project: "Hauptversammlung 2015", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"] },
-  { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"] },
-  { client: "Krombacher", project: "Festivalauftritte 2022-2025", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"] },
-  { client: "Messe München", project: "Eröffnungsfeier neue Hallen 2018", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"] },
-  { client: "KRONES", project: "Messeauftritt gesamt 2017", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"] },
-  { client: "LIEBHERR", project: "Liebherr-Familientag 2018", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"] },
+  { client: "Google Cloud", project: "Google Roadshow DACH 2024", tasks: ["Projektmanagement", "Ausschreibungserstellung", "Produktionsleitung", "Locationmanagement", "Dienstleisterhandling", "Budget-Kontrolle"], glow: "rgba(66, 133, 244, 0.15)", color: "from-[#4285F4] via-[#EA4335] to-[#FBBC05] bg-gradient-to-r text-transparent bg-clip-text" },
+  { client: "IAA MOBILITY", project: "Citizens Lab 2023", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(0, 150, 214, 0.15)", color: "text-[#0096D6]" },
+  { client: "Sport1", project: "Hauptversammlung 2015", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(237, 28, 36, 0.15)", color: "text-[#ED1C24]" },
+  { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], glow: "rgba(0, 112, 185, 0.15)", color: "text-[#0070B9]" },
+  { client: "Krombacher", project: "Festivalauftritte 2022-2025", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(212, 175, 55, 0.15)", color: "text-[#D4AF37]" },
+  { client: "Messe München", project: "Eröffnungsfeier neue Hallen 2018", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(0, 74, 153, 0.15)", color: "text-[#004A99]" },
+  { client: "KRONES", project: "Messeauftritt gesamt 2017", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(0, 85, 165, 0.15)", color: "text-[#0055A5]" },
+  { client: "LIEBHERR", project: "Liebherr-Familientag 2018", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"], glow: "rgba(255, 204, 0, 0.15)", color: "text-[#FFCC00]" },
 ];
 
 function HoverRevealGrid() {
@@ -55,10 +55,21 @@ function HoverRevealGrid() {
           className="group relative flex aspect-square w-full items-center justify-center md:cursor-none cursor-trigger-zoom z-10 hover:z-50"
         >
           {/* Base Tile (Idle State) */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-[#141312] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-all duration-500 group-hover:scale-95 group-hover:opacity-0 group-hover:blur-sm">
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-[#141312] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-all duration-500 group-hover:scale-95 group-hover:opacity-0 group-hover:blur-sm"
+            style={{ boxShadow: `inset 0 0 40px ${proj.glow}, inset 0 0 2px rgba(255,255,255,0.05)` }}
+          >
+            {/* White Text Layer */}
             <span
-              className="text-center text-xl md:text-2xl font-light tracking-wider text-[#EFECE4]/90"
+              className="absolute text-center text-xl md:text-2xl font-light tracking-wider text-[#EFECE4]/90 transition-opacity duration-300 group-hover:opacity-0"
               style={{ fontFamily: "'Jost', sans-serif", fontWeight: 300 }}
+            >
+              {proj.client}
+            </span>
+            {/* Colored Brand Text Layer (Fades in on early hover before popup covers it) */}
+            <span
+              className={`absolute text-center text-xl md:text-2xl font-light tracking-wider opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${proj.color.includes('bg-clip') ? proj.color : ''}`}
+              style={proj.color.includes('bg-clip') ? { fontFamily: "'Jost', sans-serif", fontWeight: 300 } : { fontFamily: "'Jost', sans-serif", fontWeight: 300, color: proj.color.replace('text-[', '').replace(']', '') }}
             >
               {proj.client}
             </span>
