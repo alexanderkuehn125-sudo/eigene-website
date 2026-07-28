@@ -169,24 +169,32 @@ const items: readonly Item[] = [
     label: "Skills",
     slug: "skills",
     body: (
-      <>
-        <p className="mb-6">
-          Mein Werkzeugkasten ist hybrid: Auf der einen Seite klassische Projektsteuerung,
-          technische Planung, Budgetierung und Teamführung. Auf der anderen Seite KI-Consulting,
-          Prozessautomatisierung und digitales Vertriebsmanagement (IHK).
-        </p>
-        <p>
-          Ich verstehe mich als Übersetzer zwischen der analogen Umsetzung und den digitalen
-          Systemen im Hintergrund – immer mit dem Ziel, reibungslose Abläufe zu garantieren,
-          branchenübergreifend und fokussiert.
-        </p>
-        <p className="mt-6 opacity-80">
-          Zu meinen Kernkompetenzen zählen die souveräne Steuerung komplexer Budgets, die nahtlose
-          Integration digitaler Schnittstellen und ein empathisches, aber zielführendes
-          Stakeholdermanagement. Ich arbeite datengetrieben, behalte aber immer den menschlichen
-          Faktor und die User Experience im Fokus.
-        </p>
-      </>
+      <div className="flex flex-col gap-8 text-sm md:text-base leading-relaxed">
+        <div>
+          <strong className="block mb-3 text-lg font-medium tracking-wide">1. Projekt- & Eventmanagement</strong>
+          <p className="opacity-80 mb-2"><span className="font-medium text-white opacity-100">Ganzheitliche Projektsteuerung:</span> Von der ersten Konzeption und Budgetierung bis zur operativen Umsetzung.</p>
+          <p className="opacity-80 mb-2"><span className="font-medium text-white opacity-100">Schnittstellenkompetenz:</span> Erfahrene Vermittlung zwischen Agenturen, Unternehmensseite, Dienstleistern und Technik-Teams, sowie Stakeholder-Management.</p>
+          <p className="opacity-80"><span className="font-medium text-white opacity-100">Risiko- & Krisenmanagement:</span> Souveränes Handeln und schnelle Lösungsfindung in hektischen Live-Phasen.</p>
+        </div>
+        
+        <div>
+          <strong className="block mb-3 text-lg font-medium tracking-wide">2. Methodik & Agiles Arbeiten</strong>
+          <p className="opacity-80 mb-2"><span className="font-medium text-white opacity-100">Agile Leadership:</span> Agiles Projektverständnis, pragmatische Prozessgestaltung und teamorientierte Führung auf Augenhöhe.</p>
+          <p className="opacity-80"><span className="font-medium text-white opacity-100">Prozessoptimierung:</span> Analyse und Strukturierung komplexer Abläufe zur spürbaren Entlastung von Teams.</p>
+        </div>
+
+        <div>
+          <strong className="block mb-3 text-lg font-medium tracking-wide">3. Digitale Workflows & KI-Integration</strong>
+          <p className="opacity-80 mb-2"><span className="font-medium text-white opacity-100">AI & Prozess-Tools:</span> Praktische Anwendung von KI-gestützten Workflows (u. a. Prompt Engineering, KI-gestütztes Wissensmanagement) im Projektalltag.</p>
+          <p className="opacity-80"><span className="font-medium text-white opacity-100">Digitales Vertriebsmanagement:</span> Digitalisierung von Vertriebsprozessen und Kunden-Schnittstellen-Kommunikation.</p>
+        </div>
+
+        <div>
+          <strong className="block mb-3 text-lg font-medium tracking-wide">4. Technische Expertise</strong>
+          <p className="opacity-80 mb-2"><span className="font-medium text-white opacity-100">Veranstaltungs- & Veranstaltungstechnik:</span> Fundiertes technisches Grundverständnis für die detaillierte Planung und Umsetzung.</p>
+          <p className="opacity-80"><span className="font-medium text-white opacity-100">CAD & Fachsoftware:</span> Technisches Verständnis und Praxis-Erfahrung mit CAD-Anwendungen (u. a. Vectorworks / AutoCAD).</p>
+        </div>
+      </div>
     ),
   },
   {
