@@ -35,105 +35,47 @@ type Item = {
   body: React.ReactNode;
 };
 
-// Filmstrip Karussell Komponente
-function FadingFilmstrip() {
-  const [activeIndex, setActiveIndex] = useState(4); // Startet beim 5. Bild (Mitte)
+const projects = [
+  { client: "Google Cloud", project: "Google Roadshow DACH 2024", tasks: ["Projektmanagement", "Ausschreibungserstellung", "Produktionsleitung", "Locationmanagement", "Dienstleisterhandling", "Budget-Kontrolle"] },
+  { client: "IAA MOBILITY", project: "Citizens Lab 2023", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"] },
+  { client: "Sport1", project: "Hauptversammlung 2015", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"] },
+  { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"] },
+  { client: "Krombacher", project: "Festivalauftritte 2022-2025", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"] },
+  { client: "Messe München", project: "Eröffnungsfeier neue Hallen 2018", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"] },
+  { client: "KRONES", project: "Messeauftritt gesamt 2017", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"] },
+  { client: "LIEBHERR", project: "Liebherr-Familientag 2018", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"] },
+];
 
-  const images = [
-    "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80&w=800", // Stage lights
-    "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=800", // Empty chairs
-    "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&q=80&w=800", // Stage setup
-    "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&q=80&w=800", // Abstract crowd
-    "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=800", // Cool Event/Party
-    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800", // Conference
-    "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80&w=800", // DJ/Vinyl
-    "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800", // Event detail
-    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800", // Event lights
-  ];
-
-  // Automatischer Reset zur Mitte (Index 4) nach 5 Sekunden, wenn Randbilder (Index 0 oder 8) erreicht sind
-  useEffect(() => {
-    if (activeIndex === 0 || activeIndex === images.length - 1) {
-      const timer = setTimeout(() => {
-        setActiveIndex(4);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [activeIndex, images.length]);
-
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.clientX);
-    // Optional: Capture pointer so dragging outside the element still works
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (touchStart !== null) {
-      setTouchEnd(e.clientX);
-    }
-  };
-
-  const handlePointerUp = (e: React.PointerEvent) => {
-    (e.target as HTMLElement).releasePointerCapture(e.pointerId);
-    if (touchStart === null || touchEnd === null) {
-      setTouchStart(null);
-      setTouchEnd(null);
-      return;
-    }
-    const distance = touchStart - touchEnd;
-    if (distance > 50 && activeIndex < images.length - 1) {
-      setActiveIndex(activeIndex + 1);
-    } else if (distance < -50 && activeIndex > 0) {
-      setActiveIndex(activeIndex - 1);
-    }
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
-
+function HoverRevealGrid() {
   return (
-    <div
-      className="relative w-full h-[30vh] md:h-[40vh] mt-16 mb-12 flex items-center justify-center overflow-hidden touch-pan-y select-none"
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
-    >
-      {images.map((img, i) => {
-        const offset = i - activeIndex;
-        return (
-          <button
-            key={i}
-            type="button"
-            className="absolute w-[65%] md:w-[50%] lg:w-[40%] h-full transition-all duration-[1.6s] ease-[cubic-bezier(0.25,1,0.5,1)] cursor-none cursor-trigger-zoom"
-            style={{
-              transform: `translateX(${offset * 80}%) scale(${offset === 0 ? 1 : 0.85})`,
-              opacity: offset === 0 ? 1 : Math.abs(offset) <= 2 ? 0.4 : 0,
-              zIndex: offset === 0 ? 10 : 5 - Math.abs(offset),
-              pointerEvents: Math.abs(offset) <= 2 ? "auto" : "none",
-            }}
-            onClick={() => {
-              if (offset !== 0) setActiveIndex(i);
-            }}
-          >
-            <img
-              src={img}
-              alt={`Platzhalter ${i + 1}`}
-              className="w-full h-full object-cover rounded-md shadow-2xl"
-              style={{ filter: offset === 0 ? "grayscale(30%)" : "grayscale(100%)" }}
-              draggable={false}
-            />
-            {offset === 0 && (
-              <div className="absolute bottom-4 right-6 text-white text-[10px] tracking-[0.3em] font-medium opacity-90 mix-blend-difference pointer-events-none uppercase">
-                {String(i + 1).padStart(2, "0")}/09
-              </div>
-            )}
-          </button>
-        );
-      })}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mt-16 mb-12">
+      {projects.map((proj, i) => (
+        <div
+          key={i}
+          className="group relative flex aspect-square w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#1A1918] shadow-sm transition-all duration-500 hover:shadow-[0_10px_40px_rgba(0,0,0,0.8)] hover:border-white/20 md:cursor-none cursor-trigger-zoom"
+        >
+          {/* Initial State (Client Name) */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 group-hover:scale-110 group-hover:opacity-0 group-hover:blur-sm z-10">
+            <span className="text-center font-serif text-2xl font-light tracking-wide text-[#EFECE4] md:text-3xl">
+              {proj.client}
+            </span>
+          </div>
+
+          {/* Hover Reveal State (Glassmorphism overlay) */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/95 p-6 opacity-0 backdrop-blur-md transition-all duration-500 group-hover:opacity-100 z-20">
+            <span className="mb-4 text-center text-xs font-semibold uppercase tracking-widest text-[#EFECE4]/60">
+              {proj.project}
+            </span>
+            <ul className="flex flex-col items-center gap-1.5 text-center text-[10px] uppercase tracking-wider text-[#EFECE4]">
+              {proj.tasks.map((task, j) => (
+                <li key={j} className="opacity-90">
+                  {task}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -199,15 +141,9 @@ const items: readonly Item[] = [
     body: (
       <>
         <p className="mb-6">
-          Eine fundierte Historie: Von der Konzeption bis zur technischen Umsetzung für namhafte
-          Kunden und Unternehmen, historisch gewachsen im Eventsektor.
+          Eine Übersicht der letzten 10 Jahre. Für detaillierte Einblicke navigieren Sie mit dem Cursor über die einzelnen Projekte, um die spezifischen Aufgabenbereiche einzusehen.
         </p>
-        <p>
-          Inzwischen erweitere ich dieses Portfolio zunehmend um branchenübergreifende
-          Beratungsmandate. Hierbei begleite ich Organisationen darin, ihre Planungs- und
-          Vertriebsprozesse durch digitale Systeme und KI-gestützte Werkzeuge zu modernisieren.
-        </p>
-        <FadingFilmstrip />
+        <HoverRevealGrid />
       </>
     ),
   },
