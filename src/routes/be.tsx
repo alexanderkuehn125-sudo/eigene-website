@@ -86,8 +86,8 @@ function HoverRevealGrid() {
             border-color: rgba(255,255,255,0.08); 
           }
           50% { 
-            box-shadow: inset 0 0 25px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1); 
-            border-color: rgba(255,255,255,0.35); 
+            box-shadow: inset 0 0 30px rgba(255,255,255,0.08), 0 0 25px rgba(255,255,255,0.15); 
+            border-color: rgba(255,255,255,0.5); 
           }
         }
         .animate-smooth-pulse {
@@ -273,7 +273,7 @@ function BePage() {
         </figure>
       </div>
 
-      <div className="relative z-10 mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-12 px-6 pt-12 pb-10 md:grid-cols-12 md:gap-20 md:px-12 md:pt-24 md:pb-16 page-transition-enter">
+      <div className="relative z-10 mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-12 px-6 pt-12 pb-5 md:grid-cols-12 md:gap-20 md:px-12 md:pt-24 md:pb-8 page-transition-enter">
         {/* Link zur Ausstellung oben rechts (Desktop & Mobile) */}
         <Link
           to="/do"

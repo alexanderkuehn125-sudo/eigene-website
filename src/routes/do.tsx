@@ -223,7 +223,7 @@ function DoPage() {
       }}
     >
       {/* Film-Grain Overlay entfernt für deutlich bessere Scroll-Performance auf der Bilder-Seite */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-10 md:px-12 md:py-16 page-transition-enter">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-6 pt-10 pb-5 md:px-12 md:pt-16 md:pb-8 page-transition-enter">
         {/* Header */}
         <header className="flex items-center justify-between pt-2 relative z-50">
           <Link
@@ -387,30 +387,38 @@ function DoPage() {
           </AnimatePresence>
         </section>
 
-        <div className="mt-16 flex flex-col items-center gap-6 md:mt-24">
-          <button
-            type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
-          >
-            nach oben ↑
-          </button>
-        </div>
+        <div className="w-full -mt-12 md:-mt-20">
+          <div className="mt-16 flex flex-col items-center gap-6 md:mt-24">
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
+            >
+              nach oben ↑
+            </button>
+          </div>
 
-        <footer className="mt-16 flex flex-col items-center gap-4 text-[9px] md:text-[11px] uppercase tracking-[0.35em] opacity-70 md:mt-24 mb-6 md:mb-0">
-          <button
-            type="button"
-            onClick={() => setImpressumOpen(true)}
-            className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
-          >
-            Impressum
-          </button>
-          <span className="opacity-70 text-center leading-relaxed flex flex-col items-center gap-1">
-            <span className="text-[9px] md:text-[11px]">© {new Date().getFullYear()}</span>
-            <span className="text-[20px] md:text-[24px] font-medium tracking-widest text-white opacity-100">Alexander Kühn</span>
-            <span className="text-[9px] md:text-[11px]">Alle Rechte vorbehalten</span>
-          </span>
-        </footer>
+          <footer className="mt-16 flex flex-col items-center gap-4 text-[11px] uppercase tracking-[0.35em] opacity-70 md:mt-24">
+            <div className="flex gap-6">
+              <a
+                href="mailto:mail@alexanderkuehn.de"
+                className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
+              >
+                Kontakt
+              </a>
+              <button
+                type="button"
+                onClick={() => setImpressumOpen(true)}
+                className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
+              >
+                Impressum
+              </button>
+            </div>
+            <span className="opacity-70 text-center">
+              © {new Date().getFullYear()} Alexander Kühn · Alle Rechte vorbehalten
+            </span>
+          </footer>
+        </div>
       </div>
 
       {/* Impressum modal */}

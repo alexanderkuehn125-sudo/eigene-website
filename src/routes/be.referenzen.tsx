@@ -115,8 +115,8 @@ export const Route = createFileRoute("/be/referenzen")({
             border-color: rgba(255,255,255,0.08); 
           }
           50% { 
-            box-shadow: inset 0 0 25px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1); 
-            border-color: rgba(255,255,255,0.35); 
+            box-shadow: inset 0 0 30px rgba(255,255,255,0.08), 0 0 25px rgba(255,255,255,0.15); 
+            border-color: rgba(255,255,255,0.5); 
           }
         }
         .animate-smooth-pulse {
