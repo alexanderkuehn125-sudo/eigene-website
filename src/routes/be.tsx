@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
+import { KiWorkflowContent } from "@/components/KiWorkflowContent";
 import { CoffeeToProjectConverter } from "@/components/CoffeeToProjectConverter";
 import { ContactForm } from "@/components/ContactForm";
 // Neues lokales Portrait
@@ -572,9 +573,7 @@ function BePage() {
             ) : modalOpen === "impressum" ? (
               <ImpressumContent />
             ) : (
-              <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-50 max-w-2xl font-light italic">
-                (Inhalt folgt in Kürze...)
-              </div>
+              <KiWorkflowContent />
               )}
             </motion.div>
           </motion.div>
