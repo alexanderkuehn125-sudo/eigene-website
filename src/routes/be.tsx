@@ -211,8 +211,8 @@ const items: readonly Item[] = [
     ),
   },
   {
-    n: "04",
-    label: "KI_Workflow Website",
+    n: "06",
+    label: "KI-Workflow Website",
     slug: "ki-workflow",
     body: (
       <div className="opacity-50 italic">
@@ -329,7 +329,7 @@ function BePage() {
             <CoffeeToProjectConverter />
 
             <nav className="flex flex-col gap-6">
-              {items.map((it) => (
+              {items.filter(it => it.n !== "06").map((it) => (
                 <a
                   key={it.slug}
                   href={`#${it.slug}`}
@@ -359,7 +359,7 @@ function BePage() {
                 onClick={() => setModalOpen("kontakt")}
               >
                 <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 transition-opacity group-hover:opacity-100">
-                  05
+                  04
                 </span>
                 <span
                   className="text-xl tracking-wide opacity-80 transition-opacity group-hover:opacity-100"
@@ -375,7 +375,7 @@ function BePage() {
                 onClick={() => setModalOpen("impressum")}
               >
                 <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 transition-opacity group-hover:opacity-100">
-                  06
+                  05
                 </span>
                 <span
                   className="text-xl tracking-wide opacity-80 transition-opacity group-hover:opacity-100"
@@ -384,6 +384,30 @@ function BePage() {
                   Impressum
                 </span>
               </button>
+
+              {items.filter(it => it.n === "06").map((it) => (
+                <a
+                  key={it.slug}
+                  href={`#${it.slug}`}
+                  className="group flex items-baseline gap-4 text-left"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document
+                      .getElementById(it.slug)
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                >
+                  <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 transition-opacity group-hover:opacity-100">
+                    {it.n}
+                  </span>
+                  <span
+                    className="text-xl tracking-wide opacity-80 transition-opacity group-hover:opacity-100 rainbow-text-glow font-medium"
+                    style={{ fontFamily: "'Jost', sans-serif" }}
+                  >
+                    {it.label}
+                  </span>
+                </a>
+              ))}
             </nav>
           </div>
         </aside>
@@ -399,8 +423,8 @@ function BePage() {
               <div className="mb-12 flex items-baseline gap-4 relative z-10">
                 <span className="text-[10px] uppercase tracking-[0.3em] opacity-40">{it.n}</span>
                 <h2
-                  className="text-4xl md:text-5xl lg:text-6xl tracking-wide"
-                  style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
+                  className={`text-4xl md:text-5xl lg:text-6xl tracking-wide ${it.n === "06" ? "rainbow-text-glow font-medium" : ""}`}
+                  style={{ fontFamily: "'Jost', sans-serif", fontWeight: it.n === "06" ? undefined : 400 }}
                 >
                   {it.label}
                 </h2>
@@ -533,8 +557,8 @@ function BePage() {
                   >
                     <span className="text-[9px] uppercase tracking-[0.3em] opacity-50">{it.n}</span>
                     <span
-                      className="text-3xl tracking-wide opacity-90"
-                      style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
+                      className={`text-3xl tracking-wide opacity-90 ${it.n === "06" ? "rainbow-text-glow font-medium" : ""}`}
+                      style={{ fontFamily: "'Jost', sans-serif", fontWeight: it.n === "06" ? undefined : 400 }}
                     >
                       {it.label}
                     </span>
