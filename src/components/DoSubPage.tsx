@@ -8,7 +8,7 @@ type Section = {
   image?: { src: string; alt: string; caption?: string };
 };
 
-export function SubPage({ section }: { section: Section }) {
+export function SubPage({ section, children }: { section: Section, children?: React.ReactNode }) {
   return (
     <main
       className="min-h-screen w-full"
@@ -73,8 +73,10 @@ export function SubPage({ section }: { section: Section }) {
           )}
         </section>
 
+        {children && <div className="mt-20 md:mt-28 w-full">{children}</div>}
+
         <footer className="mt-auto pt-16 text-[11px] uppercase tracking-[0.35em] opacity-50">
-          In Arbeit
+          Alexander Kühn
         </footer>
       </div>
     </main>
