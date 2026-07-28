@@ -86,8 +86,8 @@ function HoverRevealGrid() {
             border-color: rgba(255,255,255,0.08); 
           }
           50% { 
-            box-shadow: inset 0 0 30px rgba(255,255,255,0.08), 0 0 25px rgba(255,255,255,0.15); 
-            border-color: rgba(255,255,255,0.5); 
+            box-shadow: inset 0 0 40px rgba(255,255,255,0.15), 0 0 40px rgba(255,255,255,0.3); 
+            border-color: rgba(255,255,255,0.9); 
           }
         }
         .animate-smooth-pulse {
@@ -204,7 +204,7 @@ const items: readonly Item[] = [
     body: (
       <>
         <p className="mb-6">
-          Eine Übersicht der letzten 10 Jahre. Für detaillierte Einblicke navigieren Sie mit dem Cursor über die einzelnen Projekte, um die spezifischen Aufgabenbereiche einzusehen.
+          Eine exemplarische Übersicht der letzten 10 Jahre. Für detaillierte Einblicke navigieren Sie mit dem Cursor über die einzelnen Projekte, um die spezifischen Aufgabenbereiche einzusehen.
         </p>
         <HoverRevealGrid />
       </>

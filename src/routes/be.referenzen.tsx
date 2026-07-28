@@ -56,7 +56,7 @@ export const Route = createFileRoute("/be/referenzen")({
         slug: "referenzen",
         eyebrow: "03 · Projekte",
         title: "Projekte & Aufgaben.",
-        body: "Ein Auszug der letzten 10 Jahre. Eine Übersicht ausgewählter Partner und meiner spezifischen Verantwortlichkeiten.",
+        body: "Ein Auszug der letzten 10 Jahre. Eine exemplarische Übersicht ausgewählter Partner und meiner spezifischen Verantwortlichkeiten.",
       }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full pb-10">
@@ -116,8 +116,8 @@ export const Route = createFileRoute("/be/referenzen")({
             border-color: rgba(255,255,255,0.08); 
           }
           50% { 
-            box-shadow: inset 0 0 30px rgba(255,255,255,0.08), 0 0 25px rgba(255,255,255,0.15); 
-            border-color: rgba(255,255,255,0.5); 
+            box-shadow: inset 0 0 40px rgba(255,255,255,0.15), 0 0 40px rgba(255,255,255,0.3); 
+            border-color: rgba(255,255,255,0.9); 
           }
         }
         .animate-smooth-pulse {
