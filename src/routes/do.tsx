@@ -434,7 +434,7 @@ function DoPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12"
+              className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none cursor-content-area"
               style={{ color: "#EFECE4" }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -480,7 +480,7 @@ function DoPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex max-h-[95vh] max-w-[95vw] flex-col overflow-hidden bg-[#11100F] cursor-default rounded-sm shadow-2xl"
+                className="relative flex max-h-[95vh] max-w-[95vw] flex-col overflow-hidden bg-[#11100F] cursor-default rounded-sm shadow-2xl md:[&_a]:cursor-none md:[&_button]:cursor-none cursor-content-area"
                 style={{ color: "#EFECE4" }}
                 onClick={(e) => e.stopPropagation()}
               >
@@ -626,8 +626,12 @@ function CustomCursor() {
 
       if (el.closest(".cursor-trigger-zoom")) {
         state = "zoom";
-      } else if (el.closest(".cursor-trigger-close")) {
+      } else if (el.closest(".cursor-trigger-close") && !el.closest(".cursor-content-area")) {
         state = "close";
+      } else if (el.closest(".widget-cursor-area") && el.closest("a, button, input")) {
+        state = "widget";
+      } else if (el.closest("input") || el.closest("textarea")) {
+        state = "input";
       } else if (el.closest("a, button")) {
         state = "hover";
       } else {
@@ -637,29 +641,46 @@ function CustomCursor() {
       if (rAF) cancelAnimationFrame(rAF);
       rAF = requestAnimationFrame(() => {
         if (cursorRef.current && ringRef.current && textRef.current) {
+          const dot = document.getElementById("cursor-dot");
           // Positioniert den Container extrem schnell und ohne Delay am Mauszeiger
           cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
 
-          const dot = document.getElementById("cursor-dot");
-          
           // Animiert sanft die Skalierung und Sichtbarkeit des inneren Rings
           if (state === "default") {
             ringRef.current.style.opacity = "0";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "0";
+          } else if (state === "zoom") {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1.5)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
           } else if (state === "close") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1.5)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "1";
-          } else if (state === "hover" || state === "zoom") {
+          } else if (state === "hover") {
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "1";
-          } else {
+          } else if (state === "widget") {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1.5)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
+          } else if (state === "input") {
             ringRef.current.style.opacity = "0";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(0.5)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "0";
+          } else {
+            ringRef.current.style.opacity = "1";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1.5)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
           }
         }
       });

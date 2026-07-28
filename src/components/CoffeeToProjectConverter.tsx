@@ -145,7 +145,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 15 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 flex w-full max-w-2xl flex-col max-h-[95vh] overflow-y-auto rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl widget-cursor-area custom-scrollbar"
+                className="relative z-10 flex w-full max-w-2xl flex-col max-h-[95vh] overflow-y-auto rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl widget-cursor-area custom-scrollbar md:[&_a]:cursor-none md:[&_button]:cursor-none"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Header */}
