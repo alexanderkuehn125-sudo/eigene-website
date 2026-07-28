@@ -55,7 +55,7 @@ const projects = [
     bgColor: "bg-gradient-to-br from-[#4285F4] via-[#EA4335] to-[#FBBC05]"
   },
   { client: "IAA MOBILITY", project: "Citizens Lab 2023", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#0096D6]", bgColor: "bg-[#0096D6]" },
-  { client: "Sport1", project: "Hauptversammlung 2015", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#ED1C24]", bgColor: "bg-[#ED1C24]" },
+  { client: "Constantin Medien", project: "Hauptversammlung 2015", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#1C3664]", bgColor: "bg-[#1C3664]" },
   { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], color: "text-[#0070B9]", bgColor: "bg-[#0070B9]" },
   { client: "Krombacher", project: "Festivalauftritte 2022-2025", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#D4AF37]", bgColor: "bg-[#D4AF37]" },
   { client: "Messe München", project: "Eröffnungsfeier neue Hallen 2018", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#004A99]", bgColor: "bg-[#004A99]" },
@@ -69,12 +69,12 @@ function HoverRevealGrid() {
       <style>{`
         @keyframes smoothPulse {
           0%, 100% { 
-            box-shadow: inset 0 0 10px rgba(255,255,255,0.01), 0 0 0px rgba(255,255,255,0); 
-            border-color: rgba(255,255,255,0.05); 
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.02), 0 0 0px rgba(255,255,255,0); 
+            border-color: rgba(255,255,255,0.08); 
           }
           50% { 
-            box-shadow: inset 0 0 20px rgba(255,255,255,0.03), 0 0 15px rgba(255,255,255,0.05); 
-            border-color: rgba(255,255,255,0.25); 
+            box-shadow: inset 0 0 25px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1); 
+            border-color: rgba(255,255,255,0.35); 
           }
         }
         .animate-smooth-pulse {
@@ -186,7 +186,7 @@ const items: readonly Item[] = [
   },
   {
     n: "03",
-    label: "Exemplarische Projekte",
+    label: "Projekte",
     slug: "referenzen",
     body: (
       <>
