@@ -310,9 +310,7 @@ function BePage() {
                 <div className="text-[10px] uppercase tracking-[0.15em] opacity-50 leading-relaxed max-w-[150px]">
                   dipl. Eventmanager (IST)
                   <br />
-                  Berater digitales Vertriebsmanagement (IHK)
-                  <br />
-                  KI Berater
+                  Berater digitales Vertriebsmanagement und KI (IHK)
                 </div>
               </div>
             </div>
