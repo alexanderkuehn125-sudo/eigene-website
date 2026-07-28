@@ -98,11 +98,12 @@ function HoverRevealGrid() {
         {projects.map((proj, i) => (
           <div
             key={i}
-            className="group relative flex aspect-square w-full items-center justify-center md:cursor-none cursor-trigger-zoom z-10 hover:z-50"
+            tabIndex={0}
+            className="group relative flex aspect-square w-full items-center justify-center md:cursor-none cursor-trigger-zoom z-10 hover:z-50 focus:z-50 focus:outline-none"
           >
             {/* Base Tile (Idle State) */}
             <div
-              className={`absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/5 ${proj.bgColor} transition-all duration-500 group-hover:scale-95 group-hover:opacity-0 group-hover:blur-sm animate-smooth-pulse`}
+              className={`absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/5 ${proj.bgColor} transition-all duration-500 group-hover:scale-95 group-hover:opacity-0 group-hover:blur-sm group-focus:scale-95 group-focus:opacity-0 group-focus:blur-sm animate-smooth-pulse`}
               style={{ animationDelay: `${i * 0.4}s` }}
             >
             {/* White Text Layer */}
@@ -115,7 +116,7 @@ function HoverRevealGrid() {
           </div>
 
           {/* Pop-Out Overlay (Hover State) */}
-          <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-10 md:group-hover:-inset-16 lg:group-hover:-inset-20 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
+          <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-10 md:group-hover:-inset-16 lg:group-hover:-inset-20 group-hover:opacity-100 group-focus:-inset-10 md:group-focus:-inset-16 lg:group-focus:-inset-20 group-focus:opacity-100 pointer-events-none group-hover:pointer-events-auto group-focus:pointer-events-auto">
             
             {/* Client Name in Full Color */}
             <span
