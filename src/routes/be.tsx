@@ -181,7 +181,7 @@ const items: readonly Item[] = [
   },
   {
     n: "03",
-    label: "Referenzen",
+    label: "Exemplarische Projekte",
     slug: "referenzen",
     body: (
       <>
