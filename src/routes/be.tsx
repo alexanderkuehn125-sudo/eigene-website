@@ -55,20 +55,23 @@ function HoverRevealGrid() {
           className="group relative flex aspect-square w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#1A1918] shadow-sm transition-all duration-500 hover:shadow-[0_10px_40px_rgba(0,0,0,0.8)] hover:border-white/20 md:cursor-none cursor-trigger-zoom"
         >
           {/* Initial State (Client Name) */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 group-hover:scale-110 group-hover:opacity-0 group-hover:blur-sm z-10">
-            <span className="text-center font-serif text-2xl font-light tracking-wide text-[#EFECE4] md:text-3xl">
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-500 group-hover:scale-110 group-hover:opacity-0 group-hover:blur-sm z-10">
+            <span
+              className="text-center text-xl md:text-2xl font-light tracking-wide text-[#EFECE4] break-words max-w-full hyphens-auto"
+              style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
+            >
               {proj.client}
             </span>
           </div>
 
           {/* Hover Reveal State (Glassmorphism overlay) */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/95 p-6 opacity-0 backdrop-blur-md transition-all duration-500 group-hover:opacity-100 z-20">
-            <span className="mb-4 text-center text-xs font-semibold uppercase tracking-widest text-[#EFECE4]/60">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/95 p-4 md:p-6 opacity-0 backdrop-blur-md transition-all duration-500 group-hover:opacity-100 z-20">
+            <span className="mb-4 text-center text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#EFECE4]/60 break-words max-w-full">
               {proj.project}
             </span>
-            <ul className="flex flex-col items-center gap-1.5 text-center text-[10px] uppercase tracking-wider text-[#EFECE4]">
+            <ul className="flex w-full flex-col items-center gap-1.5 text-center text-[9px] md:text-[10px] uppercase tracking-wider text-[#EFECE4] overflow-hidden">
               {proj.tasks.map((task, j) => (
-                <li key={j} className="opacity-90">
+                <li key={j} className="opacity-90 truncate w-full">
                   {task}
                 </li>
               ))}
