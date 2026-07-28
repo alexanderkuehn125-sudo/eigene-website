@@ -69,32 +69,32 @@ export const Route = createFileRoute("/be/referenzen")({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative flex aspect-[4/5] min-h-[280px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#2d2a22]/10 bg-[#faf6ed] shadow-sm transition-all duration-500 hover:shadow-xl hover:scale-105 md:cursor-none cursor-trigger-zoom z-10 hover:z-50"
+            className="group relative flex aspect-square w-full items-center justify-center md:cursor-none cursor-trigger-zoom z-10 hover:z-50"
           >
-            {/* Initial State (Client Name) */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-500 group-hover:scale-110 group-hover:opacity-0 group-hover:blur-sm z-10">
-              <span
-                className="text-center text-xl md:text-2xl font-light tracking-wide text-[#2d2a22] break-words max-w-full hyphens-auto"
-                style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
-              >
-                {proj.client}
-              </span>
-            </div>
+          {/* Base Tile (Idle State) */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-[#141312] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-all duration-500 group-hover:scale-95 group-hover:opacity-0 group-hover:blur-sm">
+            <span
+              className="text-center text-xl md:text-2xl font-light tracking-wider text-[#EFECE4]/90"
+              style={{ fontFamily: "'Jost', sans-serif", fontWeight: 300 }}
+            >
+              {proj.client}
+            </span>
+          </div>
 
-            {/* Hover Reveal State (Glassmorphism overlay) */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/95 p-4 md:p-6 opacity-0 backdrop-blur-md transition-all duration-500 group-hover:opacity-100 z-20">
-              <span className="mb-4 text-center text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#EFECE4]/60 break-words max-w-full">
-                {proj.project}
-              </span>
-              <ul className="flex w-full flex-col items-center gap-1.5 text-center text-[9px] md:text-[10px] uppercase tracking-wider text-[#EFECE4] overflow-y-auto custom-scrollbar">
-                {proj.tasks.map((task, j) => (
-                  <li key={j} className="opacity-90 leading-tight">
-                    {task}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+          {/* Pop-Out Overlay (Hover State) */}
+          <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-4 md:group-hover:-inset-6 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
+            <span className="mb-4 text-center text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#EFECE4]/60">
+              {proj.project}
+            </span>
+            <ul className="flex w-full flex-col items-center gap-1.5 md:gap-2 text-center text-[9px] md:text-[10px] uppercase tracking-wider text-[#EFECE4]">
+              {proj.tasks.map((task, j) => (
+                <li key={j} className="opacity-90 leading-tight">
+                  {task}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
         ))}
       </div>
     </SubPage>
