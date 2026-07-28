@@ -248,6 +248,7 @@ function BePage() {
   return (
     <main
       className="min-h-screen w-full relative bg-[#050504] text-[#EFECE4] overflow-clip md:[&_a]:cursor-none md:[&_button]:cursor-none"
+      onContextMenu={(e) => e.preventDefault()}
     >
       {/* Film-Grain / Papier-Rauschen Overlay */}
       <div
