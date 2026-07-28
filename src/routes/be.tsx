@@ -63,31 +63,43 @@ function FadingFilmstrip() {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
+  const handlePointerDown = (e: React.PointerEvent) => {
     setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
+    setTouchStart(e.clientX);
+    // Optional: Capture pointer so dragging outside the element still works
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (touchStart !== null) {
+      setTouchEnd(e.clientX);
+    }
   };
 
-  const handleTouchEnd = () => {
-    if (touchStart === null || touchEnd === null) return;
+  const handlePointerUp = (e: React.PointerEvent) => {
+    (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+    if (touchStart === null || touchEnd === null) {
+      setTouchStart(null);
+      setTouchEnd(null);
+      return;
+    }
     const distance = touchStart - touchEnd;
     if (distance > 50 && activeIndex < images.length - 1) {
       setActiveIndex(activeIndex + 1);
     } else if (distance < -50 && activeIndex > 0) {
       setActiveIndex(activeIndex - 1);
     }
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   return (
     <div
-      className="relative w-full h-[30vh] md:h-[40vh] mt-16 mb-12 flex items-center justify-center overflow-hidden touch-pan-y"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      className="relative w-full h-[30vh] md:h-[40vh] mt-16 mb-12 flex items-center justify-center overflow-hidden touch-pan-y select-none"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
     >
       {images.map((img, i) => {
         const offset = i - activeIndex;
