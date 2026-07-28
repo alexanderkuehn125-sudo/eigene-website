@@ -566,7 +566,7 @@ function CustomCursor() {
       if (rAF) cancelAnimationFrame(rAF);
       rAF = requestAnimationFrame(() => {
         if (cursorRef.current && ringRef.current && textRef.current) {
-          const dot = cursorRef.current.querySelector("#cursor-dot") as HTMLElement;
+          const dot = document.getElementById("cursor-dot-be");
           // Positioniert den Container extrem schnell und ohne Delay am Mauszeiger
           cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
 
@@ -578,14 +578,14 @@ function CustomCursor() {
             if (dot) dot.style.opacity = "0";
           } else if (state === "zoom") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
-            textRef.current.innerText = "ZOOM";
-            if (dot) dot.style.opacity = "0";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1.5)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
           } else if (state === "close") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
-            textRef.current.innerText = "CLOSE";
-            if (dot) dot.style.opacity = "0";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1.5)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
           } else if (state === "hover") {
             ringRef.current.style.opacity = "1";
             ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1)`;
@@ -593,7 +593,7 @@ function CustomCursor() {
             if (dot) dot.style.opacity = "1";
           } else if (state === "widget") {
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1.5)`;
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "1";
           } else if (state === "input") {
@@ -602,11 +602,10 @@ function CustomCursor() {
             textRef.current.innerText = "";
             if (dot) dot.style.opacity = "0";
           } else {
-            // hover und zoom bekommen exakt dasselbe "VIEW" in mittlerer Größe
             ringRef.current.style.opacity = "1";
-            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(2)`;
-            textRef.current.innerText = "VIEW";
-            if (dot) dot.style.opacity = "0";
+            ringRef.current.style.transform = `translate3d(-50%, -50%, 0) scale(1.5)`;
+            textRef.current.innerText = "";
+            if (dot) dot.style.opacity = "1";
           }
         }
       });
@@ -632,7 +631,7 @@ function CustomCursor() {
     >
       <div
         ref={ringRef}
-        className="absolute left-0 top-0 flex items-center justify-center rounded-full text-[#11100F] shadow-sm transition-all duration-300 ease-out overflow-hidden"
+        className="absolute left-0 top-0 flex items-center justify-center rounded-full text-white shadow-sm transition-all duration-300 ease-out overflow-hidden"
         style={{
           width: "32px",
           height: "32px",
@@ -647,8 +646,8 @@ function CustomCursor() {
 
         {/* White Dot */}
         <div
-          id="cursor-dot"
-          className="absolute inset-0 m-auto h-1 w-1 rounded-full bg-white opacity-0 transition-opacity duration-300 z-30"
+          id="cursor-dot-be"
+          className="absolute inset-0 m-auto h-1.5 w-1.5 rounded-full bg-white opacity-0 transition-opacity duration-300 z-30"
         />
 
         {/* Text */}
