@@ -210,6 +210,16 @@ const items: readonly Item[] = [
       </>
     ),
   },
+  {
+    n: "04",
+    label: "KI_Workflow Website",
+    slug: "ki-workflow",
+    body: (
+      <div className="opacity-50 italic">
+        (Inhalt folgt in Kürze...)
+      </div>
+    ),
+  },
 ] as const;
 
 function BePage() {
@@ -348,7 +358,7 @@ function BePage() {
                 onClick={() => setModalOpen("kontakt")}
               >
                 <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 transition-opacity group-hover:opacity-100">
-                  04
+                  05
                 </span>
                 <span
                   className="text-xl tracking-wide opacity-80 transition-opacity group-hover:opacity-100"
@@ -364,7 +374,7 @@ function BePage() {
                 onClick={() => setModalOpen("impressum")}
               >
                 <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 transition-opacity group-hover:opacity-100">
-                  05
+                  06
                 </span>
                 <span
                   className="text-xl tracking-wide opacity-80 transition-opacity group-hover:opacity-100"
