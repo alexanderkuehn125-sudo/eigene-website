@@ -92,11 +92,13 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
           >
             {/* Pulsing Rainbow Background Layer */}
             <motion.div
+              initial={{ scale: 1.5 }}
               animate={{ opacity: [0.2, 0.8, 0.2] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute inset-0 -z-20 group-hover:!opacity-90 transition-opacity duration-700"
               style={{
                 background: "linear-gradient(180deg, #9C27B0 0%, #E91E63 20%, #FF9800 40%, #FFEB3B 60%, #4CAF50 80%, #00BCD4 100%)",
+                filter: "blur(16px)",
               }}
             />
             {/* Textured Glass Overlay */}
