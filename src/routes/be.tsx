@@ -301,14 +301,14 @@ function BePage() {
 
             <div className="flex items-start gap-4 md:gap-6 mb-20">
               <div className="flex flex-col gap-4">
-                <p className="text-xs uppercase tracking-[0.2em] opacity-80 leading-loose">
+                <p className="text-[13px] uppercase tracking-[0.2em] opacity-80 leading-loose">
                   Projektmanagement.
                   <br />
                   Event.
                   <br />
                   KI & Digital.
                 </p>
-                <div className="text-[9px] uppercase tracking-[0.15em] opacity-50 leading-relaxed max-w-[150px]">
+                <div className="text-[10px] uppercase tracking-[0.15em] opacity-50 leading-relaxed max-w-[150px]">
                   dipl. Eventmanager (IST)
                   <br />
                   Berater digitales Vertriebsmanagement (IHK)
