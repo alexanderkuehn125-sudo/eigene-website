@@ -119,26 +119,38 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
       )}
 
       {/* Modal im React Portal */}
-      {mounted && isOpen &&
-        createPortal(
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
-            {/* Backdrop (Klickbar für Schließen, nativer Cursor) */}
-            <div
-              className="absolute inset-0 cursor-default"
-              style={{
-                background: "rgba(20, 18, 15, 0.9)",
-                backdropFilter: "blur(8px)",
-              }}
-              onClick={handleClose}
-            />
-            {/* Eigentliches Modal */}
-            <div
-              className="relative z-10 flex w-full max-w-2xl flex-col max-h-[95vh] overflow-y-auto rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl widget-cursor-area custom-scrollbar"
-              onClick={(e) => e.stopPropagation()}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              key="coffee-modal"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
             >
-              {/* Header */}
-              <div className="flex items-start justify-between mb-8">
-                <div>
+              {/* Backdrop (Klickbar für Schließen, nativer Cursor) */}
+              <div
+                className="absolute inset-0 cursor-default"
+                style={{
+                  background: "rgba(20, 18, 15, 0.9)",
+                  backdropFilter: "blur(8px)",
+                }}
+                onClick={handleClose}
+              />
+              {/* Eigentliches Modal */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 flex w-full max-w-2xl flex-col max-h-[95vh] overflow-y-auto rounded-sm border border-[#C5A059]/20 bg-[#141210] p-6 md:p-10 shadow-2xl widget-cursor-area custom-scrollbar"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Header */}
+                <div className="flex items-start justify-between mb-8">
+                  <div>
                   <h3 className="text-xl md:text-2xl font-light tracking-wide text-[#EFECE4] uppercase">
                     Kaffee-zu-Projekt <br/><span className="text-[#C5A059]/80">Konverter</span>
                   </h3>
@@ -292,10 +304,12 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                   </AnimatePresence>
                 </div>
               </div>
-            </div>
-          </div>,
-          document.body
-        )}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }

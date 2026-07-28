@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
 import { CoffeeToProjectConverter } from "@/components/CoffeeToProjectConverter";
@@ -214,6 +215,8 @@ const items: readonly Item[] = [
 
 function BePage() {
   const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | "menu" | null>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   // Zwingt den Browser, beim Neuladen wieder ganz oben zu starten
   useEffect(() => {
@@ -452,27 +455,38 @@ function BePage() {
       </div>
 
       {/* Modal Overlay (Analog zur Ausstellung) */}
-      {modalOpen && createPortal(
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
-          style={{
-            background: "rgba(45, 42, 34, 0.55)",
-            backdropFilter: "blur(4px)",
-          }}
-          onClick={() => setModalOpen(null)}
-        >
-          <div
-            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none cursor-content-area"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
+      {mounted && createPortal(
+        <AnimatePresence>
+          {modalOpen && (
+            <motion.div
+              key="be-modal-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
+              style={{
+                background: "rgba(45, 42, 34, 0.55)",
+                backdropFilter: "blur(4px)",
+              }}
               onClick={() => setModalOpen(null)}
-              aria-label="Schließen"
-              className="absolute right-5 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100"
             >
-              ×
-            </button>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none cursor-content-area"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  onClick={() => setModalOpen(null)}
+                  aria-label="Schließen"
+                  className="absolute right-5 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100"
+                >
+                  ×
+                </button>
 
             <h2
               className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
@@ -529,9 +543,11 @@ function BePage() {
               </div>
             ) : (
               <ImpressumContent />
-            )}
-          </div>
-        </div>,
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+        </AnimatePresence>,
         document.body
       )}
 

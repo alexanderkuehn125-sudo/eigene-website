@@ -414,54 +414,76 @@ function DoPage() {
       </div>
 
       {/* Impressum modal */}
-      {impressumOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
-          style={{
-            background: "rgba(45, 42, 34, 0.55)",
-            backdropFilter: "blur(4px)",
-          }}
-          onClick={() => setImpressumOpen(false)}
-        >
-          <div
-            className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12"
-            style={{ color: "#EFECE4" }}
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {impressumOpen && (
+          <motion.div
+            key="impressum-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
+            style={{
+              background: "rgba(45, 42, 34, 0.55)",
+              backdropFilter: "blur(4px)",
+            }}
+            onClick={() => setImpressumOpen(false)}
           >
-            <button
-              type="button"
-              onClick={() => setImpressumOpen(false)}
-              aria-label="Schließen"
-              className="absolute right-4 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100 p-4 -m-4"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12"
+              style={{ color: "#EFECE4" }}
+              onClick={(e) => e.stopPropagation()}
             >
-              ×
-            </button>
-            <h2
-              className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
-              style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
-            >
-              Impressum
-            </h2>
-            <ImpressumContent />
-          </div>
-        </div>
-      )}
+              <button
+                type="button"
+                onClick={() => setImpressumOpen(false)}
+                aria-label="Schließen"
+                className="absolute right-4 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100 p-4 -m-4"
+              >
+                ×
+              </button>
+              <h2
+                className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
+                style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
+              >
+                Impressum
+              </h2>
+              <ImpressumContent />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Lightbox im React Portal */}
-      {mounted && active && createPortal(
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
-          style={{
-            background: "rgba(20, 18, 15, 0.9)",
-            backdropFilter: "blur(8px)",
-          }}
-          onClick={() => setOpenId(null)}
-        >
-          <div
-            className="relative flex max-h-[95vh] max-w-[95vw] flex-col overflow-hidden bg-[#11100F] cursor-default"
-            style={{ color: "#EFECE4" }}
-            onClick={(e) => e.stopPropagation()}
-          >
+      {mounted && createPortal(
+        <AnimatePresence>
+          {active && (
+            <motion.div
+              key="lightbox-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
+              style={{
+                background: "rgba(20, 18, 15, 0.95)",
+                backdropFilter: "blur(12px)",
+              }}
+              onClick={() => setOpenId(null)}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="relative flex max-h-[95vh] max-w-[95vw] flex-col overflow-hidden bg-[#11100F] cursor-default rounded-sm shadow-2xl"
+                style={{ color: "#EFECE4" }}
+                onClick={(e) => e.stopPropagation()}
+              >
             <button
               type="button"
               onClick={() => setOpenId(null)}
@@ -473,14 +495,24 @@ function DoPage() {
 
             {/* Inner container for image */}
             <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#11100F]">
-              <LazyImage
-                key={active.id}
-                src={active.src}
-                alt={active.title}
-                eager
-                className="block max-h-[90vh] max-w-[90vw] w-auto h-auto object-contain md:cursor-none cursor-trigger-close"
-                onClick={() => setOpenId(null)}
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.id}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="flex items-center justify-center h-full w-full"
+                >
+                  <LazyImage
+                    src={active.src}
+                    alt={active.title}
+                    eager
+                    className="block max-h-[90vh] max-w-[90vw] w-auto h-auto object-contain md:cursor-none cursor-trigger-close"
+                    onClick={() => setOpenId(null)}
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Numbering and controls at the bottom */}
@@ -510,10 +542,12 @@ function DoPage() {
             >
               ▶
             </div>
-          </div>
-        </div>,
-        document.body
+          </motion.div>
+        </motion.div>
       )}
+      </AnimatePresence>,
+      document.body
+    )}
       <CustomCursor />
       
       {/* Desktop-only floating button */}
