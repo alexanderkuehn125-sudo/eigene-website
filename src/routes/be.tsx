@@ -210,20 +210,10 @@ const items: readonly Item[] = [
       </>
     ),
   },
-  {
-    n: "06",
-    label: "KI-Workflow Website",
-    slug: "ki-workflow",
-    body: (
-      <div className="opacity-50 italic">
-        (Inhalt folgt in Kürze...)
-      </div>
-    ),
-  },
 ] as const;
 
 function BePage() {
-  const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | "menu" | null>(null);
+  const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | "kiworkflow" | "menu" | null>(null);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -329,7 +319,7 @@ function BePage() {
             <CoffeeToProjectConverter />
 
             <nav className="flex flex-col gap-6">
-              {items.filter(it => it.n !== "06").map((it) => (
+              {items.map((it) => (
                 <a
                   key={it.slug}
                   href={`#${it.slug}`}
@@ -385,29 +375,21 @@ function BePage() {
                 </span>
               </button>
 
-              {items.filter(it => it.n === "06").map((it) => (
-                <a
-                  key={it.slug}
-                  href={`#${it.slug}`}
-                  className="group flex items-baseline gap-4 text-left"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      .getElementById(it.slug)
-                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
+              <button
+                type="button"
+                className="group flex items-baseline gap-4 text-left"
+                onClick={() => setModalOpen("kiworkflow")}
+              >
+                <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 transition-opacity group-hover:opacity-100">
+                  06
+                </span>
+                <span
+                  className="text-xl tracking-wide opacity-80 transition-opacity group-hover:opacity-100 rainbow-text-glow font-medium"
+                  style={{ fontFamily: "'Jost', sans-serif" }}
                 >
-                  <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 transition-opacity group-hover:opacity-100">
-                    {it.n}
-                  </span>
-                  <span
-                    className="text-xl tracking-wide opacity-80 transition-opacity group-hover:opacity-100 rainbow-text-glow font-medium"
-                    style={{ fontFamily: "'Jost', sans-serif" }}
-                  >
-                    {it.label}
-                  </span>
-                </a>
-              ))}
+                  KI-Workflow Website
+                </span>
+              </button>
             </nav>
           </div>
         </aside>
@@ -520,14 +502,16 @@ function BePage() {
                 </button>
 
             <h2
-              className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
-              style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
+              className={`mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl ${modalOpen === "kiworkflow" ? "rainbow-text-glow font-medium" : ""}`}
+              style={{ fontFamily: "'Jost', sans-serif", fontWeight: modalOpen === "kiworkflow" ? undefined : 400 }}
             >
               {modalOpen === "kontakt"
                 ? "Kontakt"
                 : modalOpen === "impressum"
                   ? "Impressum"
-                  : "Menü"}
+                  : modalOpen === "kiworkflow"
+                    ? "KI-Workflow Website"
+                    : "Menü"}
             </h2>
 
             {modalOpen === "menu" ? (
@@ -547,7 +531,6 @@ function BePage() {
                     onClick={(e) => {
                       e.preventDefault();
                       setModalOpen(null);
-                      // Kurze Verzögerung, damit das Modal schließt bevor gescrollt wird
                       setTimeout(() => {
                         document
                           .getElementById(it.slug)
@@ -557,13 +540,27 @@ function BePage() {
                   >
                     <span className="text-[9px] uppercase tracking-[0.3em] opacity-50">{it.n}</span>
                     <span
-                      className={`text-3xl tracking-wide opacity-90 ${it.n === "06" ? "rainbow-text-glow font-medium" : ""}`}
-                      style={{ fontFamily: "'Jost', sans-serif", fontWeight: it.n === "06" ? undefined : 400 }}
+                      className="text-3xl tracking-wide opacity-90"
+                      style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
                     >
                       {it.label}
                     </span>
                   </a>
                 ))}
+                
+                <button
+                  type="button"
+                  className="flex flex-col gap-1 text-left"
+                  onClick={() => setModalOpen("kiworkflow")}
+                >
+                  <span className="text-[9px] uppercase tracking-[0.3em] opacity-50">06</span>
+                  <span
+                    className="text-3xl tracking-wide opacity-90 rainbow-text-glow font-medium"
+                    style={{ fontFamily: "'Jost', sans-serif" }}
+                  >
+                    KI-Workflow Website
+                  </span>
+                </button>
               </nav>
             ) : modalOpen === "kontakt" ? (
               <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 max-w-2xl font-light">
@@ -572,8 +569,12 @@ function BePage() {
                 </p>
                 <ContactForm />
               </div>
-            ) : (
+            ) : modalOpen === "impressum" ? (
               <ImpressumContent />
+            ) : (
+              <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-50 max-w-2xl font-light italic">
+                (Inhalt folgt in Kürze...)
+              </div>
               )}
             </motion.div>
           </motion.div>
