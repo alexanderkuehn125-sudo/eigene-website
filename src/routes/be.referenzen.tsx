@@ -63,22 +63,24 @@ export const Route = createFileRoute("/be/referenzen")({
           >
             {/* White Text Layer */}
             <span
-              className="absolute text-center text-xl md:text-2xl font-light tracking-wider text-[#EFECE4]/90 transition-opacity duration-300 group-hover:opacity-0"
+              className="text-center text-xl md:text-2xl font-light tracking-wider text-[#EFECE4]/90"
               style={{ fontFamily: "'Jost', sans-serif", fontWeight: 300 }}
             >
               {proj.client}
-            </span>
-            {/* Colored Brand Text Layer (Fades in on early hover before popup covers it) */}
-            <span
-              className={`absolute text-center text-xl md:text-2xl font-light tracking-wider opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${proj.color && proj.color.includes('bg-clip') ? proj.color : ''}`}
-              style={proj.color && proj.color.includes('bg-clip') ? { fontFamily: "'Jost', sans-serif", fontWeight: 300 } : { fontFamily: "'Jost', sans-serif", fontWeight: 300, color: proj.color ? proj.color.replace('text-[', '').replace(']', '') : undefined }}
-            >
-              {proj.clientNode ? proj.clientNode : proj.client}
             </span>
           </div>
 
           {/* Pop-Out Overlay (Hover State) */}
           <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-4 md:group-hover:-inset-6 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
+            
+            {/* Client Name in Full Color */}
+            <span
+              className={`mb-2 text-center text-xl md:text-2xl font-normal tracking-wider ${proj.color && proj.color.includes('bg-clip') ? proj.color : ''}`}
+              style={proj.color && proj.color.includes('bg-clip') ? { fontFamily: "'Jost', sans-serif" } : { fontFamily: "'Jost', sans-serif", color: proj.color ? proj.color.replace('text-[', '').replace(']', '') : '#EFECE4' }}
+            >
+              {proj.clientNode ? proj.clientNode : proj.client}
+            </span>
+
             <span className="mb-4 text-center text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#EFECE4]/60">
               {proj.project}
             </span>
