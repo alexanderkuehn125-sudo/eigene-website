@@ -115,7 +115,7 @@ function HoverRevealGrid() {
           </div>
 
           {/* Pop-Out Overlay (Hover State) */}
-          <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-8 md:group-hover:-inset-12 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
+          <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-10 md:group-hover:-inset-16 lg:group-hover:-inset-20 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
             
             {/* Client Name in Full Color */}
             <span
