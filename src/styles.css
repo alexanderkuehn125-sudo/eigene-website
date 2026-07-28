@@ -335,11 +335,16 @@
 }
 
 /* Custom Scrollbar for Widgets */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(197, 160, 89, 0.25) transparent;
+  color-scheme: dark;
+}
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+  background: transparent !important;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(197, 160, 89, 0.25);

@@ -3,7 +3,6 @@ export function KiWorkflowContent() {
     <div className="text-base md:text-lg leading-relaxed opacity-90 max-w-3xl font-light space-y-12 pb-12">
       <div>
         <h3 className="text-2xl md:text-3xl tracking-wide mb-6">
-          <span className="opacity-80">Workflow-Präsentation:</span> <br className="hidden md:block" />
           <span className="font-medium rainbow-text-glow">Die Entstehung der Website</span>
         </h3>
         <p className="opacity-70 text-sm md:text-base">
