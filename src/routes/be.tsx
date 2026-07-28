@@ -153,22 +153,13 @@ const items: readonly Item[] = [
     body: (
       <>
         <p className="mb-6">
-          Mit über 20 Jahren Erfahrung im professionellen Projektmanagement – stark verwurzelt in
-          der hochkomplexen Eventbranche – kenne ich die physische und planerische Realität großer
-          Vorhaben. Ob auf Agentur- oder Unternehmensseite, die Prinzipien erfolgreicher Steuerung
-          bleiben universell.
+          Nach mehr als 15 Jahren in Projektverantwortung weiß ich: Die besten Ergebnisse entstehen dort, wo man das große Ganze im Blick behält, ohne die Menschen dahinter aus den Augen zu verlieren.
+        </p>
+        <p className="mb-6">
+          Ohne den Überblick zu verlieren, verstehe ich mich als Vermittler an den Schnittstellen komplexer Vorhaben. Mit einem soliden technischen Hintergrund und fundiertem PM-Handwerk steuere ich Abläufe so, dass aus vielen einzelnen Anforderungen eine klare Richtung wird. Dabei halte ich Teams den Rücken frei, höre zu und schaffe Räume, in denen alle fokussiert und verlässlich arbeiten können – auch wenn es mal hektischer wird.
         </p>
         <p>
-          Was mich antreibt, ist die Verbindung dieser pragmatischen Projekterfahrung mit den
-          massiven Möglichkeiten modernster digitaler Werkzeuge. Ich nutze Künstliche Intelligenz
-          und digitale Vertriebsstrategien nicht als Selbstzweck, sondern als Hebel, um Prozesse
-          effizienter, planbarer und zukunftsfähig zu machen.
-        </p>
-        <p className="mt-6 opacity-80">
-          Mein Ansatz ist es, nicht nur zu verwalten, sondern aktiv zu gestalten. Dabei hilft mir
-          ein gewachsenes Netzwerk aus Experten und mein unbedingter Anspruch an Qualität und
-          Präzision. Jedes Projekt ist eine neue Herausforderung, bei der ich strategische Weitsicht
-          mit operativer Exzellenz verbinde.
+          Mich treibt eine gesunde Neugier auf moderne Workflows an, immer mit dem Anspruch, neue Ansätze pragmatisch zu nutzen. Keine Buzzwords, sondern ehrlicher Austausch auf Augenhöhe, Bodenständigkeit und der lösungsorientierte Blick für das Wesentliche.
         </p>
       </>
     ),
