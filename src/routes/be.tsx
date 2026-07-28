@@ -52,7 +52,7 @@ function HoverRevealGrid() {
       {projects.map((proj, i) => (
         <div
           key={i}
-          className="group relative flex aspect-square w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#1A1918] shadow-sm transition-all duration-500 hover:shadow-[0_10px_40px_rgba(0,0,0,0.8)] hover:border-white/20 md:cursor-none cursor-trigger-zoom"
+          className="group relative flex aspect-[4/5] min-h-[280px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#1A1918] shadow-sm transition-all duration-500 hover:shadow-[0_10px_40px_rgba(0,0,0,0.8)] hover:border-white/20 hover:scale-105 md:cursor-none cursor-trigger-zoom z-10 hover:z-50"
         >
           {/* Initial State (Client Name) */}
           <div className="absolute inset-0 flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-500 group-hover:scale-110 group-hover:opacity-0 group-hover:blur-sm z-10">
@@ -69,9 +69,9 @@ function HoverRevealGrid() {
             <span className="mb-4 text-center text-[10px] md:text-xs font-semibold uppercase tracking-widest text-[#EFECE4]/60 break-words max-w-full">
               {proj.project}
             </span>
-            <ul className="flex w-full flex-col items-center gap-1.5 text-center text-[9px] md:text-[10px] uppercase tracking-wider text-[#EFECE4] overflow-hidden">
+            <ul className="flex w-full flex-col items-center gap-1.5 text-center text-[9px] md:text-[10px] uppercase tracking-wider text-[#EFECE4] overflow-y-auto custom-scrollbar">
               {proj.tasks.map((task, j) => (
-                <li key={j} className="opacity-90 truncate w-full">
+                <li key={j} className="opacity-90 leading-tight">
                   {task}
                 </li>
               ))}
