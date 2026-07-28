@@ -36,7 +36,24 @@ type Item = {
 };
 
 const projects = [
-  { client: "Google Cloud", project: "Google Roadshow DACH 2024", tasks: ["Projektmanagement", "Ausschreibungserstellung", "Produktionsleitung", "Locationmanagement", "Dienstleisterhandling", "Budget-Kontrolle"], glow: "rgba(66, 133, 244, 0.15)", color: "from-[#4285F4] via-[#EA4335] to-[#FBBC05] bg-gradient-to-r text-transparent bg-clip-text" },
+  { 
+    client: "Google Cloud", 
+    clientNode: (
+      <>
+        <span className="text-[#4285F4]">G</span>
+        <span className="text-[#EA4335]">o</span>
+        <span className="text-[#FBBC05]">o</span>
+        <span className="text-[#4285F4]">g</span>
+        <span className="text-[#34A853]">l</span>
+        <span className="text-[#EA4335]">e</span>
+        <span className="text-[#EFECE4]"> Cloud</span>
+      </>
+    ),
+    project: "Google Roadshow DACH 2024", 
+    tasks: ["Projektmanagement", "Ausschreibungserstellung", "Produktionsleitung", "Locationmanagement", "Dienstleisterhandling", "Budget-Kontrolle"], 
+    glow: "rgba(66, 133, 244, 0.15)", 
+    color: "" 
+  },
   { client: "IAA MOBILITY", project: "Citizens Lab 2023", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(0, 150, 214, 0.15)", color: "text-[#0096D6]" },
   { client: "Sport1", project: "Hauptversammlung 2015", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], glow: "rgba(237, 28, 36, 0.15)", color: "text-[#ED1C24]" },
   { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], glow: "rgba(0, 112, 185, 0.15)", color: "text-[#0070B9]" },
@@ -68,10 +85,10 @@ function HoverRevealGrid() {
             </span>
             {/* Colored Brand Text Layer (Fades in on early hover before popup covers it) */}
             <span
-              className={`absolute text-center text-xl md:text-2xl font-light tracking-wider opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${proj.color.includes('bg-clip') ? proj.color : ''}`}
-              style={proj.color.includes('bg-clip') ? { fontFamily: "'Jost', sans-serif", fontWeight: 300 } : { fontFamily: "'Jost', sans-serif", fontWeight: 300, color: proj.color.replace('text-[', '').replace(']', '') }}
+              className={`absolute text-center text-xl md:text-2xl font-light tracking-wider opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${proj.color && proj.color.includes('bg-clip') ? proj.color : ''}`}
+              style={proj.color && proj.color.includes('bg-clip') ? { fontFamily: "'Jost', sans-serif", fontWeight: 300 } : { fontFamily: "'Jost', sans-serif", fontWeight: 300, color: proj.color ? proj.color.replace('text-[', '').replace(']', '') : undefined }}
             >
-              {proj.client}
+              {proj.clientNode ? proj.clientNode : proj.client}
             </span>
           </div>
 
