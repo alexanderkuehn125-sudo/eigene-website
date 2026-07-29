@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
 import { CuratorRoulette } from "@/components/CuratorRoulette";
+import { ContactForm } from "@/components/ContactForm";
 
 export const Route = createFileRoute("/do")({
   head: () => ({
@@ -138,7 +139,7 @@ function preloadImage(src: string) {
 
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
-  const [impressumOpen, setImpressumOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | null>(null);
   const [activeCategory, setActiveCategory] = useState("Alle");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -185,13 +186,13 @@ function DoPage() {
   };
 
   useEffect(() => {
-    if (!impressumOpen) return;
+    if (!modalOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setImpressumOpen(false);
+      if (e.key === "Escape") setModalOpen(null);
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [impressumOpen]);
+  }, [modalOpen]);
 
   const navigateLightbox = (dir: 1 | -1) => {
     setOpenId((prev) => {
@@ -400,15 +401,16 @@ function DoPage() {
 
           <footer className="mt-16 flex flex-col items-center gap-4 text-[11px] uppercase tracking-[0.35em] opacity-70 md:mt-24">
             <div className="flex gap-6">
-              <a
-                href="mailto:mail@alexanderkuehn.de"
+              <button
+                type="button"
+                onClick={() => setModalOpen("kontakt")}
                 className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity cursor-pointer md:cursor-none"
               >
                 Kontakt
-              </a>
+              </button>
               <button
                 type="button"
-                onClick={() => setImpressumOpen(true)}
+                onClick={() => setModalOpen("impressum")}
                 className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity cursor-pointer md:cursor-none"
               >
                 Impressum
@@ -421,50 +423,62 @@ function DoPage() {
         </div>
       </div>
 
-      {/* Impressum modal */}
-      <AnimatePresence>
-        {impressumOpen && (
-          <motion.div
-            key="impressum-modal"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
-            style={{
-              background: "rgba(45, 42, 34, 0.55)",
-              backdropFilter: "blur(4px)",
-            }}
-            onClick={() => setImpressumOpen(false)}
-          >
+      {/* Modals im React Portal */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {modalOpen && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none cursor-content-area"
-              style={{ color: "#EFECE4" }}
-              onClick={(e) => e.stopPropagation()}
+              key="do-modal-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[110] flex items-center justify-center p-4 md:p-8 md:cursor-none cursor-trigger-close"
+              style={{
+                background: "rgba(45, 42, 34, 0.55)",
+                backdropFilter: "blur(4px)",
+              }}
+              onClick={() => setModalOpen(null)}
             >
-              <button
-                type="button"
-                onClick={() => setImpressumOpen(false)}
-                aria-label="Schließen"
-                className="absolute right-4 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100 p-4 -m-4"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="relative flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-2xl border border-white/10 bg-[#1A1918] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] md:p-12 md:[&_a]:cursor-none md:[&_button]:cursor-none cursor-content-area"
+                style={{ color: "#EFECE4" }}
+                onClick={(e) => e.stopPropagation()}
               >
-                ×
-              </button>
-              <h2
-                className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
-                style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
-              >
-                Impressum
-              </h2>
-              <ImpressumContent />
+                <button
+                  type="button"
+                  onClick={() => setModalOpen(null)}
+                  aria-label="Schließen"
+                  className="absolute right-4 top-4 text-2xl leading-none opacity-70 transition-opacity hover:opacity-100 p-4 -m-4"
+                >
+                  ×
+                </button>
+                <h2
+                  className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
+                  style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
+                >
+                  {modalOpen === "kontakt" ? "Kontakt" : "Impressum"}
+                </h2>
+                {modalOpen === "kontakt" ? (
+                  <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 font-light">
+                    <p className="mb-6">
+                      Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch.
+                    </p>
+                    <ContactForm />
+                  </div>
+                ) : (
+                  <ImpressumContent />
+                )}
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
       {/* Lightbox im React Portal */}
       {mounted && createPortal(
