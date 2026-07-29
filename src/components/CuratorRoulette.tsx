@@ -193,7 +193,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
             className={
               mobileInline 
                 ? "flex flex-col items-center w-full mb-6 pointer-events-none md:hidden" 
-                : "fixed bottom-6 right-6 z-[90] flex-col items-end gap-4 pointer-events-none hidden md:flex"
+                : "fixed bottom-6 right-6 md:bottom-6 md:right-6 z-[90] flex-col items-end gap-4 pointer-events-none hidden md:flex"
             }
           >
             <button
@@ -212,17 +212,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
                   filter: "blur(10px)",
                 }}
               />
-              {/* Textured Glass Overlay */}
-              <div 
-                className="absolute inset-0 -z-10 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" 
-                style={{
-                  backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(255,255,255,0.08) 6px, rgba(255,255,255,0.08) 7px)",
-                  backdropFilter: "blur(8px)",
-                  WebkitBackdropFilter: "blur(8px)",
-                }}
-              />
               
-              <Search className={`h-4 w-4 text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity shrink-0 ${isAnalyzing && !showCritique ? 'animate-bounce' : ''}`} />
+              <Search className={`h-[14px] w-[14px] text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity shrink-0 ${isAnalyzing && !showCritique ? 'animate-bounce' : ''}`} />
               <span className="text-[10px] md:text-xs font-medium uppercase tracking-[0.2em] text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity">
                 {isAnalyzing && !showCritique ? "Analysiere..." : "Werk analysieren"}
               </span>

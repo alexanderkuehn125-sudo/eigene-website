@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { AlertTriangle, ChevronRight, Zap } from "lucide-react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { StumbleIcon } from "./StumbleIcon";
 
 export function ProjectRiskScanner() {
   const [mounted, setMounted] = useState(false);
@@ -81,17 +80,8 @@ Bitte antworte extrem präzise und strukturiert in folgendem Format (nutze Markd
               filter: "blur(10px)",
             }}
           />
-          {/* Textured Glass Overlay */}
-          <div 
-            className="absolute inset-0 -z-10 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" 
-            style={{
-              backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(255,255,255,0.08) 6px, rgba(255,255,255,0.08) 7px)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
-            }}
-          />
 
-          <StumbleIcon className="h-5 w-5 md:h-[38px] md:w-[38px] opacity-80 group-hover:opacity-100 transition-opacity shrink-0" />
+          <AlertTriangle className="h-5 w-5 md:h-[34px] md:w-[34px] opacity-80 group-hover:opacity-100 transition-opacity shrink-0" />
           <span className="max-w-0 overflow-hidden whitespace-nowrap text-[9px] md:text-sm tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] md:group-hover:max-w-[400px] group-hover:opacity-100 group-hover:pl-2.5 md:group-hover:pl-5 group-hover:pr-1.5 md:group-hover:pr-2.5">
              Projekt - Risiko - Scanner
           </span>
@@ -140,7 +130,7 @@ Bitte antworte extrem präzise und strukturiert in folgendem Format (nutze Markd
                 </button>
 
                 <div className="mb-6 flex items-center gap-4">
-                  <StumbleIcon className="h-6 w-6 md:h-8 md:w-8 text-[#C5A059]" />
+                  <AlertTriangle className="h-6 w-6 md:h-8 md:w-8 text-[#C5A059]" />
                   <h2 className="text-xl md:text-2xl font-light tracking-wide text-[#EFECE4]">
                     KI-Risiko-<span className="text-[#C5A059]">Scanner</span>
                   </h2>

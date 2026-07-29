@@ -100,17 +100,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                 filter: "blur(10px)",
               }}
             />
-            {/* Textured Glass Overlay */}
-            <div 
-              className="absolute inset-0 -z-10 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" 
-              style={{
-                backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(255,255,255,0.08) 6px, rgba(255,255,255,0.08) 7px)",
-                backdropFilter: "blur(8px)",
-                WebkitBackdropFilter: "blur(8px)",
-              }}
-            />
 
-            <Coffee className="h-5 w-5 md:h-[38px] md:w-[38px] opacity-80 group-hover:opacity-100 transition-opacity shrink-0" />
+            <Coffee className="h-5 w-5 md:h-[34px] md:w-[34px] opacity-80 group-hover:opacity-100 transition-opacity shrink-0" />
             <span className="max-w-0 overflow-hidden whitespace-nowrap text-[9px] md:text-sm tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[250px] md:group-hover:max-w-[350px] group-hover:opacity-100 group-hover:pl-2.5 md:group-hover:pl-5 group-hover:pr-1.5 md:group-hover:pr-2.5">
                Projekt - Prognose 
             </span>
