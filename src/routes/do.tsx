@@ -387,7 +387,7 @@ function DoPage() {
           </AnimatePresence>
         </section>
 
-        <div className="w-full -mt-12 md:-mt-20">
+        <div className="w-full -mt-12 md:-mt-20 relative z-50">
           <div className="mt-16 flex flex-col items-center gap-6 md:mt-24">
             <button
               type="button"
