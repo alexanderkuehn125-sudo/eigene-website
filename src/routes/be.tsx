@@ -392,7 +392,7 @@ function BePage() {
                   06
                 </span>
                 <span
-                  className="text-xl tracking-wide opacity-80 transition-opacity group-hover:opacity-100 rainbow-text-glow font-medium"
+                  className="text-xl tracking-wide opacity-80 transition-opacity group-hover:opacity-100"
                   style={{ fontFamily: "'Jost', sans-serif" }}
                 >
                   KI-Workflow Website
@@ -416,8 +416,8 @@ function BePage() {
               <div className="mb-12 flex items-baseline gap-4 relative z-10">
                 <span className="text-[10px] uppercase tracking-[0.3em] opacity-40">{it.n}</span>
                 <h2
-                  className={`text-4xl md:text-5xl lg:text-6xl tracking-wide ${it.n === "06" ? "rainbow-text-glow font-medium" : ""}`}
-                  style={{ fontFamily: "'Jost', sans-serif", fontWeight: it.n === "06" ? undefined : 400 }}
+                  className="text-4xl md:text-5xl lg:text-6xl tracking-wide"
+                  style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
                 >
                   {it.label}
                 </h2>
@@ -566,7 +566,7 @@ function BePage() {
                 >
                   <span className="text-[9px] uppercase tracking-[0.3em] opacity-50">06</span>
                   <span
-                    className="text-3xl tracking-wide opacity-90 rainbow-text-glow font-medium"
+                    className="text-3xl tracking-wide opacity-90"
                     style={{ fontFamily: "'Jost', sans-serif" }}
                   >
                     KI-Workflow Website
