@@ -37,7 +37,7 @@ export function ProjectRiskScanner() {
       }
 
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" }); 
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); 
 
       const prompt = `Du bist ein strenger Projektmanager und 'Devil's Advocate' mit tiefer Expertise im digitalen Vertriebsmanagement und KI.
 Analysiere das folgende Vorhaben auf mögliche B2B/Digital-Risiken.
