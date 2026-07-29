@@ -6,7 +6,7 @@ export function KiWorkflowContent() {
           <span className="font-light">Die Entstehung der Website</span>
         </h3>
         <p className="opacity-70 text-sm md:text-base">
-          Die Entwicklung dieser Website war ein dynamischer Prozess zwischen verschiedenen KI-Systemen und Plattformen. Hier ist der genaue Workflow, die Hürden und wie wir sie gelöst haben.
+          Die Entwicklung dieser Website erfolgte in einem iterativen Prozess zwischen verschiedenen KI-Systemen und Plattformen. Nachfolgend eine sachliche Übersicht des Workflows sowie der zentralen Herausforderungen und deren Lösungen.
         </p>
       </div>
 
@@ -15,20 +15,20 @@ export function KiWorkflowContent() {
       {/* Phase 1 */}
       <div className="space-y-4">
         <h4 className="text-xl md:text-2xl tracking-wide text-[#C5A059]">
-          1. Phase: Lovable ➔ GitHub
+          Phase 1: Lovable ➔ GitHub
         </h4>
         <strong className="block text-sm uppercase tracking-widest opacity-60 mb-2">
-          Der rasante Start & das Fundament
+          Grundgerüst & Schnelligkeit
         </strong>
-        <ul className="space-y-3 opacity-80 text-sm md:text-base">
+        <ul className="list-disc list-outside ml-5 space-y-2 opacity-80 text-sm md:text-base">
           <li>
-            <span className="font-medium text-white opacity-100">Der Prozess:</span> Wir haben unsere Vision (Dark Mode, Premium-Look) in <em>Lovable</em> beschrieben. Lovable hat in Rekordzeit das Grundgerüst in React gebaut.
+            <span className="font-medium text-white opacity-100">Prozess:</span> Definition der Basis (Dark Mode, Premium-Look) in <em>Lovable</em> zur schnellen Erstellung des React-Grundgerüsts.
           </li>
           <li>
-            <span className="font-medium text-white opacity-100">Das Problem:</span> Lovable ist fantastisch für den Start, baut aber manchmal "quick and dirty". Sobald es an tiefe Logik oder spezielle Layouts geht, stößt es an seine Grenzen.
+            <span className="font-medium text-white opacity-100">Problem:</span> Einschränkungen der KI bei komplexer Logik und verschachtelten Layouts.
           </li>
           <li>
-            <span className="font-medium text-white opacity-100">Die Lösung:</span> Wir haben den ersten Rohentwurf gesichert und den Code auf <strong>GitHub</strong> hochgeladen, um ab hier die volle Kontrolle zu übernehmen.
+            <span className="font-medium text-white opacity-100">Lösung:</span> Export des Rohentwurfs auf <strong>GitHub</strong> zur Übernahme der vollständigen Kontrolle über die Codebasis.
           </li>
         </ul>
       </div>
@@ -36,20 +36,20 @@ export function KiWorkflowContent() {
       {/* Phase 2 */}
       <div className="space-y-4">
         <h4 className="text-xl md:text-2xl tracking-wide text-[#C5A059]">
-          2. Phase: Antigravity ➔ GitHub
+          Phase 2: Antigravity ➔ GitHub
         </h4>
         <strong className="block text-sm uppercase tracking-widest opacity-60 mb-2">
-          Deep-Dive Debugging & Komplexität
+          Komplexität & Responsive Design
         </strong>
-        <ul className="space-y-3 opacity-80 text-sm md:text-base">
+        <ul className="list-disc list-outside ml-5 space-y-2 opacity-80 text-sm md:text-base">
           <li>
-            <span className="font-medium text-white opacity-100">Der Prozess:</span> Der Code wurde an <em>Antigravity</em> (den fortgeschrittenen KI-Agenten) übergeben, um die harten Nüsse zu knacken.
+            <span className="font-medium text-white opacity-100">Prozess:</span> Übergabe der Codebasis an <em>Antigravity</em> (fortgeschrittener KI-Agent) für detailliertes Debugging.
           </li>
           <li>
-            <span className="font-medium text-white opacity-100">Das Problem (Der Browser-Kampf):</span> Auf dem Desktop sah alles toll aus, aber auf mobilen Geräten verschwanden Bilder (die "Lightbox") plötzlich im digitalen Nirgendwo außerhalb des Bildschirms.
+            <span className="font-medium text-white opacity-100">Problem:</span> Auf mobilen Endgeräten wurden Bilder (Lightbox) fehlerhaft außerhalb des sichtbaren Bereichs gerendert.
           </li>
           <li>
-            <span className="font-medium text-white opacity-100">Die Lösung:</span> Antigravity hat komplexe <em>React Portals</em> eingebaut. Dadurch wurde die Lightbox vom restlichen Layout entkoppelt und zentriert sich nun auf jedem Gerät perfekt. Der saubere Code ging zurück an GitHub.
+            <span className="font-medium text-white opacity-100">Lösung:</span> Implementierung von <em>React Portals</em> zur sauberen Entkopplung der Lightbox vom Hauptlayout. Rückführung des Codes zu GitHub.
           </li>
         </ul>
       </div>
@@ -57,20 +57,23 @@ export function KiWorkflowContent() {
       {/* Phase 3 */}
       <div className="space-y-4">
         <h4 className="text-xl md:text-2xl tracking-wide text-[#C5A059]">
-          3. Phase: Lovable ➔ GitHub
+          Phase 3: Lovable ➔ GitHub
         </h4>
         <strong className="block text-sm uppercase tracking-widest opacity-60 mb-2">
-          Visueller Feinschliff & Content
+          Inhalte, Design & Übersetzungs-Konflikte
         </strong>
-        <ul className="space-y-3 opacity-80 text-sm md:text-base">
+        <ul className="list-disc list-outside ml-5 space-y-2 opacity-80 text-sm md:text-base">
           <li>
-            <span className="font-medium text-white opacity-100">Der Prozess:</span> Mit dem stabilen Fundament haben wir in Lovable weitere visuelle Elemente und Inhalte (wie Texte und Bilder-Platzhalter) hinzugefügt.
+            <span className="font-medium text-white opacity-100">Prozess:</span> Hinzufügen weiterer visueller Elemente und Inhalte über Lovable auf Basis des stabilisierten Codes.
           </li>
           <li>
-            <span className="font-medium text-white opacity-100">Das Problem (Der Custom Cursor Konflikt):</span> Beim Hinzufügen von neuen Buttons und Links hat der eigens programmierte Mauszeiger (der weiße Kreis) plötzlich mit dem normalen System-Mauszeiger konkurriert. Alles wirkte ruckelig.
+            <span className="font-medium text-white opacity-100">Problem 1 (Mauszeiger):</span> Konflikte zwischen dem programmierten Custom Cursor und dem System-Mauszeiger führten zu Ruckeln.
           </li>
           <li>
-            <span className="font-medium text-white opacity-100">Die Lösung:</span> Erneute Synchronisierung über GitHub, um den Code für den nächsten Reparaturlauf bereitzustellen.
+            <span className="font-medium text-white opacity-100">Problem 2 (Sprache & Schriftarten):</span> Das Basis-Setup der Seite war initial auf Englisch eingestellt. Externe Tests offenbarten, dass die automatische Übersetzungsfunktion (z.B. in Google Chrome) das Layout und die verwendeten Schriftarten fehlerhaft darstellte. Dieser Fehler blieb intern zunächst unentdeckt, da die Übersetzungsfunktion im Entwicklungsumfeld deaktiviert war.
+          </li>
+          <li>
+            <span className="font-medium text-white opacity-100">Lösung:</span> Erneute Synchronisierung über GitHub zur Fehlerbehebung im nächsten Entwicklungsschritt, inklusive korrekter Sprachdeklaration für den Browser.
           </li>
         </ul>
       </div>
@@ -78,36 +81,32 @@ export function KiWorkflowContent() {
       {/* Phase 4 */}
       <div className="space-y-4">
         <h4 className="text-xl md:text-2xl tracking-wide text-[#C5A059]">
-          4. Phase: Antigravity ➔ GitHub ➔ Vercel
+          Phase 4: Antigravity ➔ GitHub ➔ Vercel
         </h4>
         <strong className="block text-sm uppercase tracking-widest opacity-60 mb-2">
-          Perfektionismus & Der Live-Gang
+          Finalisierung & Deployment
         </strong>
-        <ul className="space-y-3 opacity-80 text-sm md:text-base">
+        <ul className="list-disc list-outside ml-5 space-y-2 opacity-80 text-sm md:text-base">
           <li>
-            <span className="font-medium text-white opacity-100">Der Prozess:</span> Der finale Code-Feinschliff durch Antigravity, inklusive fließender Animationen (<code>AnimatePresence</code>), damit nichts mehr unschön "aufpoppt".
+            <span className="font-medium text-white opacity-100">Prozess:</span> Abschließender Code-Feinschliff durch Antigravity (Integration fließender Animationen via <code>AnimatePresence</code>).
           </li>
           <li>
-            <span className="font-medium text-white opacity-100">Das Problem (Das Hosting-Desaster):</span> Wir wollten die Seite anfangs über <em>GitHub Pages</em> hosten. Das war aber zu starr, das Routing (Unterseiten) funktionierte nicht richtig und es war schwer, eine eigene Domain sauber anzubinden. Zudem blockierten winzige TypeScript-Fehler den Build-Prozess.
+            <span className="font-medium text-white opacity-100">Problem:</span> Geplantes Hosting über <em>GitHub Pages</em> erwies sich als ineffizient (fehlerhaftes Routing bei Unterseiten, schwierige Domain-Anbindung, blockierende TypeScript-Fehler).
           </li>
           <li>
-            <span className="font-medium text-white opacity-100">Die Lösung:</span>
-            <ol className="list-decimal list-inside ml-2 mt-2 space-y-1">
-              <li><strong>Strikte Code-Bereinigung</strong> durch Antigravity, um alle versteckten Fehler zu eliminieren.</li>
-              <li><strong>Der Umzug zu Vercel.</strong> Vercel bietet professionelles CI/CD. Jetzt wird jeder Code-Push auf GitHub vollautomatisch getestet und in Sekunden fehlerfrei als Live-Website im Internet veröffentlicht.</li>
-            </ol>
+            <span className="font-medium text-white opacity-100">Lösung:</span> Strikte Code-Bereinigung und Migration zu <strong>Vercel</strong>. Dies ermöglicht nun eine professionelle CI/CD-Pipeline mit automatisierten Tests und fehlerfreien Deployments bei jedem GitHub-Push.
           </li>
         </ul>
       </div>
 
       <div className="h-px w-full bg-white/10" />
 
-      {/* Zusammenfassung / TIP */}
+      {/* Zusammenfassung */}
       <div className="relative border border-[#C5A059]/40 bg-[#C5A059]/5 p-6 md:p-8 rounded-sm shadow-[0_0_15px_rgba(197,160,89,0.05)]">
         <div className="absolute top-0 left-0 w-1 h-full bg-[#C5A059] rounded-l-sm"></div>
         <p className="text-sm md:text-base leading-relaxed opacity-90">
-          <strong className="text-[#C5A059] uppercase tracking-wider block mb-2 text-xs">💡 Zusammenfassung für das Publikum:</strong>
-          Dieser iterative Ping-Pong-Prozess zeigt perfekt modernes Projektmanagement: <strong>Lovable</strong> für die grobe Architektur und Schnelligkeit, <strong>Antigravity</strong> für das komplexe Engineering und Detail-Problemlösungen, <strong>GitHub</strong> als zentraler Ankerpunkt, und <strong>Vercel</strong> für das blitzschnelle, professionelle Hosting.
+          <strong className="text-[#C5A059] uppercase tracking-wider block mb-2 text-xs">💡 Zusammenfassung des Stacks:</strong>
+          Dieser Prozess demonstriert ein modernes Zusammenspiel der Werkzeuge: <strong>Lovable</strong> für schnelle Architektur, <strong>Antigravity</strong> für komplexes Engineering, <strong>GitHub</strong> als zentrale Versionskontrolle und <strong>Vercel</strong> für automatisiertes Hosting.
         </p>
       </div>
     </div>
