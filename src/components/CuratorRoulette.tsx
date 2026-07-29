@@ -205,10 +205,10 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
               <motion.div
                 initial={{ scale: 1.5 }}
                 animate={{ opacity: [0.35, 0.85, 0.35] }}
-                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-0 -z-20 transition-opacity duration-700"
                 style={{
-                  background: "linear-gradient(180deg, rgba(197,160,89,0.2) 0%, rgba(225,185,115,0.45) 50%, rgba(197,160,89,0.2) 100%)",
+                  background: "linear-gradient(180deg, rgba(197,160,89,0.1) 0%, rgba(225,185,115,0.3) 50%, rgba(197,160,89,0.1) 100%)",
                   filter: "blur(10px)",
                 }}
               />
