@@ -199,7 +199,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
             <button
               onClick={handleSurpriseMe}
               disabled={isAnalyzing || showCritique}
-              className="pointer-events-auto group relative flex items-center gap-3 overflow-hidden rounded-full border border-white/20 px-5 py-2.5 md:px-6 md:py-3 shadow-[0_0_20px_rgba(197,160,89,0.25)] hover:shadow-[0_0_35px_rgba(197,160,89,0.45)] transition-all hover:border-white/40 focus:outline-none disabled:opacity-50 cursor-none"
+              className="pointer-events-auto group relative flex items-center gap-3 overflow-hidden rounded-full border border-white/20 px-4 py-2 md:px-5 md:py-2.5 transition-all hover:border-white/40 focus:outline-none disabled:opacity-50 cursor-none"
             >
               {/* Smooth Glowing Pulse */}
               <motion.div
