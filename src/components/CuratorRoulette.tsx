@@ -199,9 +199,19 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
             <button
               onClick={handleSurpriseMe}
               disabled={isAnalyzing || showCritique}
-              className="pointer-events-auto group relative flex items-center gap-3 overflow-hidden rounded-full border border-white/20 px-5 py-2.5 md:px-6 md:py-3 shadow-lg transition-all hover:border-white/40 focus:outline-none disabled:opacity-50 cursor-none"
+              className="pointer-events-auto group relative flex items-center gap-3 overflow-hidden rounded-full border border-white/20 px-5 py-2.5 md:px-6 md:py-3 shadow-[0_0_20px_rgba(197,160,89,0.25)] hover:shadow-[0_0_35px_rgba(197,160,89,0.45)] transition-all hover:border-white/40 focus:outline-none disabled:opacity-50 cursor-none"
             >
-              {/* The rainbow background has been removed as requested */}
+              {/* Smooth Glowing Pulse */}
+              <motion.div
+                initial={{ scale: 1.5 }}
+                animate={{ opacity: [0.35, 0.85, 0.35] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 -z-20 transition-opacity duration-700"
+                style={{
+                  background: "linear-gradient(180deg, rgba(197,160,89,0.3) 0%, rgba(255,255,255,0.4) 50%, rgba(197,160,89,0.3) 100%)",
+                  filter: "blur(10px)",
+                }}
+              />
               {/* Textured Glass Overlay */}
               <div 
                 className="absolute inset-0 -z-10 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" 

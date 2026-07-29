@@ -87,17 +87,17 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
       {mounted && (
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-2.5 md:p-4 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shadow-[0_0_15px_rgba(197,160,89,0.15)] hover:shadow-[0_0_25px_rgba(197,160,89,0.3)] shrink-0"
+            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-2.5 md:p-4 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shadow-[0_0_20px_rgba(197,160,89,0.25)] hover:shadow-[0_0_35px_rgba(197,160,89,0.45)] shrink-0"
           >
             {/* Smooth Glowing Pulse */}
             <motion.div
               initial={{ scale: 1.5 }}
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ opacity: [0.35, 0.85, 0.35] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute inset-0 -z-20 transition-opacity duration-700"
               style={{
-                background: "linear-gradient(180deg, rgba(197,160,89,0.2) 0%, rgba(255,255,255,0.25) 50%, rgba(197,160,89,0.2) 100%)",
-                filter: "blur(12px)",
+                background: "linear-gradient(180deg, rgba(197,160,89,0.3) 0%, rgba(255,255,255,0.4) 50%, rgba(197,160,89,0.3) 100%)",
+                filter: "blur(10px)",
               }}
             />
             {/* Textured Glass Overlay */}
