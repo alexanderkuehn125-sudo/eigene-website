@@ -101,6 +101,29 @@ export function KiWorkflowContent() {
 
       <div className="h-px w-full bg-white/10" />
 
+      {/* Phase 5 */}
+      <div className="space-y-4">
+        <h4 className="text-xl md:text-2xl tracking-wide text-[#C5A059]">
+          Phase 5: Gemini API & Interaktivität
+        </h4>
+        <strong className="block text-sm uppercase tracking-widest opacity-60 mb-2">
+          Die drei KI-Widgets
+        </strong>
+        <ul className="list-disc list-outside ml-5 space-y-2 opacity-80 text-sm md:text-base">
+          <li>
+            <span className="font-medium text-white opacity-100">Prozess:</span> Entwicklung und Integration von drei dynamischen Widget-Buttons (Risk Scanner, Coffee Converter, KI-Kurator) zur aktiven Einbindung der Besucher.
+          </li>
+          <li>
+            <span className="font-medium text-white opacity-100">Problem:</span> Implementierung intelligenter, kontextbezogener Echtzeit-Interaktion in eine klassische Frontend-Architektur, ohne ein eigenes, aufwendiges Backend aufbauen zu müssen.
+          </li>
+          <li>
+            <span className="font-medium text-white opacity-100">Lösung:</span> Direkte Anbindung an das Google Gemini KI-Modell über eine API-Schnittstelle. Die Widgets senden Prompts im Hintergrund an die KI, strukturieren die dynamischen Antworten und machen das statische Portfolio so zu einer interaktiven Erfahrung.
+          </li>
+        </ul>
+      </div>
+
+      <div className="h-px w-full bg-white/10" />
+
       {/* Zusammenfassung */}
       <div className="relative border border-[#C5A059]/40 bg-[#C5A059]/5 p-6 md:p-8 rounded-sm shadow-[0_0_15px_rgba(197,160,89,0.05)]">
         <div className="absolute top-0 left-0 w-1 h-full bg-[#C5A059] rounded-l-sm"></div>
