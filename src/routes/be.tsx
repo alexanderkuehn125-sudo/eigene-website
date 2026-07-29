@@ -7,6 +7,7 @@ import { KiWorkflowContent } from "@/components/KiWorkflowContent";
 import { CoffeeToProjectConverter } from "@/components/CoffeeToProjectConverter";
 import { ProjectRiskScanner } from "@/components/ProjectRiskScanner";
 import { WidgetContainer } from "@/components/WidgetContainer";
+import { NetworkBackground } from "@/components/NetworkBackground";
 import { ContactForm } from "@/components/ContactForm";
 // Neues lokales Portrait
 import portrait from "@/assets/Portrait.jpg";
@@ -402,7 +403,10 @@ function BePage() {
         </aside>
 
         {/* Rechte Spalte: Content (Scrollable) */}
-        <section className="col-span-1 md:col-span-8 lg:col-span-7 md:col-start-6 pb-0 md:pt-32">
+        <section className="col-span-1 md:col-span-8 lg:col-span-7 md:col-start-6 pb-0 md:pt-32 relative">
+          {/* Subtle Grafik für das 'schwarze Loch' oben */}
+          <NetworkBackground />
+          
           {items.map((it, index) => (
             <article
               key={it.slug}
