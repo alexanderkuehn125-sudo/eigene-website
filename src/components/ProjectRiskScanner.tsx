@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldAlert, AlertTriangle, ChevronRight, Zap } from "lucide-react";
+import { AlertTriangle, ChevronRight, Zap } from "lucide-react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { StumbleIcon } from "./StumbleIcon";
 
 export function ProjectRiskScanner() {
   const [mounted, setMounted] = useState(false);
@@ -67,7 +68,7 @@ Bitte antworte extrem präzise und strukturiert in folgendem Format (nutze Markd
       {mounted && (
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-2.5 md:p-4 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shadow-[0_0_20px_rgba(197,160,89,0.25)] hover:shadow-[0_0_35px_rgba(197,160,89,0.45)] shrink-0"
+          className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-2.5 md:p-4 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shrink-0"
         >
           {/* Smooth Glowing Pulse */}
           <motion.div
@@ -90,7 +91,7 @@ Bitte antworte extrem präzise und strukturiert in folgendem Format (nutze Markd
             }}
           />
 
-          <ShieldAlert className="h-6 w-6 md:h-12 md:w-12 opacity-80 group-hover:opacity-100 transition-opacity shrink-0" />
+          <StumbleIcon className="h-5 w-5 md:h-[38px] md:w-[38px] opacity-80 group-hover:opacity-100 transition-opacity shrink-0" />
           <span className="max-w-0 overflow-hidden whitespace-nowrap text-[9px] md:text-sm tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] md:group-hover:max-w-[400px] group-hover:opacity-100 group-hover:pl-2.5 md:group-hover:pl-5 group-hover:pr-1.5 md:group-hover:pr-2.5">
              Projekt - Risiko - Scanner
           </span>
@@ -139,7 +140,7 @@ Bitte antworte extrem präzise und strukturiert in folgendem Format (nutze Markd
                 </button>
 
                 <div className="mb-6 flex items-center gap-4">
-                  <ShieldAlert className="h-6 w-6 md:h-8 md:w-8 text-[#C5A059]" />
+                  <StumbleIcon className="h-6 w-6 md:h-8 md:w-8 text-[#C5A059]" />
                   <h2 className="text-xl md:text-2xl font-light tracking-wide text-[#EFECE4]">
                     KI-Risiko-<span className="text-[#C5A059]">Scanner</span>
                   </h2>
