@@ -201,17 +201,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
               disabled={isAnalyzing || showCritique}
               className="pointer-events-auto group relative flex items-center gap-3 overflow-hidden rounded-full border border-white/20 px-5 py-2.5 md:px-6 md:py-3 shadow-lg transition-all hover:border-white/40 focus:outline-none disabled:opacity-50 cursor-none"
             >
-              {/* Pulsing Rainbow Background Layer */}
-              <motion.div
-                initial={{ scale: 1.5 }}
-                animate={{ opacity: [0.2, 0.8, 0.2] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 -z-20 group-hover:!opacity-90 transition-opacity duration-700"
-                style={{
-                  background: "linear-gradient(180deg, #9C27B0 0%, #E91E63 20%, #FF9800 40%, #FFEB3B 60%, #4CAF50 80%, #00BCD4 100%)",
-                  filter: "blur(16px)",
-                }}
-              />
+              {/* The rainbow background has been removed as requested */}
               {/* Textured Glass Overlay */}
               <div 
                 className="absolute inset-0 -z-10 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" 

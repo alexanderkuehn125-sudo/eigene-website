@@ -83,24 +83,13 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
 
   return (
     <>
-      {/* Trigger Button (Option 1: Floating Bottom Left on Desktop, Top Right on Mobile) */}
-      {mounted && createPortal(
-        <div className="fixed top-6 right-6 md:top-auto md:right-auto md:bottom-12 md:left-12 z-50 pointer-events-auto flex justify-end">
+      {/* Trigger Button */}
+      {mounted && (
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-2.5 md:p-4 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shadow-2xl"
+            className="group relative flex items-center overflow-hidden rounded-full border border-white/20 p-2.5 md:p-4 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none cursor-none shadow-2xl shrink-0"
           >
-            {/* Pulsing Rainbow Background Layer */}
-            <motion.div
-              initial={{ scale: 1.5 }}
-              animate={{ opacity: [0.2, 0.8, 0.2] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-0 -z-20 group-hover:!opacity-90 transition-opacity duration-700"
-              style={{
-                background: "linear-gradient(180deg, #9C27B0 0%, #E91E63 20%, #FF9800 40%, #FFEB3B 60%, #4CAF50 80%, #00BCD4 100%)",
-                filter: "blur(16px)",
-              }}
-            />
+            {/* The rainbow background has been removed as requested */}
             {/* Textured Glass Overlay */}
             <div 
               className="absolute inset-0 -z-10 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" 
@@ -116,8 +105,6 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
                Projekt - Prognose 
             </span>
           </button>
-        </div>,
-        document.body
       )}
 
       {/* Modal im React Portal */}

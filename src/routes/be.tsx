@@ -5,6 +5,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
 import { KiWorkflowContent } from "@/components/KiWorkflowContent";
 import { CoffeeToProjectConverter } from "@/components/CoffeeToProjectConverter";
+import { ProjectRiskScanner } from "@/components/ProjectRiskScanner";
 import { ContactForm } from "@/components/ContactForm";
 // Neues lokales Portrait
 import portrait from "@/assets/Portrait.jpg";
@@ -317,7 +318,11 @@ function BePage() {
               </div>
             </div>
 
-            <CoffeeToProjectConverter />
+            {/* Widget Area: Bottom Left / Mobile Right */}
+            <div className="fixed top-6 right-6 md:top-auto md:right-auto md:bottom-12 md:left-12 z-[90] pointer-events-auto flex flex-col md:flex-row gap-4 items-end md:items-center">
+              <CoffeeToProjectConverter />
+              <ProjectRiskScanner />
+            </div>
 
             <nav className="flex flex-col gap-6">
               {items.map((it) => (
