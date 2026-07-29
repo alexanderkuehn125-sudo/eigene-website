@@ -96,7 +96,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung wie \`\`\`j
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute inset-0 -z-20 transition-opacity duration-700"
               style={{
-                background: "linear-gradient(180deg, rgba(197,160,89,0.3) 0%, rgba(255,255,255,0.4) 50%, rgba(197,160,89,0.3) 100%)",
+                background: "linear-gradient(180deg, rgba(197,160,89,0.4) 0%, rgba(225,185,115,0.65) 50%, rgba(197,160,89,0.4) 100%)",
                 filter: "blur(10px)",
               }}
             />
