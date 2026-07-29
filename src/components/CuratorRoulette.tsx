@@ -204,7 +204,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
               {/* Smooth Glowing Pulse */}
               <motion.div
                 initial={{ scale: 1.5 }}
-                animate={{ opacity: [0.4, 0.75, 0.4] }}
+                animate={{ opacity: [0.5, 0.85, 0.5] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-0 -z-20 transition-opacity duration-700"
                 style={{
