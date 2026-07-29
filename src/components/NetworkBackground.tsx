@@ -3,52 +3,59 @@ import { motion } from "framer-motion";
 
 export function NetworkBackground() {
   return (
-    <div className="absolute top-0 left-0 w-full h-[600px] overflow-hidden pointer-events-none z-0 opacity-50 md:opacity-100">
+    <div 
+      className="absolute top-0 left-0 w-[120%] h-[300px] pointer-events-none z-0 opacity-40 md:opacity-70 -ml-[10%]"
+      style={{
+        // Diese Maske lässt die Linien nach unten und an den Seiten weich ausblenden
+        maskImage: "radial-gradient(ellipse at top center, black 20%, transparent 70%)",
+        WebkitMaskImage: "radial-gradient(ellipse at top center, black 20%, transparent 70%)"
+      }}
+    >
       {/* Sanftes, wärmendes Radial-Glow (Aura) */}
       <div 
-        className="absolute top-[-100px] right-[-100px] md:top-[-50px] md:right-[10%] w-[600px] h-[600px] rounded-full"
+        className="absolute top-0 left-[20%] w-[400px] h-[300px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(197,160,89,0.08) 0%, rgba(197,160,89,0) 70%)",
+          background: "radial-gradient(ellipse, rgba(197,160,89,0.1) 0%, rgba(197,160,89,0) 70%)",
           filter: "blur(40px)"
         }}
       />
       
-      {/* Abstraktes Linien-Netz (Neuronales Netzwerk / Topografie) */}
-      <svg className="absolute top-0 left-0 w-full h-full opacity-80 z-10" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg">
+      {/* Filigranes Linien-Netz */}
+      <svg className="absolute top-0 left-0 w-full h-full z-10" viewBox="0 0 800 300" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(197,160,89,1)" />
-            <stop offset="50%" stopColor="rgba(197,160,89,0.5)" />
+          <linearGradient id="line-gradient-subtle" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgba(197,160,89,0.8)" />
+            <stop offset="50%" stopColor="rgba(197,160,89,0.3)" />
             <stop offset="100%" stopColor="rgba(255,255,255,0)" />
           </linearGradient>
         </defs>
 
         <motion.g
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 2.5, ease: "easeOut" }}
+          transition={{ duration: 3, ease: "easeOut" }}
         >
-          {/* Netz-Linien */}
-          <path d="M 1000 50 Q 800 100, 700 250 T 400 450" fill="none" stroke="url(#line-gradient)" strokeWidth="1.5" />
-          <path d="M 1000 150 Q 850 150, 750 350 T 500 550" fill="none" stroke="url(#line-gradient)" strokeWidth="1.5" />
-          <path d="M 850 -50 Q 750 50, 600 200 T 350 400" fill="none" stroke="url(#line-gradient)" strokeWidth="1.5" />
-          <path d="M 900 100 L 700 250 L 750 350 L 500 550" fill="none" stroke="rgba(197,160,89,0.5)" strokeWidth="1" strokeDasharray="6 6" />
-          <path d="M 700 250 L 600 200" fill="none" stroke="rgba(197,160,89,0.4)" strokeWidth="1.5" />
+          {/* Hauchdünne Netz-Linien (organisch fließend) */}
+          <path d="M 100 0 Q 300 50, 400 150 T 700 250" fill="none" stroke="url(#line-gradient-subtle)" strokeWidth="0.8" />
+          <path d="M 200 0 Q 400 80, 500 200 T 800 250" fill="none" stroke="url(#line-gradient-subtle)" strokeWidth="0.5" />
+          <path d="M 50 50 Q 250 100, 350 200" fill="none" stroke="url(#line-gradient-subtle)" strokeWidth="0.8" />
           
-          {/* Knotenpunkte (Nodes) */}
-          <circle cx="700" cy="250" r="3.5" fill="rgba(197,160,89,1)" />
-          <circle cx="750" cy="350" r="2.5" fill="rgba(197,160,89,0.8)" />
-          <circle cx="600" cy="200" r="3" fill="rgba(197,160,89,0.9)" />
-          <circle cx="400" cy="450" r="2.5" fill="rgba(197,160,89,0.7)" />
+          {/* Querverbindungen */}
+          <path d="M 400 150 L 500 200 L 350 200" fill="none" stroke="rgba(197,160,89,0.3)" strokeWidth="0.5" strokeDasharray="3 3" />
+          
+          {/* Dezente Knotenpunkte */}
+          <circle cx="400" cy="150" r="2" fill="rgba(197,160,89,0.8)" />
+          <circle cx="500" cy="200" r="1.5" fill="rgba(197,160,89,0.6)" />
+          <circle cx="350" cy="200" r="1.5" fill="rgba(197,160,89,0.5)" />
           
           {/* Pulsierender Hauptknoten */}
           <motion.circle 
-            cx="700" cy="250" r="12" 
+            cx="400" cy="150" r="6" 
             fill="none" 
-            stroke="rgba(197,160,89,0.8)" 
-            strokeWidth="1"
-            animate={{ scale: [1, 2.5], opacity: [0.8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
+            stroke="rgba(197,160,89,0.5)" 
+            strokeWidth="0.5"
+            animate={{ scale: [1, 2], opacity: [0.6, 0] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeOut" }}
           />
         </motion.g>
       </svg>
