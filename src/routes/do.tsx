@@ -387,12 +387,12 @@ function DoPage() {
           </AnimatePresence>
         </section>
 
-        <div className="w-full -mt-12 md:-mt-20 relative z-50">
-          <div className="mt-16 flex flex-col items-center gap-6 md:mt-24">
+        <div className="w-full relative z-[99] pointer-events-auto bg-[#050504] pt-8">
+          <div className="mt-8 flex flex-col items-center gap-6 md:mt-12">
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
+              className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity cursor-pointer md:cursor-none"
             >
               nach oben ↑
             </button>
@@ -402,14 +402,14 @@ function DoPage() {
             <div className="flex gap-6">
               <a
                 href="mailto:mail@alexanderkuehn.de"
-                className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
+                className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity cursor-pointer md:cursor-none"
               >
                 Kontakt
               </a>
               <button
                 type="button"
                 onClick={() => setImpressumOpen(true)}
-                className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
+                className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity cursor-pointer md:cursor-none"
               >
                 Impressum
               </button>
