@@ -91,8 +91,8 @@ Bitte antworte extrem präzise und strukturiert in folgendem Format (nutze Markd
           />
 
           <ShieldAlert className="h-6 w-6 md:h-12 md:w-12 opacity-80 group-hover:opacity-100 transition-opacity shrink-0" />
-          <span className="max-w-0 overflow-hidden whitespace-nowrap text-[9px] md:text-sm tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[250px] md:group-hover:max-w-[350px] group-hover:opacity-100 group-hover:pl-2.5 md:group-hover:pl-5 group-hover:pr-1.5 md:group-hover:pr-2.5">
-             Risiko - Scanner
+          <span className="max-w-0 overflow-hidden whitespace-nowrap text-[9px] md:text-sm tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] md:group-hover:max-w-[400px] group-hover:opacity-100 group-hover:pl-2.5 md:group-hover:pl-5 group-hover:pr-1.5 md:group-hover:pr-2.5">
+             Projekt - Risiko - Scanner
           </span>
         </button>
       )}
