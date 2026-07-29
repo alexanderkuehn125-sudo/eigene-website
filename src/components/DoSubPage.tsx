@@ -20,7 +20,7 @@ export function SubPage({ section, children }: { section: Section, children?: Re
       <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 py-10 md:px-12 md:py-16">
         <header className="flex items-center justify-between">
           <Link
-            to="/be"
+            to="/portfolio"
             className="text-[11px] uppercase tracking-[0.35em] opacity-70 underline-offset-8 hover:underline"
           >
             ← Übersicht

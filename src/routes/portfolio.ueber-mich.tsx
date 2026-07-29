@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SubPage } from "@/components/DoSubPage";
 import portrait from "@/assets/alexander-kuehn.jpg.asset.json";
 
-export const Route = createFileRoute("/be/ueber-mich")({
+export const Route = createFileRoute("/portfolio/ueber-mich")({
   head: () => ({
     meta: [
       { title: "Über mich — Portfolio" },

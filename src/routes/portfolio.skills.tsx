@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SubPage } from "@/components/DoSubPage";
 
-export const Route = createFileRoute("/be/skills")({
+export const Route = createFileRoute("/portfolio/skills")({
   head: () => ({
     meta: [
       { title: "Skills — Portfolio" },

@@ -9,23 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as DoRouteImport } from './routes/do'
-import { Route as BeRouteImport } from './routes/be'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as AusstellungRouteImport } from './routes/ausstellung'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BeUeberMichRouteImport } from './routes/be.ueber-mich'
-import { Route as BeSkillsRouteImport } from './routes/be.skills'
-import { Route as BeReferenzenRouteImport } from './routes/be.referenzen'
-import { Route as BeKontaktRouteImport } from './routes/be.kontakt'
-import { Route as BeImpressumRouteImport } from './routes/be.impressum'
+import { Route as PortfolioUeberMichRouteImport } from './routes/portfolio.ueber-mich'
+import { Route as PortfolioSkillsRouteImport } from './routes/portfolio.skills'
+import { Route as PortfolioReferenzenRouteImport } from './routes/portfolio.referenzen'
+import { Route as PortfolioKontaktRouteImport } from './routes/portfolio.kontakt'
+import { Route as PortfolioImpressumRouteImport } from './routes/portfolio.impressum'
 
-const DoRoute = DoRouteImport.update({
-  id: '/do',
-  path: '/do',
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BeRoute = BeRouteImport.update({
-  id: '/be',
-  path: '/be',
+const AusstellungRoute = AusstellungRouteImport.update({
+  id: '/ausstellung',
+  path: '/ausstellung',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -33,116 +33,116 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BeUeberMichRoute = BeUeberMichRouteImport.update({
+const PortfolioUeberMichRoute = PortfolioUeberMichRouteImport.update({
   id: '/ueber-mich',
   path: '/ueber-mich',
-  getParentRoute: () => BeRoute,
+  getParentRoute: () => PortfolioRoute,
 } as any)
-const BeSkillsRoute = BeSkillsRouteImport.update({
+const PortfolioSkillsRoute = PortfolioSkillsRouteImport.update({
   id: '/skills',
   path: '/skills',
-  getParentRoute: () => BeRoute,
+  getParentRoute: () => PortfolioRoute,
 } as any)
-const BeReferenzenRoute = BeReferenzenRouteImport.update({
+const PortfolioReferenzenRoute = PortfolioReferenzenRouteImport.update({
   id: '/referenzen',
   path: '/referenzen',
-  getParentRoute: () => BeRoute,
+  getParentRoute: () => PortfolioRoute,
 } as any)
-const BeKontaktRoute = BeKontaktRouteImport.update({
+const PortfolioKontaktRoute = PortfolioKontaktRouteImport.update({
   id: '/kontakt',
   path: '/kontakt',
-  getParentRoute: () => BeRoute,
+  getParentRoute: () => PortfolioRoute,
 } as any)
-const BeImpressumRoute = BeImpressumRouteImport.update({
+const PortfolioImpressumRoute = PortfolioImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
-  getParentRoute: () => BeRoute,
+  getParentRoute: () => PortfolioRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/be': typeof BeRouteWithChildren
-  '/do': typeof DoRoute
-  '/be/impressum': typeof BeImpressumRoute
-  '/be/kontakt': typeof BeKontaktRoute
-  '/be/referenzen': typeof BeReferenzenRoute
-  '/be/skills': typeof BeSkillsRoute
-  '/be/ueber-mich': typeof BeUeberMichRoute
+  '/ausstellung': typeof AusstellungRoute
+  '/portfolio': typeof PortfolioRouteWithChildren
+  '/portfolio/impressum': typeof PortfolioImpressumRoute
+  '/portfolio/kontakt': typeof PortfolioKontaktRoute
+  '/portfolio/referenzen': typeof PortfolioReferenzenRoute
+  '/portfolio/skills': typeof PortfolioSkillsRoute
+  '/portfolio/ueber-mich': typeof PortfolioUeberMichRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/be': typeof BeRouteWithChildren
-  '/do': typeof DoRoute
-  '/be/impressum': typeof BeImpressumRoute
-  '/be/kontakt': typeof BeKontaktRoute
-  '/be/referenzen': typeof BeReferenzenRoute
-  '/be/skills': typeof BeSkillsRoute
-  '/be/ueber-mich': typeof BeUeberMichRoute
+  '/ausstellung': typeof AusstellungRoute
+  '/portfolio': typeof PortfolioRouteWithChildren
+  '/portfolio/impressum': typeof PortfolioImpressumRoute
+  '/portfolio/kontakt': typeof PortfolioKontaktRoute
+  '/portfolio/referenzen': typeof PortfolioReferenzenRoute
+  '/portfolio/skills': typeof PortfolioSkillsRoute
+  '/portfolio/ueber-mich': typeof PortfolioUeberMichRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/be': typeof BeRouteWithChildren
-  '/do': typeof DoRoute
-  '/be/impressum': typeof BeImpressumRoute
-  '/be/kontakt': typeof BeKontaktRoute
-  '/be/referenzen': typeof BeReferenzenRoute
-  '/be/skills': typeof BeSkillsRoute
-  '/be/ueber-mich': typeof BeUeberMichRoute
+  '/ausstellung': typeof AusstellungRoute
+  '/portfolio': typeof PortfolioRouteWithChildren
+  '/portfolio/impressum': typeof PortfolioImpressumRoute
+  '/portfolio/kontakt': typeof PortfolioKontaktRoute
+  '/portfolio/referenzen': typeof PortfolioReferenzenRoute
+  '/portfolio/skills': typeof PortfolioSkillsRoute
+  '/portfolio/ueber-mich': typeof PortfolioUeberMichRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/be'
-    | '/do'
-    | '/be/impressum'
-    | '/be/kontakt'
-    | '/be/referenzen'
-    | '/be/skills'
-    | '/be/ueber-mich'
+    | '/ausstellung'
+    | '/portfolio'
+    | '/portfolio/impressum'
+    | '/portfolio/kontakt'
+    | '/portfolio/referenzen'
+    | '/portfolio/skills'
+    | '/portfolio/ueber-mich'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/be'
-    | '/do'
-    | '/be/impressum'
-    | '/be/kontakt'
-    | '/be/referenzen'
-    | '/be/skills'
-    | '/be/ueber-mich'
+    | '/ausstellung'
+    | '/portfolio'
+    | '/portfolio/impressum'
+    | '/portfolio/kontakt'
+    | '/portfolio/referenzen'
+    | '/portfolio/skills'
+    | '/portfolio/ueber-mich'
   id:
     | '__root__'
     | '/'
-    | '/be'
-    | '/do'
-    | '/be/impressum'
-    | '/be/kontakt'
-    | '/be/referenzen'
-    | '/be/skills'
-    | '/be/ueber-mich'
+    | '/ausstellung'
+    | '/portfolio'
+    | '/portfolio/impressum'
+    | '/portfolio/kontakt'
+    | '/portfolio/referenzen'
+    | '/portfolio/skills'
+    | '/portfolio/ueber-mich'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BeRoute: typeof BeRouteWithChildren
-  DoRoute: typeof DoRoute
+  AusstellungRoute: typeof AusstellungRoute
+  PortfolioRoute: typeof PortfolioRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/do': {
-      id: '/do'
-      path: '/do'
-      fullPath: '/do'
-      preLoaderRoute: typeof DoRouteImport
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/be': {
-      id: '/be'
-      path: '/be'
-      fullPath: '/be'
-      preLoaderRoute: typeof BeRouteImport
+    '/ausstellung': {
+      id: '/ausstellung'
+      path: '/ausstellung'
+      fullPath: '/ausstellung'
+      preLoaderRoute: typeof AusstellungRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -152,66 +152,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/be/ueber-mich': {
-      id: '/be/ueber-mich'
+    '/portfolio/ueber-mich': {
+      id: '/portfolio/ueber-mich'
       path: '/ueber-mich'
-      fullPath: '/be/ueber-mich'
-      preLoaderRoute: typeof BeUeberMichRouteImport
-      parentRoute: typeof BeRoute
+      fullPath: '/portfolio/ueber-mich'
+      preLoaderRoute: typeof PortfolioUeberMichRouteImport
+      parentRoute: typeof PortfolioRoute
     }
-    '/be/skills': {
-      id: '/be/skills'
+    '/portfolio/skills': {
+      id: '/portfolio/skills'
       path: '/skills'
-      fullPath: '/be/skills'
-      preLoaderRoute: typeof BeSkillsRouteImport
-      parentRoute: typeof BeRoute
+      fullPath: '/portfolio/skills'
+      preLoaderRoute: typeof PortfolioSkillsRouteImport
+      parentRoute: typeof PortfolioRoute
     }
-    '/be/referenzen': {
-      id: '/be/referenzen'
+    '/portfolio/referenzen': {
+      id: '/portfolio/referenzen'
       path: '/referenzen'
-      fullPath: '/be/referenzen'
-      preLoaderRoute: typeof BeReferenzenRouteImport
-      parentRoute: typeof BeRoute
+      fullPath: '/portfolio/referenzen'
+      preLoaderRoute: typeof PortfolioReferenzenRouteImport
+      parentRoute: typeof PortfolioRoute
     }
-    '/be/kontakt': {
-      id: '/be/kontakt'
+    '/portfolio/kontakt': {
+      id: '/portfolio/kontakt'
       path: '/kontakt'
-      fullPath: '/be/kontakt'
-      preLoaderRoute: typeof BeKontaktRouteImport
-      parentRoute: typeof BeRoute
+      fullPath: '/portfolio/kontakt'
+      preLoaderRoute: typeof PortfolioKontaktRouteImport
+      parentRoute: typeof PortfolioRoute
     }
-    '/be/impressum': {
-      id: '/be/impressum'
+    '/portfolio/impressum': {
+      id: '/portfolio/impressum'
       path: '/impressum'
-      fullPath: '/be/impressum'
-      preLoaderRoute: typeof BeImpressumRouteImport
-      parentRoute: typeof BeRoute
+      fullPath: '/portfolio/impressum'
+      preLoaderRoute: typeof PortfolioImpressumRouteImport
+      parentRoute: typeof PortfolioRoute
     }
   }
 }
 
-interface BeRouteChildren {
-  BeImpressumRoute: typeof BeImpressumRoute
-  BeKontaktRoute: typeof BeKontaktRoute
-  BeReferenzenRoute: typeof BeReferenzenRoute
-  BeSkillsRoute: typeof BeSkillsRoute
-  BeUeberMichRoute: typeof BeUeberMichRoute
+interface PortfolioRouteChildren {
+  PortfolioImpressumRoute: typeof PortfolioImpressumRoute
+  PortfolioKontaktRoute: typeof PortfolioKontaktRoute
+  PortfolioReferenzenRoute: typeof PortfolioReferenzenRoute
+  PortfolioSkillsRoute: typeof PortfolioSkillsRoute
+  PortfolioUeberMichRoute: typeof PortfolioUeberMichRoute
 }
 
-const BeRouteChildren: BeRouteChildren = {
-  BeImpressumRoute: BeImpressumRoute,
-  BeKontaktRoute: BeKontaktRoute,
-  BeReferenzenRoute: BeReferenzenRoute,
-  BeSkillsRoute: BeSkillsRoute,
-  BeUeberMichRoute: BeUeberMichRoute,
+const PortfolioRouteChildren: PortfolioRouteChildren = {
+  PortfolioImpressumRoute: PortfolioImpressumRoute,
+  PortfolioKontaktRoute: PortfolioKontaktRoute,
+  PortfolioReferenzenRoute: PortfolioReferenzenRoute,
+  PortfolioSkillsRoute: PortfolioSkillsRoute,
+  PortfolioUeberMichRoute: PortfolioUeberMichRoute,
 }
 
-const BeRouteWithChildren = BeRoute._addFileChildren(BeRouteChildren)
+const PortfolioRouteWithChildren = PortfolioRoute._addFileChildren(
+  PortfolioRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BeRoute: BeRouteWithChildren,
-  DoRoute: DoRoute,
+  AusstellungRoute: AusstellungRoute,
+  PortfolioRoute: PortfolioRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

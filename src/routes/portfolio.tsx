@@ -12,7 +12,7 @@ import { ContactForm } from "@/components/ContactForm";
 // Neues lokales Portrait
 import portrait from "@/assets/Portrait.jpg";
 
-export const Route = createFileRoute("/be")({
+export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
       { title: "Portfolio — Alexander Kühn | Projektmanagement & Event" },
@@ -280,7 +280,7 @@ function BePage() {
       <div className="relative z-10 mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-12 px-6 pt-12 pb-5 md:grid-cols-12 md:gap-20 md:px-12 md:pt-24 md:pb-8 page-transition-enter">
         {/* Link zur Ausstellung oben rechts (Desktop & Mobile) */}
         <Link
-          to="/do"
+          to="/ausstellung"
           className="absolute right-6 top-12 md:right-12 md:top-24 z-50 text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
         >
           Ausstellung →

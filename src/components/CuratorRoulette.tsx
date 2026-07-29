@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Image as ImageIcon } from "lucide-react";
-import type { Photo } from "@/routes/do";
+import type { Photo } from "@/routes/ausstellung";
 
 interface CuratorRouletteProps {
   photos: Photo[];

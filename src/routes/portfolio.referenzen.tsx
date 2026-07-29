@@ -43,7 +43,7 @@ const projects = [
   { client: "LIEBHERR", project: "Liebherr-Familientag 2018", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"], color: "text-[#FFCC00]", bgColor: "bg-[#FFCC00]" },
 ];
 
-export const Route = createFileRoute("/be/referenzen")({
+export const Route = createFileRoute("/portfolio/referenzen")({
   head: () => ({
     meta: [
       { title: "Projekte — Portfolio" },

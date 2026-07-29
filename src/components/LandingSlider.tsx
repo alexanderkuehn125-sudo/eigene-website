@@ -142,10 +142,10 @@ export function LandingSlider() {
       if (draggingRef.current) {
         setPct((p) => {
           if (p <= 5) {
-            setTimeout(() => { void navigate({ to: "/be" }); }, 300);
+            setTimeout(() => { void navigate({ to: "/portfolio" }); }, 300);
             return 0;
           } else if (p >= 95) {
-            setTimeout(() => { void navigate({ to: "/do" }); }, 300);
+            setTimeout(() => { void navigate({ to: "/ausstellung" }); }, 300);
             return 100;
           }
           return p;
@@ -188,7 +188,7 @@ export function LandingSlider() {
 
   const goSide = (side: "be" | "do") => {
     if (draggingRef.current) return;
-    void navigate({ to: side === "be" ? "/be" : "/do" });
+    void navigate({ to: side === "be" ? "/portfolio" : "/ausstellung" });
   };
 
   const beImg = isMobile ? beVertical : beHorizontal;

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/be/impressum")({
+export const Route = createFileRoute("/portfolio/impressum")({
   head: () => ({
     meta: [
       { title: "Impressum — Alexander Kühn" },
@@ -26,7 +26,7 @@ function ImpressumPage() {
       <div className="mx-auto flex min-h-screen max-w-3xl flex-col px-6 py-10 md:px-12 md:py-16">
         <header className="flex items-center justify-between">
           <Link
-            to="/be"
+            to="/portfolio"
             className="text-[11px] uppercase tracking-[0.35em] opacity-70 underline-offset-8 hover:underline"
           >
             ← Übersicht

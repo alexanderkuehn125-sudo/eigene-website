@@ -7,7 +7,7 @@ import { ImpressumContent } from "@/components/ImpressumContent";
 import { CuratorRoulette } from "@/components/CuratorRoulette";
 import { ContactForm } from "@/components/ContactForm";
 
-export const Route = createFileRoute("/do")({
+export const Route = createFileRoute("/ausstellung")({
   head: () => ({
     meta: [
       { title: "Ausstellung — Fotografie von Alexander Kühn" },
@@ -234,7 +234,7 @@ function DoPage() {
             ← Start
           </Link>
           <Link
-            to="/be"
+            to="/portfolio"
             className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
           >
             Portfolio →
