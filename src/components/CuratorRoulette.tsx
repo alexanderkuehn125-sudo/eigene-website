@@ -199,7 +199,7 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
             <button
               onClick={handleSurpriseMe}
               disabled={isAnalyzing || showCritique}
-              className="pointer-events-auto group relative flex items-center gap-2 overflow-hidden rounded-full border border-white/20 px-3 py-1.5 md:px-4 md:py-2 transition-all hover:border-white/40 focus:outline-none disabled:opacity-50 cursor-none"
+              className="pointer-events-auto group relative flex items-center gap-1.5 overflow-hidden rounded-full border border-white/20 px-2 py-1 md:px-3 md:py-1.5 transition-all hover:border-white/40 focus:outline-none disabled:opacity-50 cursor-none"
             >
               {/* Smooth Glowing Pulse */}
               <motion.div
@@ -213,8 +213,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
                 }}
               />
               
-              <Search className={`h-3 w-3 text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity shrink-0 ${isAnalyzing && !showCritique ? 'animate-bounce' : ''}`} />
-              <span className="text-[9px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity">
+              <Search className={`h-[10px] w-[10px] text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity shrink-0 ${isAnalyzing && !showCritique ? 'animate-bounce' : ''}`} />
+              <span className="text-[8px] md:text-[9px] font-medium uppercase tracking-[0.2em] text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity">
                 {isAnalyzing && !showCritique ? "Analysiere..." : "Werk analysieren"}
               </span>
             </button>
