@@ -6,6 +6,7 @@ import { ImpressumContent } from "@/components/ImpressumContent";
 import { KiWorkflowContent } from "@/components/KiWorkflowContent";
 import { CoffeeToProjectConverter } from "@/components/CoffeeToProjectConverter";
 import { ProjectRiskScanner } from "@/components/ProjectRiskScanner";
+import { WidgetContainer } from "@/components/WidgetContainer";
 import { ContactForm } from "@/components/ContactForm";
 // Neues lokales Portrait
 import portrait from "@/assets/Portrait.jpg";
@@ -319,10 +320,10 @@ function BePage() {
             </div>
 
             {/* Widget Area: Bottom Left / Mobile Right */}
-            <div className="fixed top-6 right-6 md:top-auto md:right-auto md:bottom-12 md:left-12 z-[90] pointer-events-auto flex flex-col md:flex-row gap-4 items-end md:items-center">
+            <WidgetContainer>
               <CoffeeToProjectConverter />
               <ProjectRiskScanner />
-            </div>
+            </WidgetContainer>
 
             <nav className="flex flex-col gap-6">
               {items.map((it) => (
