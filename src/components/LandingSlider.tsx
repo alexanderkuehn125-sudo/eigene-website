@@ -31,6 +31,7 @@ export function LandingSlider() {
   const draggingRef = useRef(false);
   const [pct, setPct] = useState(50); // % of the "be" side visible (from left/top)
   const [zoomOn, setZoomOn] = useState(false);
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [beLens, setBeLens] = useState<{ x: number; y: number; visible: boolean; reveal: boolean }>({
     x: 0,
@@ -108,17 +109,22 @@ export function LandingSlider() {
   };
 
   useEffect(() => {
-    if (!zoomOn) return;
+    if (!zoomOn && !showWelcomeModal) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setZoomOn(false);
-        setBeLens((l) => ({ ...l, visible: false, reveal: false }));
-        setDoLens((l) => ({ ...l, visible: false, reveal: false }));
+        if (zoomOn) {
+          setZoomOn(false);
+          setBeLens((l) => ({ ...l, visible: false, reveal: false }));
+          setDoLens((l) => ({ ...l, visible: false, reveal: false }));
+        }
+        if (showWelcomeModal) {
+          setShowWelcomeModal(false);
+        }
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [zoomOn]);
+  }, [zoomOn, showWelcomeModal]);
 
   const updateFromEvent = useCallback(
     (clientX: number, clientY: number) => {
@@ -493,6 +499,43 @@ export function LandingSlider() {
               </p>
               <ContactForm />
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Hidden Welcome Button */}
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowWelcomeModal(true);
+        }}
+        className="absolute bottom-4 right-4 w-6 h-6 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 transition-colors z-50 cursor-pointer"
+        aria-label="Welcome"
+      />
+
+      {/* Welcome Modal */}
+      {showWelcomeModal && (
+        <div
+          className="fixed inset-4 md:inset-8 z-[200] flex items-center justify-center rounded-3xl"
+          style={{
+            background: "rgba(10, 10, 10, 0.95)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255,255,255,0.1)",
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowWelcomeModal(false);
+          }}
+        >
+          <div className="text-center p-8 text-white">
+            <h2 
+              className="text-4xl md:text-6xl lg:text-7xl tracking-wider font-light leading-snug"
+              style={{ fontFamily: "'Jost', sans-serif" }}
+            >
+              Guten Morgen<br />
+              <span className="opacity-70 text-3xl md:text-5xl mt-6 block">und herzlich Willkommen</span>
+            </h2>
           </div>
         </div>
       )}
