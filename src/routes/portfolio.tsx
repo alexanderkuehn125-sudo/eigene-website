@@ -217,7 +217,7 @@ const items: readonly Item[] = [
 ] as const;
 
 function BePage() {
-  const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | "kiworkflow" | "menu" | null>(null);
+  const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | "kiworkflow" | "menu" | "presentation" | null>(null);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -398,6 +398,15 @@ function BePage() {
                   KI-Workflow Website
                 </span>
               </button>
+
+              {/* 07 Hidden Presentation Button */}
+              <button
+                type="button"
+                className="group flex items-center gap-4 text-left mt-2"
+                onClick={() => setModalOpen("presentation")}
+              >
+                <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/20 transition-colors cursor-pointer" aria-label="Presentation" />
+              </button>
             </nav>
           </div>
         </aside>
@@ -481,7 +490,7 @@ function BePage() {
       {/* Modal Overlay (Analog zur Ausstellung) */}
       {mounted && createPortal(
         <AnimatePresence>
-          {modalOpen && (
+          {modalOpen && modalOpen !== "presentation" && (
             <motion.div
               key="be-modal-overlay"
               initial={{ opacity: 0 }}
@@ -572,6 +581,15 @@ function BePage() {
                     KI-Workflow Website
                   </span>
                 </button>
+
+                {/* Hidden Presentation Button Mobile */}
+                <button
+                  type="button"
+                  className="mt-4"
+                  onClick={() => setModalOpen("presentation")}
+                >
+                  <span className="block w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 transition-colors cursor-pointer" aria-label="Presentation" />
+                </button>
               </nav>
             ) : modalOpen === "kontakt" ? (
               <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 max-w-2xl font-light">
@@ -587,7 +605,45 @@ function BePage() {
               )}
             </motion.div>
           </motion.div>
-        )}
+          )}
+
+          {modalOpen === "presentation" && (
+            <motion.div
+              key="presentation-modal-overlay"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed inset-4 md:inset-8 z-[200] flex items-center justify-center rounded-3xl overflow-hidden md:cursor-none cursor-trigger-close"
+              style={{
+                background: "radial-gradient(circle at center, rgba(35, 30, 25, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(197, 160, 89, 0.15)",
+                boxShadow: "0 0 50px rgba(0,0,0,0.5), inset 0 0 30px rgba(197, 160, 89, 0.05)"
+              }}
+              onClick={() => setModalOpen(null)}
+            >
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] rounded-full opacity-20 blur-[100px] pointer-events-none"
+                   style={{ background: "radial-gradient(circle, #C5A059 0%, transparent 70%)" }} />
+              
+              <div className="text-center p-8 text-white relative z-10 md:cursor-none">
+                <h2 
+                  className="text-4xl md:text-5xl lg:text-6xl tracking-wider font-light leading-snug"
+                  style={{ fontFamily: "'Jost', sans-serif" }}
+                >
+                  <span className="block mb-6 md:mb-10 opacity-90">
+                    Vielen Dank für die Aufmerksamkeit!
+                  </span>
+                  <span className="opacity-90 text-[#C5A059] text-3xl md:text-4xl lg:text-5xl block leading-tight" style={{ textShadow: "0 2px 10px rgba(197, 160, 89, 0.3)" }}>
+                    Viel Erfolg und viel Spaß bei den weiteren Präsentationen
+                  </span>
+                  <span className="text-lg md:text-xl lg:text-2xl mt-12 md:mt-16 block leading-relaxed text-white font-light opacity-60" style={{ letterSpacing: "0.05em" }}>
+                    und Danke nochmal an Andreas für die Inspiration
+                  </span>
+                </h2>
+              </div>
+            </motion.div>
+          )}
         </AnimatePresence>,
         document.body
       )}
