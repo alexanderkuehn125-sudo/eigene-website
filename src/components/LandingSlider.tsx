@@ -542,8 +542,8 @@ export function LandingSlider() {
               <span className="opacity-90 text-[#C5A059] text-3xl md:text-5xl lg:text-6xl mt-6 block leading-tight" style={{ textShadow: "0 2px 10px rgba(197, 160, 89, 0.3)" }}>
                 lieber Batch 18 und Dozenten!
               </span>
-              <span className="opacity-70 text-2xl md:text-4xl mt-8 block leading-relaxed text-white font-light" style={{ letterSpacing: "0.05em" }}>
-                herzlich Willkommen zu meiner kleinen Einführung in meine &quot;eigene Website&quot;.
+              <span className="text-2xl md:text-4xl mt-8 block leading-relaxed text-white font-light" style={{ letterSpacing: "0.05em" }}>
+                Herzlich Willkommen zu meiner kleinen Einführung in meine &quot;Eigene Website&quot;.
               </span>
             </h2>
           </div>
