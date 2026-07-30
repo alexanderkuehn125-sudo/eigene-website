@@ -11,6 +11,13 @@ import { NetworkBackground } from "@/components/NetworkBackground";
 import { ContactForm } from "@/components/ContactForm";
 import portrait from "@/assets/Portrait.jpg";
 import kronesLogo from "@/assets/krones.svg";
+import googleCloudLogo from "@/assets/google-cloud.svg";
+import iaaLogo from "@/assets/iaa.svg";
+import sport1Logo from "@/assets/sport1.svg";
+import csuLogo from "@/assets/csu.svg";
+import krombacherLogo from "@/assets/krombacher.svg";
+import messeMuenchenLogo from "@/assets/messe-muenchen.svg";
+import liebherrLogo from "@/assets/liebherr.svg";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -52,40 +59,58 @@ type Project = {
 const projects = [
   { 
     client: "Google Cloud", 
-    clientNode: (
-      <>
-        <span className="text-[#4285F4]">G</span>
-        <span className="text-[#EA4335]">o</span>
-        <span className="text-[#FBBC05]">o</span>
-        <span className="text-[#4285F4]">g</span>
-        <span className="text-[#34A853]">l</span>
-        <span className="text-[#EA4335]">e</span>
-        <span className="text-[#EFECE4]"> Cloud</span>
-      </>
-    ),
+    idleNode: <img src={googleCloudLogo} alt="Google Cloud" className="h-6 md:h-8 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={googleCloudLogo} alt="Google Cloud" className="h-8 md:h-10 w-auto object-contain" />,
     project: "Google Roadshow DACH 2024", 
     tasks: ["Projektmanagement", "Ausschreibungserstellung", "Produktionsleitung", "Locationmanagement", "Dienstleisterhandling", "Budget-Kontrolle"], 
     color: "",
-    bgColor: "bg-gradient-to-br from-[#4285F4] via-[#EA4335] to-[#FBBC05]"
+    bgColor: "bg-[#4285F4]"
   },
-  { client: "IAA MOBILITY", project: "Citizens Lab 2023", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#0096D6]", bgColor: "bg-[#0096D6]" },
+  { 
+    client: "IAA MOBILITY", 
+    idleNode: <img src={iaaLogo} alt="IAA MOBILITY" className="h-5 md:h-6 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={iaaLogo} alt="IAA MOBILITY" className="h-6 md:h-8 w-auto object-contain brightness-0 invert" />,
+    project: "Citizens Lab 2023", 
+    tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], 
+    color: "text-[#0096D6]", 
+    bgColor: "bg-[#0096D6]" 
+  },
   { 
     client: "Sport1 MEDIEN", 
-    clientNode: (
-      <div className="flex flex-col items-center">
-        <span className="text-xl md:text-2xl font-black italic lowercase tracking-tighter text-[#EFECE4]">sport1</span>
-        <div className="h-[1px] w-[80%] bg-[#EFECE4]/50 my-1"></div>
-        <span className="text-[9px] md:text-[10px] font-normal uppercase tracking-[0.3em] text-[#EFECE4]/80 ml-[0.3em]">Medien</span>
-      </div>
-    ),
+    idleNode: <img src={sport1Logo} alt="Sport1 MEDIEN" className="h-6 md:h-8 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={sport1Logo} alt="Sport1 MEDIEN" className="h-8 md:h-10 w-auto object-contain" />,
     project: "Hauptversammlung 2015", 
     tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#EFECE4]", 
     bgColor: "bg-[#111111]" 
   },
-  { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], color: "text-[#0070B9]", bgColor: "bg-[#0070B9]" },
-  { client: "Krombacher", project: "Festivalauftritte 2022-2025", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#D4AF37]", bgColor: "bg-[#D4AF37]" },
-  { client: "Messe München", project: "Eröffnungsfeier neue Hallen 2018", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#004A99]", bgColor: "bg-[#004A99]" },
+  { 
+    client: "CSU", 
+    idleNode: <img src={csuLogo} alt="CSU" className="h-6 md:h-8 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={csuLogo} alt="CSU" className="h-8 md:h-10 w-auto object-contain" />,
+    project: "CSU-Parteitage", 
+    tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], 
+    color: "text-[#0070B9]", 
+    bgColor: "bg-[#0070B9]" 
+  },
+  { 
+    client: "Krombacher", 
+    idleNode: <img src={krombacherLogo} alt="Krombacher" className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={krombacherLogo} alt="Krombacher" className="h-10 md:h-14 w-auto object-contain" />,
+    project: "Festivalauftritte 2022-2025", 
+    tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], 
+    color: "text-[#D4AF37]", 
+    bgColor: "bg-[#D4AF37]" 
+  },
+  { 
+    client: "Messe München", 
+    idleNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-5 md:h-6 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-6 md:h-8 w-auto object-contain" />,
+    project: "Eröffnungsfeier neue Hallen 2018", 
+    tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
+    color: "text-[#004A99]", 
+    bgColor: "bg-[#004A99]" 
+  },
   { 
     client: "KRONES", 
     idleNode: <img src={kronesLogo} alt="KRONES" className="h-5 md:h-6 w-auto object-contain brightness-0 invert opacity-90" />,
@@ -95,7 +120,15 @@ const projects = [
     color: "text-[#EFECE4]", 
     bgColor: "bg-[#0055A5]" 
   },
-  { client: "LIEBHERR", project: "Liebherr-Familientag 2018", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"], color: "text-[#FFCC00]", bgColor: "bg-[#FFCC00]" },
+  { 
+    client: "LIEBHERR", 
+    idleNode: <img src={liebherrLogo} alt="LIEBHERR" className="h-5 md:h-6 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={liebherrLogo} alt="LIEBHERR" className="h-6 md:h-8 w-auto object-contain" />,
+    project: "Liebherr-Familientag 2018", 
+    tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"], 
+    color: "text-[#FFCC00]", 
+    bgColor: "bg-[#FFCC00]" 
+  },
 ];
 
 function HoverRevealGrid() {
