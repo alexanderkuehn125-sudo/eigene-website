@@ -336,7 +336,7 @@ function BePage() {
         {/* Link zur Ausstellung oben rechts (Desktop & Mobile) */}
         <Link
           to="/ausstellung"
-          className="absolute right-6 top-12 md:right-12 md:top-24 z-50 text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity hidden md:block"
+          className="absolute right-6 top-12 md:right-12 md:top-24 z-50 text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
         >
           Ausstellung →
         </Link>
@@ -346,9 +346,9 @@ function BePage() {
           <div className="sticky top-12 md:top-24 flex flex-col items-start">
             <Link
               to="/"
-              className="mb-16 text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity hidden md:block"
+              className="mb-16 text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
             >
-              ← Start
+              ← Startseite
             </Link>
 
             <h1
@@ -521,16 +521,6 @@ function BePage() {
             </span>
           </footer>
         </div>
-      </div>
-
-      {/* Mobile Floating Menu Button (nur sichtbar auf kleinen Bildschirmen) */}
-      <div className="md:hidden fixed bottom-6 right-6 z-40">
-        <button
-          onClick={() => setModalOpen("menu")}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A1918] border border-white/20 text-[#EFECE4] shadow-[0_10px_30px_rgba(0,0,0,0.8)] transition-transform hover:scale-105 focus:outline-none"
-        >
-          <span className="text-[8px] uppercase tracking-[0.25em] font-medium mt-[1px]">Menü</span>
-        </button>
       </div>
 
       {/* Modal Overlay (Analog zur Ausstellung) */}
