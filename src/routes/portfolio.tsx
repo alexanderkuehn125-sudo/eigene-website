@@ -104,8 +104,8 @@ const projects = [
   },
   { 
     client: "Messe München", 
-    idleNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-9 md:h-11 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-11 md:h-16 w-auto object-contain" />,
+    idleNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-10 md:h-12 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-12 md:h-20 w-auto object-contain" />,
     project: "Eröffnungsfeier neue Hallen 2018", 
     tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#004A99]", 
@@ -113,8 +113,8 @@ const projects = [
   },
   { 
     client: "KRONES", 
-    idleNode: <img src={kronesLogo} alt="KRONES" className="h-5 md:h-6 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={kronesLogo} alt="KRONES" className="h-6 md:h-8 w-auto object-contain brightness-0 invert" />,
+    idleNode: <img src={kronesLogo} alt="KRONES" className="h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={kronesLogo} alt="KRONES" className="h-7 md:h-9 w-auto object-contain brightness-0 invert" />,
     project: "Messeauftritt gesamt 2017", 
     tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#EFECE4]", 
