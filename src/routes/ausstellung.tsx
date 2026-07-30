@@ -337,10 +337,10 @@ function DoPage() {
               return (
                 <motion.div
                   layout="position"
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0.001, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "100px" }}
-                  exit={{ opacity: 0 }}
+                  viewport={{ once: true, amount: 0.05 }}
+                  exit={{ opacity: 0.001 }}
                   transition={{
                     layout: { type: "spring", bounce: 0, duration: 2.2 },
                     opacity: { duration: 0.8, ease: "easeOut" },
@@ -359,14 +359,14 @@ function DoPage() {
                     tabIndex={0}
                   >
                     <div className="relative flex justify-center w-full">
-                      {/* 3D-Glas-Platten Effekt vereinfacht für extrem verbesserte Scroll-Performance */}
-                      <div className="relative overflow-hidden bg-[#0A0A0A] transform-gpu rounded-[2px] shadow-2xl transition-all duration-700">
+                      {/* Safari Fix: transform-gpu entfernt, da es oft Paint-Fehler verursacht */}
+                      <div className="relative overflow-hidden bg-[#0A0A0A] rounded-[2px] shadow-2xl transition-all duration-700">
                         <LazyImage
                           src={p.src}
                           alt={p.title}
                           eager={i < 6}
                           // maxHClass steuert nun die Höhe flexibel (z.B. für Ausreißer)
-                          className={`block h-auto w-auto max-w-full ${maxHClass} object-contain transition-transform duration-[800ms] ease-out group-hover/item:scale-[1.03] translate-z-0`}
+                          className={`block h-auto w-auto max-w-full ${maxHClass} object-contain transition-transform duration-[800ms] ease-out group-hover/item:scale-[1.03]`}
                         />
                       </div>
                     </div>
