@@ -538,9 +538,9 @@ export function LandingSlider() {
               className="text-4xl md:text-6xl lg:text-7xl tracking-wider font-light leading-snug"
               style={{ fontFamily: "'Jost', sans-serif" }}
             >
-              Guten Morgen<br />
-              <span className="opacity-90 text-[#C5A059] text-3xl md:text-5xl mt-6 block" style={{ textShadow: "0 2px 10px rgba(197, 160, 89, 0.3)" }}>
-                und Herzlich Willkommen
+              Guten Morgen,<br />
+              <span className="opacity-90 text-[#C5A059] text-3xl md:text-5xl lg:text-6xl mt-6 block leading-tight" style={{ textShadow: "0 2px 10px rgba(197, 160, 89, 0.3)" }}>
+                lieber Batch 18 und Dozenten
               </span>
             </h2>
           </div>
