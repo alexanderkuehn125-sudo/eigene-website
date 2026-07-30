@@ -104,8 +104,8 @@ const projects = [
   },
   { 
     client: "Messe München", 
-    idleNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-10 md:h-12 w-full max-w-[120px] md:max-w-[140px] object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-14 md:h-16 w-full max-w-[160px] md:max-w-[200px] object-contain" />,
+    idleNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-14 md:h-16 w-full max-w-[160px] md:max-w-[180px] object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-20 md:h-24 w-full max-w-[200px] md:max-w-[240px] object-contain" />,
     project: "Eröffnungsfeier neue Hallen 2018", 
     tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#004A99]", 
