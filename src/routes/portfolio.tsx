@@ -635,7 +635,7 @@ function BePage() {
                     Vielen Dank für die Aufmerksamkeit!
                   </span>
                   <span className="opacity-90 text-[#C5A059] text-3xl md:text-4xl lg:text-5xl block leading-tight" style={{ textShadow: "0 2px 10px rgba(197, 160, 89, 0.3)" }}>
-                    Viel Erfolg und viel Spaß bei den weiteren Präsentationen
+                    Viel Erfolg und viel Spaß bei den weiteren Präsentationen!
                   </span>
                   <span className="text-lg md:text-xl lg:text-2xl mt-12 md:mt-16 block leading-relaxed text-white font-light opacity-60" style={{ letterSpacing: "0.05em" }}>
                     und Danke nochmal an Andreas für die Inspiration
