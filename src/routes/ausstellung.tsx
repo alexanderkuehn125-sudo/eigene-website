@@ -226,7 +226,7 @@ function DoPage() {
       {/* Film-Grain Overlay entfernt für deutlich bessere Scroll-Performance auf der Bilder-Seite */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-6 pt-10 pb-5 md:px-12 md:pt-16 md:pb-8 page-transition-enter">
         {/* Header */}
-        <header className="flex items-center justify-between pt-2 relative z-50">
+        <header className="flex items-center justify-between pt-2 relative z-50 hidden md:flex">
           <Link
             to="/"
             className="text-[10px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-opacity"
