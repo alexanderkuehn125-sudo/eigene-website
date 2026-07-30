@@ -627,6 +627,20 @@ function BePage() {
                     KI-Workflow Website
                   </span>
                 </button>
+
+                <Link
+                  to="/ausstellung"
+                  className="flex flex-col gap-1 text-left mt-2"
+                  onClick={() => setModalOpen(null)}
+                >
+                  <span className="text-[9px] uppercase tracking-[0.3em] opacity-50">07</span>
+                  <span
+                    className="text-3xl tracking-wide opacity-90"
+                    style={{ fontFamily: "'Jost', sans-serif" }}
+                  >
+                    Ausstellung
+                  </span>
+                </Link>
               </nav>
             ) : modalOpen === "kontakt" ? (
               <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 max-w-2xl font-light">

@@ -139,7 +139,7 @@ function preloadImage(src: string) {
 
 function DoPage() {
   const [openId, setOpenId] = useState<string | null>(null);
-  const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | null>(null);
+  const [modalOpen, setModalOpen] = useState<"kontakt" | "impressum" | "menu" | null>(null);
   const [activeCategory, setActiveCategory] = useState("Alle");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -421,6 +421,16 @@ function DoPage() {
         </div>
       </div>
 
+      {/* Mobile Floating Menu Button (nur sichtbar auf kleinen Bildschirmen) */}
+      <div className="md:hidden fixed bottom-6 right-6 z-40">
+        <button
+          onClick={() => setModalOpen("menu")}
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A1918] border border-white/20 text-[#EFECE4] shadow-[0_10px_30px_rgba(0,0,0,0.8)] transition-transform hover:scale-105 focus:outline-none"
+        >
+          <span className="text-[8px] uppercase tracking-[0.25em] font-medium mt-[1px]">Menü</span>
+        </button>
+      </div>
+
       {/* Modals im React Portal */}
       {mounted && createPortal(
         <AnimatePresence>
@@ -459,9 +469,38 @@ function DoPage() {
                   className="mb-8 pr-8 text-4xl leading-tight tracking-tight md:text-5xl"
                   style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 300 }}
                 >
-                  {modalOpen === "kontakt" ? "Kontakt" : "Impressum"}
+                  {modalOpen === "kontakt" ? "Kontakt" : modalOpen === "impressum" ? "Impressum" : "Menü"}
                 </h2>
-                {modalOpen === "kontakt" ? (
+                {modalOpen === "menu" ? (
+                  <nav className="flex flex-col gap-8 items-start">
+                    <Link
+                      to="/"
+                      onClick={() => setModalOpen(null)}
+                      className="flex flex-col gap-1 text-left"
+                    >
+                      <span className="text-[9px] uppercase tracking-[0.3em] opacity-50">←</span>
+                      <span
+                        className="text-3xl tracking-wide opacity-90"
+                        style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
+                      >
+                        Startseite
+                      </span>
+                    </Link>
+                    <Link
+                      to="/portfolio"
+                      onClick={() => setModalOpen(null)}
+                      className="flex flex-col gap-1 text-left"
+                    >
+                      <span className="text-[9px] uppercase tracking-[0.3em] opacity-50">→</span>
+                      <span
+                        className="text-3xl tracking-wide opacity-90"
+                        style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400 }}
+                      >
+                        Portfolio
+                      </span>
+                    </Link>
+                  </nav>
+                ) : modalOpen === "kontakt" ? (
                   <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 font-light">
 
                     <ContactForm />
