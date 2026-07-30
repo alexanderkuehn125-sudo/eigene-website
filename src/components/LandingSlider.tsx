@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { useNavigate } from "@tanstack/react-router";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ContactForm } from "@/components/ContactForm";
+import { motion, AnimatePresence } from "framer-motion";
 
 import beHorizontal from "@/assets/manhattan-18-horizontal.jpg";
 import doHorizontal from "@/assets/manhattan-21-horizontal.jpg";
@@ -515,40 +516,46 @@ export function LandingSlider() {
       />
 
       {/* Welcome Modal */}
-      {showWelcomeModal && (
-        <div
-          className="fixed inset-4 md:inset-8 z-[200] flex items-center justify-center rounded-3xl overflow-hidden"
-          style={{
-            background: "radial-gradient(circle at center, rgba(35, 30, 25, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%)",
-            backdropFilter: "blur(10px)",
-            border: "1px solid rgba(197, 160, 89, 0.15)",
-            boxShadow: "0 0 50px rgba(0,0,0,0.5), inset 0 0 30px rgba(197, 160, 89, 0.05)"
-          }}
-          onClick={(e) => {
-            e.stopPropagation();
-            setShowWelcomeModal(false);
-          }}
-        >
-          {/* Subtle warm glow behind text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] rounded-full opacity-20 blur-[100px] pointer-events-none"
-               style={{ background: "radial-gradient(circle, #C5A059 0%, transparent 70%)" }} />
-          
-          <div className="text-center p-8 text-white relative z-10">
-            <h2 
-              className="text-4xl md:text-6xl lg:text-7xl tracking-wider font-light leading-snug"
-              style={{ fontFamily: "'Jost', sans-serif" }}
-            >
-              Guten Morgen,<br />
-              <span className="opacity-90 text-[#C5A059] text-3xl md:text-5xl lg:text-6xl mt-6 block leading-tight" style={{ textShadow: "0 2px 10px rgba(197, 160, 89, 0.3)" }}>
-                lieber Batch 18 und Dozenten!
-              </span>
-              <span className="text-2xl md:text-4xl mt-8 block leading-relaxed text-white font-light" style={{ letterSpacing: "0.05em" }}>
-                Herzlich Willkommen zu meiner kleinen Einführung in meine &quot;Eigene Website&quot;.
-              </span>
-            </h2>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {showWelcomeModal && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-4 md:inset-8 z-[200] flex items-center justify-center rounded-3xl overflow-hidden"
+            style={{
+              background: "radial-gradient(circle at center, rgba(35, 30, 25, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(197, 160, 89, 0.15)",
+              boxShadow: "0 0 50px rgba(0,0,0,0.5), inset 0 0 30px rgba(197, 160, 89, 0.05)"
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowWelcomeModal(false);
+            }}
+          >
+            {/* Subtle warm glow behind text */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] rounded-full opacity-20 blur-[100px] pointer-events-none"
+                 style={{ background: "radial-gradient(circle, #C5A059 0%, transparent 70%)" }} />
+            
+            <div className="text-center p-8 text-white relative z-10">
+              <h2 
+                className="text-4xl md:text-6xl lg:text-7xl tracking-wider font-light leading-snug"
+                style={{ fontFamily: "'Jost', sans-serif" }}
+              >
+                Guten Morgen,<br />
+                <span className="opacity-90 text-[#C5A059] text-3xl md:text-5xl lg:text-6xl mt-6 block leading-tight" style={{ textShadow: "0 2px 10px rgba(197, 160, 89, 0.3)" }}>
+                  lieber Batch 18 und Dozenten!
+                </span>
+                <span className="text-2xl md:text-4xl mt-8 block leading-relaxed text-white font-light" style={{ letterSpacing: "0.05em" }}>
+                  Herzlich Willkommen zu meiner kleinen Einführung in meine &quot;Eigene Website&quot;.
+                </span>
+              </h2>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
