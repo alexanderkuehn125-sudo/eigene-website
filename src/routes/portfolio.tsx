@@ -59,8 +59,8 @@ type Project = {
 const projects = [
   { 
     client: "Google Cloud", 
-    idleNode: <img src={googleCloudLogo} alt="Google Cloud" className="h-6 md:h-8 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={googleCloudLogo} alt="Google Cloud" className="h-8 md:h-10 w-auto object-contain" />,
+    idleNode: <img src={googleCloudLogo} alt="Google Cloud" className="max-h-8 max-w-[120px] md:max-h-10 md:max-w-[140px] w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={googleCloudLogo} alt="Google Cloud" className="max-h-12 max-w-[160px] md:max-h-14 md:max-w-[200px] w-auto object-contain" />,
     project: "Google Roadshow DACH 2024", 
     tasks: ["Projektmanagement", "Ausschreibungserstellung", "Produktionsleitung", "Locationmanagement", "Dienstleisterhandling", "Budget-Kontrolle"], 
     color: "",
@@ -68,8 +68,8 @@ const projects = [
   },
   { 
     client: "IAA MOBILITY", 
-    idleNode: <img src={iaaLogo} alt="IAA MOBILITY" className="h-5 md:h-6 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={iaaLogo} alt="IAA MOBILITY" className="h-6 md:h-8 w-auto object-contain brightness-0 invert" />,
+    idleNode: <img src={iaaLogo} alt="IAA MOBILITY" className="max-h-8 max-w-[120px] md:max-h-10 md:max-w-[140px] w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={iaaLogo} alt="IAA MOBILITY" className="max-h-12 max-w-[160px] md:max-h-14 md:max-w-[200px] w-auto object-contain brightness-0 invert" />,
     project: "Citizens Lab 2023", 
     tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#0096D6]", 
@@ -77,8 +77,8 @@ const projects = [
   },
   { 
     client: "Sport1 MEDIEN", 
-    idleNode: <img src={sport1Logo} alt="Sport1 MEDIEN" className="h-6 md:h-8 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={sport1Logo} alt="Sport1 MEDIEN" className="h-8 md:h-10 w-auto object-contain" />,
+    idleNode: <img src={sport1Logo} alt="Sport1 MEDIEN" className="max-h-8 max-w-[120px] md:max-h-10 md:max-w-[140px] w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={sport1Logo} alt="Sport1 MEDIEN" className="max-h-12 max-w-[160px] md:max-h-14 md:max-w-[200px] w-auto object-contain" />,
     project: "Hauptversammlung 2015", 
     tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#EFECE4]", 
@@ -86,8 +86,8 @@ const projects = [
   },
   { 
     client: "CSU", 
-    idleNode: <img src={csuLogo} alt="CSU" className="h-6 md:h-8 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={csuLogo} alt="CSU" className="h-8 md:h-10 w-auto object-contain" />,
+    idleNode: <img src={csuLogo} alt="CSU" className="max-h-8 max-w-[120px] md:max-h-10 md:max-w-[140px] w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={csuLogo} alt="CSU" className="max-h-12 max-w-[160px] md:max-h-14 md:max-w-[200px] w-auto object-contain" />,
     project: "CSU-Parteitage", 
     tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], 
     color: "text-[#0070B9]", 
@@ -95,8 +95,8 @@ const projects = [
   },
   { 
     client: "Krombacher", 
-    idleNode: <img src={krombacherLogo} alt="Krombacher" className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={krombacherLogo} alt="Krombacher" className="h-10 md:h-14 w-auto object-contain" />,
+    idleNode: <img src={krombacherLogo} alt="Krombacher" className="max-h-8 max-w-[120px] md:max-h-10 md:max-w-[140px] w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={krombacherLogo} alt="Krombacher" className="max-h-12 max-w-[160px] md:max-h-14 md:max-w-[200px] w-auto object-contain" />,
     project: "Festivalauftritte 2022-2025", 
     tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#D4AF37]", 
@@ -104,8 +104,8 @@ const projects = [
   },
   { 
     client: "Messe München", 
-    idleNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-10 md:h-12 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-12 md:h-20 w-auto object-contain" />,
+    idleNode: <img src={messeMuenchenLogo} alt="Messe München" className="max-h-8 max-w-[120px] md:max-h-10 md:max-w-[140px] w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={messeMuenchenLogo} alt="Messe München" className="max-h-12 max-w-[160px] md:max-h-14 md:max-w-[200px] w-auto object-contain" />,
     project: "Eröffnungsfeier neue Hallen 2018", 
     tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#004A99]", 
@@ -113,8 +113,8 @@ const projects = [
   },
   { 
     client: "KRONES", 
-    idleNode: <img src={kronesLogo} alt="KRONES" className="h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={kronesLogo} alt="KRONES" className="h-7 md:h-9 w-auto object-contain brightness-0 invert" />,
+    idleNode: <img src={kronesLogo} alt="KRONES" className="max-h-8 max-w-[120px] md:max-h-10 md:max-w-[140px] w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={kronesLogo} alt="KRONES" className="max-h-12 max-w-[160px] md:max-h-14 md:max-w-[200px] w-auto object-contain brightness-0 invert" />,
     project: "Messeauftritt gesamt 2017", 
     tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#EFECE4]", 
@@ -122,8 +122,8 @@ const projects = [
   },
   { 
     client: "LIEBHERR", 
-    idleNode: <img src={liebherrLogo} alt="LIEBHERR" className="h-5 md:h-6 w-auto object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={liebherrLogo} alt="LIEBHERR" className="h-6 md:h-8 w-auto object-contain" />,
+    idleNode: <img src={liebherrLogo} alt="LIEBHERR" className="max-h-8 max-w-[120px] md:max-h-10 md:max-w-[140px] w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={liebherrLogo} alt="LIEBHERR" className="max-h-12 max-w-[160px] md:max-h-14 md:max-w-[200px] w-auto object-contain" />,
     project: "Liebherr-Familientag 2018", 
     tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"], 
     color: "text-[#FFCC00]", 
