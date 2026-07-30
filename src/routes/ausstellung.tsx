@@ -465,9 +465,7 @@ function DoPage() {
                 </h2>
                 {modalOpen === "kontakt" ? (
                   <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 font-light">
-                    <p className="mb-6">
-                      Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch.
-                    </p>
+
                     <ContactForm />
                   </div>
                 ) : (

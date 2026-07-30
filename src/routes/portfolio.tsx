@@ -593,9 +593,7 @@ function BePage() {
               </nav>
             ) : modalOpen === "kontakt" ? (
               <div className="text-base md:text-lg lg:text-xl leading-relaxed opacity-80 max-w-2xl font-light">
-                <p className="mb-6">
-                  Für Anfragen, Kooperationen oder einen ersten unverbindlichen Austausch.
-                </p>
+
                 <ContactForm />
               </div>
             ) : modalOpen === "impressum" ? (
