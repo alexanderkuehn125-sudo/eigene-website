@@ -9,8 +9,8 @@ import { ProjectRiskScanner } from "@/components/ProjectRiskScanner";
 import { WidgetContainer } from "@/components/WidgetContainer";
 import { NetworkBackground } from "@/components/NetworkBackground";
 import { ContactForm } from "@/components/ContactForm";
-// Neues lokales Portrait
 import portrait from "@/assets/Portrait.jpg";
+import kronesLogo from "@/assets/krones.svg";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -37,6 +37,16 @@ type Item = {
   label: string;
   slug: string;
   body: React.ReactNode;
+};
+
+type Project = {
+  client: string;
+  clientNode?: React.ReactNode;
+  idleNode?: React.ReactNode;
+  project: string;
+  tasks: string[];
+  color: string;
+  bgColor: string;
 };
 
 const projects = [
@@ -76,7 +86,15 @@ const projects = [
   { client: "CSU", project: "CSU-Parteitage", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], color: "text-[#0070B9]", bgColor: "bg-[#0070B9]" },
   { client: "Krombacher", project: "Festivalauftritte 2022-2025", tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#D4AF37]", bgColor: "bg-[#D4AF37]" },
   { client: "Messe München", project: "Eröffnungsfeier neue Hallen 2018", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#004A99]", bgColor: "bg-[#004A99]" },
-  { client: "KRONES", project: "Messeauftritt gesamt 2017", tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], color: "text-[#0055A5]", bgColor: "bg-[#0055A5]" },
+  { 
+    client: "KRONES", 
+    idleNode: <img src={kronesLogo} alt="KRONES" className="h-5 md:h-6 w-auto object-contain brightness-0 invert opacity-90" />,
+    clientNode: <img src={kronesLogo} alt="KRONES" className="h-6 md:h-8 w-auto object-contain brightness-0 invert" />,
+    project: "Messeauftritt gesamt 2017", 
+    tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
+    color: "text-[#EFECE4]", 
+    bgColor: "bg-[#0055A5]" 
+  },
   { client: "LIEBHERR", project: "Liebherr-Familientag 2018", tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"], color: "text-[#FFCC00]", bgColor: "bg-[#FFCC00]" },
 ];
 
@@ -110,13 +128,17 @@ function HoverRevealGrid() {
               className={`absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/5 ${proj.bgColor} transition-all duration-500 group-hover:scale-95 group-hover:opacity-0 group-hover:blur-sm group-focus:scale-95 group-focus:opacity-0 group-focus:blur-sm animate-smooth-pulse`}
               style={{ animationDelay: `${i * 0.4}s` }}
             >
-            {/* White Text Layer */}
-            <span
-              className="text-center text-xl md:text-2xl font-light tracking-wider text-[#EFECE4]/90"
-              style={{ fontFamily: "'Jost', sans-serif", fontWeight: 300 }}
-            >
-              {proj.client}
-            </span>
+            {/* White Text or Logo Layer */}
+            <div className="flex items-center justify-center">
+              {proj.idleNode ? proj.idleNode : (
+                <span
+                  className="text-center text-xl md:text-2xl font-light tracking-wider text-[#EFECE4]/90"
+                  style={{ fontFamily: "'Jost', sans-serif", fontWeight: 300 }}
+                >
+                  {proj.client}
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Pop-Out Overlay (Hover State) */}
