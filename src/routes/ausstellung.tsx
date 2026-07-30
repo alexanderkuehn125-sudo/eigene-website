@@ -336,13 +336,11 @@ function DoPage() {
 
               return (
                 <motion.div
-                  layout="position"
-                  initial={{ opacity: 0.001, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.05 }}
-                  exit={{ opacity: 0.001 }}
+                  exit={{ opacity: 0 }}
                   transition={{
-                    layout: { type: "spring", bounce: 0, duration: 2.2 },
                     opacity: { duration: 0.8, ease: "easeOut" },
                     y: { duration: 0.8, ease: "easeOut" },
                   }}
