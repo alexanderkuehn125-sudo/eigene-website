@@ -119,7 +119,7 @@ function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
       decoding="async"
       fetchPriority={eager ? "high" : "auto"}
       draggable={false}
-      className={`${className} transition-opacity duration-1000 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
+      className={`${className} transition-opacity duration-500 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
       onLoad={(e) => {
         setLoaded(true);
         onLoad?.(e);
@@ -336,10 +336,10 @@ function DoPage() {
 
               return (
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0.01, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.05 }}
-                  exit={{ opacity: 0 }}
+                  viewport={{ once: true, margin: "150px" }}
+                  exit={{ opacity: 0.01 }}
                   transition={{
                     opacity: { duration: 0.8, ease: "easeOut" },
                     y: { duration: 0.8, ease: "easeOut" },
@@ -347,7 +347,7 @@ function DoPage() {
                   key={p.id}
                   id={p.id}
                   className={`relative block text-left mb-24 ${widthClass} ${marginClass} ${zClass}`}
-                  style={{ breakInside: "avoid" }}
+                  style={{ breakInside: "avoid", willChange: "opacity, transform" }}
                 >
                   <div
                     onClick={() => openPhoto(p.id)}
