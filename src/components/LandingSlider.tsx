@@ -140,18 +140,6 @@ export function LandingSlider() {
       updateFromEvent(e.clientX, e.clientY);
     };
     const onUp = () => {
-      if (draggingRef.current) {
-        setPct((p) => {
-          if (p <= 5) {
-            setTimeout(() => { void navigate({ to: "/portfolio" }); }, 300);
-            return 0;
-          } else if (p >= 95) {
-            setTimeout(() => { void navigate({ to: "/ausstellung" }); }, 300);
-            return 100;
-          }
-          return p;
-        });
-      }
       draggingRef.current = false;
       document.body.style.cursor = "";
       document.body.style.userSelect = "";
@@ -200,8 +188,11 @@ export function LandingSlider() {
     : `inset(0 0 0 ${pct}%)`;
 
   return (
-    <section
-      ref={containerRef}
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, ease: "easeInOut" }}
+      ref={containerRef as any}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       className="relative h-[100svh] w-full overflow-hidden bg-black select-none"
@@ -497,7 +488,7 @@ export function LandingSlider() {
       )}
 
 
-    </section>
+    </motion.section>
   );
 }
 
@@ -581,10 +572,13 @@ function CloudTitle({
     <div
       ref={containerRef as React.RefObject<HTMLDivElement>}
       onClick={(e) => {
+        if (hidden) return;
         e.stopPropagation();
         onClick();
       }}
-      className="cloud-title group absolute z-30 focus:outline-none cursor-elegant flex flex-col items-center"
+      className={`cloud-title group absolute z-30 focus:outline-none cursor-elegant flex flex-col items-center ${
+        hidden ? "pointer-events-none" : ""
+      }`}
       style={{
         ...pos,
       }}

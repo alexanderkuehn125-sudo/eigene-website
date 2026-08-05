@@ -119,7 +119,7 @@ function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
       decoding="async"
       fetchPriority={eager ? "high" : "auto"}
       draggable={false}
-      className={`${className} transition-opacity duration-500 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
+      className={className}
       onLoad={(e) => {
         setLoaded(true);
         onLoad?.(e);
@@ -334,20 +334,30 @@ function DoPage() {
                 }
               }
 
+              const directions = [
+                { x: -20, y: 30 },
+                { x: 20, y: 30 },
+                { x: 0, y: 40 },
+                { x: -10, y: 20 },
+                { x: 10, y: 20 },
+              ];
+              const { x: xInit, y: yInit } = directions[i % directions.length];
+
               return (
                 <motion.div
-                  initial={{ opacity: 0.01, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0.01, x: xInit, y: yInit, scale: 0.97 }}
+                  whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
                   viewport={{ once: true, margin: "150px" }}
-                  exit={{ opacity: 0.01 }}
+                  exit={{ opacity: 0.01, scale: 0.97, transition: { duration: 0.5 } }}
                   transition={{
-                    opacity: { duration: 0.8, ease: "easeOut" },
-                    y: { duration: 0.8, ease: "easeOut" },
+                    duration: 1.5,
+                    ease: "easeInOut",
+                    delay: (i % 3) * 0.15, // Etwas mehr Zeit zwischen den Bildern
                   }}
-                  key={p.id}
+                  key={`${activeCategory}-${p.id}`}
                   id={p.id}
                   className={`relative block text-left mb-24 ${widthClass} ${marginClass} ${zClass}`}
-                  style={{ breakInside: "avoid", willChange: "opacity, transform" }}
+                  style={{ breakInside: "avoid" }}
                 >
                   <div
                     onClick={() => openPhoto(p.id)}
@@ -358,7 +368,7 @@ function DoPage() {
                   >
                     <div className="relative flex justify-center w-full">
                       {/* Safari Fix: transform-gpu entfernt, da es oft Paint-Fehler verursacht */}
-                      <div className="relative overflow-hidden bg-[#0A0A0A] rounded-[2px] shadow-2xl transition-all duration-700">
+                      <div className="relative overflow-hidden bg-transparent rounded-[2px] shadow-2xl transition-all duration-700">
                         <LazyImage
                           src={p.src}
                           alt={p.title}
