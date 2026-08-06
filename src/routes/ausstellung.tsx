@@ -119,7 +119,7 @@ function LazyImage({ eager, className = "", onLoad, ...rest }: LazyImageProps) {
       decoding="async"
       fetchPriority={eager ? "high" : "auto"}
       draggable={false}
-      className={className}
+      className={`${className} transition-all duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
       onLoad={(e) => {
         setLoaded(true);
         onLoad?.(e);
@@ -224,7 +224,7 @@ function DoPage() {
       }}
     >
       {/* Film-Grain Overlay entfernt für deutlich bessere Scroll-Performance auf der Bilder-Seite */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-6 pt-10 pb-5 md:px-12 md:pt-16 md:pb-8 page-transition-enter">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-6 pt-10 pb-5 md:px-12 md:pt-16 md:pb-8">
         {/* Header */}
         <header className="flex items-center justify-between pt-2 relative z-50">
           <Link
@@ -357,7 +357,7 @@ function DoPage() {
                   key={`${activeCategory}-${p.id}`}
                   id={p.id}
                   className={`relative block text-left mb-24 ${widthClass} ${marginClass} ${zClass}`}
-                  style={{ breakInside: "avoid" }}
+                  style={{ breakInside: "avoid", willChange: "transform, opacity" }}
                 >
                   <div
                     onClick={() => openPhoto(p.id)}

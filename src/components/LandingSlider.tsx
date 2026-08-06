@@ -128,7 +128,7 @@ export function LandingSlider() {
     const targetPct = side === "be" ? 100 : 0;
     
     animate(pct, targetPct, {
-      duration: 1.2,
+      duration: 1.7,
       ease: "easeInOut",
       onUpdate: (latest) => setPct(latest),
       onComplete: () => {
@@ -233,44 +233,6 @@ export function LandingSlider() {
             : { top: 0, bottom: 0, left: `${pct}%`, width: 1, transform: "translateX(-0.5px)" }
         }
       />
-
-      <div
-        aria-hidden
-        className="group absolute z-40 grid place-items-center rounded-full pointer-events-none bg-transparent border border-white/70"
-        style={
-          isMobile
-            ? {
-                left: "50%",
-                top: `${pct}%`,
-                width: 68,
-                height: 28,
-                marginTop: -14,
-                marginLeft: -34,
-                animation: "handleBreathe 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
-              }
-            : {
-                top: "50%",
-                left: `${pct}%`,
-                width: 28,
-                height: 68,
-                marginTop: -34,
-                marginLeft: -14,
-                animation: "handleBreathe 3.6s cubic-bezier(0.45,0,0.55,1) infinite",
-              }
-        }
-      >
-        {isMobile ? (
-          <span className="flex items-center gap-1 text-[10px] tracking-[0.3em] text-white/80">
-            <span aria-hidden>▲</span>
-            <span aria-hidden>▼</span>
-          </span>
-        ) : (
-          <span className="flex flex-col items-center gap-1 text-[10px] tracking-[0.3em] text-white/80">
-            <span aria-hidden>◀</span>
-            <span aria-hidden>▶</span>
-          </span>
-        )}
-      </div>
 
       <div
         aria-hidden
