@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { useNavigate } from "@tanstack/react-router";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ContactForm } from "@/components/ContactForm";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, animate } from "framer-motion";
 
 import beHorizontal from "@/assets/manhattan-18-horizontal.jpg";
 import doHorizontal from "@/assets/manhattan-21-horizontal.jpg";
@@ -29,8 +29,8 @@ export function LandingSlider() {
   const doSideRef = useRef<HTMLDivElement>(null);
   const beBalloonRef = useRef<HTMLSpanElement>(null);
   const doBalloonRef = useRef<HTMLSpanElement>(null);
-  const draggingRef = useRef(false);
   const [pct, setPct] = useState(50); // % of the "be" side visible (from left/top)
+  const [isNavigating, setIsNavigating] = useState(false);
   const [zoomOn, setZoomOn] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [beLens, setBeLens] = useState<{ x: number; y: number; visible: boolean; reveal: boolean }>({
@@ -78,7 +78,7 @@ export function LandingSlider() {
   );
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!zoomOn || isMobile || draggingRef.current) return;
+    if (!zoomOn || isMobile) return;
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
     const x = e.clientX - rect.left;
@@ -121,63 +121,22 @@ export function LandingSlider() {
     return () => window.removeEventListener("keydown", onKey);
   }, [zoomOn]);
 
-  const updateFromEvent = useCallback(
-    (clientX: number, clientY: number) => {
-      const el = containerRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const raw = isMobile
-        ? ((clientY - rect.top) / rect.height) * 100
-        : ((clientX - rect.left) / rect.width) * 100;
-      setPct(Math.max(0, Math.min(100, raw)));
-    },
-    [isMobile],
-  );
-
-  useEffect(() => {
-    const onMove = (e: PointerEvent) => {
-      if (!draggingRef.current) return;
-      updateFromEvent(e.clientX, e.clientY);
-    };
-    const onUp = () => {
-      draggingRef.current = false;
-      document.body.style.cursor = "";
-      document.body.style.userSelect = "";
-    };
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerup", onUp);
-    window.addEventListener("pointercancel", onUp);
-    return () => {
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerup", onUp);
-      window.removeEventListener("pointercancel", onUp);
-    };
-  }, [updateFromEvent, navigate]);
-
-  const startDrag = (e: React.PointerEvent) => {
-    e.currentTarget.setPointerCapture(e.pointerId);
-    draggingRef.current = true;
-    document.body.style.cursor = isMobile ? "ns-resize" : "ew-resize";
-    document.body.style.userSelect = "none";
-    updateFromEvent(e.clientX, e.clientY);
-  };
-
-  const onKey = (e: React.KeyboardEvent) => {
-    const step = e.shiftKey ? 10 : 2;
-    if (
-      (isMobile && (e.key === "ArrowUp" || e.key === "ArrowDown")) ||
-      (!isMobile && (e.key === "ArrowLeft" || e.key === "ArrowRight"))
-    ) {
-      e.preventDefault();
-      const dir =
-        e.key === "ArrowRight" || e.key === "ArrowDown" ? +1 : -1;
-      setPct((p) => Math.max(0, Math.min(100, p + dir * step)));
-    }
-  };
-
   const goSide = (side: "be" | "do") => {
-    if (draggingRef.current) return;
-    void navigate({ to: side === "be" ? "/portfolio" : "/ausstellung" });
+    if (isNavigating) return;
+    setIsNavigating(true);
+    
+    const targetPct = side === "be" ? 100 : 0;
+    
+    animate(pct, targetPct, {
+      duration: 1.2,
+      ease: "easeInOut",
+      onUpdate: (latest) => setPct(latest),
+      onComplete: () => {
+        setTimeout(() => {
+          void navigate({ to: side === "be" ? "/portfolio" : "/ausstellung" });
+        }, 150);
+      }
+    });
   };
 
   const beImg = isMobile ? beVertical : beHorizontal;
@@ -276,19 +235,8 @@ export function LandingSlider() {
       />
 
       <div
-        role="slider"
-        tabIndex={0}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={Math.round(pct)}
-        aria-orientation={isMobile ? "horizontal" : "vertical"}
-        aria-label="Reveal 18th- vs 21st-century Manhattan"
-        onPointerDown={startDrag}
-        onKeyDown={onKey}
-        onClick={(e) => e.stopPropagation()}
-        className={`group absolute z-40 grid place-items-center rounded-full touch-none bg-transparent border border-white/70 focus:outline-none focus:ring-2 focus:ring-white/80 ${
-          isMobile ? "cursor-ns-resize" : "cursor-ew-resize"
-        }`}
+        aria-hidden
+        className="group absolute z-40 grid place-items-center rounded-full pointer-events-none bg-transparent border border-white/70"
         style={
           isMobile
             ? {
@@ -442,10 +390,10 @@ export function LandingSlider() {
       <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
         <p className="rounded-full bg-black/50 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white backdrop-blur-md shadow-lg">
           {isMobile
-            ? "drag ↕ · tap a side to enter"
+            ? "tap a side to enter"
             : zoomOn
               ? "Zoom aktiv · Maus über das linke Bild bewegen"
-              : "drag ↔ · click a side to enter"}
+              : "click a side to enter"}
         </p>
       </div>
 
