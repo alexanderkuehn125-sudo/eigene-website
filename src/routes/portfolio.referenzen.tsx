@@ -59,7 +59,7 @@ export const Route = createFileRoute("/portfolio/referenzen")({
         body: "Ein Auszug der letzten 10 Jahre. Eine exemplarische Übersicht ausgewählter Partner und meiner spezifischen Verantwortlichkeiten.",
       }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full pb-10">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 w-full pb-10">
         {projects.map((proj, i) => (
           <motion.div
             key={i}
