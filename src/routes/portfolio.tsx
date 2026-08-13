@@ -60,7 +60,7 @@ const projects = [
   { 
     client: "Google Cloud", 
     idleNode: <img src={googleCloudLogo} alt="Google Cloud" className="h-10 md:h-10 w-full max-w-[110px] md:max-w-[140px] object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={googleCloudLogo} alt="Google Cloud" className="h-12 md:h-14 w-full max-w-[140px] md:max-w-[200px] object-contain" />,
+    clientNode: <img src={googleCloudLogo} alt="Google Cloud" className="h-9 md:h-14 w-full max-w-[130px] md:max-w-[200px] object-contain" />,
     project: "Google Roadshow DACH 2024", 
     tasks: ["Projektmanagement", "Ausschreibungserstellung", "Produktionsleitung", "Locationmanagement", "Dienstleisterhandling", "Budget-Kontrolle"], 
     color: "",
@@ -69,7 +69,7 @@ const projects = [
   { 
     client: "IAA MOBILITY", 
     idleNode: <img src={iaaLogo} alt="IAA MOBILITY" className="h-10 md:h-10 w-full max-w-[110px] md:max-w-[140px] object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={iaaLogo} alt="IAA MOBILITY" className="h-12 md:h-14 w-full max-w-[140px] md:max-w-[200px] object-contain brightness-0 invert" />,
+    clientNode: <img src={iaaLogo} alt="IAA MOBILITY" className="h-9 md:h-14 w-full max-w-[130px] md:max-w-[200px] object-contain brightness-0 invert" />,
     project: "Citizens Lab 2023", 
     tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#0096D6]", 
@@ -78,7 +78,7 @@ const projects = [
   { 
     client: "Sport1 MEDIEN", 
     idleNode: <img src={sport1Logo} alt="Sport1 MEDIEN" className="h-10 md:h-10 w-full max-w-[110px] md:max-w-[140px] object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={sport1Logo} alt="Sport1 MEDIEN" className="h-12 md:h-14 w-full max-w-[140px] md:max-w-[200px] object-contain" />,
+    clientNode: <img src={sport1Logo} alt="Sport1 MEDIEN" className="h-9 md:h-14 w-full max-w-[130px] md:max-w-[200px] object-contain" />,
     project: "Hauptversammlung 2015", 
     tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#EFECE4]", 
@@ -87,7 +87,7 @@ const projects = [
   { 
     client: "CSU", 
     idleNode: <img src={csuLogo} alt="CSU" className="h-10 md:h-10 w-full max-w-[110px] md:max-w-[140px] object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={csuLogo} alt="CSU" className="h-12 md:h-14 w-full max-w-[140px] md:max-w-[200px] object-contain" />,
+    clientNode: <img src={csuLogo} alt="CSU" className="h-9 md:h-14 w-full max-w-[130px] md:max-w-[200px] object-contain" />,
     project: "CSU-Parteitage", 
     tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Dienstleister-Handling", "Budget-Kontrolle", "Logistik"], 
     color: "text-[#0070B9]", 
@@ -96,7 +96,7 @@ const projects = [
   { 
     client: "Krombacher", 
     idleNode: <img src={krombacherLogo} alt="Krombacher" className="h-10 md:h-10 w-full max-w-[110px] md:max-w-[140px] object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={krombacherLogo} alt="Krombacher" className="h-12 md:h-14 w-full max-w-[140px] md:max-w-[200px] object-contain" />,
+    clientNode: <img src={krombacherLogo} alt="Krombacher" className="h-9 md:h-14 w-full max-w-[130px] md:max-w-[200px] object-contain" />,
     project: "Festivalauftritte 2022-2025", 
     tasks: ["Projektmanagement", "Kundenkommunikation", "Konzeption", "Produktionsleitung", "Ausschreibungserstellung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#D4AF37]", 
@@ -105,7 +105,7 @@ const projects = [
   { 
     client: "Messe München", 
     idleNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-14 md:h-16 w-full max-w-[140px] md:max-w-[180px] object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-20 md:h-24 w-full max-w-[180px] md:max-w-[240px] object-contain" />,
+    clientNode: <img src={messeMuenchenLogo} alt="Messe München" className="h-12 md:h-24 w-full max-w-[160px] md:max-w-[240px] object-contain" />,
     project: "Eröffnungsfeier neue Hallen 2018", 
     tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#004A99]", 
@@ -114,7 +114,7 @@ const projects = [
   { 
     client: "KRONES", 
     idleNode: <img src={kronesLogo} alt="KRONES" className="h-10 md:h-10 w-full max-w-[110px] md:max-w-[140px] object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={kronesLogo} alt="KRONES" className="h-12 md:h-14 w-full max-w-[140px] md:max-w-[200px] object-contain brightness-0 invert" />,
+    clientNode: <img src={kronesLogo} alt="KRONES" className="h-9 md:h-14 w-full max-w-[130px] md:max-w-[200px] object-contain brightness-0 invert" />,
     project: "Messeauftritt gesamt 2017", 
     tasks: ["Projektmanagement", "Konzeption", "Detail-Planung", "Produktionsleitung", "Ausschreibungsbearbeitung", "Dienstleister-Handling", "Budget-Kontrolle"], 
     color: "text-[#EFECE4]", 
@@ -123,7 +123,7 @@ const projects = [
   { 
     client: "LIEBHERR", 
     idleNode: <img src={liebherrLogo} alt="LIEBHERR" className="h-10 md:h-10 w-full max-w-[110px] md:max-w-[140px] object-contain brightness-0 invert opacity-90" />,
-    clientNode: <img src={liebherrLogo} alt="LIEBHERR" className="h-12 md:h-14 w-full max-w-[140px] md:max-w-[200px] object-contain" />,
+    clientNode: <img src={liebherrLogo} alt="LIEBHERR" className="h-9 md:h-14 w-full max-w-[130px] md:max-w-[200px] object-contain" />,
     project: "Liebherr-Familientag 2018", 
     tasks: ["Projektmanagement", "Detail-Planung", "Produktionsleitung", "Logistik", "Dienstleister-Handling", "Budget-Kontrolle", "Personalplanung"], 
     color: "text-[#FFCC00]", 
@@ -175,7 +175,7 @@ function HoverRevealGrid() {
           </div>
 
           {/* Pop-Out Overlay (Hover State) */}
-          <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-10 md:group-hover:-inset-16 lg:group-hover:-inset-20 group-hover:opacity-100 group-focus:-inset-10 md:group-focus:-inset-16 lg:group-focus:-inset-20 group-focus:opacity-100 pointer-events-none group-hover:pointer-events-auto group-focus:pointer-events-auto">
+          <div className="absolute inset-4 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-3 md:p-6 opacity-0 shadow-[0_30px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] group-hover:-inset-12 md:group-hover:-inset-16 lg:group-hover:-inset-20 group-hover:opacity-100 group-focus:-inset-12 md:group-focus:-inset-16 lg:group-focus:-inset-20 group-focus:opacity-100 pointer-events-none group-hover:pointer-events-auto group-focus:pointer-events-auto">
             
             {/* Client Name in Full Color */}
             <span
@@ -185,10 +185,10 @@ function HoverRevealGrid() {
               {proj.clientNode ? proj.clientNode : proj.client}
             </span>
 
-            <span className="mb-5 text-center text-[10px] md:text-[11px] font-semibold uppercase tracking-widest text-[#EFECE4]/60">
+            <span className="mb-2 md:mb-5 text-center text-[10px] md:text-[11px] font-semibold uppercase tracking-widest text-[#EFECE4]/60">
               {proj.project}
             </span>
-            <ul className="flex w-full flex-col items-center gap-2 md:gap-2.5 text-center text-[11px] md:text-[13px] font-medium tracking-wide text-[#EFECE4]">
+            <ul className="flex w-full flex-col items-center gap-1 md:gap-2.5 text-center text-[9px] md:text-[13px] font-medium tracking-wide text-[#EFECE4]">
               {proj.tasks.map((task, j) => (
                 <li key={j} className="opacity-100 leading-snug">
                   {task}
