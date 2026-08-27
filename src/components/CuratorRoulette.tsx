@@ -199,12 +199,12 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
             <button
               onClick={handleSurpriseMe}
               disabled={isAnalyzing || showCritique}
-              className="pointer-events-auto group relative flex items-center gap-1.5 overflow-hidden rounded-full border border-white/20 px-2 py-1 md:px-3 md:py-1.5 transition-all hover:border-white/40 focus:outline-none disabled:opacity-50 cursor-none"
+              className="pointer-events-auto group relative flex items-center overflow-hidden rounded-full border border-white/20 p-2.5 md:p-4 text-[#EFECE4] transition-all hover:border-white/40 focus:outline-none disabled:opacity-50 cursor-none shrink-0"
             >
               {/* Smooth Glowing Pulse */}
               <motion.div
                 initial={{ scale: 1.5 }}
-                animate={{ opacity: [0.5, 0.85, 0.5] }}
+                animate={{ opacity: [0.3, 0.65, 0.3] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-0 -z-20 transition-opacity duration-700"
                 style={{
@@ -213,8 +213,8 @@ Gib AUSSCHLIESSLICH valides JSON zurück, ohne Markdown-Formatierung (wie \`\`\`
                 }}
               />
               
-              <Search className={`h-[10px] w-[10px] text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity shrink-0 ${isAnalyzing && !showCritique ? 'animate-bounce' : ''}`} />
-              <span className="text-[8px] md:text-[9px] font-medium uppercase tracking-[0.2em] text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity">
+              <Search className={`h-5 w-5 md:h-[34px] md:w-[34px] text-[#EFECE4] opacity-80 group-hover:opacity-100 transition-opacity shrink-0 ${isAnalyzing && !showCritique ? 'animate-bounce' : ''}`} />
+              <span className="max-w-0 overflow-hidden whitespace-nowrap text-[9px] md:text-sm tracking-[0.15em] uppercase opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[300px] md:group-hover:max-w-[400px] group-hover:opacity-100 group-hover:pl-2.5 md:group-hover:pl-5 group-hover:pr-1.5 md:group-hover:pr-2.5">
                 {isAnalyzing && !showCritique ? "Analysiere..." : "Werk analysieren"}
               </span>
             </button>
