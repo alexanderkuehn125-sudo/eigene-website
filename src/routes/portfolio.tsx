@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImpressumContent } from "@/components/ImpressumContent";
 import { KiWorkflowContent } from "@/components/KiWorkflowContent";
-import { CoffeeToProjectConverter } from "@/components/CoffeeToProjectConverter";
 import { ProjectRiskScanner } from "@/components/ProjectRiskScanner";
 import { WidgetContainer } from "@/components/WidgetContainer";
 import { NetworkBackground } from "@/components/NetworkBackground";
@@ -377,7 +376,6 @@ function BePage() {
 
             {/* Widget Area: Bottom Left / Mobile Right */}
             <WidgetContainer>
-              <CoffeeToProjectConverter />
               <ProjectRiskScanner />
             </WidgetContainer>
 
